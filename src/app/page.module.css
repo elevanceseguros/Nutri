@@ -986,3 +986,33 @@
   margin-bottom: 24px;
   opacity: 0.8;
 }
+.swapBtn {
+  background: #f3f4f6;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 50px; /* Garante o formato de pílula */
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.swapBtn:hover {
+  background: #fff;
+  border-color: #22c55e;
+  color: #22c55e;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
+}
+
+.ingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+}
