@@ -537,3 +537,24 @@
   .macroVal { font-size: 22px; }
   .heroTitle { letter-spacing: -0.5px; }
 }
+
+.btnPro {
+    display: block;
+    background: var(--accent2);
+    color: white;
+    text-align: center;
+    padding: 18px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+    transition: all 0.2s;
+}
+.btnPro:hover {
+    background: #a8350a;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(200,68,10,0.25);
+}
