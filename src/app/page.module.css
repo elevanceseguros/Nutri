@@ -6,7 +6,7 @@
 .main {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem 4rem;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   color: #1f2937;
   -webkit-font-smoothing: antialiased;
@@ -16,16 +16,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1.5rem;
+  padding: 1.25rem 1.5rem;
   border-bottom: 1px solid #f3f4f6;
   margin-bottom: 3rem;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
+  color: #111827;
 }
 
 .logoAccent {
@@ -43,7 +47,6 @@
   letter-spacing: 0.5px;
 }
 
-/* --- AJUSTE PARA O BOTÃO ENTRAR --- */
 .btnEntrar {
   background: white;
   color: #16a34a;
@@ -54,10 +57,14 @@
   font-weight: 800;
   font-size: 0.85rem;
   transition: all 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.btnEntrar:hover {
+  background: #f0fdf4;
 }
 
 /* =========================================
-   ONBOARDING
+   HERO / ONBOARDING
    ========================================= */
 .heroEyebrow {
   display: flex;
@@ -70,22 +77,24 @@
   width: 40px;
   height: 2px;
   background: #22c55e;
+  flex-shrink: 0;
 }
 
 .heroEyebrowText {
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #6b7280;
   font-weight: 800;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   font-weight: 800;
   letter-spacing: -1.5px;
+  color: #111827;
 }
 
 .heroEm {
@@ -94,227 +103,629 @@
 }
 
 .heroSub {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #4b5563;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 560px;
   font-weight: 500;
 }
 
+/* =========================================
+   BLOCOS DE PERGUNTAS
+   ========================================= */
 .qBlock {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .qLabelRow {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 1.5rem;
+  gap: 10px;
+  margin-bottom: 1.25rem;
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   letter-spacing: -0.5px;
+  color: #111827;
 }
 
 .qNum {
   color: #22c55e;
 }
 
+.qLabel {
+  color: #111827;
+}
+
 .qGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
 }
 
 .qBtn {
   background: #ffffff;
   border: 2px solid #e5e7eb;
-  border-radius: 20px;
-  padding: 1.5rem 1.2rem;
+  border-radius: 18px;
+  padding: 1.25rem 1rem;
   cursor: pointer;
   text-align: left;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .qBtn:hover {
   border-color: #a7f3d0;
   background: #f8fafc;
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(34, 197, 94, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px -6px rgba(34, 197, 94, 0.15);
 }
 
 .qBtnActive {
-  border-color: #22c55e;
-  background: #f0fdf4;
-  box-shadow: 0 8px 16px -4px rgba(34, 197, 94, 0.2), inset 0 0 0 1px #22c55e;
+  border-color: #22c55e !important;
+  background: #f0fdf4 !important;
+  box-shadow: 0 6px 14px -4px rgba(34, 197, 94, 0.2), inset 0 0 0 1px #22c55e !important;
   transform: translateY(-2px);
 }
 
 .qBtnIcon {
   background: #f3f4f6;
   color: #6b7280;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.qBtnActive .qBtnIcon {
+  background: #dcfce7;
+  color: #16a34a;
 }
 
 .qBtnLabel {
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #111827;
-  margin-top: 4px;
   letter-spacing: -0.3px;
 }
 
 .qBtnSub {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #6b7280;
   font-weight: 600;
 }
 
-/* --- REFEIÇÕES (GRID) --- */
-.mealsGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}
-
-.mealBtn {
-  flex: 1;
-  min-width: 120px;
-  background: #ffffff;
-  border: 2px solid #e5e7eb;
-  border-radius: 20px;
-  padding: 1.5rem 1rem;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.mealNum {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #111827;
-}
-
-.mealSub {
-  font-size: 0.85rem;
-  color: #6b7280;
-  font-weight: 600;
-}
-
+/* =========================================
+   BOTÃO PRIMÁRIO
+   ========================================= */
 .btnPrimary {
   width: 100%;
   background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
   color: white;
   border: none;
   border-radius: 99px;
-  padding: 1.3rem;
-  font-size: 1.2rem;
+  padding: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 2rem;
-  box-shadow: 0 10px 20px -5px rgba(22, 163, 74, 0.4);
+  margin-top: 1.5rem;
+  box-shadow: 0 8px 20px -5px rgba(22, 163, 74, 0.4);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.btnPrimary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(22, 163, 74, 0.5);
+}
+
+.btnDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.errMsg {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 /* =========================================
-   TELA DO PLANO (CORRIGIDA)
+   LOADING
    ========================================= */
-.planHeader { text-align: center; margin-bottom: 3rem; }
-.planTitle { font-size: 2.5rem; font-weight: 900; color: #111827; letter-spacing: -1px; }
-.planSub { color: #6b7280; font-size: 1.1rem; line-height: 1.6; font-weight: 500; }
+.loadWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 40vh;
+}
 
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #dcfce7;
+  border-top-color: #22c55e;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loadTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #374151;
+  letter-spacing: -0.3px;
+}
+
+/* =========================================
+   TELA DO PLANO
+   ========================================= */
+.planHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  padding: 4px 14px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.planTitle {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+
+.planSub {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* =========================================
+   MACROS
+   ========================================= */
 .macrosCard {
   display: flex;
   justify-content: space-around;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 20px;
-  padding: 2rem 1.5rem;
+  padding: 1.75rem 1rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.macroVal { display: block; font-size: 1.75rem; font-weight: 800; color: #111827; }
-.macroLbl { font-size: 0.85rem; color: #6b7280; text-transform: uppercase; font-weight: 700; }
-
-/* --- DICA DO DIA (FOCO EM DESTAQUE) --- */
-.tipCard {
-  display: flex; gap: 1.5rem; align-items: center;
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border: 1px solid #fde68a; padding: 2rem; border-radius: 20px;
-  margin-bottom: 3rem; box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15);
+.macroItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.tipTitle { font-weight: 900; color: #92400e; margin-bottom: 8px; font-size: 1.25rem; }
-.tipText { color: #b45309; font-size: 1.05rem; line-height: 1.6; font-weight: 600; }
-
-/* --- CARDS DAS REFEIÇÕES (DESTAQUE NO NOME E PRATO) --- */
-.mealCard {
-  background: white; border: 1px solid #e5e7eb; border-radius: 20px;
-  margin-bottom: 1.5rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+.macroVal {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -1px;
 }
 
-.mealHead { display: flex; align-items: center; padding: 1.2rem 1.5rem; cursor: pointer; gap: 1.2rem; }
-.mealName { font-weight: 900; color: #111827; font-size: 1.25rem; }
-.mealTime { color: #6b7280; font-weight: 600; font-size: 0.95rem; }
-.mealKcal { font-weight: 800; color: #111827; font-size: 1.2rem; }
-
-/* DESTAQUE DO PRATO DENTRO DO CARD */
-.dishTitle { font-size: 1.5rem; font-weight: 900; color: #16a34a; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
-.dishDesc { color: #4b5563; font-size: 0.95rem; line-height: 1.5; font-weight: 500; }
-
-/* --- BOTÃO SUBSTITUIR (PÍLULA CORRETA) --- */
-.swapBtn {
-  background: #ffffff; border: 1px solid #e5e7eb;
-  padding: 8px 14px; border-radius: 99px;
-  font-size: 0.85rem; font-weight: 800; color: #6b7280;
-  cursor: pointer; display: flex; align-items: center; gap: 6px;
+.macroLbl {
+  font-size: 0.78rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
-.swapBtn:hover { background: #f0fdf4; border-color: #22c55e; color: #15803d; }
-
-.ingItem { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #e5e7eb; }
-.dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; }
 
 /* =========================================
-   BANNER PREMIUM (ESTILO CAKTO)
+   CARDS DE REFEIÇÃO
+   ========================================= */
+.mealCard {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s;
+}
+.mealCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.mealHead {
+  display: flex;
+  align-items: center;
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+  gap: 1rem;
+  user-select: none;
+}
+.mealHead:hover {
+  background: #fafafa;
+}
+
+.mealInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.mealName {
+  font-weight: 800;
+  color: #111827;
+  font-size: 1.1rem;
+  letter-spacing: -0.3px;
+}
+
+.mealTime {
+  color: #9ca3af;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mealKcal {
+  font-weight: 800;
+  color: #111827;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.kcalUnit {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.chevron {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  display: inline-block;
+  font-style: normal;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.mealBody {
+  border-top: 1px solid #f3f4f6;
+  background: #fafafa;
+  animation: fadeUp 0.2s ease;
+}
+
+.mealBodyContent {
+  padding: 1.5rem;
+}
+
+.dishTitle {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #16a34a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.5px;
+}
+
+.sectionLabel {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.ingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+.ingItem:last-child {
+  border-bottom: none;
+}
+
+.ingLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   BOTÃO SUBSTITUIR
+   ========================================= */
+.swapBtn {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.swapBtn:hover {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+/* =========================================
+   BANNER PREMIUM
    ========================================= */
 .premiumBanner {
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-  border: 1px solid #22c55e; border-radius: 24px; padding: 40px 24px;
-  text-align: center; box-shadow: 0 10px 25px -5px rgba(34, 197, 94, 0.15);
+  border: 1.5px solid #86efac;
+  border-radius: 24px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 24px -6px rgba(34, 197, 94, 0.15);
+  margin-top: 2rem;
 }
-.priceValue { font-size: 4rem; font-weight: 900; color: #166534; letter-spacing: -2px; }
+
+.premiumHeader {
+  margin-bottom: 1.5rem;
+}
+.premiumHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #166534;
+  margin-bottom: 6px;
+}
+.premiumHeader p {
+  color: #15803d;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.billingToggle {
+  display: flex;
+  background: #dcfce7;
+  border-radius: 99px;
+  padding: 5px;
+  width: fit-content;
+  margin: 0 auto 1.5rem;
+  gap: 4px;
+}
+
+.toggleBtn {
+  padding: 9px 20px;
+  border-radius: 99px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #15803d;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.toggleBtnActive {
+  background: white;
+  color: #15803d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.badgeDiscount {
+  background: #16a34a;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-left: 4px;
+}
+
+.premiumPrice {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #166534;
+  letter-spacing: -2px;
+  margin-bottom: 1.5rem;
+}
+
 .premiumBtn {
-  display: block; background-color: #16a34a; color: white;
-  font-weight: 800; font-size: 1.2rem; padding: 20px; border-radius: 99px;
-  text-decoration: none; margin-top: 20px;
+  display: block;
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  color: white;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 1.1rem;
+  border-radius: 99px;
+  text-decoration: none;
+  margin-top: 0;
+  box-shadow: 0 8px 20px -5px rgba(22, 163, 74, 0.4);
+  transition: all 0.25s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.premiumBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(22, 163, 74, 0.5);
 }
 
 /* =========================================
-   TOGGLE E MODAIS
+   MODAL
    ========================================= */
-.billingToggle { display: flex; background: #dcfce7; border-radius: 99px; padding: 6px; width: fit-content; margin: 0 auto 24px; }
-.toggleBtn { padding: 10px 20px; border-radius: 99px; border: none; background: transparent; font-weight: 800; color: #166534; cursor: pointer; }
-.toggleBtnActive { background: white; color: #15803d; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
 
-.modalOverlay { position: fixed; inset: 0; background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-.modalContent { background: white; padding: 40px; border-radius: 24px; max-width: 440px; width: 100%; text-align: center; }
+.modalContent {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+  position: relative;
+  animation: fadeUp 0.25s ease;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f3f4f6;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.modalClose:hover {
+  background: #e5e7eb;
+}
+
+.modalIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.modalText {
+  color: #6b7280;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* =========================================
+   RESPONSIVO
+   ========================================= */
+@media (max-width: 640px) {
+  .header {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .heroSub {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .qGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .macrosCard {
+    gap: 0.75rem;
+  }
+
+  .macroVal {
+    font-size: 1.4rem;
+  }
+
+  .mealHead {
+    padding: 1rem;
+  }
+
+  .mealBodyContent {
+    padding: 1.25rem 1rem;
+  }
+
+  .premiumBanner {
+    padding: 2rem 1rem;
+  }
+
+  .premiumPrice {
+    font-size: 2.5rem;
+  }
+}
