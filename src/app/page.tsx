@@ -366,7 +366,7 @@ export default function Home() {
               </div>
             ))}
 
-            {/* --- INÍCIO DO BANNER PREMIUM --- */}
+           {/* --- INÍCIO DO BANNER PREMIUM --- */}
             <div className={styles.premiumBanner}>
               <div className={styles.premiumHeader}>
                 <h3>Alcance seus objetivos mais rápido 🚀</h3>
@@ -375,16 +375,16 @@ export default function Home() {
               
               <ul className={styles.premiumFeatures}>
                 <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-                  Geração de planos <strong>ilimitados</strong>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Geração de planos <strong>ilimitados</strong></span>
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-                  <strong>Substituição inteligente</strong> de ingredientes
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span><strong>Substituição inteligente</strong> de ingredientes</span>
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-                  Modo de preparo detalhado para todas as refeições
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Modo de preparo detalhado para todas as refeições</span>
                 </li>
               </ul>
 
@@ -406,7 +406,6 @@ export default function Home() {
               <p className={styles.premiumGuarantee}>🔒 Pagamento seguro via Cakto • Cancele quando quiser</p>
             </div>
             {/* --- FIM DO BANNER PREMIUM --- */}
-
             <div className={styles.actionRow}>
               <button className={styles.btnSecondary} onClick={() => setScreen("onboarding")}>
                 Refazer
