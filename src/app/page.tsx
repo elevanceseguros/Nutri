@@ -418,14 +418,10 @@ export default function Home() {
             </div>
             {/* --- FIM DO BANNER PREMIUM --- */}
 
-            <div className={styles.actionRow}>
-              <button className={styles.btnSecondary} onClick={() => setScreen("onboarding")}>
-                Refazer
-              </button>
-              <button className={styles.btnPrimary} onClick={handleNewPlanClick}>
-                Novo plano
-              </button>
-            </div>
+           {/* --- BOTÃO DE NOVO PLANO (PAYWALL) --- */}
+            <button className={styles.btnPrimary} onClick={handleNewPlanClick}>
+              Gerar Novo Plano
+            </button>
           </div>
         )}
 
