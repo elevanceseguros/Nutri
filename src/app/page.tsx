@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./page.module.css";
 
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
-type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
+type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";h
 type Screen = "onboarding" | "loading" | "plan";
 
 interface Ingrediente { item: string; substituto: string; }
@@ -306,7 +306,13 @@ export default function Home() {
                 )}
               </div>
             ))}
-
+href="https://pay.cakto.com.br/853173"
+  target="_blank"
+  rel="noopener noreferrer"
+  className={styles.btnPro}
+>
+  ✨ Assinar NutriJejum Pro — R$ 19,90/mês
+</a>
             {/* AÇÕES */}
             <div className={styles.actionRow}>
               <button className={styles.btnSecondary} onClick={() => setScreen("onboarding")}>
