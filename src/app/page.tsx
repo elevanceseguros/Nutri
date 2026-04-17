@@ -123,11 +123,11 @@ const DIETAS = [
 ];
 
 const MEAL_OPTIONS = [
-  { v: 1, sub: "OMAD" },
-  { v: 2, sub: "16:8" },
-  { v: 3, sub: "Clássico" },
-  { v: 4, sub: "+Lanches" },
-  { v: 5, sub: "Fracionado" }
+  { v: 1, sub: "Jejum Extremo" },
+  { v: 2, sub: "Jejum 16h" },
+  { v: 3, sub: "Padrão Diário" },
+  { v: 4, sub: "Com Lanchinhos" },
+  { v: 5, sub: "A cada 3 horas" }
 ];
 
 const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
