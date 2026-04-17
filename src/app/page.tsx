@@ -23,76 +23,99 @@ interface Plano {
   dica_do_dia: string; refeicoes: Refeicao[];
 }
 
-// --- ÍCONES ---
+// --- NOVOS ÍCONES PREMIUM (MODERNOS E GROSSOS) ---
 function IcoEmagrecer() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/>
-      <line x1="12" y1="13" x2="12" y2="18"/>
-      <line x1="9.5" y1="17" x2="14.5" y2="17"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/>
     </svg>
   );
 }
 function IcoMassa() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="9" y="9" width="6" height="9" rx="1"/>
-      <line x1="4" y1="9" x2="20" y2="9"/>
-      <circle cx="4" cy="7" r="2"/>
-      <circle cx="20" cy="7" r="2"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6.5 17.5l11-11M14 4.5l5.5 5.5M4.5 14l5.5 5.5M2 11l2 2M11 2l2 2"/>
     </svg>
   );
 }
 function IcoManutencao() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="4"/>
-      <line x1="12" y1="3" x2="12" y2="8"/>
-      <line x1="12" y1="16" x2="12" y2="21"/>
-      <line x1="3" y1="12" x2="8" y2="12"/>
-      <line x1="16" y1="12" x2="21" y2="12"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
     </svg>
   );
 }
 function IcoSaude() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
     </svg>
   );
 }
 function IcoOnivoro() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 3c-4 0-7 3-7 7 0 3 2 5.5 5 6.5V21h4v-4.5c3-1 5-3.5 5-6.5 0-4-3-7-7-7z"/>
+      <path d="M12 21v-4.5"/>
     </svg>
   );
 }
 function IcoVegetariano() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <ellipse cx="12" cy="12" rx="5" ry="9"/>
-      <line x1="12" y1="3" x2="12" y2="21"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
     </svg>
   );
 }
 function IcoVegano() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3C7 3 3 8 3 12c0 4 3 7 7 8"/>
-      <path d="M12 3c5 0 9 5 9 9 0 4-3 7-7 8"/>
-      <line x1="12" y1="3" x2="12" y2="21"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 20A7 7 0 014 13V5h8a7 7 0 017 7v8h-8z"/><path d="M11 20v-8"/>
     </svg>
   );
 }
 function IcoLowCarb() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="3" y1="6" x2="21" y2="6"/>
-      <line x1="3" y1="12" x2="15" y2="12"/>
-      <line x1="3" y1="18" x2="9" y2="18"/>
-      <circle cx="19" cy="17" r="2"/>
-      <line x1="19" y1="15" x2="19" y2="10"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="13" rx="7" ry="9"/><path d="M12 13a2 2 0 100-4 2 2 0 000 4z"/><path d="M12 4V2"/>
+    </svg>
+  );
+}
+
+// Ícones exclusivos para a Linha 3 (Refeições)
+function IcoJejum1() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="2" fill="currentColor"/>
+    </svg>
+  );
+}
+function IcoJejum2() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l-2 4"/>
+    </svg>
+  );
+}
+function IcoPrato() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2v0a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+    </svg>
+  );
+}
+function IcoLanche() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20a8 8 0 100-16 8 8 0 000 16zM12 2v4"/><path d="M10 8h4"/>
+    </svg>
+  );
+}
+function IcoVarios() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20.59 13.41l-7.17 3.17a2 2 0 01-1.84 0l-7.17-3.17a2 2 0 010-3.66l7.17-3.17a2 2 0 011.84 0l7.17 3.17a2 2 0 010 3.66z"/>
+      <path d="M3.41 17.59l7.67 3.39a2 2 0 001.84 0l7.67-3.39"/>
     </svg>
   );
 }
@@ -123,11 +146,11 @@ const DIETAS = [
 ];
 
 const MEAL_OPTIONS = [
-  { v: 1, sub: "Jejum Extremo" },
-  { v: 2, sub: "Jejum 16h" },
-  { v: 3, sub: "Padrão Diário" },
-  { v: 4, sub: "Com Lanchinhos" },
-  { v: 5, sub: "A cada 3 horas" }
+  { v: 1, ic: IcoJejum1, sub: "Jejum Extremo" },
+  { v: 2, ic: IcoJejum2, sub: "Jejum 16h" },
+  { v: 3, ic: IcoPrato, sub: "Padrão Diário" },
+  { v: 4, ic: IcoLanche, sub: "Com Lanchinhos" },
+  { v: 5, ic: IcoVarios, sub: "A cada 3 horas" }
 ];
 
 const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
@@ -246,8 +269,9 @@ export default function Home() {
                 <span className={styles.qLabel}>Quantas refeições hoje?</span>
               </div>
               <div className={styles.mealsGrid}>
-                {MEAL_OPTIONS.map(({ v, sub }) => (
+                {MEAL_OPTIONS.map(({ v, ic: Ic, sub }) => (
                   <button key={v} className={`${styles.mealBtn} ${refeicoes === v ? styles.qBtnActive : ""}`} onClick={() => setRefeicoes(v)}>
+                    <span className={styles.mealBtnIcon}><Ic /></span>
                     <span className={styles.mealNum}>{v}</span>
                     <span className={styles.mealSub}>{sub}</span>
                   </button>
@@ -274,7 +298,7 @@ export default function Home() {
               <div className={styles.spinner} />
             </div>
             <div className={styles.loadTitle}>Montando seu plano...</div>
-            <div className={styles.loadSub}>Buscando receitas e fotos dos pratos</div>
+            <div className={styles.loadSub}>Analisando combinações e macros para você</div>
           </div>
         )}
 
@@ -306,7 +330,7 @@ export default function Home() {
 
             <div className={styles.tipCard}>
               <div className={styles.tipIcon}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10"/>
                   <line x1="12" y1="8" x2="12" y2="12"/>
                   <line x1="12" y1="16" x2="12.01" y2="16"/>
@@ -322,16 +346,14 @@ export default function Home() {
               <div key={i} className={styles.mealCard}>
                 <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
                   <div className={styles.mealIconWrap}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 11l19-9-9 19-2-8-8-2z"/>
-                    </svg>
+                    <IcoPrato />
                   </div>
                   <div className={styles.mealInfo}>
                     <div className={styles.mealName}>{r.nome}</div>
                     <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
                   </div>
                   <div className={styles.mealKcal}>{r.calorias}<span className={styles.kcalUnit}> kcal</span></div>
-                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>v</div>
+                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>▼</div>
                 </div>
                 {openMeal === i && (
                   <div className={styles.mealBody}>
@@ -339,10 +361,7 @@ export default function Home() {
                       <img src={r.foto_url} alt={r.prato} className={styles.dishPhoto} />
                     ) : (
                       <div className={styles.dishPhotoPlaceholder}>
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="9"/>
-                          <path d="M8 12h8M12 8v8"/>
-                        </svg>
+                        <IcoPrato />
                       </div>
                     )}
                     <div className={styles.mealBodyContent}>
@@ -396,15 +415,15 @@ export default function Home() {
               
               <ul className={styles.premiumFeatures}>
                 <li>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                   <span>Geração de planos <strong>ilimitados</strong></span>
                 </li>
                 <li>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                   <span><strong>Substituição inteligente</strong> de ingredientes</span>
                 </li>
                 <li>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                   <span>Modo de preparo detalhado para todas as refeições</span>
                 </li>
               </ul>
