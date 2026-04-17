@@ -146,15 +146,11 @@ export default function Home() {
   const [erro, setErro] = useState<string | null>(null);
   const [openMeal, setOpenMeal] = useState<number>(0);
   
-  // Controle do Modal limpo de erros do Vercel
   const [modalType, setModalType] = useState<ModalType>(null);
-  
-  // Controle do Plano de Assinatura (Mensal vs Anual)
   const [billing, setBilling] = useState<BillingType>("anual");
 
   const canGenerate = objetivo && dieta && refeicoes;
 
-  // Lógica dinâmica de preços e links baseada na escolha do Toggle
   const currentPrice = billing === "mensal" ? "19" : "9";
   const currentCents = billing === "mensal" ? ",97" : ",99";
   const currentLink = billing === "mensal" 
@@ -187,7 +183,7 @@ export default function Home() {
   function closeModal() { setModalType(null); }
 
   return (
-    <React.Fragment>
+    <>
       <header className={styles.header}>
         <div className={styles.logo}>
           Nutry<span className={styles.logoAccent}>.life</span>
@@ -199,7 +195,8 @@ export default function Home() {
 
         {/* --- TELA 1: ONBOARDING --- */}
         {screen === "onboarding" && (
-          <div className={styles.heroEyebrow}>
+          <div className="fade-up">
+            <div className={styles.heroEyebrow}>
               <div className={styles.heroLine} />
               <span className={styles.heroEyebrowText}>Inteligência Artificial Nutricional</span>
             </div>
@@ -521,6 +518,6 @@ export default function Home() {
         )}
         {/* --- FIM MODAL PRO --- */}
       </main>
-    </React.Fragment>
+    </>
   );
 }
