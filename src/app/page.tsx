@@ -30,6 +30,7 @@ const DIETA_LABELS: Record<Dieta, string> = {
   vegano: "Vegano", lowcarb: "Low Carb",
 };
 
+// --- ÍCONES ---
 function IcoEmagrecer() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -125,14 +126,15 @@ export default function Home() {
   const [plano, setPlano] = useState<Plano | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [openMeal, setOpenMeal] = useState<number>(0);
-  const [swapped, setSwapped] = useState<Record<string, boolean>>({});
+  
+  // O ESTADO DO NOSSO MODAL PRO
+  const [showProModal, setShowProModal] = useState<boolean>(false);
 
   const canGenerate = objetivo && dieta && refeicoes;
 
   async function gerarPlano() {
     if (!objetivo || !dieta || !refeicoes) return;
     setErro(null);
-    setSwapped({});
     setScreen("loading");
     try {
       const res = await fetch("/api/plano", {
@@ -151,9 +153,9 @@ export default function Home() {
     }
   }
 
-  function toggleSwap(mealIdx: number, ingIdx: number) {
-    const key = mealIdx + "-" + ingIdx;
-    setSwapped(prev => ({ ...prev, [key]: !prev[key] }));
+  // A MÁGICA DA CONVERSÃO: Em vez de trocar o ingrediente, abre o Paywall
+  function triggerProFeature() {
+    setShowProModal(true);
   }
 
   return (
@@ -167,6 +169,7 @@ export default function Home() {
 
       <main className={styles.main}>
 
+        {/* --- TELA 1: ONBOARDING --- */}
         {screen === "onboarding" && (
           <div className="fade-up">
             <div className={styles.heroEyebrow}>
@@ -241,6 +244,7 @@ export default function Home() {
           </div>
         )}
 
+        {/* --- TELA 2: LOADING --- */}
         {screen === "loading" && (
           <div className={styles.loadWrap}>
             <div className={styles.spinnerWrap}>
@@ -251,6 +255,7 @@ export default function Home() {
           </div>
         )}
 
+        {/* --- TELA 3: RESULTADO --- */}
         {screen === "plan" && plano && (
           <div className="fade-up">
             <div className={styles.planHeader}>
@@ -328,19 +333,17 @@ export default function Home() {
                       <div className={styles.sectionLabel}>Ingredientes</div>
                       <ul className={styles.ingList}>
                         {r.ingredientes.map((ing, j) => {
-                          const key = i + "-" + j;
-                          const isSwapped = swapped[key];
                           return (
                             <li key={j} className={styles.ingItem}>
                               <div className={styles.ingLeft}>
                                 <span className={styles.dot} />
-                                <span>{isSwapped ? ing.substituto : ing.item}</span>
+                                <span>{ing.item}</span>
                               </div>
                               <button
-                                className={styles.swapBtn + (isSwapped ? " " + styles.swapped : "")}
-                                onClick={() => toggleSwap(i, j)}
+                                className={styles.swapBtn}
+                                onClick={triggerProFeature}
                               >
-                                {isSwapped ? "original" : "substituir"}
+                                substituir
                               </button>
                             </li>
                           );
@@ -366,7 +369,7 @@ export default function Home() {
               </div>
             ))}
 
-           {/* --- INÍCIO DO BANNER PREMIUM --- */}
+            {/* --- INÍCIO DO BANNER PREMIUM --- */}
             <div className={styles.premiumBanner}>
               <div className={styles.premiumHeader}>
                 <h3>Alcance seus objetivos mais rápido 🚀</h3>
@@ -406,6 +409,7 @@ export default function Home() {
               <p className={styles.premiumGuarantee}>🔒 Pagamento seguro via Cakto • Cancele quando quiser</p>
             </div>
             {/* --- FIM DO BANNER PREMIUM --- */}
+
             <div className={styles.actionRow}>
               <button className={styles.btnSecondary} onClick={() => setScreen("onboarding")}>
                 Refazer
@@ -416,6 +420,32 @@ export default function Home() {
             </div>
           </div>
         )}
+
+        {/* --- MODAL PRO (PAYWALL) --- */}
+        {showProModal && (
+          <div className={styles.modalOverlay} onClick={() => setShowProModal(false)}>
+            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+              <button className={styles.modalClose} onClick={() => setShowProModal(false)}>✕</button>
+              <div className={styles.modalIcon}>✨</div>
+              <h3 className={styles.modalTitle}>Recurso Premium</h3>
+              <p className={styles.modalText}>
+                A <strong>substituição inteligente de ingredientes</strong> analisa o prato e sugere a melhor alternativa mantendo os macros exatos.
+              </p>
+              <p className={styles.modalTextHighlight}>
+                Disponível apenas no Nutry.life Pro.
+              </p>
+              <a
+                href="https://pay.cakto.com.br/3763j6f_853173"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.premiumBtn}
+              >
+                Desbloquear Agora
+              </a>
+            </div>
+          </div>
+        )}
+        {/* --- FIM MODAL PRO --- */}
       </main>
     </>
   );
