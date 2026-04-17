@@ -738,3 +738,55 @@
   margin-bottom: 32px;
   font-size: 1.1rem;
 }
+/* =========================================
+   TOGGLE MENSAL / ANUAL
+   ========================================= */
+.billingToggle {
+  display: flex;
+  background: #dcfce7;
+  border-radius: 99px;
+  padding: 6px;
+  width: fit-content;
+  margin: 0 auto 24px;
+  border: 1px solid #bbf7d0;
+}
+
+.toggleBtn {
+  padding: 10px 20px;
+  border-radius: 99px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #166534;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+}
+
+.toggleBtnActive {
+  background: white;
+  color: #15803d;
+  box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.15);
+}
+
+.badgeDiscount {
+  background: #22c55e;
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 99px;
+  margin-left: 8px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.annualNote {
+  font-size: 0.85rem;
+  color: #15803d;
+  font-weight: 600;
+  margin-top: -24px;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
