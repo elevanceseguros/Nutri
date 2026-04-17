@@ -154,7 +154,7 @@ export default function Home() {
 
   const canGenerate = objetivo && dieta && refeicoes;
 
-  // Lógica dinâmica de preços e links baseada na escolha do Toggle
+ // Lógica dinâmica de preços e links baseada na escolha do Toggle
   const currentPrice = billing === "mensal" ? "19" : "9";
   const currentCents = billing === "mensal" ? ",97" : ",99";
   const currentLink = billing === "mensal" 
