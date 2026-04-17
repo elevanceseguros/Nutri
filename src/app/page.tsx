@@ -66,7 +66,7 @@ export default function Home() {
   }
 
   function toggleSwap(mealIdx: number, ingIdx: number) {
-    const key = `${mealIdx}-${ingIdx}`;
+    const key = mealIdx + "-" + ingIdx;
     setSwapped(prev => ({ ...prev, [key]: !prev[key] }));
   }
 
