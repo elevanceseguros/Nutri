@@ -1,17 +1,14 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
+export async function POST(req: NextRequest) {
   try {
-    const { objetivo, dieta, refeicoes } = req.body;
+    const { objetivo, dieta, refeicoes } = await req.json();
 
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const message = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
+      model: "claude-haiku-4-5",
       max_tokens: 3000,
       messages: [{
         role: "user",
@@ -71,7 +68,7 @@ Crie exatamente ${refeicoes} refeição(ões). Cada ingrediente DEVE ter item e 
             `https://api.unsplash.com/search/photos?query=${query}&per_page=1&orientation=landscape&client_id=${UNSPLASH_KEY}`
           );
           const data = await response.json();
-          if (data.results && data.results.length > 0) {
+          if (data?.results?.length > 0) {
             ref.foto_url = data.results[0].urls.regular;
           }
         } catch (e) {
@@ -80,9 +77,9 @@ Crie exatamente ${refeicoes} refeição(ões). Cada ingrediente DEVE ter item e 
       }
     }
 
-    return res.status(200).json(plano);
+    return NextResponse.json(plano);
   } catch (error) {
     console.error("ERRO:", error);
-    return res.status(500).json({ error: String(error) });
+    return NextResponse.json({ error: String(error) }, { status: 500 });
   }
 }
