@@ -127,10 +127,20 @@ export default function Home() {
   const [erro, setErro] = useState<string | null>(null);
   const [openMeal, setOpenMeal] = useState<number>(0);
   
-  // MODAL INTELIGENTE: Pode ser "swap" (substituir ingrediente) ou "new" (novo plano)
+  // Controle do Modal
   const [modalType, setModalType] = useState<"swap" | "new" | null>(null);
+  
+  // Controle do Plano de Assinatura (Mensal vs Anual)
+  const [billing, setBilling] = useState<"mensal" | "anual">("anual");
 
   const canGenerate = objetivo && dieta && refeicoes;
+
+  // Lógica dinâmica de preços e links baseada na escolha do Toggle
+  const currentPrice = billing === "mensal" ? "19" : "9";
+  const currentCents = billing === "mensal" ? ",97" : ",99";
+  const currentLink = billing === "mensal" 
+    ? "https://pay.cakto.com.br/3763j6f_853173" 
+    : "#SEU_LINK_ANUAL_AQUI"; // <-- Crie a oferta anual no Cakto e coloque o link aqui
 
   async function gerarPlano() {
     if (!objetivo || !dieta || !refeicoes) return;
@@ -153,18 +163,9 @@ export default function Home() {
     }
   }
 
-  // Funções para abrir o modal de acordo com a ação do usuário
-  function handleSwapClick() {
-    setModalType("swap");
-  }
-
-  function handleNewPlanClick() {
-    setModalType("new");
-  }
-
-  function closeModal() {
-    setModalType(null);
-  }
+  function handleSwapClick() { setModalType("swap"); }
+  function handleNewPlanClick() { setModalType("new"); }
+  function closeModal() { setModalType(null); }
 
   return (
     <>
@@ -399,15 +400,35 @@ export default function Home() {
                 </li>
               </ul>
 
-              <div className={styles.premiumPrice}>
-                <span className={styles.priceCurrency}>R$</span>
-                <span className={styles.priceValue}>19</span>
-                <span className={styles.priceCents}>,90</span>
-                <span className={styles.pricePeriod}>/mês</span>
+              {/* SELETOR MENSAL/ANUAL */}
+              <div className={styles.billingToggle}>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("mensal")}
+                >
+                  Mensal
+                </button>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("anual")}
+                >
+                  Anual <span className={styles.badgeDiscount}>-50%</span>
+                </button>
               </div>
 
+              <div className={styles.premiumPrice}>
+                <span className={styles.priceCurrency}>R$</span>
+                <span className={styles.priceValue}>{currentPrice}</span>
+                <span className={styles.priceCents}>{currentCents}</span>
+                <span className={styles.pricePeriod}>/mês</span>
+              </div>
+              
+              {billing === "anual" && (
+                <div className={styles.annualNote}>cobrado R$ 119,97 por ano</div>
+              )}
+
               <a
-                href="https://pay.cakto.com.br/3763j6f_853173"
+                href={currentLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.premiumBtn}
@@ -418,10 +439,12 @@ export default function Home() {
             </div>
             {/* --- FIM DO BANNER PREMIUM --- */}
 
-           {/* --- BOTÃO DE NOVO PLANO (PAYWALL) --- */}
-            <button className={styles.btnPrimary} onClick={handleNewPlanClick}>
-              Gerar Novo Plano
-            </button>
+            <div className={styles.actionRow}>
+              {/* REMOVIDO BOTÃO REFAZER PARA FORÇAR O PAYWALL */}
+              <button className={styles.btnPrimary} onClick={handleNewPlanClick}>
+                Gerar Novo Plano
+              </button>
+            </div>
           </div>
         )}
 
@@ -448,10 +471,34 @@ export default function Home() {
               )}
 
               <p className={styles.modalTextHighlight}>
-                Disponível apenas no Nutry.life Pro.
+                Escolha seu plano do Nutry.life Pro:
               </p>
+
+              {/* SELETOR MENSAL/ANUAL NO MODAL TAMBÉM */}
+              <div className={styles.billingToggle}>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("mensal")}
+                >
+                  Mensal
+                </button>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("anual")}
+                >
+                  Anual <span className={styles.badgeDiscount}>-50%</span>
+                </button>
+              </div>
+
+              <div className={styles.premiumPrice} style={{marginBottom: "16px"}}>
+                <span className={styles.priceCurrency}>R$</span>
+                <span className={styles.priceValue}>{currentPrice}</span>
+                <span className={styles.priceCents}>{currentCents}</span>
+                <span className={styles.pricePeriod}>/mês</span>
+              </div>
+
               <a
-                href="https://pay.cakto.com.br/3763j6f_853173"
+                href={currentLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.premiumBtn}
