@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
-import React from "react";
 
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
@@ -30,7 +29,80 @@ const DIETA_LABELS: Record<Dieta, string> = {
   vegano: "Vegano", lowcarb: "Low Carb",
 };
 
-const MEAL_ICONS = ["cafe","salada","prato","fruta","lua"];
+const MEAL_ICONS = ["cafe", "salada", "prato", "fruta", "lua"];
+
+function IcoEmagrecer() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/>
+      <line x1="12" y1="13" x2="12" y2="18"/>
+      <line x1="9.5" y1="17" x2="14.5" y2="17"/>
+    </svg>
+  );
+}
+function IcoMassa() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="9" y="9" width="6" height="9" rx="1"/>
+      <line x1="4" y1="9" x2="20" y2="9"/>
+      <circle cx="4" cy="7" r="2"/>
+      <circle cx="20" cy="7" r="2"/>
+    </svg>
+  );
+}
+function IcoManutencao() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="4"/>
+      <line x1="12" y1="3" x2="12" y2="8"/>
+      <line x1="12" y1="16" x2="12" y2="21"/>
+      <line x1="3" y1="12" x2="8" y2="12"/>
+      <line x1="16" y1="12" x2="21" y2="12"/>
+    </svg>
+  );
+}
+function IcoSaude() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+    </svg>
+  );
+}
+function IcoOnivoro() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3c-4 0-7 3-7 7 0 3 2 5.5 5 6.5V21h4v-4.5c3-1 5-3.5 5-6.5 0-4-3-7-7-7z"/>
+    </svg>
+  );
+}
+function IcoVegetariano() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="12" rx="5" ry="9"/>
+      <line x1="12" y1="3" x2="12" y2="21"/>
+    </svg>
+  );
+}
+function IcoVegano() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3C7 3 3 8 3 12c0 4 3 7 7 8"/>
+      <path d="M12 3c5 0 9 5 9 9 0 4-3 7-7 8"/>
+      <line x1="12" y1="3" x2="12" y2="21"/>
+    </svg>
+  );
+}
+function IcoLowCarb() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="15" y2="12"/>
+      <line x1="3" y1="18" x2="9" y2="18"/>
+      <circle cx="19" cy="17" r="2"/>
+      <line x1="19" y1="15" x2="19" y2="10"/>
+    </svg>
+  );
+}
 
 export default function Home() {
   const [objetivo, setObjetivo] = useState<Objetivo | null>(null);
@@ -71,6 +143,20 @@ export default function Home() {
     setSwapped(prev => ({ ...prev, [key]: !prev[key] }));
   }
 
+  const objetivos: [Objetivo, JSX.Element, string, string][] = [
+    ["emagrecer", <IcoEmagrecer key="e" />, "Emagrecer", "Deficit calorico"],
+    ["massa", <IcoMassa key="m" />, "Ganhar massa", "Superavit proteico"],
+    ["manutencao", <IcoManutencao key="mt" />, "Manutencao", "Saude geral"],
+    ["saude", <IcoSaude key="s" />, "Saude", "Bem-estar"],
+  ];
+
+  const dietas: [Dieta, JSX.Element, string, string][] = [
+    ["onivoro", <IcoOnivoro key="on" />, "Onivoro", "Sem restricao"],
+    ["vegetariano", <IcoVegetariano key="vg" />, "Vegetariano", "Sem carnes"],
+    ["vegano", <IcoVegano key="ve" />, "Vegano", "100% vegetal"],
+    ["lowcarb", <IcoLowCarb key="lc" />, "Low Carb", "Menos carboidrato"],
+  ];
+
   return (
     <>
       <header className={styles.header}>
@@ -103,29 +189,8 @@ export default function Home() {
                 <span className={styles.qLabel}>Qual e o seu objetivo?</span>
               </div>
               <div className={styles.qGrid}>
-                {([
-                  {([
-  ["emagrecer",
-    <svg key="e" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/><line x1="12" y1="13" x2="12" y2="18"/><line x1="9.5" y1="17" x2="14.5" y2="17"/></svg>,
-    "Emagrecer","Deficit calorico"],
-  ["massa",
-    <svg key="m" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8h12"/><path d="M4 8a2 2 0 100-4 2 2 0 000 4z"/><path d="M20 8a2 2 0 100-4 2 2 0 000 4z"/><rect x="9" y="8" width="6" height="10" rx="1"/></svg>,
-    "Ganhar massa","Superavit proteico"],
-  ["manutencao",
-    <svg key="mt" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><path d="M5 16l7 5 7-5"/></svg>,
-    "Manutencao","Saude geral"],
-  ["saude",
-    <svg key="s" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 3 14 3 8a5 5 0 0110-1 5 5 0 0110 1c0 6-9 13-9 13z"/></svg>,
-    "Saude","Bem-estar"],
-] as [Objetivo, React.ReactNode, string, string][]).map(([v,ic,lb,sub]) => (
-  <button key={v} className={styles.qBtn + (objetivo===v ? " " + styles.qBtnActive : "")} onClick={()=>setObjetivo(v)}>
-    <span className={styles.qBtnIcon}>{ic}</span>
-    <span className={styles.qBtnLabel}>{lb}</span>
-    <span className={styles.qBtnSub}>{sub}</span>
-  </button>
-))}
-                ] as [Objetivo,string,string,string][]).map(([v,ic,lb,sub]) => (
-                  <button key={v} className={styles.qBtn + (objetivo===v ? " " + styles.qBtnActive : "")} onClick={()=>setObjetivo(v)}>
+                {objetivos.map(([v, ic, lb, sub]) => (
+                  <button key={v} className={styles.qBtn + (objetivo === v ? " " + styles.qBtnActive : "")} onClick={() => setObjetivo(v)}>
                     <span className={styles.qBtnIcon}>{ic}</span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
@@ -140,29 +205,8 @@ export default function Home() {
                 <span className={styles.qLabel}>Preferencia alimentar</span>
               </div>
               <div className={styles.qGrid}>
-                {([
-{([
-  ["onivoro",
-    <svg key="on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8c0 4-3 7-6 9-3-2-6-5-6-9a6 6 0 0112 0z"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
-    "Onivoro","Sem restricao"],
-  ["vegetariano",
-    <svg key="vg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="12" rx="6" ry="9"/><line x1="12" y1="3" x2="12" y2="21"/></svg>,
-    "Vegetariano","Sem carnes"],
-  ["vegano",
-    <svg key="ve" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3C8 3 4 7 4 12c0 3 2 6 5 7.5"/><path d="M12 3c4 0 8 4 8 9 0 3-2 6-5 7.5"/><line x1="12" y1="3" x2="12" y2="21"/></svg>,
-    "Vegano","100% vegetal"],
-  ["lowcarb",
-    <svg key="lc" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12h18M3 6h18M3 18h12"/><circle cx="19" cy="18" r="2"/><line x1="19" y1="16" x2="19" y2="12"/></svg>,
-    "Low Carb","Menos carboidrato"],
-] as [Dieta, React.ReactNode, string, string][]).map(([v,ic,lb,sub]) => (
-  <button key={v} className={styles.qBtn + (dieta===v ? " " + styles.qBtnActive : "")} onClick={()=>setDieta(v)}>
-    <span className={styles.qBtnIcon}>{ic}</span>
-    <span className={styles.qBtnLabel}>{lb}</span>
-    <span className={styles.qBtnSub}>{sub}</span>
-  </button>
-))}
-                ] as [Dieta,string,string,string][]).map(([v,ic,lb,sub]) => (
-                  <button key={v} className={styles.qBtn + (dieta===v ? " " + styles.qBtnActive : "")} onClick={()=>setDieta(v)}>
+                {dietas.map(([v, ic, lb, sub]) => (
+                  <button key={v} className={styles.qBtn + (dieta === v ? " " + styles.qBtnActive : "")} onClick={() => setDieta(v)}>
                     <span className={styles.qBtnIcon}>{ic}</span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
@@ -178,7 +222,7 @@ export default function Home() {
               </div>
               <div className={styles.mealsGrid}>
                 {([[1,"OMAD"],[2,"16:8"],[3,"Classico"],[4,"+Lanches"],[5,"Fracionado"]] as [number,string][]).map(([v,sub]) => (
-                  <button key={v} className={styles.mealBtn + (refeicoes===v ? " " + styles.qBtnActive : "")} onClick={()=>setRefeicoes(v)}>
+                  <button key={v} className={styles.mealBtn + (refeicoes === v ? " " + styles.qBtnActive : "")} onClick={() => setRefeicoes(v)}>
                     <span className={styles.mealNum}>{v}</span>
                     <span className={styles.mealSub}>{sub}</span>
                   </button>
@@ -249,7 +293,7 @@ export default function Home() {
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
                 <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
-                  <div className={styles.mealIconWrap}>{MEAL_ICONS[i] || "🍽️"}</div>
+                  <div className={styles.mealIconWrap}>{MEAL_ICONS[i] || "prato"}</div>
                   <div className={styles.mealInfo}>
                     <div className={styles.mealName}>{r.nome}</div>
                     <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
@@ -262,7 +306,7 @@ export default function Home() {
                     {r.foto_url ? (
                       <img src={r.foto_url} alt={r.prato} className={styles.dishPhoto} />
                     ) : (
-                      <div className={styles.dishPhotoPlaceholder}>🍽️</div>
+                      <div className={styles.dishPhotoPlaceholder}>prato</div>
                     )}
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
@@ -308,13 +352,13 @@ export default function Home() {
               </div>
             ))}
 
-            <a
+            
               href="https://pay.cakto.com.br/3763j6f_853173"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnPro}
             >
-              Assinar NutriJejum Pro - R$ 19,90/mes
+              Assinar Nutry.life Pro - R$ 19,90/mes
             </a>
 
             <div className={styles.actionRow}>
