@@ -275,7 +275,7 @@ export default function Home() {
               </div>
             ))}
 
-            
+            <a
               href="https://pay.cakto.com.br/853173"
               target="_blank"
               rel="noopener noreferrer"
