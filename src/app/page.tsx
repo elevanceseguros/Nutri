@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import styles from "./page.module.css";
 
-// --- TIPAGENS ORIGINAIS ---
+// --- TIPAGENS ---
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
 type Screen = "onboarding" | "loading" | "plan";
@@ -33,8 +33,10 @@ function IcoOnivoro() { return <svg width="22" height="22" viewBox="0 0 24 24" f
 function IcoVegetariano() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="12" rx="5" ry="9"/><line x1="12" y1="3" x2="12" y2="21"/></svg>; }
 function IcoVegano() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c5 0 9 5 9 9 0 4-3 7-7 8"/><line x1="12" y1="3" x2="12" y2="21"/></svg>; }
 function IcoLowCarb() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/></svg>; }
+function IcoRelogio() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>; }
+function IcoGarfo() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>; }
+function IcoCamadas() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>; }
 
-// --- DADOS ORIGINAIS ---
 const OBJETIVOS = [
   { v: "emagrecer" as Objetivo, ic: IcoEmagrecer, lb: "Emagrecer", sub: "Déficit calórico" },
   { v: "massa" as Objetivo, ic: IcoMassa, lb: "Ganhar massa", sub: "Superávit proteico" },
@@ -50,13 +52,16 @@ const DIETAS = [
 ];
 
 const MEAL_OPTIONS = [
-  { v: 1, sub: "Jejum Extremo" }, { v: 2, sub: "Jejum 16h" }, { v: 3, sub: "Padrão Diário" }, { v: 4, sub: "Com Lanchinhos" }, { v: 5, sub: "A cada 3 horas" }
+  { v: 1, ic: IcoRelogio, lb: "1", sub: "Jejum Extremo" },
+  { v: 2, ic: IcoRelogio, lb: "2", sub: "Jejum 16h" },
+  { v: 3, ic: IcoGarfo, lb: "3", sub: "Padrão Diário" },
+  { v: 4, ic: IcoRelogio, lb: "4", sub: "Com Lanchinhos" },
+  { v: 5, ic: IcoCamadas, lb: "5", sub: "A cada 3 horas" }
 ];
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
   const [isPro, setIsPro] = useState(false);
-  
   const [objetivo, setObjetivo] = useState<Objetivo | null>(null);
   const [dieta, setDieta] = useState<Dieta | null>(null);
   const [refeicoes, setRefeicoes] = useState<number | null>(null);
@@ -67,15 +72,13 @@ export default function Home() {
   const [billing, setBilling] = useState<BillingType>("anual");
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+    supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         setUser(session.user);
-        const { data: perfil } = await supabase.from("profiles").select("plano").eq("id", session.user.id).single();
-        if (perfil?.plano === "pro") setIsPro(true);
+        supabase.from("profiles").select("plano").eq("id", session.user.id).single()
+          .then(({ data }) => { if (data?.plano === "pro") setIsPro(true); });
       }
-    };
-    checkAuth();
+    });
   }, []);
 
   async function gerarPlano() {
@@ -90,7 +93,7 @@ export default function Home() {
       const data = await res.json();
       setPlano(data);
       setScreen("plan");
-    } catch (err) {
+    } catch {
       setScreen("onboarding");
     }
   }
@@ -99,11 +102,11 @@ export default function Home() {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></div>
-        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+        <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
           {user ? (
             <button onClick={() => supabase.auth.signOut().then(() => window.location.reload())} className={styles.swapBtn}>Sair</button>
           ) : (
-            <a href="/login" className={styles.btnEntrar} style={{border: '1.5px solid #22c55e', padding: '6px 15px', borderRadius: '12px', textDecoration: 'none', color: '#22c55e', fontWeight: '700'}}>Entrar</a>
+            <a href="/login" className={styles.btnEntrar} style={{border: "1.5px solid #22c55e", padding: "6px 15px", borderRadius: "12px", textDecoration: "none", color: "#22c55e", fontWeight: "700"}}>Entrar</a>
           )}
           <div className={styles.badge}>Beta</div>
         </div>
@@ -112,10 +115,15 @@ export default function Home() {
       <main className={styles.main}>
         {screen === "onboarding" && (
           <div className="fade-up">
+            <div className={styles.heroEyebrow}>
+              <div className={styles.heroLine} />
+              <span className={styles.heroEyebrowText}>Inteligência Artificial Nutricional</span>
+            </div>
             <h1 className={styles.heroTitle}>A sua <em className={styles.heroEm}>dieta perfeita</em> feita em segundos.</h1>
-            
+            <p className={styles.heroSub}>Chega de dúvidas sobre o que comer. Selecione suas preferências abaixo.</p>
+
             <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}><span className={styles.qNum}>01.</span> <span className={styles.qLabel}>Objetivo</span></div>
+              <div className={styles.qLabelRow}><span className={styles.qNum}>01.</span> <span className={styles.qLabel}>Qual é o seu objetivo?</span></div>
               <div className={styles.qGrid}>
                 {OBJETIVOS.map(({ v, ic: Ic, lb, sub }) => (
                   <button key={v} className={`${styles.qBtn} ${objetivo === v ? styles.qBtnActive : ""}`} onClick={() => setObjetivo(v)}>
@@ -128,7 +136,7 @@ export default function Home() {
             </div>
 
             <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}><span className={styles.qNum}>02.</span> <span className={styles.qLabel}>Preferência</span></div>
+              <div className={styles.qLabelRow}><span className={styles.qNum}>02.</span> <span className={styles.qLabel}>Preferência alimentar</span></div>
               <div className={styles.qGrid}>
                 {DIETAS.map(({ v, ic: Ic, lb, sub }) => (
                   <button key={v} className={`${styles.qBtn} ${dieta === v ? styles.qBtnActive : ""}`} onClick={() => setDieta(v)}>
@@ -141,12 +149,13 @@ export default function Home() {
             </div>
 
             <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}><span className={styles.qNum}>03.</span> <span className={styles.qLabel}>Refeições</span></div>
-              <div className={styles.mealsGrid}>
-                {MEAL_OPTIONS.map(({ v, sub }) => (
-                  <button key={v} className={`${styles.mealBtn} ${refeicoes === v ? styles.qBtnActive : ""}`} onClick={() => setRefeicoes(v)}>
-                    <span className={styles.mealNum}>{v}</span>
-                    <span className={styles.mealSub}>{sub}</span>
+              <div className={styles.qLabelRow}><span className={styles.qNum}>03.</span> <span className={styles.qLabel}>Quantas refeições hoje?</span></div>
+              <div className={styles.qGrid}>
+                {MEAL_OPTIONS.map(({ v, ic: Ic, lb, sub }) => (
+                  <button key={v} className={`${styles.qBtn} ${refeicoes === v ? styles.qBtnActive : ""}`} onClick={() => setRefeicoes(v)}>
+                    <span className={styles.qBtnIcon}><Ic /></span>
+                    <span className={styles.qBtnLabel}>{lb}</span>
+                    <span className={styles.qBtnSub}>{sub}</span>
                   </button>
                 ))}
               </div>
@@ -160,45 +169,48 @@ export default function Home() {
 
         {screen === "plan" && plano && (
           <div className="fade-up">
-            <h1 className={styles.planTitle}>{plano.titulo}</h1>
-            {plano.refeicoes.map((r, i) => (
-              <div key={i} className={styles.mealCard}>
-                <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
-                  <div className={styles.mealInfo}>
-                    <span className={styles.mealCategory}>{r.nome}</span>
-                    <h3 className={styles.mealDishTitle}>{r.prato}</h3>
-                  </div>
-                  <div className={styles.mealKcalBadge}><strong>{r.calorias}</strong><span>kcal</span></div>
+             <div className={styles.planHeader}>
+                <h2 className={styles.planTitle}>{plano.titulo}</h2>
+                <p className={styles.planSub}>{plano.subtitulo}</p>
+             </div>
+             {plano.refeicoes.map((r, i) => (
+                <div key={i} className={styles.mealCard}>
+                   <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
+                      <div className={styles.mealInfo}>
+                         <span className={styles.mealCategory}>{r.nome}</span>
+                         <h3 className={styles.mealDishTitle}>{r.prato}</h3>
+                      </div>
+                      <div className={styles.mealKcalBadge}><strong>{r.calorias}</strong><span>kcal</span></div>
+                   </div>
+                   {openMeal === i && (
+                      <div className={styles.mealBody}>
+                         <div className={styles.sectionLabel}>INGREDIENTES</div>
+                         <ul className={styles.ingList}>
+                            {r.ingredientes.map((ing, j) => (
+                               <li key={j} className={styles.ingItem}>
+                                  <div className={styles.ingLeft}><span className={styles.dot} />{ing.item}</div>
+                                  <button className={styles.swapBtn} onClick={() => !isPro && setModalType("swap")}>
+                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/></svg>
+                                     substituir
+                                  </button>
+                               </li>
+                            ))}
+                         </ul>
+                      </div>
+                   )}
                 </div>
-                {openMeal === i && (
-                  <div className={styles.mealBody}>
-                    <div className={styles.sectionLabel}>INGREDIENTES</div>
-                    <ul className={styles.ingList}>
-                      {r.ingredientes.map((ing, j) => (
-                        <li key={j} className={styles.ingItem}>
-                          <div className={styles.ingLeft}><span className={styles.dot} />{ing.item}</div>
-                          <button className={styles.swapBtn} onClick={() => !isPro && setModalType("swap")}>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/></svg>
-                            substituir
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
+             ))}
+             {!isPro && (
+               <div className={styles.premiumBanner}>
+                  <h3>Assine o Nutry.life Pro 🚀</h3>
+                  <div className={styles.billingToggle}>
+                    <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
+                    <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual</button>
                   </div>
-                )}
-              </div>
-            ))}
-            {!isPro && (
-              <div className={styles.premiumBanner}>
-                <h3>Alcance seus objetivos mais rápido 🚀</h3>
-                <div className={styles.billingToggle}>
-                  <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
-                  <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual</button>
-                </div>
-                <div className={styles.premiumPrice}>R$ {billing === "anual" ? "9,99" : "19,97"}/mês</div>
-                <a href={billing === "anual" ? "https://pay.cakto.com.br/bv6bu58" : "https://pay.cakto.com.br/3763j6f_853173"} className={styles.premiumBtn}>Assinar Nutry.life Pro</a>
-              </div>
-            )}
+                  <div className={styles.premiumPrice}>R$ {billing === "anual" ? "9,99" : "19,97"}/mês</div>
+                  <a href={billing === "anual" ? "https://pay.cakto.com.br/bv6bu58" : "https://pay.cakto.com.br/3763j6f_853173"} target="_blank" className={styles.premiumBtn}>Desbloquear Agora</a>
+               </div>
+             )}
           </div>
         )}
       </main>
@@ -207,7 +219,7 @@ export default function Home() {
         <div className={styles.modalOverlay} onClick={() => setModalType(null)}>
           <div className={styles.modalContent}>
             <h2>Recurso Premium 🔒</h2>
-            <p>Substituir ingredientes é uma função exclusiva do plano PRO.</p>
+            <p>A substituição de ingredientes é exclusiva para assinantes PRO.</p>
             <button className={styles.btnPrimary} onClick={() => setModalType(null)}>Entendi</button>
           </div>
         </div>
