@@ -276,7 +276,7 @@ export default function Home() {
             ))}
 
             <a
-              href="https://pay.cakto.com.br/853173"
+              href="https://pay.cakto.com.br/3763j6f_853173"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnPro}
