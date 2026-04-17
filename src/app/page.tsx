@@ -74,7 +74,7 @@ export default function Home() {
     <>
       <header className={styles.header}>
         <div className={styles.logo}>
-          Nutri<span className={styles.logoAccent}>Jejum</span>
+          Nutry<span className={styles.logoAccent}>.life</span>
         </div>
         <div className={styles.badge}>Beta</div>
       </header>
