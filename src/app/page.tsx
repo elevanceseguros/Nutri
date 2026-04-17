@@ -328,16 +328,15 @@ export default function Home() {
               ))}
             </div>
 
+            {/* CARD DICA DO DIA PREMIUM */}
             <div className={styles.tipCard}>
               <div className={styles.tipIcon}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="8" x2="12" y2="12"/>
-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 018.91 14"/>
                 </svg>
               </div>
               <div>
-                <div className={styles.tipTitle}>Dica do dia</div>
+                <div className={styles.tipTitle}>Insight do Dia</div>
                 <p className={styles.tipText}>{plano.dica_do_dia}</p>
               </div>
             </div>
@@ -367,6 +366,7 @@ export default function Home() {
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
                       <p className={styles.dishDesc}>{r.descricao}</p>
+                      
                       <div className={styles.sectionLabel}>Ingredientes</div>
                       <ul className={styles.ingList}>
                         {r.ingredientes.map((ing, j) => {
@@ -380,12 +380,16 @@ export default function Home() {
                                 className={styles.swapBtn}
                                 onClick={handleSwapClick}
                               >
-                                substituir
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0115-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/>
+                                </svg>
+                                Substituir
                               </button>
                             </li>
                           );
                         })}
                       </ul>
+                      
                       <div className={styles.sectionLabel}>Modo de preparo</div>
                       <div className={styles.prepSteps}>
                         {(r.preparo || []).map((passo, k) => (
