@@ -29,8 +29,6 @@ const DIETA_LABELS: Record<Dieta, string> = {
   vegano: "Vegano", lowcarb: "Low Carb",
 };
 
-const MEAL_ICONS = ["cafe", "salada", "prato", "fruta", "lua"];
-
 function IcoEmagrecer() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -104,6 +102,20 @@ function IcoLowCarb() {
   );
 }
 
+const OBJETIVOS = [
+  { v: "emagrecer" as Objetivo, ic: IcoEmagrecer, lb: "Emagrecer", sub: "Deficit calorico" },
+  { v: "massa" as Objetivo, ic: IcoMassa, lb: "Ganhar massa", sub: "Superavit proteico" },
+  { v: "manutencao" as Objetivo, ic: IcoManutencao, lb: "Manutencao", sub: "Saude geral" },
+  { v: "saude" as Objetivo, ic: IcoSaude, lb: "Saude", sub: "Bem-estar" },
+];
+
+const DIETAS = [
+  { v: "onivoro" as Dieta, ic: IcoOnivoro, lb: "Onivoro", sub: "Sem restricao" },
+  { v: "vegetariano" as Dieta, ic: IcoVegetariano, lb: "Vegetariano", sub: "Sem carnes" },
+  { v: "vegano" as Dieta, ic: IcoVegano, lb: "Vegano", sub: "100% vegetal" },
+  { v: "lowcarb" as Dieta, ic: IcoLowCarb, lb: "Low Carb", sub: "Menos carboidrato" },
+];
+
 export default function Home() {
   const [objetivo, setObjetivo] = useState<Objetivo | null>(null);
   const [dieta, setDieta] = useState<Dieta | null>(null);
@@ -143,20 +155,6 @@ export default function Home() {
     setSwapped(prev => ({ ...prev, [key]: !prev[key] }));
   }
 
-  const objetivos: [Objetivo, JSX.Element, string, string][] = [
-    ["emagrecer", <IcoEmagrecer key="e" />, "Emagrecer", "Deficit calorico"],
-    ["massa", <IcoMassa key="m" />, "Ganhar massa", "Superavit proteico"],
-    ["manutencao", <IcoManutencao key="mt" />, "Manutencao", "Saude geral"],
-    ["saude", <IcoSaude key="s" />, "Saude", "Bem-estar"],
-  ];
-
-  const dietas: [Dieta, JSX.Element, string, string][] = [
-    ["onivoro", <IcoOnivoro key="on" />, "Onivoro", "Sem restricao"],
-    ["vegetariano", <IcoVegetariano key="vg" />, "Vegetariano", "Sem carnes"],
-    ["vegano", <IcoVegano key="ve" />, "Vegano", "100% vegetal"],
-    ["lowcarb", <IcoLowCarb key="lc" />, "Low Carb", "Menos carboidrato"],
-  ];
-
   return (
     <>
       <header className={styles.header}>
@@ -189,9 +187,9 @@ export default function Home() {
                 <span className={styles.qLabel}>Qual e o seu objetivo?</span>
               </div>
               <div className={styles.qGrid}>
-                {objetivos.map(([v, ic, lb, sub]) => (
+                {OBJETIVOS.map(({ v, ic: Ic, lb, sub }) => (
                   <button key={v} className={styles.qBtn + (objetivo === v ? " " + styles.qBtnActive : "")} onClick={() => setObjetivo(v)}>
-                    <span className={styles.qBtnIcon}>{ic}</span>
+                    <span className={styles.qBtnIcon}><Ic /></span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
                   </button>
@@ -205,9 +203,9 @@ export default function Home() {
                 <span className={styles.qLabel}>Preferencia alimentar</span>
               </div>
               <div className={styles.qGrid}>
-                {dietas.map(([v, ic, lb, sub]) => (
+                {DIETAS.map(({ v, ic: Ic, lb, sub }) => (
                   <button key={v} className={styles.qBtn + (dieta === v ? " " + styles.qBtnActive : "")} onClick={() => setDieta(v)}>
-                    <span className={styles.qBtnIcon}>{ic}</span>
+                    <span className={styles.qBtnIcon}><Ic /></span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
                   </button>
@@ -283,7 +281,13 @@ export default function Home() {
             </div>
 
             <div className={styles.tipCard}>
-              <div className={styles.tipIcon}>💡</div>
+              <div className={styles.tipIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
               <div>
                 <div className={styles.tipTitle}>Dica do dia</div>
                 <p className={styles.tipText}>{plano.dica_do_dia}</p>
@@ -293,7 +297,11 @@ export default function Home() {
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
                 <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
-                  <div className={styles.mealIconWrap}>{MEAL_ICONS[i] || "prato"}</div>
+                  <div className={styles.mealIconWrap}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+                    </svg>
+                  </div>
                   <div className={styles.mealInfo}>
                     <div className={styles.mealName}>{r.nome}</div>
                     <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
@@ -306,7 +314,12 @@ export default function Home() {
                     {r.foto_url ? (
                       <img src={r.foto_url} alt={r.prato} className={styles.dishPhoto} />
                     ) : (
-                      <div className={styles.dishPhotoPlaceholder}>prato</div>
+                      <div className={styles.dishPhotoPlaceholder}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="9"/>
+                          <path d="M8 12h8M12 8v8"/>
+                        </svg>
+                      </div>
                     )}
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
