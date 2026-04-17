@@ -1,27 +1,43 @@
 import type { Metadata } from "next";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
-export const metadata = {
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+export const metadata: Metadata = {
   title: "Nutry.life — Seu Plano Alimentar do Dia",
-  description: "Monte seu cardápio personalizado com IA. Receitas brasileiras reais com modo de preparo e substituição de ingredientes. Grátis.",
+  description: "Monte seu cardápio personalizado em segundos com IA. Receitas brasileiras reais, modo de preparo e substituição de ingredientes. Grátis.",
+  keywords: "plano alimentar, jejum intermitente, cardápio saudável, dieta low carb, receitas brasileiras, nutry life",
   openGraph: {
     title: "Nutry.life — Plano Alimentar com IA",
-    description: "Você decide quantas refeições faz. A IA monta seu cardápio.",
+    description: "Você decide quantas refeições faz. A IA monta seu cardápio com receitas brasileiras reais.",
     url: "https://nutry.life",
     siteName: "Nutry.life",
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nutry.life — Plano Alimentar com IA",
+    description: "Receitas brasileiras reais. Você decide quantas refeições faz.",
+  },
+  metadataBase: new URL("https://nutry.life"),
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="pt-BR">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="pt-BR" className={playfair.variable + " " + inter.variable}>
       <body>{children}</body>
     </html>
   );
