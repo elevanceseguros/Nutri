@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "NutriJejum — Seu Plano do Dia",
-  description: "Plano alimentar personalizado para jejum intermitente. Receitas brasileiras reais.",
+export const metadata = {
+  title: "Nutry.life — Seu Plano Alimentar do Dia",
+  description: "Monte seu cardápio personalizado com IA. Receitas brasileiras reais com modo de preparo e substituição de ingredientes. Grátis.",
+  openGraph: {
+    title: "Nutry.life — Plano Alimentar com IA",
+    description: "Você decide quantas refeições faz. A IA monta seu cardápio.",
+    url: "https://nutry.life",
+    siteName: "Nutry.life",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
