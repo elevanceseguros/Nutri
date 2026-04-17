@@ -585,4 +585,89 @@
                                           font-size: 12px;
                                             color: var(--ink3);
                                             }
+/* --- ESTILOS DO BANNER PREMIUM --- */
+.premiumBanner {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #22c55e;
+  border-radius: 16px;
+  padding: 32px 24px;
+  margin: 40px 0;
+  text-align: center;
+  box-shadow: 0 10px 25px -5px rgba(34, 197, 94, 0.15);
+}
+
+.premiumHeader h3 {
+  color: #166534;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.premiumHeader p {
+  color: #15803d;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.premiumFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 24px;
+  text-align: left;
+  max-width: 320px;
+}
+
+.premiumFeatures li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #374151;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.premiumFeatures li svg {
+  width: 20px;
+  height: 20px;
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.premiumPrice {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  color: #166534;
+  margin-bottom: 24px;
+}
+
+.priceCurrency { font-size: 1.2rem; font-weight: 600; margin-right: 4px; }
+.priceValue { font-size: 3rem; font-weight: 800; line-height: 1; }
+.priceCents { font-size: 1.5rem; font-weight: 700; }
+.pricePeriod { color: #15803d; margin-left: 4px; font-weight: 500; }
+
+.premiumBtn {
+  display: block;
+  background-color: #16a34a;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 16px 24px;
+  border-radius: 99px; /* Botão arredondado super moderno */
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
+}
+
+.premiumBtn:hover {
+  background-color: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(22, 163, 74, 0.4);
+}
+
+.premiumGuarantee {
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin-top: 16px;
+}
 }
