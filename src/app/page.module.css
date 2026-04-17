@@ -1,0 +1,293 @@
+.header {
+  background: var(--ink);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--bg);
+  letter-spacing: -0.5px;
+}
+.logoAccent { color: var(--lime); }
+.badge {
+  background: var(--lime);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+.main {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 28px 16px 80px;
+}
+.heroLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.heroTitle {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 6vw, 40px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.heroEm { font-style: italic; color: var(--green); }
+.heroSub {
+  font-size: 14px;
+  color: var(--ink2);
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+.qBlock { margin-bottom: 24px; }
+.qLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink2);
+  margin-bottom: 10px;
+}
+.qGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.qBtn {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  color: var(--ink);
+}
+.qBtn:hover { border-color: var(--green); background: var(--tag-bg); }
+.qBtnActive {
+  background: var(--green) !important;
+  border-color: var(--green) !important;
+  color: white !important;
+}
+.qIcon { font-size: 22px; display: block; margin-bottom: 5px; }
+.qBtnLabel { font-size: 13px; font-weight: 600; display: block; }
+.qBtnSub { font-size: 10px; opacity: 0.65; display: block; margin-top: 2px; }
+.mealsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.mealBtn {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  color: var(--ink);
+}
+.mealBtn:hover { border-color: var(--green); background: var(--tag-bg); }
+.mealNum {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 3px;
+}
+.mealSub { font-size: 9px; display: block; opacity: 0.7; }
+.btnPrimary {
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+.btnPrimary:hover { background: #235923; transform: translateY(-1px); }
+.btnDisabled {
+  background: var(--muted) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+.btnSecondary {
+  background: transparent;
+  color: var(--ink2);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 13px 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+}
+.btnSecondary:hover { border-color: var(--green); color: var(--green); }
+.errMsg {
+  background: #FFF0F0;
+  border: 1px solid #FFBBBB;
+  color: #AA3333;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.loadWrap { text-align: center; padding: 80px 20px; }
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--border);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 18px;
+}
+.loadTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+.loadSub { font-size: 13px; color: var(--ink2); }
+.planHeader {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1.5px solid var(--border);
+}
+.metaRow { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag {
+  background: var(--tag-bg);
+  color: var(--green);
+  border: 1px solid #C8DFB0;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tagWarm { background: #FFF0E6; color: var(--warm); border-color: #F5C89A; }
+.planTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.planSub { font-size: 13px; color: var(--ink2); font-weight: 300; }
+.macrosCard {
+  background: var(--ink);
+  color: white;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-around;
+}
+.macroItem { text-align: center; }
+.macroVal {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--lime);
+  display: block;
+}
+.macroLbl {
+  font-size: 10px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.tipCard {
+  background: linear-gradient(135deg, #2D6A2D 0%, #1A4A1A 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+.tipIcon { font-size: 22px; margin-bottom: 8px; }
+.tipTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.tipText { font-size: 13px; opacity: 0.85; line-height: 1.6; font-weight: 300; }
+.mealCard {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.mealCard:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.mealHead {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.mealHead:hover { background: #FAFAF6; }
+.mealIcon {
+  width: 38px;
+  height: 38px;
+  background: var(--tag-bg);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.mealInfo { flex: 1; }
+.mealName { font-weight: 600; font-size: 14px; }
+.mealTime { font-size: 11px; color: var(--ink2); }
+.mealKcal {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--green);
+}
+.kcalUnit { font-size: 10px; color: var(--ink2); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.chevron { color: var(--muted); font-size: 13px; transition: transform 0.2s; margin-left: 4px; }
+.chevronOpen { transform: rotate(180deg); }
+.mealBody { padding: 16px 18px; }
+.dishTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.dishDesc { font-size: 13px; color: var(--ink2); margin-bottom: 12px; line-height: 1.6; font-weight: 300; }
+.ingLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink2);
+  margin-bottom: 8px;
+}
+.ingList { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+.ingItem { font-size: 13px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+.dot { width: 5px; height: 5px; background: var(--lime); border-radius: 50%; flex-shrink: 0; }
+.miniMacros { display: flex; gap: 14px; padding-top: 10px; border-top: 1px solid var(--border); }
+.mm { font-size: 12px; color: var(--ink2); }
+.actionRow { display: flex; gap: 10px; margin-top: 20px; }
+.actionRow .btnPrimary { flex: 2; width: auto; margin-top: 0; }
