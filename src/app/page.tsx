@@ -4,19 +4,23 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import styles from "./page.module.css";
 
-// --- ÍCONES (SVG para manter o design limpo) ---
-const Target = () => <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>;
-const Dumbbell = () => <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6.5 6.5 11 11"/><path d="m11.8 5.8 5.2 5.2"/><path d="m5.8 11.8 5.2 5.2"/><path d="M2 10V5a2 2 0 0 1 2-2h5"/><path d="M15 21h5a2 2 0 0 0 2-2v-5"/><path d="M15 3h5a2 2 0 0 1 2 2v5"/><path d="M2 14v5a2 2 0 0 0 2 2h5"/></svg>;
-const Heart = () => <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>;
-const Sparkles = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>;
+// --- ÍCONES ---
+const Target = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>;
+const Utensils = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>;
+const Calendar = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>;
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
   const [isPro, setIsPro] = useState(false);
-  const [screen, setScreen] = useState("objective");
+  
+  // Estados do Fluxo de Passos
+  const [step, setStep] = useState(1);
   const [objective, setObjective] = useState("");
+  const [dietType, setDietType] = useState("");
+  const [mealsCount, setMealsCount] = useState("");
+  
   const [isGenerating, setIsGenerating] = useState(false);
-  const [dietPlan, setDietPlan] = useState<any>(null);
+  const [screen, setScreen] = useState("setup"); // setup ou plan
   const [showPaywall, setShowPaywall] = useState(false);
 
   useEffect(() => {
@@ -31,19 +35,9 @@ export default function Home() {
     checkUser();
   }, []);
 
-  const startGeneration = (selected: string) => {
-    setObjective(selected);
+  const handleFinalGenerate = () => {
     setIsGenerating(true);
-    // Simulação de IA
     setTimeout(() => {
-      setDietPlan({
-        calorias: "2.250 kcal",
-        refeicoes: [
-          { hora: "08:00", nome: "Café da Manhã", prato: "Crepioca Proteica" },
-          { hora: "12:00", nome: "Almoço", prato: "Frango com Batata Doce" },
-          { hora: "19:00", nome: "Jantar", prato: "Salmão com Legumes" }
-        ]
-      });
       setIsGenerating(false);
       setScreen("plan");
     }, 2500);
@@ -51,94 +45,115 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      {/* HEADER COM BOTÃO DE ENTRAR ELEGANTE */}
       <header className={styles.header}>
         <div className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></div>
         <div className={styles.headerRight}>
           {user ? (
             <div className={styles.userStatus}>
               <span className={styles.tag} style={{ background: isPro ? '#22c55e' : '#f3f4f6', color: isPro ? '#fff' : '#666' }}>
-                {isPro ? "🚀 PRO" : "PLANO FREE"}
+                {isPro ? "🚀 PRO" : "FREE"}
               </span>
               <button onClick={() => supabase.auth.signOut().then(() => window.location.reload())} className={styles.swapBtn}>Sair</button>
             </div>
           ) : (
-            <a href="/login" className={styles.btnPrimary} style={{ padding: '8px 20px', fontSize: '0.9rem', textDecoration: 'none' }}>Entrar</a>
+            <a href="/login" className={styles.btnPrimary} style={{ padding: '8px 20px', fontSize: '0.85rem', textDecoration: 'none', borderRadius: '8px' }}>Entrar</a>
           )}
         </div>
       </header>
 
       <main className={styles.main}>
-        {screen === "objective" ? (
-          <div className="fade-up" style={{ textAlign: 'center', width: '100%' }}>
-            <span className={styles.badge}>Nova IA 3.1</span>
-            <h1 className={styles.heroTitle}>Sua dieta <span className={styles.logoAccent}>perfeita</span> em segundos.</h1>
-            <p className={styles.heroSub}>Escolha seu objetivo para a IA gerar seu cardápio personalizado.</p>
-
-            <div className={styles.gridObjectives} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '40px' }}>
-              <div className={styles.objCard} onClick={() => startGeneration("Emagrecer")} style={{ cursor: 'pointer', padding: '30px', border: '1px solid #eee', borderRadius: '20px', transition: '0.3s' }}>
-                <Target />
-                <h3 style={{ marginTop: '15px' }}>Emagrecer</h3>
-                <p>Perda de peso com saúde</p>
-              </div>
-              <div className={styles.objCard} onClick={() => startGeneration("Ganhar Massa")} style={{ cursor: 'pointer', padding: '30px', border: '1px solid #eee', borderRadius: '20px', transition: '0.3s' }}>
-                <Dumbbell />
-                <h3 style={{ marginTop: '15px' }}>Ganhar Massa</h3>
-                <p>Foco em hipertrofia</p>
-              </div>
-              <div className={styles.objCard} onClick={() => startGeneration("Saúde & Longevidade")} style={{ cursor: 'pointer', padding: '30px', border: '1px solid #eee', borderRadius: '20px', transition: '0.3s' }}>
-                <Heart />
-                <h3 style={{ marginTop: '15px' }}>Saúde</h3>
-                <p>Bem-estar e disposição</p>
+        {screen === "setup" ? (
+          <div className="fade-up" style={{ width: '100%', maxWidth: '600px', textAlign: 'center' }}>
+            <h1 className={styles.heroTitle}>Monte sua dieta <span className={styles.logoAccent}>inteligente</span></h1>
+            
+            {/* STEP 1: OBJETIVO */}
+            <div style={{ marginTop: '40px', textAlign: 'left' }}>
+              <h3 className={styles.stepTitle}><Target /> 1. Qual seu objetivo?</h3>
+              <div className={styles.qGrid}>
+                {["Emagrecer", "Ganhar Massa", "Saúde"].map((opt) => (
+                  <button key={opt} className={objective === opt ? styles.qBtnActive : styles.qBtn} onClick={() => setObjective(opt)}>{opt}</button>
+                ))}
               </div>
             </div>
+
+            {/* STEP 2: TIPO DE DIETA */}
+            <div style={{ marginTop: '30px', textAlign: 'left' }}>
+              <h3 className={styles.stepTitle}><Utensils /> 2. Preferência alimentar?</h3>
+              <div className={styles.qGrid}>
+                {["Onívoro", "Vegetariano", "Vegano", "Keto"].map((opt) => (
+                  <button key={opt} className={dietType === opt ? styles.qBtnActive : styles.qBtn} onClick={() => setDietType(opt)}>{opt}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* STEP 3: REFEIÇÕES */}
+            <div style={{ marginTop: '30px', textAlign: 'left' }}>
+              <h3 className={styles.stepTitle}><Calendar /> 3. Quantas refeições por dia?</h3>
+              <div className={styles.qGrid}>
+                {["3 refeições", "4 refeições", "5 refeições", "6 refeições"].map((opt) => (
+                  <button key={opt} className={mealsCount === opt ? styles.qBtnActive : styles.qBtn} onClick={() => setMealsCount(opt)}>{opt}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* BOTÃO GERAR PLANO (Só ativa se tudo estiver selecionado) */}
+            <button 
+              className={styles.btnPrimary} 
+              style={{ marginTop: '50px', width: '100%', padding: '20px', fontSize: '1.1rem' }}
+              disabled={!objective || !dietType || !mealsCount}
+              onClick={handleFinalGenerate}
+            >
+              Gerar Plano Personalizado 🚀
+            </button>
           </div>
         ) : (
+          /* TELA DO PLANO GERADO */
           <div className="fade-up" style={{ width: '100%', maxWidth: '800px' }}>
-            <button onClick={() => setScreen("objective")} className={styles.swapBtn} style={{ marginBottom: '20px' }}>← Voltar</button>
+            <button onClick={() => setScreen("setup")} className={styles.swapBtn} style={{ marginBottom: '20px' }}>← Refazer Configuração</button>
             <div className={styles.dietCard}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-                <h2>Seu Plano: {objective}</h2>
-                <span className={styles.tag}>{dietPlan?.calorias}</span>
+              <h2>Seu Plano: {objective} ({dietType})</h2>
+              <p style={{ color: '#666', marginBottom: '20px' }}>{mealsCount} focadas no seu resultado.</p>
+              
+              <div className={styles.mealRow}>
+                <div><span className={styles.mealTime}>08:00</span><h3>Café da Manhã</h3><p>Omelete fit com {dietType === 'Vegano' ? 'Tofu' : 'Ovos'}</p></div>
+                <button className={styles.swapBtn} onClick={() => !isPro && setShowPaywall(true)}>Substituir</button>
               </div>
-              {dietPlan?.refeicoes.map((meal: any, i: number) => (
-                <div key={i} className={styles.mealRow} style={{ display: 'flex', justifyContent: 'space-between', padding: '15px 0', borderBottom: '1px solid #f0f0f0' }}>
-                  <div>
-                    <span style={{ fontSize: '0.8rem', color: '#22c55e', fontWeight: 'bold' }}>{meal.hora}</span>
-                    <h3 style={{ margin: '5px 0' }}>{meal.prato}</h3>
-                  </div>
-                  <button className={styles.swapBtn} onClick={() => !isPro && setShowPaywall(true)}>Substituir</button>
-                </div>
-              ))}
+              <div className={styles.mealRow}>
+                <div><span className={styles.mealTime}>12:00</span><h3>Almoço</h3><p>Proteína grelhada com legumes e arroz</p></div>
+                <button className={styles.swapBtn} onClick={() => !isPro && setShowPaywall(true)}>Substituir</button>
+              </div>
             </div>
+
             {!isPro && (
-              <div className={styles.premiumBanner} style={{ marginTop: '30px', background: '#f0fff4', border: '1px solid #22c55e', padding: '20px', borderRadius: '15px', textAlign: 'center' }}>
-                <h3>🚀 Desbloqueie o Nutry.life PRO</h3>
-                <p>Substitua pratos ilimitados e salve suas dietas.</p>
-                <button className={styles.btnPrimary} style={{ marginTop: '15px' }}>Ver Planos PRO</button>
+              <div className={styles.premiumBanner}>
+                <h3>🚀 Nutry.life PRO</h3>
+                <p>Libere o plano completo e substituições ilimitadas.</p>
+                <button className={styles.btnPrimary}>Assinar Agora</button>
               </div>
             )}
           </div>
         )}
       </main>
 
-      {/* MODAL DE LOADING */}
+      {/* LOADING OVERLAY */}
       {isGenerating && (
-        <div className={styles.modalOverlay} style={{ position: 'fixed', inset: 0, background: 'rgba(255,255,255,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div style={{ textAlign: 'center' }}>
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
             <div className={styles.spinner}></div>
-            <p style={{ marginTop: '15px', fontWeight: 'bold', color: '#22c55e' }}>IA processando seu plano...</p>
+            <p>Criando sua dieta {dietType}...</p>
           </div>
         </div>
       )}
 
-      {/* MODAL DE PAYWALL */}
+      {/* PAYWALL MODAL */}
       {showPaywall && (
-        <div className={styles.modalOverlay} onClick={() => setShowPaywall(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div className={styles.modalContent} onClick={e => e.stopPropagation()} style={{ background: '#fff', padding: '40px', borderRadius: '20px', textAlign: 'center', maxWidth: '400px' }}>
-            <div style={{ fontSize: '3rem' }}>🔒</div>
-            <h2>Recurso Exclusivo</h2>
-            <p>A personalização de ingredientes está disponível apenas no plano PRO.</p>
-            <button className={styles.btnPrimary} style={{ marginTop: '20px', width: '100%' }}>Fazer Upgrade</button>
+        <div className={styles.modalOverlay} onClick={() => setShowPaywall(false)}>
+          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+            <div style={{ fontSize: '2.5rem' }}>🔒</div>
+            <h2>Recurso PRO</h2>
+            <p>Assine para personalizar cada ingrediente do seu plano.</p>
+            <button className={styles.btnPrimary} style={{ marginTop: '15px' }}>Ver Planos</button>
           </div>
         </div>
       )}
