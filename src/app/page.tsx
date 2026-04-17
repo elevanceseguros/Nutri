@@ -366,48 +366,46 @@ export default function Home() {
               </div>
             ))}
 
-           {/* --- INÍCIO DO BANNER PREMIUM --- */}
-<div className={styles.premiumBanner}>
-  <div className={styles.premiumHeader}>
-    <h3>Alcance seus objetivos mais rápido 🚀</h3>
-    <p>Você acabou de ver uma amostra. Desbloqueie o potencial completo do seu corpo com o Nutry.life Pro.</p>
-  </div>
-  
-  <ul className={styles.premiumFeatures}>
-    <li>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-      Geração de planos <strong>ilimitados</strong>
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-      <strong>Substituição inteligente</strong> de ingredientes
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-      Modo de preparo detalhado para todas as refeições
-    </li>
-  </ul>
+            {/* --- INÍCIO DO BANNER PREMIUM --- */}
+            <div className={styles.premiumBanner}>
+              <div className={styles.premiumHeader}>
+                <h3>Alcance seus objetivos mais rápido 🚀</h3>
+                <p>Você acabou de ver uma amostra. Desbloqueie o potencial completo do seu corpo com o Nutry.life Pro.</p>
+              </div>
+              
+              <ul className={styles.premiumFeatures}>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  Geração de planos <strong>ilimitados</strong>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <strong>Substituição inteligente</strong> de ingredientes
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  Modo de preparo detalhado para todas as refeições
+                </li>
+              </ul>
 
-  <div className={styles.premiumPrice}>
-    <span className={styles.priceCurrency}>R$</span>
-    <span className={styles.priceValue}>19</span>
-    <span className={styles.priceCents}>,90</span>
-    <span className={styles.pricePeriod}>/mês</span>
-  </div>
+              <div className={styles.premiumPrice}>
+                <span className={styles.priceCurrency}>R$</span>
+                <span className={styles.priceValue}>19</span>
+                <span className={styles.priceCents}>,90</span>
+                <span className={styles.pricePeriod}>/mês</span>
+              </div>
 
-  <a
-    href="https://pay.cakto.com.br/3763j6f_853173"
-    target="_blank"
-    rel="noopener noreferrer"
-    className={styles.premiumBtn}
-  >
-    Assinar Nutry.life Pro Agora
-  </a>
-  <p className={styles.premiumGuarantee}>🔒 Pagamento seguro via Cakto • Cancele quando quiser</p>
-</div>
-{/* --- FIM DO BANNER PREMIUM --- */}
-       
-            </a>
+              <a
+                href="https://pay.cakto.com.br/3763j6f_853173"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.premiumBtn}
+              >
+                Assinar Nutry.life Pro Agora
+              </a>
+              <p className={styles.premiumGuarantee}>🔒 Pagamento seguro via Cakto • Cancele quando quiser</p>
+            </div>
+            {/* --- FIM DO BANNER PREMIUM --- */}
 
             <div className={styles.actionRow}>
               <button className={styles.btnSecondary} onClick={() => setScreen("onboarding")}>
