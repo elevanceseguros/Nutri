@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./page.module.css";
 
+// --- TIPAGENS GLOBAIS ---
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
 type Screen = "onboarding" | "loading" | "plan";
+type ModalType = "swap" | "new" | null;
+type BillingType = "mensal" | "anual";
 
 interface Ingrediente { item: string; substituto: string; }
 interface Refeicao {
@@ -143,11 +146,11 @@ export default function Home() {
   const [erro, setErro] = useState<string | null>(null);
   const [openMeal, setOpenMeal] = useState<number>(0);
   
-  // Controle do Modal
-  const [modalType, setModalType] = useState<"swap" | "new" | null>(null);
+  // Controle do Modal limpo de erros do Vercel
+  const [modalType, setModalType] = useState<ModalType>(null);
   
   // Controle do Plano de Assinatura (Mensal vs Anual)
-  const [billing, setBilling] = useState<"mensal" | "anual">("anual");
+  const [billing, setBilling] = useState<BillingType>("anual");
 
   const canGenerate = objetivo && dieta && refeicoes;
 
@@ -184,7 +187,7 @@ export default function Home() {
   function closeModal() { setModalType(null); }
 
   return (
-    <>
+    <React.Fragment>
       <header className={styles.header}>
         <div className={styles.logo}>
           Nutry<span className={styles.logoAccent}>.life</span>
@@ -322,4 +325,150 @@ export default function Home() {
 
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
-                <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 :
+                <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
+                  <div className={styles.mealIconWrap}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+                    </svg>
+                  </div>
+                  <div className={styles.mealInfo}>
+                    <div className={styles.mealName}>{r.nome}</div>
+                    <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
+                  </div>
+                  <div className={styles.mealKcal}>{r.calorias}<span className={styles.kcalUnit}> kcal</span></div>
+                  <div className={styles.chevron + (openMeal === i ? " " + styles.chevronOpen : "")}>v</div>
+                </div>
+                {openMeal === i && (
+                  <div className={styles.mealBody}>
+                    {r.foto_url ? (
+                      <img src={r.foto_url} alt={r.prato} className={styles.dishPhoto} />
+                    ) : (
+                      <div className={styles.dishPhotoPlaceholder}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="9"/>
+                          <path d="M8 12h8M12 8v8"/>
+                        </svg>
+                      </div>
+                    )}
+                    <div className={styles.mealBodyContent}>
+                      <div className={styles.dishTitle}>{r.prato}</div>
+                      <p className={styles.dishDesc}>{r.descricao}</p>
+                      <div className={styles.sectionLabel}>Ingredientes</div>
+                      <ul className={styles.ingList}>
+                        {r.ingredientes.map((ing, j) => {
+                          return (
+                            <li key={j} className={styles.ingItem}>
+                              <div className={styles.ingLeft}>
+                                <span className={styles.dot} />
+                                <span>{ing.item}</span>
+                              </div>
+                              <button
+                                className={styles.swapBtn}
+                                onClick={handleSwapClick}
+                              >
+                                substituir
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      <div className={styles.sectionLabel}>Modo de preparo</div>
+                      <div className={styles.prepSteps}>
+                        {(r.preparo || []).map((passo, k) => (
+                          <div key={k} className={styles.prepStep}>
+                            <div className={styles.stepNum}>{k + 1}</div>
+                            <span>{passo}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className={styles.miniMacros}>
+                        <span className={styles.mm}>Proteina: <strong>{r.proteinas_g}g</strong></span>
+                        <span className={styles.mm}>Carbs: <strong>{r.carboidratos_g}g</strong></span>
+                        <span className={styles.mm}>Gorduras: <strong>{r.gorduras_g}g</strong></span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* --- INÍCIO DO BANNER PREMIUM --- */}
+            <div className={styles.premiumBanner}>
+              <div className={styles.premiumHeader}>
+                <h3>Alcance seus objetivos mais rápido 🚀</h3>
+                <p>Você acabou de ver uma amostra. Desbloqueie o potencial completo do seu corpo com o Nutry.life Pro.</p>
+              </div>
+              
+              <ul className={styles.premiumFeatures}>
+                <li>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Geração de planos <strong>ilimitados</strong></span>
+                </li>
+                <li>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span><strong>Substituição inteligente</strong> de ingredientes</span>
+                </li>
+                <li>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                  <span>Modo de preparo detalhado para todas as refeições</span>
+                </li>
+              </ul>
+
+              {/* SELETOR MENSAL/ANUAL */}
+              <div className={styles.billingToggle}>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("mensal")}
+                >
+                  Mensal
+                </button>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("anual")}
+                >
+                  Anual <span className={styles.badgeDiscount}>-50%</span>
+                </button>
+              </div>
+
+              <div className={styles.premiumPrice}>
+                <span className={styles.priceCurrency}>R$</span>
+                <span className={styles.priceValue}>{currentPrice}</span>
+                <span className={styles.priceCents}>{currentCents}</span>
+                <span className={styles.pricePeriod}>/mês</span>
+              </div>
+              
+              {billing === "anual" && (
+                <div className={styles.annualNote}>cobrado R$ 119,97 por ano</div>
+              )}
+
+              <a
+                href={currentLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.premiumBtn}
+              >
+                Assinar Nutry.life Pro Agora
+              </a>
+              <p className={styles.premiumGuarantee}>🔒 Pagamento seguro via Cakto • Cancele quando quiser</p>
+            </div>
+            {/* --- FIM DO BANNER PREMIUM --- */}
+
+            <div className={styles.actionRow}>
+              <button className={styles.btnPrimary} onClick={handleNewPlanClick}>
+                Gerar Novo Plano
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* --- MODAL PRO (PAYWALL DINÂMICO) --- */}
+        {modalType && (
+          <div className={styles.modalOverlay} onClick={closeModal}>
+            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+              <button className={styles.modalClose} onClick={closeModal}>✕</button>
+              
+              <div className={styles.modalIcon}>
+                {modalType === "swap" ? "✨" : "🔒"}
+              </div>
+              
+              <h3 className={styles.modal
