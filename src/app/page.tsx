@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import React from "react";
 import styles from "./page.module.css";
 
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
