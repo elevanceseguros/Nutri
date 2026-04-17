@@ -110,18 +110,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-.qBtn {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 14px;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s ease;
-  color: var(--ink);
+.qBtnIcon {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink2);
+  margin-bottom: 6px;
 }
 .qBtn:hover {
   border-color: var(--accent);
