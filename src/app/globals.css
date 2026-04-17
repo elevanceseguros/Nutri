@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #F5F0E8;
+  --ink: #1A1A0F;
+  --ink2: #4A4A3A;
+  --green: #2D6A2D;
+  --lime: #8BC34A;
+  --warm: #E8762B;
+  --muted: #C8C4B4;
+  --white: #FFFFFF;
+  --border: #E0DAC8;
+  --tag-bg: #EEF5E8;
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.4s ease forwards;
+}
+
+button { font-family: 'DM Sans', sans-serif; }
