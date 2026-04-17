@@ -127,8 +127,8 @@ export default function Home() {
   const [erro, setErro] = useState<string | null>(null);
   const [openMeal, setOpenMeal] = useState<number>(0);
   
-  // O ESTADO DO NOSSO MODAL PRO
-  const [showProModal, setShowProModal] = useState<boolean>(false);
+  // MODAL INTELIGENTE: Pode ser "swap" (substituir ingrediente) ou "new" (novo plano)
+  const [modalType, setModalType] = useState<"swap" | "new" | null>(null);
 
   const canGenerate = objetivo && dieta && refeicoes;
 
@@ -153,9 +153,17 @@ export default function Home() {
     }
   }
 
-  // A MÁGICA DA CONVERSÃO: Em vez de trocar o ingrediente, abre o Paywall
-  function triggerProFeature() {
-    setShowProModal(true);
+  // Funções para abrir o modal de acordo com a ação do usuário
+  function handleSwapClick() {
+    setModalType("swap");
+  }
+
+  function handleNewPlanClick() {
+    setModalType("new");
+  }
+
+  function closeModal() {
+    setModalType(null);
   }
 
   return (
@@ -341,7 +349,7 @@ export default function Home() {
                               </div>
                               <button
                                 className={styles.swapBtn}
-                                onClick={triggerProFeature}
+                                onClick={handleSwapClick}
                               >
                                 substituir
                               </button>
@@ -414,23 +422,35 @@ export default function Home() {
               <button className={styles.btnSecondary} onClick={() => setScreen("onboarding")}>
                 Refazer
               </button>
-              <button className={styles.btnPrimary} onClick={gerarPlano}>
+              <button className={styles.btnPrimary} onClick={handleNewPlanClick}>
                 Novo plano
               </button>
             </div>
           </div>
         )}
 
-        {/* --- MODAL PRO (PAYWALL) --- */}
-        {showProModal && (
-          <div className={styles.modalOverlay} onClick={() => setShowProModal(false)}>
+        {/* --- MODAL PRO (PAYWALL DINÂMICO) --- */}
+        {modalType && (
+          <div className={styles.modalOverlay} onClick={closeModal}>
             <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
-              <button className={styles.modalClose} onClick={() => setShowProModal(false)}>✕</button>
-              <div className={styles.modalIcon}>✨</div>
+              <button className={styles.modalClose} onClick={closeModal}>✕</button>
+              
+              <div className={styles.modalIcon}>
+                {modalType === "swap" ? "✨" : "🔒"}
+              </div>
+              
               <h3 className={styles.modalTitle}>Recurso Premium</h3>
-              <p className={styles.modalText}>
-                A <strong>substituição inteligente de ingredientes</strong> analisa o prato e sugere a melhor alternativa mantendo os macros exatos.
-              </p>
+              
+              {modalType === "swap" ? (
+                <p className={styles.modalText}>
+                  A <strong>substituição inteligente de ingredientes</strong> analisa o prato e sugere a melhor alternativa mantendo os macros exatos.
+                </p>
+              ) : (
+                <p className={styles.modalText}>
+                  Você já atingiu seu limite de <strong>1 plano gratuito por semana</strong>. A geração ilimitada de cardápios é um benefício exclusivo.
+                </p>
+              )}
+
               <p className={styles.modalTextHighlight}>
                 Disponível apenas no Nutry.life Pro.
               </p>
