@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+
 /* =========================================
    BASE & ESTRUTURA GLOBAL
    ========================================= */
@@ -5,8 +7,9 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   color: #1f2937;
+  -webkit-font-smoothing: antialiased;
 }
 
 .header {
@@ -16,6 +19,7 @@
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #f3f4f6;
   margin-bottom: 3rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .logo {
@@ -34,7 +38,7 @@
   padding: 4px 10px;
   border-radius: 99px;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -58,17 +62,17 @@
 .heroEyebrowText {
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #6b7280;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .heroTitle {
   font-size: 3.5rem;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  font-weight: 900;
-  letter-spacing: -1px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
 }
 
 .heroEm {
@@ -77,11 +81,12 @@
 }
 
 .heroSub {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #4b5563;
   margin-bottom: 4rem;
   line-height: 1.6;
   max-width: 600px;
+  font-weight: 500;
 }
 
 .qBlock {
@@ -93,8 +98,9 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 1.5rem;
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.5px;
 }
 
 .qNum {
@@ -122,6 +128,7 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .qBtn:hover {
@@ -134,7 +141,6 @@
 .qBtnActive {
   border-color: #22c55e;
   background: #f0fdf4;
-  /* Dupla sombra para dar o efeito de "clicado com firmeza" */
   box-shadow: 0 8px 16px -4px rgba(34, 197, 94, 0.2), inset 0 0 0 1px #22c55e;
   transform: translateY(-2px);
 }
@@ -176,10 +182,10 @@
 .qBtnSub {
   font-size: 0.85rem;
   color: #6b7280;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* --- BOTÕES DE REFEIÇÕES (NUMERADOS) --- */
+/* --- BOTÕES DE REFEIÇÕES (LINHA 3 RENOVADA) --- */
 .mealsGrid {
   display: flex;
   flex-wrap: wrap;
@@ -188,7 +194,7 @@
 
 .mealBtn {
   flex: 1;
-  min-width: 110px;
+  min-width: 120px;
   background: #ffffff;
   border: 2px solid #e5e7eb;
   border-radius: 20px;
@@ -201,6 +207,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .mealBtn:hover {
@@ -217,16 +224,34 @@
   transform: translateY(-2px);
 }
 
+.mealBtnIcon {
+  color: #9ca3af;
+  margin-bottom: 12px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mealBtn:hover .mealBtnIcon {
+  color: #10b981;
+  transform: scale(1.1);
+}
+
+.mealBtn.qBtnActive .mealBtnIcon {
+  color: #22c55e;
+  transform: scale(1.15);
+  filter: drop-shadow(0 4px 6px rgba(34, 197, 94, 0.2));
+}
+
 .mealNum {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.2rem;
-  font-weight: 900;
+  font-weight: 800;
   color: #111827;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   line-height: 1;
   transition: color 0.3s;
+  letter-spacing: -1px;
 }
 
 .mealBtn.qBtnActive .mealNum {
@@ -259,6 +284,7 @@
   margin-top: 2rem;
   box-shadow: 0 10px 20px -5px rgba(22, 163, 74, 0.4);
   letter-spacing: 0.5px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .btnPrimary:hover:not(.btnDisabled) {
@@ -287,7 +313,7 @@
   border-radius: 12px;
   margin-top: 2rem;
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 /* =========================================
@@ -322,10 +348,12 @@
   font-weight: 800;
   margin-bottom: 0.5rem;
   color: #111827;
+  letter-spacing: -0.5px;
 }
 
 .loadSub {
   color: #6b7280;
+  font-weight: 500;
 }
 
 /* =========================================
@@ -349,7 +377,7 @@
   padding: 6px 14px;
   border-radius: 99px;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #4b5563;
 }
 
@@ -363,13 +391,14 @@
   font-weight: 900;
   margin-bottom: 1rem;
   color: #111827;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
 .planSub {
   color: #6b7280;
   font-size: 1.1rem;
   line-height: 1.6;
+  font-weight: 500;
 }
 
 .macrosCard {
@@ -394,6 +423,7 @@
   font-size: 1.75rem;
   font-weight: 800;
   color: #111827;
+  letter-spacing: -0.5px;
 }
 
 .macroLbl {
@@ -401,7 +431,7 @@
   color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 4px;
 }
 
@@ -422,7 +452,7 @@
 }
 
 .tipTitle {
-  font-weight: 700;
+  font-weight: 800;
   color: #1e3a8a;
   margin-bottom: 6px;
   font-size: 1.05rem;
@@ -433,6 +463,7 @@
   font-size: 0.95rem;
   margin: 0;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 /* =========================================
@@ -487,6 +518,7 @@
 .mealTime {
   color: #6b7280;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .mealKcal {
@@ -499,14 +531,14 @@
 .kcalUnit {
   font-size: 0.85rem;
   color: #6b7280;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .chevron {
   transition: transform 0.2s;
   color: #9ca3af;
-  font-family: monospace;
   font-weight: bold;
+  font-size: 0.8rem;
 }
 
 .chevronOpen {
@@ -563,10 +595,11 @@
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .sectionLabel {
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   font-size: 0.8rem;
   color: #9ca3af;
@@ -600,7 +633,7 @@
   gap: 10px;
   color: #374151;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .dot {
@@ -616,20 +649,16 @@
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #4b5563;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .swapBtn:hover {
   background: #e5e7eb;
   color: #111827;
-}
-
-.swapped {
-  background: #fef3c7;
-  color: #b45309;
 }
 
 .prepSteps {
@@ -646,6 +675,7 @@
   color: #374151;
   font-size: 1rem;
   line-height: 1.6;
+  font-weight: 500;
 }
 
 .stepNum {
@@ -658,7 +688,7 @@
   justify-content: center;
   border-radius: 50%;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   flex-shrink: 0;
 }
 
@@ -675,35 +705,7 @@
 
 .mm strong {
   color: #111827;
-}
-
-.actionRow {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.btnSecondary {
-  flex: 1;
-  background: white;
-  border: 2px solid #e5e7eb;
-  padding: 1.2rem;
-  border-radius: 99px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #374151;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.btnSecondary:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
-}
-
-.actionRow .btnPrimary {
-  margin-top: 0;
-  flex: 2;
+  font-weight: 800;
 }
 
 /* =========================================
@@ -724,12 +726,14 @@
   font-size: 1.75rem;
   font-weight: 800;
   margin-bottom: 12px;
+  letter-spacing: -0.5px;
 }
 
 .premiumHeader p {
   color: #15803d;
   font-size: 1.05rem;
   margin-bottom: 32px;
+  font-weight: 500;
 }
 
 .premiumFeatures {
@@ -747,7 +751,7 @@
   color: #166534;
   margin-bottom: 16px;
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .premiumFeatures li svg {
@@ -763,16 +767,16 @@
   margin-bottom: 32px;
 }
 
-.priceCurrency { font-size: 1.5rem; font-weight: 700; margin-right: 4px; }
+.priceCurrency { font-size: 1.5rem; font-weight: 800; margin-right: 4px; }
 .priceValue { font-size: 4rem; font-weight: 900; line-height: 1; letter-spacing: -2px;}
 .priceCents { font-size: 1.75rem; font-weight: 800; }
-.pricePeriod { color: #15803d; margin-left: 6px; font-weight: 600; font-size: 1.1rem;}
+.pricePeriod { color: #15803d; margin-left: 6px; font-weight: 700; font-size: 1.1rem;}
 
 .premiumBtn {
   display: block;
   background-color: #16a34a;
   color: white;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.2rem;
   padding: 20px 32px;
   border-radius: 99px;
@@ -792,7 +796,7 @@
   color: #15803d;
   margin-top: 20px;
   opacity: 0.8;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* =========================================
@@ -846,6 +850,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .modalClose:hover {
@@ -871,11 +876,12 @@
   font-size: 1.05rem;
   line-height: 1.6;
   margin-bottom: 16px;
+  font-weight: 500;
 }
 
 .modalTextHighlight {
   color: #166534;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 32px;
   font-size: 1.1rem;
 }
@@ -898,13 +904,14 @@
   border-radius: 99px;
   border: none;
   background: transparent;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.95rem;
   color: #166534;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .toggleBtnActive {
@@ -927,7 +934,7 @@
 .annualNote {
   font-size: 0.85rem;
   color: #15803d;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: -24px;
   margin-bottom: 24px;
   opacity: 0.8;
