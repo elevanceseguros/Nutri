@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import React from "react";
 import styles from "./page.module.css";
 
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
@@ -20,15 +19,6 @@ interface Plano {
   proteinas_g: number; carboidratos_g: number; gorduras_g: number;
   dica_do_dia: string; refeicoes: Refeicao[];
 }
-
-const OBJETIVO_LABELS: Record<Objetivo, string> = {
-  emagrecer: "Emagrecimento", massa: "Ganho de Massa",
-  manutencao: "Manutencao", saude: "Saude Geral",
-};
-const DIETA_LABELS: Record<Dieta, string> = {
-  onivoro: "Onivoro", vegetariano: "Vegetariano",
-  vegano: "Vegano", lowcarb: "Low Carb",
-};
 
 // --- ÍCONES ---
 function IcoEmagrecer() {
@@ -104,6 +94,17 @@ function IcoLowCarb() {
   );
 }
 
+// --- DADOS FIXOS EXTRAÍDOS PARA EVITAR ERROS NO COMPILADOR ---
+const OBJETIVO_LABELS: Record<Objetivo, string> = {
+  emagrecer: "Emagrecimento", massa: "Ganho de Massa",
+  manutencao: "Manutencao", saude: "Saude Geral",
+};
+
+const DIETA_LABELS: Record<Dieta, string> = {
+  onivoro: "Onivoro", vegetariano: "Vegetariano",
+  vegano: "Vegano", lowcarb: "Low Carb",
+};
+
 const OBJETIVOS = [
   { v: "emagrecer" as Objetivo, ic: IcoEmagrecer, lb: "Emagrecer", sub: "Deficit calorico" },
   { v: "massa" as Objetivo, ic: IcoMassa, lb: "Ganhar massa", sub: "Superavit proteico" },
@@ -116,6 +117,21 @@ const DIETAS = [
   { v: "vegetariano" as Dieta, ic: IcoVegetariano, lb: "Vegetariano", sub: "Sem carnes" },
   { v: "vegano" as Dieta, ic: IcoVegano, lb: "Vegano", sub: "100% vegetal" },
   { v: "lowcarb" as Dieta, ic: IcoLowCarb, lb: "Low Carb", sub: "Menos carboidrato" },
+];
+
+const MEAL_OPTIONS = [
+  { v: 1, sub: "OMAD" },
+  { v: 2, sub: "16:8" },
+  { v: 3, sub: "Classico" },
+  { v: 4, sub: "+Lanches" },
+  { v: 5, sub: "Fracionado" }
+];
+
+const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
+  { key: "calorias_totais", label: "kcal" },
+  { key: "proteinas_g", label: "proteina" },
+  { key: "carboidratos_g", label: "carbs" },
+  { key: "gorduras_g", label: "gorduras" }
 ];
 
 export default function Home() {
@@ -157,7 +173,7 @@ export default function Home() {
       setPlano(data);
       setOpenMeal(0);
       setScreen("plan");
-    } catch {
+    } catch (err) {
       setErro("Nao consegui gerar o plano. Tente novamente.");
       setScreen("onboarding");
     }
@@ -232,7 +248,7 @@ export default function Home() {
                 <span className={styles.qLabel}>Quantas refeicoes hoje?</span>
               </div>
               <div className={styles.mealsGrid}>
-                {([[1,"OMAD"],[2,"16:8"],[3,"Classico"],[4,"+Lanches"],[5,"Fracionado"]] as [number,string][]).map(([v,sub]) => (
+                {MEAL_OPTIONS.map(({ v, sub }) => (
                   <button key={v} className={styles.mealBtn + (refeicoes === v ? " " + styles.qBtnActive : "")} onClick={() => setRefeicoes(v)}>
                     <span className={styles.mealNum}>{v}</span>
                     <span className={styles.mealSub}>{sub}</span>
@@ -269,4 +285,41 @@ export default function Home() {
           <div className="fade-up">
             <div className={styles.planHeader}>
               <div className={styles.metaRow}>
-                <span className={styles.tag}>{objetivo
+                <span className={styles.tag}>{objetivo ? OBJETIVO_LABELS[objetivo] : ""}</span>
+                <span className={styles.tag}>{dieta ? DIETA_LABELS[dieta] : ""}</span>
+                <span className={styles.tag + " " + styles.tagWarm}>
+                  {refeicoes} {refeicoes === 1 ? "refeicao" : "refeicoes"}
+                </span>
+              </div>
+              <h2 className={styles.planTitle}>{plano.titulo}</h2>
+              <p className={styles.planSub}>{plano.subtitulo}</p>
+            </div>
+
+            <div className={styles.macrosCard}>
+              {MACRO_ITEMS.map(({ key, label }) => (
+                <div key={label} className={styles.macroItem}>
+                  <span className={styles.macroVal}>
+                    {plano[key] as number}{key !== "calorias_totais" ? "g" : ""}
+                  </span>
+                  <span className={styles.macroLbl}>{label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.tipCard}>
+              <div className={styles.tipIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <div>
+                <div className={styles.tipTitle}>Dica do dia</div>
+                <p className={styles.tipText}>{plano.dica_do_dia}</p>
+              </div>
+            </div>
+
+            {plano.refeicoes.map((r, i) => (
+              <div key={i} className={styles.mealCard}>
+                <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 :
