@@ -565,3 +565,176 @@
   flex-direction: column;
   gap: 16px;
 }
+/* =========================================
+   SESSÃO DE CHECKOUT / UPSELL PRO (CORREÇÃO)
+   ========================================= */
+.premiumBanner {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #22c55e;
+  border-radius: 20px;
+  padding: 40px 24px;
+  margin: 48px 0;
+  text-align: center;
+  box-shadow: 0 10px 25px -5px rgba(34, 197, 94, 0.15);
+}
+
+.premiumHeader h3 {
+  color: #166534;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.premiumHeader p {
+  color: #15803d;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+}
+
+.premiumFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 32px;
+  text-align: left;
+  max-width: 360px;
+}
+
+.premiumFeatures li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #166534;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.premiumFeatures li svg {
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.premiumPrice {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  color: #166534;
+  margin-bottom: 32px;
+}
+
+.priceCurrency { font-size: 1.5rem; font-weight: 700; margin-right: 4px; }
+.priceValue { font-size: 4rem; font-weight: 900; line-height: 1; letter-spacing: -2px;}
+.priceCents { font-size: 1.75rem; font-weight: 800; }
+.pricePeriod { color: #15803d; margin-left: 6px; font-weight: 600; font-size: 1.1rem;}
+
+.premiumBtn {
+  display: block;
+  background-color: #16a34a;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 20px 32px;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
+}
+
+.premiumBtn:hover {
+  background-color: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.4);
+}
+
+.premiumGuarantee {
+  font-size: 0.85rem;
+  color: #15803d;
+  margin-top: 20px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* =========================================
+   MODAL DE BLOQUEIO / PAYWALL INTELIGENTE
+   ========================================= */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalContent {
+  background: white;
+  padding: 40px 32px;
+  border-radius: 24px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  0% { opacity: 0; transform: scale(0.95) translateY(15px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modalClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f3f4f6;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: #4b5563;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.modalClose:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.modalIcon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.modalTitle {
+  font-size: 1.75rem;
+  color: #111827;
+  margin-bottom: 16px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.modalText {
+  color: #4b5563;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.modalTextHighlight {
+  color: #166534;
+  font-weight: 700;
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+}
