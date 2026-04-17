@@ -1,546 +1,214 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import styles from "./page.module.css";
 
-// --- TIPAGENS GLOBAIS ---
-type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
-type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
-type Screen = "onboarding" | "loading" | "plan";
-type ModalType = "swap" | "new" | null;
-type BillingType = "mensal" | "anual";
+// --- Ícones (SVG para não precisar de bibliotecas extras) ---
+const Sparkles = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+);
 
-interface Ingrediente { item: string; substituto: string; }
-interface Refeicao {
-  nome: string; horario: string; prato: string;
-  descricao: string; ingredientes: Ingrediente[]; preparo: string[];
-  foto_url?: string;
-  calorias: number; proteinas_g: number; carboidratos_g: number; gorduras_g: number;
-}
-interface Plano {
-  titulo: string; subtitulo: string; calorias_totais: number;
-  proteinas_g: number; carboidratos_g: number; gorduras_g: number;
-  dica_do_dia: string; refeicoes: Refeicao[];
-}
-
-// --- NOVOS ÍCONES PREMIUM (MODERNOS E GROSSOS) ---
-function IcoEmagrecer() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/>
-    </svg>
-  );
-}
-function IcoMassa() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6.5 17.5l11-11M14 4.5l5.5 5.5M4.5 14l5.5 5.5M2 11l2 2M11 2l2 2"/>
-    </svg>
-  );
-}
-function IcoManutencao() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-    </svg>
-  );
-}
-function IcoSaude() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-    </svg>
-  );
-}
-function IcoOnivoro() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3c-4 0-7 3-7 7 0 3 2 5.5 5 6.5V21h4v-4.5c3-1 5-3.5 5-6.5 0-4-3-7-7-7z"/>
-      <path d="M12 21v-4.5"/>
-    </svg>
-  );
-}
-function IcoVegetariano() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-    </svg>
-  );
-}
-function IcoVegano() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11 20A7 7 0 014 13V5h8a7 7 0 017 7v8h-8z"/><path d="M11 20v-8"/>
-    </svg>
-  );
-}
-function IcoLowCarb() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <ellipse cx="12" cy="13" rx="7" ry="9"/><path d="M12 13a2 2 0 100-4 2 2 0 000 4z"/><path d="M12 4V2"/>
-    </svg>
-  );
-}
-
-// Ícones exclusivos para a Linha 3 (Refeições)
-function IcoJejum1() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="2" fill="currentColor"/>
-    </svg>
-  );
-}
-function IcoJejum2() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l-2 4"/>
-    </svg>
-  );
-}
-function IcoPrato() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2v0a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
-    </svg>
-  );
-}
-function IcoLanche() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 20a8 8 0 100-16 8 8 0 000 16zM12 2v4"/><path d="M10 8h4"/>
-    </svg>
-  );
-}
-function IcoVarios() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20.59 13.41l-7.17 3.17a2 2 0 01-1.84 0l-7.17-3.17a2 2 0 010-3.66l7.17-3.17a2 2 0 011.84 0l7.17 3.17a2 2 0 010 3.66z"/>
-      <path d="M3.41 17.59l7.67 3.39a2 2 0 001.84 0l7.67-3.39"/>
-    </svg>
-  );
-}
-
-// --- DADOS FIXOS EXTRAÍDOS ---
-const OBJETIVO_LABELS: Record<Objetivo, string> = {
-  emagrecer: "Emagrecimento", massa: "Ganho de Massa",
-  manutencao: "Manutenção", saude: "Saúde Geral",
-};
-
-const DIETA_LABELS: Record<Dieta, string> = {
-  onivoro: "Onívoro", vegetariano: "Vegetariano",
-  vegano: "Vegano", lowcarb: "Low Carb",
-};
-
-const OBJETIVOS = [
-  { v: "emagrecer" as Objetivo, ic: IcoEmagrecer, lb: "Emagrecer", sub: "Déficit calórico" },
-  { v: "massa" as Objetivo, ic: IcoMassa, lb: "Ganhar massa", sub: "Superávit proteico" },
-  { v: "manutencao" as Objetivo, ic: IcoManutencao, lb: "Manutenção", sub: "Saúde geral" },
-  { v: "saude" as Objetivo, ic: IcoSaude, lb: "Saúde", sub: "Bem-estar" },
-];
-
-const DIETAS = [
-  { v: "onivoro" as Dieta, ic: IcoOnivoro, lb: "Onívoro", sub: "Sem restrição" },
-  { v: "vegetariano" as Dieta, ic: IcoVegetariano, lb: "Vegetariano", sub: "Sem carnes" },
-  { v: "vegano" as Dieta, ic: IcoVegano, lb: "Vegano", sub: "100% vegetal" },
-  { v: "lowcarb" as Dieta, ic: IcoLowCarb, lb: "Low Carb", sub: "Menos carboidrato" },
-];
-
-const MEAL_OPTIONS = [
-  { v: 1, ic: IcoJejum1, sub: "Jejum Extremo" },
-  { v: 2, ic: IcoJejum2, sub: "Jejum 16h" },
-  { v: 3, ic: IcoPrato, sub: "Padrão Diário" },
-  { v: 4, ic: IcoLanche, sub: "Com Lanchinhos" },
-  { v: 5, ic: IcoVarios, sub: "A cada 3 horas" }
-];
-
-const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
-  { key: "calorias_totais", label: "kcal" },
-  { key: "proteinas_g", label: "proteína" },
-  { key: "carboidratos_g", label: "carbs" },
-  { key: "gorduras_g", label: "gorduras" }
-];
+const RefreshCcw = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21v-5h5"/></svg>
+);
 
 export default function Home() {
-  const [objetivo, setObjetivo] = useState<Objetivo | null>(null);
-  const [dieta, setDieta] = useState<Dieta | null>(null);
-  const [refeicoes, setRefeicoes] = useState<number | null>(null);
-  const [screen, setScreen] = useState<Screen>("onboarding");
-  const [plano, setPlano] = useState<Plano | null>(null);
-  const [erro, setErro] = useState<string | null>(null);
-  const [openMeal, setOpenMeal] = useState<number>(0);
-  
-  const [modalType, setModalType] = useState<ModalType>(null);
-  const [billing, setBilling] = useState<BillingType>("anual");
+  // --- Estados de Autenticação ---
+  const [user, setUser] = useState<any>(null);
+  const [isPro, setIsPro] = useState(false);
+  const [loadingAuth, setLoadingAuth] = useState(true);
 
-  const canGenerate = objetivo && dieta && refeicoes;
+  // --- Estados da Aplicação ---
+  const [screen, setScreen] = useState("objective");
+  const [objective, setObjective] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [dietPlan, setDietPlan] = useState<any>(null);
+  const [showPaywall, setShowPaywall] = useState(false);
 
-  const currentPrice = billing === "mensal" ? "19" : "9";
-  const currentCents = billing === "mensal" ? ",97" : ",99";
-  const currentLink = billing === "mensal" 
-    ? "https://pay.cakto.com.br/3763j6f_853173" 
-    : "https://pay.cakto.com.br/bv6bu58"; 
+  // --- Lógica de Segurança e Verificação de Plano ---
+  useEffect(() => {
+    const checkUserAndPlan = async (sessionUser: any) => {
+      if (!sessionUser) {
+        setUser(null);
+        setIsPro(false);
+        return;
+      }
 
-  async function gerarPlano() {
-    if (!objetivo || !dieta || !refeicoes) return;
-    setErro(null);
-    setScreen("loading");
-    try {
-      const res = await fetch("/api/plano", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ objetivo, dieta, refeicoes }),
+      setUser(sessionUser);
+
+      // Busca o plano na tabela 'profiles' (conforme seu print)
+      const { data: perfil, error } = await supabase
+        .from("profiles") 
+        .select("plano")
+        .eq("id", sessionUser.id)
+        .single();
+
+      if (!error && perfil?.plano === "pro") {
+        setIsPro(true);
+      } else {
+        setIsPro(false);
+      }
+    };
+
+    // Inicialização
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      checkUserAndPlan(session?.user);
+      setLoadingAuth(false);
+    });
+
+    // Escuta mudanças de login/logout em tempo real
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      checkUserAndPlan(session?.user);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    window.location.reload();
+  };
+
+  const handleGenerate = () => {
+    if (!objective) return;
+    setIsGenerating(true);
+    
+    // Simulação de resposta da IA
+    setTimeout(() => {
+      setDietPlan({
+        calorias: "2.150 kcal",
+        refeicoes: [
+          { nome: "Café da Manhã", prato: "Crepioca de Frango com Requeijão", ingredientes: ["1 ovo", "2 colheres de goma", "Frango desfiado"] },
+          { nome: "Almoço", prato: "Patinho Moído com Arroz Integral e Feijão", ingredientes: ["120g de carne", "100g de arroz", "80g de feijão"] },
+          { nome: "Jantar", prato: "Tilápia Grelhada com Legumes no Vapor", ingredientes: ["150g de peixe", "Cenoura", "Abobrinha"] }
+        ]
       });
-      if (!res.ok) throw new Error("Erro");
-      const data: Plano = await res.json();
-      setPlano(data);
-      setOpenMeal(0);
+      setIsGenerating(false);
       setScreen("plan");
-    } catch (err) {
-      setErro("Não consegui gerar o plano. Tente novamente.");
-      setScreen("onboarding");
+    }, 1800);
+  };
+
+  const handleSwap = (index: number) => {
+    if (!isPro) {
+      setShowPaywall(true);
+      return;
     }
+    // Lógica permitida apenas para PRO
+    const newPlan = { ...dietPlan };
+    newPlan.refeicoes[index].prato = "🔄 Opção Alternativa Gerada";
+    setDietPlan(newPlan);
+  };
+
+  if (loadingAuth) {
+    return <div className={styles.main} style={{ justifyContent: 'center' }}>Carregando acesso seguro...</div>;
   }
 
-  function handleSwapClick() { setModalType("swap"); }
-  function handleNewPlanClick() { setModalType("new"); }
-  function closeModal() { setModalType(null); }
-
   return (
-    <>
+    <div className={styles.container}>
+      {/* Header com Status de Login */}
       <header className={styles.header}>
         <div className={styles.logo}>
           Nutry<span className={styles.logoAccent}>.life</span>
         </div>
-        <div className={styles.badge}>Beta</div>
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          {user ? (
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <span className={styles.tag} style={{ 
+                background: isPro ? 'linear-gradient(90deg, #22c55e, #10b981)' : '#eee',
+                color: isPro ? '#fff' : '#666',
+                fontWeight: 'bold'
+              }}>
+                {isPro ? "🚀 ACESSO PRO" : "PLANO FREE"}
+              </span>
+              <button onClick={handleLogout} className={styles.swapBtn} style={{ padding: '5px 10px' }}>Sair</button>
+            </div>
+          ) : (
+            <a href="/login" className={styles.btnPrimary} style={{ padding: '8px 20px', fontSize: '0.9rem', textDecoration: 'none' }}>Entrar</a>
+          )}
+          <div className={styles.badge}>Beta</div>
+        </div>
       </header>
 
       <main className={styles.main}>
-
-        {/* --- TELA 1: ONBOARDING --- */}
-        {screen === "onboarding" && (
-          <div className="fade-up">
-            <div className={styles.heroEyebrow}>
-              <div className={styles.heroLine} />
-              <span className={styles.heroEyebrowText}>Inteligência Artificial Nutricional</span>
-            </div>
+        {screen === "objective" ? (
+          <div className="fade-up" style={{ textAlign: "center", maxWidth: "600px" }}>
             <h1 className={styles.heroTitle}>
-              A sua <em className={styles.heroEm}>dieta perfeita</em><br />
-              feita em segundos.
+              Sua dieta perfeita <br />
+              <span className={styles.logoAccent}>feita em segundos.</span>
             </h1>
             <p className={styles.heroSub}>
-              Chega de dúvidas sobre o que comer. Selecione suas preferências abaixo e nossa IA criará um cardápio completo, focado no seu objetivo.
+              Selecione suas preferências e nossa IA criará um cardápio completo, focado no seu objetivo.
             </p>
 
-            <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}>
-                <span className={styles.qNum}>01.</span>
-                <span className={styles.qLabel}>Qual é o seu objetivo?</span>
-              </div>
-              <div className={styles.qGrid}>
-                {OBJETIVOS.map(({ v, ic: Ic, lb, sub }) => (
-                  <button key={v} className={`${styles.qBtn} ${objetivo === v ? styles.qBtnActive : ""}`} onClick={() => setObjetivo(v)}>
-                    <span className={styles.qBtnIcon}><Ic /></span>
-                    <span className={styles.qBtnLabel}>{lb}</span>
-                    <span className={styles.qBtnSub}>{sub}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}>
-                <span className={styles.qNum}>02.</span>
-                <span className={styles.qLabel}>Preferência alimentar</span>
-              </div>
-              <div className={styles.qGrid}>
-                {DIETAS.map(({ v, ic: Ic, lb, sub }) => (
-                  <button key={v} className={`${styles.qBtn} ${dieta === v ? styles.qBtnActive : ""}`} onClick={() => setDieta(v)}>
-                    <span className={styles.qBtnIcon}><Ic /></span>
-                    <span className={styles.qBtnLabel}>{lb}</span>
-                    <span className={styles.qBtnSub}>{sub}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}>
-                <span className={styles.qNum}>03.</span>
-                <span className={styles.qLabel}>Quantas refeições hoje?</span>
-              </div>
-              <div className={styles.mealsGrid}>
-                {MEAL_OPTIONS.map(({ v, ic: Ic, sub }) => (
-                  <button key={v} className={`${styles.mealBtn} ${refeicoes === v ? styles.qBtnActive : ""}`} onClick={() => setRefeicoes(v)}>
-                    <span className={styles.mealBtnIcon}><Ic /></span>
-                    <span className={styles.mealNum}>{v}</span>
-                    <span className={styles.mealSub}>{sub}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {erro && <div className={styles.errMsg}>{erro}</div>}
-
-            <button
-              className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`}
-              disabled={!canGenerate}
-              onClick={gerarPlano}
-            >
-              Gerar meu plano
-            </button>
-          </div>
-        )}
-
-        {/* --- TELA 2: LOADING --- */}
-        {screen === "loading" && (
-          <div className={styles.loadWrap}>
-            <div className={styles.spinnerWrap}>
-              <div className={styles.spinner} />
-            </div>
-            <div className={styles.loadTitle}>Montando seu plano...</div>
-            <div className={styles.loadSub}>Analisando combinações e macros para você</div>
-          </div>
-        )}
-
-        {/* --- TELA 3: RESULTADO --- */}
-        {screen === "plan" && plano && (
-          <div className="fade-up">
-            <div className={styles.planHeader}>
-              <div className={styles.metaRow}>
-                <span className={styles.tag}>{objetivo ? OBJETIVO_LABELS[objetivo] : ""}</span>
-                <span className={styles.tag}>{dieta ? DIETA_LABELS[dieta] : ""}</span>
-                <span className={`${styles.tag} ${styles.tagWarm}`}>
-                  {refeicoes} {refeicoes === 1 ? "refeição" : "refeições"}
-                </span>
-              </div>
-              <h2 className={styles.planTitle}>{plano.titulo}</h2>
-              <p className={styles.planSub}>{plano.subtitulo}</p>
-            </div>
-
-            <div className={styles.macrosCard}>
-              {MACRO_ITEMS.map(({ key, label }) => (
-                <div key={label} className={styles.macroItem}>
-                  <span className={styles.macroVal}>
-                    {plano[key] as number}{key !== "calorias_totais" ? "g" : ""}
-                  </span>
-                  <span className={styles.macroLbl}>{label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CARD DICA DO DIA PREMIUM */}
-            <div className={styles.tipCard}>
-              <div className={styles.tipIcon}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 018.91 14"/>
-                </svg>
-              </div>
-              <div>
-                <div className={styles.tipTitle}>Insight do Dia</div>
-                <p className={styles.tipText}>{plano.dica_do_dia}</p>
-              </div>
-            </div>
-
-            {plano.refeicoes.map((r, i) => (
-              <div key={i} className={styles.mealCard}>
-                <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
-                  <div className={styles.mealIconWrap}>
-                    <IcoPrato />
-                  </div>
-                  <div className={styles.mealInfo}>
-                    <div className={styles.mealName}>{r.nome}</div>
-                    <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
-                  </div>
-                  <div className={styles.mealKcal}>{r.calorias}<span className={styles.kcalUnit}> kcal</span></div>
-                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>▼</div>
-                </div>
-                {openMeal === i && (
-                  <div className={styles.mealBody}>
-                    {r.foto_url ? (
-                      <img src={r.foto_url} alt={r.prato} className={styles.dishPhoto} />
-                    ) : (
-                      <div className={styles.dishPhotoPlaceholder}>
-                        <IcoPrato />
-                      </div>
-                    )}
-                    <div className={styles.mealBodyContent}>
-                      <div className={styles.dishTitle}>{r.prato}</div>
-                      <p className={styles.dishDesc}>{r.descricao}</p>
-                      
-                      <div className={styles.sectionLabel}>Ingredientes</div>
-                      <ul className={styles.ingList}>
-                        {r.ingredientes.map((ing, j) => {
-                          return (
-                            <li key={j} className={styles.ingItem}>
-                              <div className={styles.ingLeft}>
-                                <span className={styles.dot} />
-                                <span>{ing.item}</span>
-                              </div>
-                              <button
-                                className={styles.swapBtn}
-                                onClick={handleSwapClick}
-                              >
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                  <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0115-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/>
-                                </svg>
-                                Substituir
-                              </button>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                      
-                      <div className={styles.sectionLabel}>Modo de preparo</div>
-                      <div className={styles.prepSteps}>
-                        {(r.preparo || []).map((passo, k) => (
-                          <div key={k} className={styles.prepStep}>
-                            <div className={styles.stepNum}>{k + 1}</div>
-                            <span>{passo}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className={styles.miniMacros}>
-                        <span className={styles.mm}>Proteína: <strong>{r.proteinas_g}g</strong></span>
-                        <span className={styles.mm}>Carbs: <strong>{r.carboidratos_g}g</strong></span>
-                        <span className={styles.mm}>Gorduras: <strong>{r.gorduras_g}g</strong></span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-
-            {/* --- INÍCIO DO BANNER PREMIUM --- */}
-            <div className={styles.premiumBanner}>
-              <div className={styles.premiumHeader}>
-                <h3>Alcance seus objetivos mais rápido 🚀</h3>
-                <p>Você acabou de ver uma amostra. Desbloqueie o potencial completo do seu corpo com o Nutry.life Pro.</p>
-              </div>
-              
-              <ul className={styles.premiumFeatures}>
-                <li>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span>Geração de planos <strong>ilimitados</strong></span>
-                </li>
-                <li>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span><strong>Substituição inteligente</strong> de ingredientes</span>
-                </li>
-                <li>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span>Modo de preparo detalhado para todas as refeições</span>
-                </li>
-              </ul>
-
-              {/* SELETOR MENSAL/ANUAL */}
-              <div className={styles.billingToggle}>
-                <button 
-                  className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`}
-                  onClick={() => setBilling("mensal")}
-                >
-                  Mensal
-                </button>
-                <button 
-                  className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`}
-                  onClick={() => setBilling("anual")}
-                >
-                  Anual <span className={styles.badgeDiscount}>-50%</span>
-                </button>
-              </div>
-
-              <div className={styles.premiumPrice}>
-                <span className={styles.priceCurrency}>R$</span>
-                <span className={styles.priceValue}>{currentPrice}</span>
-                <span className={styles.priceCents}>{currentCents}</span>
-                <span className={styles.pricePeriod}>/mês</span>
-              </div>
-              
-              {billing === "anual" && (
-                <div className={styles.annualNote}>cobrado R$ 119,97 por ano</div>
-              )}
-
-              <a
-                href={currentLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.premiumBtn}
+            <div className={styles.inputContainer}>
+              <textarea
+                className={styles.mainInput}
+                placeholder="Ex: Quero ganhar massa muscular com foco em alimentos baratos..."
+                value={objective}
+                onChange={(e) => setObjective(e.target.value)}
+              />
+              <button 
+                className={styles.btnPrimary} 
+                onClick={handleGenerate}
+                disabled={isGenerating || !objective}
               >
-                Assinar Nutry.life Pro Agora
-              </a>
-              <p className={styles.premiumGuarantee}>🔒 Pagamento seguro via Cakto • Cancele quando quiser</p>
-            </div>
-            {/* --- FIM DO BANNER PREMIUM --- */}
-
-            <div className={styles.actionRow}>
-              <button className={styles.btnPrimary} onClick={handleNewPlanClick}>
-                Gerar Novo Plano
+                {isGenerating ? "Processando..." : "Gerar Cardápio Agora"}
+                {!isGenerating && <Sparkles />}
               </button>
             </div>
           </div>
-        )}
+        ) : (
+          <div className="fade-up" style={{ width: "100%", maxWidth: "800px" }}>
+             <button className={styles.swapBtn} onClick={() => setScreen("objective")} style={{ marginBottom: '20px' }}>← Criar outro plano</button>
+             
+             <div className={styles.dietCard}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
+                  <h2 style={{ margin: 0 }}>Cardápio Sugerido</h2>
+                  <span className={styles.tag}>{dietPlan?.calorias}</span>
+                </div>
 
-        {/* --- MODAL PRO (PAYWALL DINÂMICO) --- */}
-        {modalType && (
-          <div className={styles.modalOverlay} onClick={closeModal}>
-            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
-              <button className={styles.modalClose} onClick={closeModal}>✕</button>
-              
-              <div className={styles.modalIcon}>
-                {modalType === "swap" ? "✨" : "🔒"}
-              </div>
-              
-              <h3 className={styles.modalTitle}>Recurso Premium</h3>
-              
-              {modalType === "swap" ? (
-                <p className={styles.modalText}>
-                  A <strong>substituição inteligente de ingredientes</strong> analisa o prato e sugere a melhor alternativa mantendo os macros exatos.
-                </p>
-              ) : (
-                <p className={styles.modalText}>
-                  Você já atingiu seu limite de <strong>1 plano gratuito por semana</strong>. A geração ilimitada de cardápios é um benefício exclusivo.
-                </p>
-              )}
+                {dietPlan?.refeicoes.map((ref: any, idx: number) => (
+                  <div key={idx} className={styles.mealRow}>
+                    <div style={{ flex: 1 }}>
+                      <span className={styles.mealTime}>{ref.nome}</span>
+                      <h3 className={styles.mealName}>{ref.prato}</h3>
+                      <p style={{ fontSize: '0.9rem', color: '#666' }}>{ref.ingredientes.join(", ")}</p>
+                    </div>
+                    <button className={styles.swapBtn} onClick={() => handleSwap(idx)}>
+                      <RefreshCcw /> {isPro ? "Substituir" : "Bloqueado"}
+                    </button>
+                  </div>
+                ))}
+             </div>
 
-              <p className={styles.modalTextHighlight}>
-                Escolha seu plano do Nutry.life Pro:
-              </p>
-
-              {/* SELETOR MENSAL/ANUAL NO MODAL */}
-              <div className={styles.billingToggle}>
-                <button 
-                  className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`}
-                  onClick={() => setBilling("mensal")}
-                >
-                  Mensal
-                </button>
-                <button 
-                  className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`}
-                  onClick={() => setBilling("anual")}
-                >
-                  Anual <span className={styles.badgeDiscount}>-50%</span>
-                </button>
-              </div>
-
-              <div className={styles.premiumPrice} style={{marginBottom: "16px"}}>
-                <span className={styles.priceCurrency}>R$</span>
-                <span className={styles.priceValue}>{currentPrice}</span>
-                <span className={styles.priceCents}>{currentCents}</span>
-                <span className={styles.pricePeriod}>/mês</span>
-              </div>
-
-              <a
-                href={currentLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.premiumBtn}
-              >
-                Desbloquear Agora
-              </a>
-            </div>
+             {/* Banner de Upgrade para quem é FREE */}
+             {!isPro && (
+               <div className={styles.premiumBanner} style={{ marginTop: '40px', border: '2px solid #22c55e' }}>
+                  <div style={{ fontSize: '1.5rem', marginBottom: '10px' }}>🚀</div>
+                  <h3>Torne-se Nutry.life PRO</h3>
+                  <p>Libere substituições ilimitadas e gere cardápios sem restrições.</p>
+                  <button className={styles.btnPrimary} style={{ width: 'auto', padding: '12px 40px' }}>
+                    Fazer Upgrade Agora
+                  </button>
+               </div>
+             )}
           </div>
         )}
-        {/* --- FIM MODAL PRO --- */}
       </main>
-    </>
+
+      {/* MODAL DE SEGURANÇA (PAYWALL) */}
+      {showPaywall && (
+        <div className={styles.modalOverlay} onClick={() => setShowPaywall(false)}>
+          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+            <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🔒</div>
+            <h2 className={styles.heroTitle} style={{ fontSize: '1.8rem' }}>Recurso Premium</h2>
+            <p>Para trocar alimentos e personalizar ainda mais sua dieta, você precisa de uma conta **PRO**.</p>
+            <button className={styles.btnPrimary} style={{ marginTop: '20px' }}>Ver Planos</button>
+            <button className={styles.swapBtn} onClick={() => setShowPaywall(false)} style={{ marginTop: '10px', width: '100%' }}>Continuar no Free</button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
