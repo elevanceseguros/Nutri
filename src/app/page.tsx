@@ -29,7 +29,7 @@ const DIETA_LABELS: Record<Dieta, string> = {
   vegano: "Vegano", lowcarb: "Low Carb",
 };
 
-const MEAL_ICONS = ["☕","🥗","🍽️","🍎","🌙"];
+const MEAL_ICONS = ["cafe","salada","prato","fruta","lua"];
 
 export default function Home() {
   const [objetivo, setObjetivo] = useState<Objetivo | null>(null);
@@ -108,7 +108,7 @@ export default function Home() {
                   ["manutencao","⚖️","Manutencao","Saude geral"],
                   ["saude","🌿","Saude","Bem-estar"],
                 ] as [Objetivo,string,string,string][]).map(([v,ic,lb,sub]) => (
-                  <button key={v} className={`${styles.qBtn} ${objetivo===v ? styles.qBtnActive : ""}`} onClick={()=>setObjetivo(v)}>
+                  <button key={v} className={styles.qBtn + (objetivo===v ? " " + styles.qBtnActive : "")} onClick={()=>setObjetivo(v)}>
                     <span className={styles.qBtnIcon}>{ic}</span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
@@ -129,7 +129,7 @@ export default function Home() {
                   ["vegano","🌱","Vegano","100% vegetal"],
                   ["lowcarb","🥑","Low Carb","Menos carboidrato"],
                 ] as [Dieta,string,string,string][]).map(([v,ic,lb,sub]) => (
-                  <button key={v} className={`${styles.qBtn} ${dieta===v ? styles.qBtnActive : ""}`} onClick={()=>setDieta(v)}>
+                  <button key={v} className={styles.qBtn + (dieta===v ? " " + styles.qBtnActive : "")} onClick={()=>setDieta(v)}>
                     <span className={styles.qBtnIcon}>{ic}</span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
@@ -145,7 +145,7 @@ export default function Home() {
               </div>
               <div className={styles.mealsGrid}>
                 {([[1,"OMAD"],[2,"16:8"],[3,"Classico"],[4,"+Lanches"],[5,"Fracionado"]] as [number,string][]).map(([v,sub]) => (
-                  <button key={v} className={`${styles.mealBtn} ${refeicoes===v ? styles.qBtnActive : ""}`} onClick={()=>setRefeicoes(v)}>
+                  <button key={v} className={styles.mealBtn + (refeicoes===v ? " " + styles.qBtnActive : "")} onClick={()=>setRefeicoes(v)}>
                     <span className={styles.mealNum}>{v}</span>
                     <span className={styles.mealSub}>{sub}</span>
                   </button>
@@ -156,7 +156,7 @@ export default function Home() {
             {erro && <div className={styles.errMsg}>{erro}</div>}
 
             <button
-              className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`}
+              className={styles.btnPrimary + (!canGenerate ? " " + styles.btnDisabled : "")}
               disabled={!canGenerate}
               onClick={gerarPlano}
             >
@@ -181,7 +181,7 @@ export default function Home() {
               <div className={styles.metaRow}>
                 <span className={styles.tag}>{objetivo ? OBJETIVO_LABELS[objetivo] : ""}</span>
                 <span className={styles.tag}>{dieta ? DIETA_LABELS[dieta] : ""}</span>
-                <span className={`${styles.tag} ${styles.tagWarm}`}>
+                <span className={styles.tag + " " + styles.tagWarm}>
                   {refeicoes} {refeicoes === 1 ? "refeicao" : "refeicoes"}
                 </span>
               </div>
@@ -222,14 +222,14 @@ export default function Home() {
                     <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
                   </div>
                   <div className={styles.mealKcal}>{r.calorias}<span className={styles.kcalUnit}> kcal</span></div>
-                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>v</div>
+                  <div className={styles.chevron + (openMeal === i ? " " + styles.chevronOpen : "")}>v</div>
                 </div>
                 {openMeal === i && (
                   <div className={styles.mealBody}>
                     {r.foto_url ? (
                       <img src={r.foto_url} alt={r.prato} className={styles.dishPhoto} />
                     ) : (
-                      <div className={styles.dishPhotoPlaceholder}>{MEAL_ICONS[i] || "🍽️"}</div>
+                      <div className={styles.dishPhotoPlaceholder}>🍽️</div>
                     )}
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
@@ -237,7 +237,7 @@ export default function Home() {
                       <div className={styles.sectionLabel}>Ingredientes</div>
                       <ul className={styles.ingList}>
                         {r.ingredientes.map((ing, j) => {
-                          const key = `${i}-${j}`;
+                          const key = i + "-" + j;
                           const isSwapped = swapped[key];
                           return (
                             <li key={j} className={styles.ingItem}>
@@ -245,7 +245,10 @@ export default function Home() {
                                 <span className={styles.dot} />
                                 <span>{isSwapped ? ing.substituto : ing.item}</span>
                               </div>
-                              <button className={`${styles.swapBtn} ${isSwapped ? styles.swapped : ""}`} onClick={() => toggleSwap(i, j)}>
+                              <button
+                                className={styles.swapBtn + (isSwapped ? " " + styles.swapped : "")}
+                                onClick={() => toggleSwap(i, j)}
+                              >
                                 {isSwapped ? "original" : "substituir"}
                               </button>
                             </li>
