@@ -40,7 +40,7 @@
 }
 
 /* =========================================
-   ONBOARDING (PERGUNTAS INICIAIS)
+   ONBOARDING (PERGUNTAS INICIAIS) E BOTÕES PREMIUM
    ========================================= */
 .heroEyebrow {
   display: flex;
@@ -107,6 +107,7 @@
   gap: 1rem;
 }
 
+/* BOTÕES DAS OPÇÕES (ESTILO APLICATIVO) */
 .qBtn {
   background: white;
   border: 2px solid #f3f4f6;
@@ -202,6 +203,7 @@
   font-weight: 600;
 }
 
+/* BOTÃO CALL TO ACTION (GERAR PLANO) */
 .btnPrimary {
   width: 100%;
   background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
