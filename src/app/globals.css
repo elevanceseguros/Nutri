@@ -5,24 +5,24 @@
 }
 
 :root {
-  --bg: #0A0A0F;
-  --surface: #13131A;
-  --surface2: #1C1C26;
-  --ink: #F0EEE8;
-  --ink2: #9B99A8;
-  --accent: #C8F135;
-  --accent2: #8B5CF6;
-  --warm: #FF6B35;
-  --border: #2A2A38;
-  --card: #16161F;
-  --white: #FFFFFF;
-  --tag-bg: #1E1E2A;
+  --bg: #F7F3EE;
+  --surface: #FFFFFF;
+  --surface2: #F0EBE3;
+  --ink: #1A1208;
+  --ink2: #6B5E4E;
+  --ink3: #A89880;
+  --accent: #2D5016;
+  --accent2: #C8440A;
+  --gold: #B8860B;
+  --border: #E2D9CE;
+  --card: #FFFFFF;
+  --tag-bg: #EDE8E0;
 }
 
 html, body { height: 100%; }
 
 body {
-  font-family: 'Syne', 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.5;
@@ -34,17 +34,12 @@ body {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
 .fade-up {
-  animation: fadeUp 0.5s ease forwards;
+  animation: fadeUp 0.45s ease forwards;
 }
 
-button { font-family: 'Syne', 'DM Sans', sans-serif; }
+button { font-family: 'Inter', sans-serif; }
