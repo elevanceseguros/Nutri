@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase"; // Conexão que criamos
+import { supabase } from "../lib/supabase";
 import styles from "./page.module.css";
 
-// --- TIPAGENS GLOBAIS ---
+// --- TIPAGENS ---
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
 type Screen = "onboarding" | "loading" | "plan";
@@ -24,7 +24,12 @@ interface Plano {
   dica_do_dia: string; refeicoes: Refeicao[];
 }
 
-// --- ÍCONES ORIGINAIS (MANTIDOS) ---
+// --- ÍCONES ---
+const IcoSwap = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/>
+  </svg>
+);
 function IcoEmagrecer() { return (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/><line x1="12" y1="13" x2="12" y2="18"/><line x1="9.5" y1="17" x2="14.5" y2="17"/></svg>); }
 function IcoMassa() { return (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="6" height="9" rx="1"/><line x1="4" y1="9" x2="20" y2="9"/><circle cx="4" cy="7" r="2"/><circle cx="20" cy="7" r="2"/></svg>); }
 function IcoManutencao() { return (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="3" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="21"/><line x1="3" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="21" y2="12"/></svg>); }
@@ -34,7 +39,7 @@ function IcoVegetariano() { return (<svg width="22" height="22" viewBox="0 0 24 
 function IcoVegano() { return (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3C7 3 3 8 3 12c0 4 3 7 7 8"/><path d="M12 3c5 0 9 5 9 9 0 4-3 7-7 8"/><line x1="12" y1="3" x2="12" y2="21"/></svg>); }
 function IcoLowCarb() { return (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/><circle cx="19" cy="17" r="2"/><line x1="19" y1="15" x2="19" y2="10"/></svg>); }
 
-// --- DADOS FIXOS ---
+// --- DADOS ---
 const OBJETIVO_LABELS: Record<Objetivo, string> = { emagrecer: "Emagrecimento", massa: "Ganho de Massa", manutencao: "Manutenção", saude: "Saúde Geral" };
 const DIETA_LABELS: Record<Dieta, string> = { onivoro: "Onívoro", vegetariano: "Vegetariano", vegano: "Vegano", lowcarb: "Low Carb" };
 const OBJETIVOS = [
@@ -53,10 +58,8 @@ const MEAL_OPTIONS = [ { v: 1, sub: "Jejum Extremo" }, { v: 2, sub: "Jejum 16h" 
 const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [ { key: "calorias_totais", label: "kcal" }, { key: "proteinas_g", label: "proteína" }, { key: "carboidratos_g", label: "carbs" }, { key: "gorduras_g", label: "gorduras" } ];
 
 export default function Home() {
-  // LÓGICA DE LOGIN INTEGRADA
   const [user, setUser] = useState<any>(null);
   const [isPro, setIsPro] = useState(false);
-  
   const [objetivo, setObjetivo] = useState<Objetivo | null>(null);
   const [dieta, setDieta] = useState<Dieta | null>(null);
   const [refeicoes, setRefeicoes] = useState<number | null>(null);
@@ -68,15 +71,13 @@ export default function Home() {
   const [billing, setBilling] = useState<BillingType>("anual");
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+    supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         setUser(session.user);
-        const { data: perfil } = await supabase.from("profiles").select("plano").eq("id", session.user.id).single();
-        if (perfil?.plano === "pro") setIsPro(true);
+        supabase.from("profiles").select("plano").eq("id", session.user.id).single()
+          .then(({ data }) => { if (data?.plano === "pro") setIsPro(true); });
       }
-    };
-    checkAuth();
+    });
   }, []);
 
   const canGenerate = objetivo && dieta && refeicoes;
@@ -85,7 +86,7 @@ export default function Home() {
   const currentLink = billing === "mensal" ? "https://pay.cakto.com.br/3763j6f_853173" : "https://pay.cakto.com.br/bv6bu58"; 
 
   async function gerarPlano() {
-    if (!objetivo || !dieta || !refeicoes) return;
+    if (!canGenerate) return;
     setErro(null);
     setScreen("loading");
     try {
@@ -94,13 +95,12 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ objetivo, dieta, refeicoes }),
       });
-      if (!res.ok) throw new Error("Erro");
       const data: Plano = await res.json();
       setPlano(data);
       setOpenMeal(0);
       setScreen("plan");
-    } catch (err) {
-      setErro("Não consegui gerar o plano. Tente novamente.");
+    } catch {
+      setErro("Erro ao gerar. Tente novamente.");
       setScreen("onboarding");
     }
   }
@@ -111,12 +111,12 @@ export default function Home() {
         <div className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></div>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           {user ? (
-            <>
-              <span className={styles.tag} style={{background: isPro ? '#22c55e' : '#eee', color: isPro ? '#fff' : '#666', fontSize: '0.7rem'}}>{isPro ? "PRO" : "FREE"}</span>
-              <button onClick={() => supabase.auth.signOut().then(() => window.location.reload())} className={styles.swapBtn} style={{fontSize: '0.75rem'}}>Sair</button>
-            </>
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+              <span className={styles.tag} style={{background: isPro ? '#22c55e' : '#f3f4f6', color: isPro ? '#fff' : '#666', fontSize: '0.7rem'}}>{isPro ? "PRO" : "FREE"}</span>
+              <button onClick={() => supabase.auth.signOut().then(() => window.location.reload())} className={styles.swapBtn}>Sair</button>
+            </div>
           ) : (
-            <a href="/login" className={styles.tag} style={{textDecoration: 'none', cursor: 'pointer', background: '#22c55e', color: '#fff'}}>Entrar</a>
+            <a href="/login" className={styles.btnPrimary} style={{padding: '6px 15px', fontSize: '0.8rem', textDecoration: 'none'}}>Entrar</a>
           )}
           <div className={styles.badge}>Beta</div>
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
               <div className={styles.heroLine} /><span className={styles.heroEyebrowText}>Inteligência Artificial Nutricional</span>
             </div>
             <h1 className={styles.heroTitle}>A sua <em className={styles.heroEm}>dieta perfeita</em><br />feita em segundos.</h1>
-            <p className={styles.heroSub}>Chega de dúvidas sobre o que comer. Selecione suas preferências abaixo e nossa IA criará um cardápio completo, focado no seu objetivo.</p>
+            <p className={styles.heroSub}>Selecione suas preferências abaixo e nossa IA criará um cardápio completo.</p>
             
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>01.</span><span className={styles.qLabel}>Qual é o seu objetivo?</span></div>
@@ -163,7 +163,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            {erro && <div className={styles.errMsg}>{erro}</div>}
             <button className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`} disabled={!canGenerate} onClick={gerarPlano}>Gerar meu plano</button>
           </div>
         )}
@@ -172,7 +171,6 @@ export default function Home() {
           <div className={styles.loadWrap}>
             <div className={styles.spinnerWrap}><div className={styles.spinner} /></div>
             <div className={styles.loadTitle}>Montando seu plano...</div>
-            <div className={styles.loadSub}>Buscando receitas e fotos dos pratos</div>
           </div>
         )}
 
@@ -182,46 +180,32 @@ export default function Home() {
               <div className={styles.metaRow}>
                 <span className={styles.tag}>{objetivo ? OBJETIVO_LABELS[objetivo] : ""}</span>
                 <span className={styles.tag}>{dieta ? DIETA_LABELS[dieta] : ""}</span>
-                <span className={`${styles.tag} ${styles.tagWarm}`}>{refeicoes} {refeicoes === 1 ? "refeição" : "refeições"}</span>
+                <span className={`${styles.tag} ${styles.tagWarm}`}>{refeicoes} refeições</span>
               </div>
               <h2 className={styles.planTitle}>{plano.titulo}</h2>
               <p className={styles.planSub}>{plano.subtitulo}</p>
-            </div>
-            <div className={styles.macrosCard}>
-              {MACRO_ITEMS.map(({ key, label }) => (
-                <div key={label} className={styles.macroItem}><span className={styles.macroVal}>{plano[key] as number}{key !== "calorias_totais" ? "g" : ""}</span><span className={styles.macroLbl}>{label}</span></div>
-              ))}
-            </div>
-
-            <div className={styles.tipCard}>
-              <div className={styles.tipIcon}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-              <div><div className={styles.tipTitle}>Dica do dia</div><p className={styles.tipText}>{plano.dica_do_dia}</p></div>
             </div>
 
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
                 <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
-                  <div className={styles.mealIconWrap}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
-                  <div className={styles.mealInfo}><div className={styles.mealName}>{r.nome}</div><div className={styles.mealTime}>{r.horario} - {r.prato}</div></div>
-                  <div className={styles.mealKcal}>{r.calorias}<span className={styles.kcalUnit}> kcal</span></div>
-                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>v</div>
+                  <div className={styles.mealInfo}><div className={styles.mealName}>{r.nome}</div><div className={styles.mealTime}>{r.prato}</div></div>
+                  <div className={styles.mealKcal}>{r.calorias} kcal</div>
                 </div>
                 {openMeal === i && (
                   <div className={styles.mealBody}>
-                    <img src={r.foto_url || ""} alt={r.prato} className={styles.dishPhoto} />
                     <div className={styles.mealBodyContent}>
-                      <div className={styles.dishTitle}>{r.prato}</div><p className={styles.dishDesc}>{r.descricao}</p>
                       <div className={styles.sectionLabel}>Ingredientes</div>
                       <ul className={styles.ingList}>
                         {r.ingredientes.map((ing, j) => (
                           <li key={j} className={styles.ingItem}>
-                            <div className={styles.ingLeft}><span className={styles.dot} /><span>{ing.item}</span></div>
-                            <button className={styles.swapBtn} onClick={() => isPro ? alert("Substituindo...") : setModalType("swap")}>substituir</button>
+                            <span>{ing.item}</span>
+                            <button className={styles.swapBtn} onClick={() => isPro ? null : setModalType("swap")}>
+                              <IcoSwap /> substituir
+                            </button>
                           </li>
                         ))}
                       </ul>
-                      <div className={styles.sectionLabel}>Modo de preparo</div>
-                      <div className={styles.prepSteps}>{(r.preparo || []).map((passo, k) => (<div key={k} className={styles.prepStep}><div className={styles.stepNum}>{k + 1}</div><span>{passo}</span></div>))}</div>
                     </div>
                   </div>
                 )}
@@ -230,31 +214,24 @@ export default function Home() {
 
             {!isPro && (
               <div className={styles.premiumBanner}>
-                <div className={styles.premiumHeader}><h3>Alcance seus objetivos mais rápido 🚀</h3><p>Desbloqueie o potencial completo do seu corpo com o Nutry.life Pro.</p></div>
-                <ul className={styles.premiumFeatures}>
-                  <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg><span>Geração de planos <strong>ilimitados</strong></span></li>
-                  <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Substituição inteligente</strong></span></li>
-                </ul>
+                <h3>Assine o Nutry.life Pro 🚀</h3>
                 <div className={styles.billingToggle}>
                   <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
-                  <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
+                  <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual</button>
                 </div>
-                <div className={styles.premiumPrice}><span className={styles.priceCurrency}>R$</span><span className={styles.priceValue}>{currentPrice}</span><span className={styles.priceCents}>{currentCents}</span><span className={styles.pricePeriod}>/mês</span></div>
-                <a href={currentLink} target="_blank" rel="noopener noreferrer" className={styles.premiumBtn}>Assinar Nutry.life Pro Agora</a>
+                <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}/mês</div>
+                <a href={currentLink} className={styles.premiumBtn}>Desbloquear Agora</a>
               </div>
             )}
-            <div className={styles.actionRow}><button className={styles.btnPrimary} onClick={() => isPro ? setScreen("onboarding") : setModalType("new")}>Gerar Novo Plano</button></div>
           </div>
         )}
 
         {modalType && (
           <div className={styles.modalOverlay} onClick={() => setModalType(null)}>
-            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
-              <button className={styles.modalClose} onClick={() => setModalType(null)}>✕</button>
-              <div className={styles.modalIcon}>{modalType === "swap" ? "✨" : "🔒"}</div>
-              <h3 className={styles.modalTitle}>Recurso Premium</h3>
-              <p className={styles.modalText}>Este recurso é exclusivo para assinantes <strong>PRO</strong>.</p>
-              <a href={currentLink} target="_blank" rel="noopener noreferrer" className={styles.premiumBtn}>Desbloquear Agora</a>
+            <div className={styles.modalContent}>
+              <h3>🔒 Recurso Pro</h3>
+              <p>A substituição inteligente é exclusiva para assinantes.</p>
+              <a href={currentLink} className={styles.premiumBtn}>Ver Planos</a>
             </div>
           </div>
         )}
