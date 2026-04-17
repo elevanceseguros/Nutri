@@ -435,35 +435,66 @@
   margin-top: 4px;
 }
 
+/* --- DICA DO DIA PREMIUM (ESTILO INSIGHT) --- */
 .tipCard {
   display: flex;
-  gap: 1.2rem;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  padding: 1.5rem;
-  border-radius: 16px;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #fde68a;
+  padding: 2rem 1.8rem;
+  border-radius: 20px;
   margin-bottom: 3rem;
-  align-items: flex-start;
+  align-items: center;
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brilho de fundo flutuante */
+.tipCard::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 150px; height: 150px;
+  background: rgba(251, 191, 36, 0.4);
+  filter: blur(40px);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .tipIcon {
-  color: #3b82f6;
+  background: white;
+  color: #d97706;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.15);
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .tipTitle {
-  font-weight: 800;
-  color: #1e3a8a;
-  margin-bottom: 6px;
-  font-size: 1.05rem;
+  font-weight: 900;
+  color: #92400e;
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
 }
 
 .tipText {
-  color: #1e3a8a;
-  font-size: 0.95rem;
+  color: #b45309;
+  font-size: 1.05rem;
   margin: 0;
-  line-height: 1.5;
-  font-weight: 500;
+  line-height: 1.6;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================================
@@ -643,22 +674,38 @@
   border-radius: 50%;
 }
 
+/* --- BOTÃO SUBSTITUIR PREMIUM --- */
 .swapBtn {
-  background: #f3f4f6;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 8px 14px;
+  border-radius: 99px;
   font-size: 0.85rem;
-  font-weight: 700;
-  color: #4b5563;
+  font-weight: 800;
+  color: #6b7280;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .swapBtn:hover {
-  background: #e5e7eb;
-  color: #111827;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-color: #86efac;
+  color: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -4px rgba(34, 197, 94, 0.2);
+}
+
+.swapBtn svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.swapBtn:hover svg {
+  transform: rotate(180deg);
 }
 
 .prepSteps {
