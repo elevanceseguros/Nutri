@@ -199,18 +199,16 @@ export default function Home() {
 
         {/* --- TELA 1: ONBOARDING --- */}
         {screen === "onboarding" && (
-          <div className="fade-up">
-            <div className={styles.heroEyebrow}>
+          <div className={styles.heroEyebrow}>
               <div className={styles.heroLine} />
-              <span className={styles.heroEyebrowText}>Seu plano de hoje</span>
+              <span className={styles.heroEyebrowText}>Inteligência Artificial Nutricional</span>
             </div>
             <h1 className={styles.heroTitle}>
-              Você decide<br />
-              <em className={styles.heroEm}>quantas refeições</em><br />
-              vai fazer.
+              A sua <em className={styles.heroEm}>dieta perfeita</em><br />
+              feita em segundos.
             </h1>
             <p className={styles.heroSub}>
-              Receitas brasileiras de verdade, com modo de preparo e substituição de ingredientes na hora.
+              Chega de dúvidas sobre o que comer. Selecione suas preferências abaixo e nossa IA criará um cardápio completo, focado no seu objetivo.
             </p>
 
             <div className={styles.qBlock}>
