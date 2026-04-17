@@ -565,8 +565,76 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.prepStep {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.stepNum {
+  background: #111827;
+  color: white;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.miniMacros {
+  display: flex;
+  gap: 1.5rem;
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: #6b7280;
+  flex-wrap: wrap;
+}
+
+.mm strong {
+  color: #111827;
+}
+
+.actionRow {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btnSecondary {
+  flex: 1;
+  background: white;
+  border: 2px solid #e5e7eb;
+  padding: 1.2rem;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.actionRow .btnPrimary {
+  margin-top: 0;
+  flex: 2;
+}
+
 /* =========================================
-   SESSÃO DE CHECKOUT / UPSELL PRO (CORREÇÃO)
+   SESSÃO DE CHECKOUT / UPSELL PRO
    ========================================= */
 .premiumBanner {
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
@@ -738,6 +806,7 @@
   margin-bottom: 32px;
   font-size: 1.1rem;
 }
+
 /* =========================================
    TOGGLE MENSAL / ANUAL
    ========================================= */
