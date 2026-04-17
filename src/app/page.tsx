@@ -22,10 +22,10 @@ interface Plano {
 
 const OBJETIVO_LABELS: Record<Objetivo, string> = {
   emagrecer: "Emagrecimento", massa: "Ganho de Massa",
-  manutencao: "Manutenção", saude: "Saúde Geral",
+  manutencao: "Manutencao", saude: "Saude Geral",
 };
 const DIETA_LABELS: Record<Dieta, string> = {
-  onivoro: "Onívoro", vegetariano: "Vegetariano",
+  onivoro: "Onivoro", vegetariano: "Vegetariano",
   vegano: "Vegano", lowcarb: "Low Carb",
 };
 
@@ -60,7 +60,7 @@ export default function Home() {
       setOpenMeal(0);
       setScreen("plan");
     } catch {
-      setErro("Não consegui gerar o plano. Tente novamente.");
+      setErro("Nao consegui gerar o plano. Tente novamente.");
       setScreen("onboarding");
     }
   }
@@ -88,25 +88,25 @@ export default function Home() {
               <span className={styles.heroEyebrowText}>Seu plano de hoje</span>
             </div>
             <h1 className={styles.heroTitle}>
-              Você decide<br />
-              <em className={styles.heroEm}>quantas refeições</em><br />
+              Voce decide<br />
+              <em className={styles.heroEm}>quantas refeicoes</em><br />
               vai fazer.
             </h1>
             <p className={styles.heroSub}>
-              Receitas brasileiras de verdade, com modo de preparo e substituição de ingredientes na hora.
+              Receitas brasileiras de verdade, com modo de preparo e substituicao de ingredientes na hora.
             </p>
 
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}>
                 <span className={styles.qNum}>01.</span>
-                <span className={styles.qLabel}>Qual é o seu objetivo?</span>
+                <span className={styles.qLabel}>Qual e o seu objetivo?</span>
               </div>
               <div className={styles.qGrid}>
                 {([
-                  ["emagrecer","🔥","Emagrecer","Deficit calórico"],
-                  ["massa","💪","Ganhar massa","Superávit proteico"],
-                  ["manutencao","⚖️","Manutenção","Saúde geral"],
-                  ["saude","🌿","Saúde","Bem-estar"],
+                  ["emagrecer","🔥","Emagrecer","Deficit calorico"],
+                  ["massa","💪","Ganhar massa","Superavit proteico"],
+                  ["manutencao","⚖️","Manutencao","Saude geral"],
+                  ["saude","🌿","Saude","Bem-estar"],
                 ] as [Objetivo,string,string,string][]).map(([v,ic,lb,sub]) => (
                   <button key={v} className={`${styles.qBtn} ${objetivo===v ? styles.qBtnActive : ""}`} onClick={()=>setObjetivo(v)}>
                     <span className={styles.qBtnIcon}>{ic}</span>
@@ -120,11 +120,11 @@ export default function Home() {
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}>
                 <span className={styles.qNum}>02.</span>
-                <span className={styles.qLabel}>Preferência alimentar</span>
+                <span className={styles.qLabel}>Preferencia alimentar</span>
               </div>
               <div className={styles.qGrid}>
                 {([
-                  ["onivoro","🥩","Onívoro","Sem restrição"],
+                  ["onivoro","🥩","Onivoro","Sem restricao"],
                   ["vegetariano","🥚","Vegetariano","Sem carnes"],
                   ["vegano","🌱","Vegano","100% vegetal"],
                   ["lowcarb","🥑","Low Carb","Menos carboidrato"],
@@ -141,10 +141,10 @@ export default function Home() {
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}>
                 <span className={styles.qNum}>03.</span>
-                <span className={styles.qLabel}>Quantas refeições hoje?</span>
+                <span className={styles.qLabel}>Quantas refeicoes hoje?</span>
               </div>
               <div className={styles.mealsGrid}>
-                {([[1,"OMAD"],[2,"16:8"],[3,"Clássico"],[4,"+Lanches"],[5,"Fracionado"]] as [number,string][]).map(([v,sub]) => (
+                {([[1,"OMAD"],[2,"16:8"],[3,"Classico"],[4,"+Lanches"],[5,"Fracionado"]] as [number,string][]).map(([v,sub]) => (
                   <button key={v} className={`${styles.mealBtn} ${refeicoes===v ? styles.qBtnActive : ""}`} onClick={()=>setRefeicoes(v)}>
                     <span className={styles.mealNum}>{v}</span>
                     <span className={styles.mealSub}>{sub}</span>
@@ -153,14 +153,14 @@ export default function Home() {
               </div>
             </div>
 
-            {erro && <div className={styles.errMsg}>⚠️ {erro}</div>}
+            {erro && <div className={styles.errMsg}>{erro}</div>}
 
             <button
               className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`}
               disabled={!canGenerate}
               onClick={gerarPlano}
             >
-              Gerar meu plano →
+              Gerar meu plano
             </button>
           </div>
         )}
@@ -182,7 +182,7 @@ export default function Home() {
                 <span className={styles.tag}>{objetivo ? OBJETIVO_LABELS[objetivo] : ""}</span>
                 <span className={styles.tag}>{dieta ? DIETA_LABELS[dieta] : ""}</span>
                 <span className={`${styles.tag} ${styles.tagWarm}`}>
-                  {refeicoes} {refeicoes === 1 ? "refeição" : "refeições"}
+                  {refeicoes} {refeicoes === 1 ? "refeicao" : "refeicoes"}
                 </span>
               </div>
               <h2 className={styles.planTitle}>{plano.titulo}</h2>
@@ -192,7 +192,7 @@ export default function Home() {
             <div className={styles.macrosCard}>
               {([
                 ["calorias_totais","kcal"],
-                ["proteinas_g","proteína"],
+                ["proteinas_g","proteina"],
                 ["carboidratos_g","carbs"],
                 ["gorduras_g","gorduras"]
               ] as [keyof Plano,string][]).map(([k,lbl]) => (
@@ -215,31 +215,21 @@ export default function Home() {
 
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
-                <div
-                  className={styles.mealHead}
-                  onClick={() => setOpenMeal(openMeal === i ? -1 : i)}
-                >
-                  <div className={styles.mealIconWrap}>
-                    {MEAL_ICONS[i] || "🍽️"}
-                  </div>
+                <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
+                  <div className={styles.mealIconWrap}>{MEAL_ICONS[i] || "🍽️"}</div>
                   <div className={styles.mealInfo}>
                     <div className={styles.mealName}>{r.nome}</div>
-                    <div className={styles.mealTime}>{r.horario} · {r.prato}</div>
+                    <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
                   </div>
-                  <div className={styles.mealKcal}>
-                    {r.calorias}<span className={styles.kcalUnit}> kcal</span>
-                  </div>
-                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>▾</div>
+                  <div className={styles.mealKcal}>{r.calorias}<span className={styles.kcalUnit}> kcal</span></div>
+                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>v</div>
                 </div>
-
                 {openMeal === i && (
                   <div className={styles.mealBody}>
                     {r.foto_url ? (
                       <img src={r.foto_url} alt={r.prato} className={styles.dishPhoto} />
                     ) : (
-                      <div className={styles.dishPhotoPlaceholder}>
-                        {MEAL_ICONS[i] || "🍽️"}
-                      </div>
+                      <div className={styles.dishPhotoPlaceholder}>{MEAL_ICONS[i] || "🍽️"}</div>
                     )}
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
@@ -255,56 +245,11 @@ export default function Home() {
                                 <span className={styles.dot} />
                                 <span>{isSwapped ? ing.substituto : ing.item}</span>
                               </div>
-                              <button
-                                className={`${styles.swapBtn} ${isSwapped ? styles.swapped : ""}`}
-                                onClick={() => toggleSwap(i, j)}
-                              >
-                                {isSwapped ? "↩ original" : "substituir"}
+                              <button className={`${styles.swapBtn} ${isSwapped ? styles.swapped : ""}`} onClick={() => toggleSwap(i, j)}>
+                                {isSwapped ? "original" : "substituir"}
                               </button>
                             </li>
                           );
                         })}
                       </ul>
                       <div className={styles.sectionLabel}>Modo de preparo</div>
-                      <div className={styles.prepSteps}>
-                        {(r.preparo || []).map((passo, k) => (
-                          <div key={k} className={styles.prepStep}>
-                            <div className={styles.stepNum}>{k + 1}</div>
-                            <span>{passo}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className={styles.miniMacros}>
-                        <span className={styles.mm}>Proteína: <strong>{r.proteinas_g}g</strong></span>
-                        <span className={styles.mm}>Carbs: <strong>{r.carboidratos_g}g</strong></span>
-                        <span className={styles.mm}>Gorduras: <strong>{r.gorduras_g}g</strong></span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-
-            
-              href="https://pay.cakto.com.br/853173"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.btnPro}
-            >
-              ✨ Assinar NutriJejum Pro — R$ 19,90/mês
-            </a>
-
-            <div className={styles.actionRow}>
-              <button className={styles.btnSecondary} onClick={() => setScreen("onboarding")}>
-                ← Refazer
-              </button>
-              <button className={styles.btnPrimary} onClick={gerarPlano}>
-                Novo plano →
-              </button>
-            </div>
-          </div>
-        )}
-      </main>
-    </>
-  );
-}
