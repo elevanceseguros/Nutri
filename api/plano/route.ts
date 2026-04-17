@@ -50,7 +50,7 @@ Crie exatamente ${refeicoes} refeição(ões). Cada ingrediente DEVE ter item e 
       }]
     });
 
-    const raw = message.content[0].text.trim().replace(/```json|```/g, "").trim();
+    const raw = (message.content[0] as { text: string }).text.trim().replace(/```json|```/g, "").trim();
     const plano = JSON.parse(raw);
 
     const UNSPLASH_KEY = process.env.UNSPLASH_ACCESS_KEY;
