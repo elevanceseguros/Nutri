@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
+import React from "react";
 
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
@@ -103,10 +104,26 @@ export default function Home() {
               </div>
               <div className={styles.qGrid}>
                 {([
-                  ["emagrecer","🔥","Emagrecer","Deficit calorico"],
-                  ["massa","💪","Ganhar massa","Superavit proteico"],
-                  ["manutencao","⚖️","Manutencao","Saude geral"],
-                  ["saude","🌿","Saude","Bem-estar"],
+                  {([
+  ["emagrecer",
+    <svg key="e" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/><line x1="12" y1="13" x2="12" y2="18"/><line x1="9.5" y1="17" x2="14.5" y2="17"/></svg>,
+    "Emagrecer","Deficit calorico"],
+  ["massa",
+    <svg key="m" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8h12"/><path d="M4 8a2 2 0 100-4 2 2 0 000 4z"/><path d="M20 8a2 2 0 100-4 2 2 0 000 4z"/><rect x="9" y="8" width="6" height="10" rx="1"/></svg>,
+    "Ganhar massa","Superavit proteico"],
+  ["manutencao",
+    <svg key="mt" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><path d="M5 16l7 5 7-5"/></svg>,
+    "Manutencao","Saude geral"],
+  ["saude",
+    <svg key="s" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 3 14 3 8a5 5 0 0110-1 5 5 0 0110 1c0 6-9 13-9 13z"/></svg>,
+    "Saude","Bem-estar"],
+] as [Objetivo, React.ReactNode, string, string][]).map(([v,ic,lb,sub]) => (
+  <button key={v} className={styles.qBtn + (objetivo===v ? " " + styles.qBtnActive : "")} onClick={()=>setObjetivo(v)}>
+    <span className={styles.qBtnIcon}>{ic}</span>
+    <span className={styles.qBtnLabel}>{lb}</span>
+    <span className={styles.qBtnSub}>{sub}</span>
+  </button>
+))}
                 ] as [Objetivo,string,string,string][]).map(([v,ic,lb,sub]) => (
                   <button key={v} className={styles.qBtn + (objetivo===v ? " " + styles.qBtnActive : "")} onClick={()=>setObjetivo(v)}>
                     <span className={styles.qBtnIcon}>{ic}</span>
@@ -124,10 +141,26 @@ export default function Home() {
               </div>
               <div className={styles.qGrid}>
                 {([
-                  ["onivoro","🥩","Onivoro","Sem restricao"],
-                  ["vegetariano","🥚","Vegetariano","Sem carnes"],
-                  ["vegano","🌱","Vegano","100% vegetal"],
-                  ["lowcarb","🥑","Low Carb","Menos carboidrato"],
+{([
+  ["onivoro",
+    <svg key="on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8c0 4-3 7-6 9-3-2-6-5-6-9a6 6 0 0112 0z"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
+    "Onivoro","Sem restricao"],
+  ["vegetariano",
+    <svg key="vg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="12" rx="6" ry="9"/><line x1="12" y1="3" x2="12" y2="21"/></svg>,
+    "Vegetariano","Sem carnes"],
+  ["vegano",
+    <svg key="ve" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3C8 3 4 7 4 12c0 3 2 6 5 7.5"/><path d="M12 3c4 0 8 4 8 9 0 3-2 6-5 7.5"/><line x1="12" y1="3" x2="12" y2="21"/></svg>,
+    "Vegano","100% vegetal"],
+  ["lowcarb",
+    <svg key="lc" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12h18M3 6h18M3 18h12"/><circle cx="19" cy="18" r="2"/><line x1="19" y1="16" x2="19" y2="12"/></svg>,
+    "Low Carb","Menos carboidrato"],
+] as [Dieta, React.ReactNode, string, string][]).map(([v,ic,lb,sub]) => (
+  <button key={v} className={styles.qBtn + (dieta===v ? " " + styles.qBtnActive : "")} onClick={()=>setDieta(v)}>
+    <span className={styles.qBtnIcon}>{ic}</span>
+    <span className={styles.qBtnLabel}>{lb}</span>
+    <span className={styles.qBtnSub}>{sub}</span>
+  </button>
+))}
                 ] as [Dieta,string,string,string][]).map(([v,ic,lb,sub]) => (
                   <button key={v} className={styles.qBtn + (dieta===v ? " " + styles.qBtnActive : "")} onClick={()=>setDieta(v)}>
                     <span className={styles.qBtnIcon}>{ic}</span>
