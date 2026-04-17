@@ -1014,5 +1014,119 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  border-bottom: 1px dashed #/* Cabeçalho das Refeições com Destaque */
+.mealCategory {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #22c55e;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.mealDishTitle {
+  font-size: 1.3rem; /* Destaque para o nome do prato */
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.mealKcalBadge {
+  text-align: right;
+  background: #f9fafb;
+  padding: 8px 12px;
+  border-radius: 12px;
+  min-width: 75px;
+}
+
+.mealKcalBadge strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+.mealKcalBadge span {
+  font-size: 0.7rem;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.mealHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  border: 1px solid #f3f4f6;
+  margin-bottom: 12px;
+}
+
+.mealHead:hover {
+  background: #fcfdfc;
+  border-color: #e5e7eb;
+}
+
+/* Botão Substituir (Pílula) */
+.swapBtn {
+  background: #f3f4f6;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 50px;
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.swapBtn:hover {
+  background: #fff;
+  border-color: #22c55e;
+  color: #22c55e;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
+}
+
+.ingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
   border-bottom: 1px dashed #eee;
 }
+
+.ingLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+/* Restante dos estilos originais do onboarding e banner... */
+.main { max-width: 600px; margin: 0 auto; padding: 20px; }
+.header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #fff; border-bottom: 1px solid #eee; }
+.logo { font-weight: 800; font-size: 1.5rem; }
+.logoAccent { color: #22c55e; }
+.btnPrimary { background: #22c55e; color: #fff; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.qBlock { margin-bottom: 30px; }
+.qGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
+.qBtn { padding: 15px; border-radius: 16px; border: 2px solid #f3f4f6; background: #fff; text-align: left; cursor: pointer; transition: 0.2s; }
+.qBtnActive { border-color: #22c55e; background: #f0fdf4; }
+.tag { padding: 4px 10px; border-radius: 8px; font-weight: 700; }
+.tagWarm { background: #fef3c7; color: #92400e; }
+.premiumBanner { margin-top: 40px; padding: 30px; border-radius: 24px; background: linear-gradient(135deg, #111827 0%, #1f2937 100%); color: #fff; text-align: center; }
+.premiumBtn { display: block; margin-top: 20px; padding: 16px; background: #22c55e; color: #fff; border-radius: 12px; text-decoration: none; font-weight: 700; }
