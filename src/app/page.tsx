@@ -97,26 +97,26 @@ function IcoLowCarb() {
   );
 }
 
-// --- DADOS FIXOS EXTRAÍDOS PARA EVITAR ERROS NO COMPILADOR ---
+// --- DADOS FIXOS EXTRAÍDOS ---
 const OBJETIVO_LABELS: Record<Objetivo, string> = {
   emagrecer: "Emagrecimento", massa: "Ganho de Massa",
-  manutencao: "Manutencao", saude: "Saude Geral",
+  manutencao: "Manutenção", saude: "Saúde Geral",
 };
 
 const DIETA_LABELS: Record<Dieta, string> = {
-  onivoro: "Onivoro", vegetariano: "Vegetariano",
+  onivoro: "Onívoro", vegetariano: "Vegetariano",
   vegano: "Vegano", lowcarb: "Low Carb",
 };
 
 const OBJETIVOS = [
-  { v: "emagrecer" as Objetivo, ic: IcoEmagrecer, lb: "Emagrecer", sub: "Deficit calorico" },
-  { v: "massa" as Objetivo, ic: IcoMassa, lb: "Ganhar massa", sub: "Superavit proteico" },
-  { v: "manutencao" as Objetivo, ic: IcoManutencao, lb: "Manutencao", sub: "Saude geral" },
-  { v: "saude" as Objetivo, ic: IcoSaude, lb: "Saude", sub: "Bem-estar" },
+  { v: "emagrecer" as Objetivo, ic: IcoEmagrecer, lb: "Emagrecer", sub: "Déficit calórico" },
+  { v: "massa" as Objetivo, ic: IcoMassa, lb: "Ganhar massa", sub: "Superávit proteico" },
+  { v: "manutencao" as Objetivo, ic: IcoManutencao, lb: "Manutenção", sub: "Saúde geral" },
+  { v: "saude" as Objetivo, ic: IcoSaude, lb: "Saúde", sub: "Bem-estar" },
 ];
 
 const DIETAS = [
-  { v: "onivoro" as Dieta, ic: IcoOnivoro, lb: "Onivoro", sub: "Sem restricao" },
+  { v: "onivoro" as Dieta, ic: IcoOnivoro, lb: "Onívoro", sub: "Sem restrição" },
   { v: "vegetariano" as Dieta, ic: IcoVegetariano, lb: "Vegetariano", sub: "Sem carnes" },
   { v: "vegano" as Dieta, ic: IcoVegano, lb: "Vegano", sub: "100% vegetal" },
   { v: "lowcarb" as Dieta, ic: IcoLowCarb, lb: "Low Carb", sub: "Menos carboidrato" },
@@ -125,14 +125,14 @@ const DIETAS = [
 const MEAL_OPTIONS = [
   { v: 1, sub: "OMAD" },
   { v: 2, sub: "16:8" },
-  { v: 3, sub: "Classico" },
+  { v: 3, sub: "Clássico" },
   { v: 4, sub: "+Lanches" },
   { v: 5, sub: "Fracionado" }
 ];
 
 const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
   { key: "calorias_totais", label: "kcal" },
-  { key: "proteinas_g", label: "proteina" },
+  { key: "proteinas_g", label: "proteína" },
   { key: "carboidratos_g", label: "carbs" },
   { key: "gorduras_g", label: "gorduras" }
 ];
@@ -154,7 +154,7 @@ export default function Home() {
 
   const canGenerate = objetivo && dieta && refeicoes;
 
- // Lógica dinâmica de preços e links baseada na escolha do Toggle
+  // Lógica dinâmica de preços e links baseada na escolha do Toggle
   const currentPrice = billing === "mensal" ? "19" : "9";
   const currentCents = billing === "mensal" ? ",97" : ",99";
   const currentLink = billing === "mensal" 
@@ -177,7 +177,7 @@ export default function Home() {
       setOpenMeal(0);
       setScreen("plan");
     } catch (err) {
-      setErro("Nao consegui gerar o plano. Tente novamente.");
+      setErro("Não consegui gerar o plano. Tente novamente.");
       setScreen("onboarding");
     }
   }
@@ -205,22 +205,22 @@ export default function Home() {
               <span className={styles.heroEyebrowText}>Seu plano de hoje</span>
             </div>
             <h1 className={styles.heroTitle}>
-              Voce decide<br />
-              <em className={styles.heroEm}>quantas refeicoes</em><br />
+              Você decide<br />
+              <em className={styles.heroEm}>quantas refeições</em><br />
               vai fazer.
             </h1>
             <p className={styles.heroSub}>
-              Receitas brasileiras de verdade, com modo de preparo e substituicao de ingredientes na hora.
+              Receitas brasileiras de verdade, com modo de preparo e substituição de ingredientes na hora.
             </p>
 
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}>
                 <span className={styles.qNum}>01.</span>
-                <span className={styles.qLabel}>Qual e o seu objetivo?</span>
+                <span className={styles.qLabel}>Qual é o seu objetivo?</span>
               </div>
               <div className={styles.qGrid}>
                 {OBJETIVOS.map(({ v, ic: Ic, lb, sub }) => (
-                  <button key={v} className={styles.qBtn + (objetivo === v ? " " + styles.qBtnActive : "")} onClick={() => setObjetivo(v)}>
+                  <button key={v} className={`${styles.qBtn} ${objetivo === v ? styles.qBtnActive : ""}`} onClick={() => setObjetivo(v)}>
                     <span className={styles.qBtnIcon}><Ic /></span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
@@ -232,11 +232,11 @@ export default function Home() {
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}>
                 <span className={styles.qNum}>02.</span>
-                <span className={styles.qLabel}>Preferencia alimentar</span>
+                <span className={styles.qLabel}>Preferência alimentar</span>
               </div>
               <div className={styles.qGrid}>
                 {DIETAS.map(({ v, ic: Ic, lb, sub }) => (
-                  <button key={v} className={styles.qBtn + (dieta === v ? " " + styles.qBtnActive : "")} onClick={() => setDieta(v)}>
+                  <button key={v} className={`${styles.qBtn} ${dieta === v ? styles.qBtnActive : ""}`} onClick={() => setDieta(v)}>
                     <span className={styles.qBtnIcon}><Ic /></span>
                     <span className={styles.qBtnLabel}>{lb}</span>
                     <span className={styles.qBtnSub}>{sub}</span>
@@ -248,11 +248,11 @@ export default function Home() {
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}>
                 <span className={styles.qNum}>03.</span>
-                <span className={styles.qLabel}>Quantas refeicoes hoje?</span>
+                <span className={styles.qLabel}>Quantas refeições hoje?</span>
               </div>
               <div className={styles.mealsGrid}>
                 {MEAL_OPTIONS.map(({ v, sub }) => (
-                  <button key={v} className={styles.mealBtn + (refeicoes === v ? " " + styles.qBtnActive : "")} onClick={() => setRefeicoes(v)}>
+                  <button key={v} className={`${styles.mealBtn} ${refeicoes === v ? styles.qBtnActive : ""}`} onClick={() => setRefeicoes(v)}>
                     <span className={styles.mealNum}>{v}</span>
                     <span className={styles.mealSub}>{sub}</span>
                   </button>
@@ -263,7 +263,7 @@ export default function Home() {
             {erro && <div className={styles.errMsg}>{erro}</div>}
 
             <button
-              className={styles.btnPrimary + (!canGenerate ? " " + styles.btnDisabled : "")}
+              className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`}
               disabled={!canGenerate}
               onClick={gerarPlano}
             >
@@ -290,8 +290,8 @@ export default function Home() {
               <div className={styles.metaRow}>
                 <span className={styles.tag}>{objetivo ? OBJETIVO_LABELS[objetivo] : ""}</span>
                 <span className={styles.tag}>{dieta ? DIETA_LABELS[dieta] : ""}</span>
-                <span className={styles.tag + " " + styles.tagWarm}>
-                  {refeicoes} {refeicoes === 1 ? "refeicao" : "refeicoes"}
+                <span className={`${styles.tag} ${styles.tagWarm}`}>
+                  {refeicoes} {refeicoes === 1 ? "refeição" : "refeições"}
                 </span>
               </div>
               <h2 className={styles.planTitle}>{plano.titulo}</h2>
@@ -336,7 +336,7 @@ export default function Home() {
                     <div className={styles.mealTime}>{r.horario} - {r.prato}</div>
                   </div>
                   <div className={styles.mealKcal}>{r.calorias}<span className={styles.kcalUnit}> kcal</span></div>
-                  <div className={styles.chevron + (openMeal === i ? " " + styles.chevronOpen : "")}>v</div>
+                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>v</div>
                 </div>
                 {openMeal === i && (
                   <div className={styles.mealBody}>
@@ -382,7 +382,7 @@ export default function Home() {
                         ))}
                       </div>
                       <div className={styles.miniMacros}>
-                        <span className={styles.mm}>Proteina: <strong>{r.proteinas_g}g</strong></span>
+                        <span className={styles.mm}>Proteína: <strong>{r.proteinas_g}g</strong></span>
                         <span className={styles.mm}>Carbs: <strong>{r.carboidratos_g}g</strong></span>
                         <span className={styles.mm}>Gorduras: <strong>{r.gorduras_g}g</strong></span>
                       </div>
@@ -471,4 +471,58 @@ export default function Home() {
                 {modalType === "swap" ? "✨" : "🔒"}
               </div>
               
-              <h3 className={styles.modal
+              <h3 className={styles.modalTitle}>Recurso Premium</h3>
+              
+              {modalType === "swap" ? (
+                <p className={styles.modalText}>
+                  A <strong>substituição inteligente de ingredientes</strong> analisa o prato e sugere a melhor alternativa mantendo os macros exatos.
+                </p>
+              ) : (
+                <p className={styles.modalText}>
+                  Você já atingiu seu limite de <strong>1 plano gratuito por semana</strong>. A geração ilimitada de cardápios é um benefício exclusivo.
+                </p>
+              )}
+
+              <p className={styles.modalTextHighlight}>
+                Escolha seu plano do Nutry.life Pro:
+              </p>
+
+              {/* SELETOR MENSAL/ANUAL NO MODAL */}
+              <div className={styles.billingToggle}>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("mensal")}
+                >
+                  Mensal
+                </button>
+                <button 
+                  className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`}
+                  onClick={() => setBilling("anual")}
+                >
+                  Anual <span className={styles.badgeDiscount}>-50%</span>
+                </button>
+              </div>
+
+              <div className={styles.premiumPrice} style={{marginBottom: "16px"}}>
+                <span className={styles.priceCurrency}>R$</span>
+                <span className={styles.priceValue}>{currentPrice}</span>
+                <span className={styles.priceCents}>{currentCents}</span>
+                <span className={styles.pricePeriod}>/mês</span>
+              </div>
+
+              <a
+                href={currentLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.premiumBtn}
+              >
+                Desbloquear Agora
+              </a>
+            </div>
+          </div>
+        )}
+        {/* --- FIM MODAL PRO --- */}
+      </main>
+    </React.Fragment>
+  );
+}
