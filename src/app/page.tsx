@@ -186,11 +186,26 @@ export default function Home() {
               <p className={styles.planSub}>{plano.subtitulo}</p>
             </div>
 
+            <div className={styles.macrosCard}>
+              {MACRO_ITEMS.map(({ key, label }) => (
+                <div key={label} className={styles.macroItem}><span className={styles.macroVal}>{plano[key] as number}{key !== "calorias_totais" ? "g" : ""}</span><span className={styles.macroLbl}>{label}</span></div>
+              ))}
+            </div>
+
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
                 <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
-                  <div className={styles.mealInfo}><div className={styles.mealName}>{r.nome}</div><div className={styles.mealTime}>{r.prato}</div></div>
-                  <div className={styles.mealKcal}>{r.calorias} kcal</div>
+                  <div className={styles.mealInfo}>
+                    <span className={styles.mealCategory}>{r.nome}</span>
+                    <h3 className={styles.mealDishTitle}>{r.prato}</h3>
+                  </div>
+                  <div className={styles.mealKcalBadge}>
+                    <strong>{r.calorias}</strong>
+                    <span>kcal</span>
+                  </div>
+                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </div>
                 </div>
                 {openMeal === i && (
                   <div className={styles.mealBody}>
@@ -199,13 +214,15 @@ export default function Home() {
                       <ul className={styles.ingList}>
                         {r.ingredientes.map((ing, j) => (
                           <li key={j} className={styles.ingItem}>
-                            <span>{ing.item}</span>
+                            <div className={styles.ingLeft}><span className={styles.dot} /><span>{ing.item}</span></div>
                             <button className={styles.swapBtn} onClick={() => isPro ? null : setModalType("swap")}>
                               <IcoSwap /> substituir
                             </button>
                           </li>
                         ))}
                       </ul>
+                      <div className={styles.sectionLabel}>Modo de preparo</div>
+                      <div className={styles.prepSteps}>{(r.preparo || []).map((passo, k) => (<div key={k} className={styles.prepStep}><div className={styles.stepNum}>{k + 1}</div><span>{passo}</span></div>))}</div>
                     </div>
                   </div>
                 )}
@@ -220,18 +237,21 @@ export default function Home() {
                   <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual</button>
                 </div>
                 <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}/mês</div>
-                <a href={currentLink} className={styles.premiumBtn}>Desbloquear Agora</a>
+                <a href={currentLink} target="_blank" rel="noopener noreferrer" className={styles.premiumBtn}>Desbloquear Agora</a>
               </div>
             )}
+            <div className={styles.actionRow}><button className={styles.btnPrimary} onClick={() => isPro ? setScreen("onboarding") : setModalType("new")}>Gerar Novo Plano</button></div>
           </div>
         )}
 
         {modalType && (
           <div className={styles.modalOverlay} onClick={() => setModalType(null)}>
-            <div className={styles.modalContent}>
-              <h3>🔒 Recurso Pro</h3>
-              <p>A substituição inteligente é exclusiva para assinantes.</p>
-              <a href={currentLink} className={styles.premiumBtn}>Ver Planos</a>
+            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+              <button className={styles.modalClose} onClick={() => setModalType(null)}>✕</button>
+              <div className={styles.modalIcon}>{modalType === "swap" ? "✨" : "🔒"}</div>
+              <h3 className={styles.modalTitle}>Recurso Premium</h3>
+              <p className={styles.modalText}>Este recurso é exclusivo para assinantes <strong>PRO</strong>.</p>
+              <a href={currentLink} target="_blank" rel="noopener noreferrer" className={styles.premiumBtn}>Desbloquear Agora</a>
             </div>
           </div>
         )}
