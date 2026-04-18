@@ -88,11 +88,33 @@ export default function Home() {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         setUser(session.user);
-        supabase.from("profiles").select("plano").eq("id", session.user.id).single()
-          .then(({ data }) => { if (data?.plano === "pro") setIsPro(true); });
+        checkPro(session.user.id);
       }
     });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser(session.user);
+        checkPro(session.user.id);
+      } else {
+        setUser(null);
+        setIsPro(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
+
+  async function checkPro(userId: string) {
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("plano")
+      .eq("id", userId)
+      .single();
+    console.log("checkPro:", data, error);
+    if (data?.plano === "pro") setIsPro(true);
+    else setIsPro(false);
+  }
 
   const canGenerate = objetivo && dieta && refeicoes;
   const currentPrice = billing === "mensal" ? "19" : "9";
@@ -250,7 +272,7 @@ export default function Home() {
                             <div className={styles.ingLeft}><span className={styles.dot} />{ing.item}</div>
                             <button
                               className={styles.swapBtn}
-                              onClick={() => isPro ? substituir(ing.item, i, j) : setModalType("swap")}
+                              onClick={() => substituir(ing.item, i, j)}
                             >
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/></svg> substituir
                             </button>
