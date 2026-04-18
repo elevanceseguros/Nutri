@@ -68,6 +68,29 @@ const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
   { key: "gorduras_g", label: "gorduras" }
 ];
 
+function getFingerprint() {
+  return btoa(`${navigator.userAgent}-${screen.width}x${screen.height}`);
+}
+
+function getStorageKey() {
+  return `nutry_gerou_${getFingerprint()}`;
+}
+
+function jaGerouHoje() {
+  try {
+    const hoje = new Date().toDateString();
+    return localStorage.getItem(getStorageKey()) === hoje;
+  } catch {
+    return false;
+  }
+}
+
+function marcarGerouHoje() {
+  try {
+    localStorage.setItem(getStorageKey(), new Date().toDateString());
+  } catch {}
+}
+
 export default function Home() {
   const [user, setUser] = useState<any>(null);
   const [isPro, setIsPro] = useState(false);
@@ -83,6 +106,7 @@ export default function Home() {
   const [swapIngrediente, setSwapIngrediente] = useState<{ item: string; refeicaoIdx: number; ingIdx: number } | null>(null);
   const [swapResultados, setSwapResultados] = useState<Substituto[]>([]);
   const [swapLoading, setSwapLoading] = useState(false);
+  const [jaGerou, setJaGerou] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -105,6 +129,12 @@ export default function Home() {
     return () => subscription.unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (!isPro && jaGerouHoje()) {
+      setJaGerou(true);
+    }
+  }, [isPro]);
+
   async function checkPro(userId: string) {
     const { data } = await supabase
       .from("profiles")
@@ -121,6 +151,13 @@ export default function Home() {
 
   async function gerarPlano() {
     if (!canGenerate) return;
+
+    if (!isPro && jaGerouHoje()) {
+      setJaGerou(true);
+      setModalType("newLocked");
+      return;
+    }
+
     setErro(null);
     setScreen("loading");
     try {
@@ -133,6 +170,11 @@ export default function Home() {
       setPlano(data);
       setOpenMeal(0);
       setScreen("plan");
+
+      if (!isPro) {
+        marcarGerouHoje();
+        setJaGerou(true);
+      }
     } catch {
       setErro("Erro ao gerar. Tente novamente.");
       setScreen("onboarding");
@@ -217,8 +259,16 @@ export default function Home() {
                 ))}
               </div>
             </div>
+
             {erro && <div className={styles.errMsg}>{erro}</div>}
-            <button className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`} disabled={!canGenerate} onClick={gerarPlano}>Gerar meu plano</button>
+
+            <button
+              className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`}
+              disabled={!canGenerate}
+              onClick={() => jaGerou && !isPro ? setModalType("newLocked") : gerarPlano()}
+            >
+              {jaGerou && !isPro ? "🔒 Limite diário atingido" : "Gerar meu plano"}
+            </button>
           </div>
         )}
 
@@ -282,17 +332,10 @@ export default function Home() {
                           style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
                         />
                         <div style={{
-                          position: 'absolute',
-                          bottom: '8px',
-                          right: '10px',
-                          background: 'rgba(0,0,0,0.45)',
-                          color: 'white',
-                          fontSize: '0.68rem',
-                          fontWeight: 600,
-                          padding: '3px 8px',
-                          borderRadius: '99px',
-                          backdropFilter: 'blur(4px)',
-                          letterSpacing: '0.3px'
+                          position: 'absolute', bottom: '8px', right: '10px',
+                          background: 'rgba(0,0,0,0.45)', color: 'white',
+                          fontSize: '0.68rem', fontWeight: 600, padding: '3px 8px',
+                          borderRadius: '99px', backdropFilter: 'blur(4px)', letterSpacing: '0.3px'
                         }}>
                           📷 Imagem ilustrativa
                         </div>
@@ -389,8 +432,8 @@ export default function Home() {
               ) : modalType === "newLocked" ? (
                 <>
                   <div className={styles.modalIcon}>🔒</div>
-                  <h3 className={styles.modalTitle}>Recurso Premium</h3>
-                  <p className={styles.modalText}>Geração de planos ilimitados é exclusiva para assinantes PRO.</p>
+                  <h3 className={styles.modalTitle}>Limite diário atingido</h3>
+                  <p className={styles.modalText}>Você já gerou seu plano gratuito de hoje. Assine o PRO para gerar planos ilimitados.</p>
                   <div className={styles.billingToggle}>
                     <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
                     <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
