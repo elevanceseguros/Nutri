@@ -235,16 +235,25 @@ export default function Home() {
 
             {!isPro && (
               <div className={styles.premiumBanner}>
+                <div className={styles.premiumBadgeTop}>✦ MAIS POPULAR</div>
                 <div className={styles.premiumHeader}>
                   <h3>🚀 Nutry.life PRO</h3>
-                  <p>Desbloqueie substituições e planos ilimitados.</p>
+                  <p>Pare de repetir o mesmo cardápio. <strong>Gere planos ilimitados</strong> e substitua qualquer ingrediente que não tiver em casa.</p>
+                </div>
+                <div className={styles.premiumFeatures}>
+                  <div className={styles.premiumFeatureItem}>✅ Planos ilimitados todo dia</div>
+                  <div className={styles.premiumFeatureItem}>✅ Substituição de ingredientes</div>
+                  <div className={styles.premiumFeatureItem}>✅ Todos os objetivos e dietas</div>
+                  <div className={styles.premiumFeatureItem}>✅ Cancele quando quiser</div>
                 </div>
                 <div className={styles.billingToggle}>
                   <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
                   <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
                 </div>
-                <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}/mês</div>
-                <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora</a>
+                {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
+                <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
+                <a href={currentLink} target="_blank" className={styles.premiumBtn}>Desbloquear PRO agora →</a>
+                <p className={styles.premiumFootnote}>Sem compromisso. Cancele quando quiser.</p>
               </div>
             )}
 
@@ -283,16 +292,24 @@ export default function Home() {
                     <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
                     <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
                   </div>
-                  <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}/mês</div>
-                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora</a>
+                  {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
+                  <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
+                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
                   <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
               ) : (
                 <>
                   <div className={styles.modalIcon}>🔒</div>
                   <h3 className={styles.modalTitle}>Recurso Premium</h3>
-                  <p className={styles.modalText}>Assine para liberar as substituições.</p>
-                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Desbloquear</a>
+                  <p className={styles.modalText}>Assine para liberar as substituições de ingredientes.</p>
+                  <div className={styles.billingToggle}>
+                    <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
+                    <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
+                  </div>
+                  {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
+                  <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
+                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Desbloquear PRO agora →</a>
+                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
               )}
             </div>
