@@ -22,6 +22,7 @@ interface Plano {
   proteinas_g: number; carboidratos_g: number; gorduras_g: number;
   dica_do_dia: string; refeicoes: Refeicao[];
 }
+interface Substituto { item: string; motivo: string; }
 
 function IcoEmagrecer() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/><line x1="12" y1="13" x2="12" y2="18"/><line x1="9.5" y1="17" x2="14.5" y2="17"/></svg>; }
 function IcoMassa() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="6" height="9" rx="1"/><line x1="4" y1="9" x2="20" y2="9"/><circle cx="4" cy="7" r="2"/><circle cx="20" cy="7" r="2"/></svg>; }
@@ -79,6 +80,9 @@ export default function Home() {
   const [openMeal, setOpenMeal] = useState<number>(0);
   const [modalType, setModalType] = useState<ModalType>(null);
   const [billing, setBilling] = useState<BillingType>("anual");
+  const [swapIngrediente, setSwapIngrediente] = useState<{ item: string; refeicaoIdx: number; ingIdx: number } | null>(null);
+  const [swapResultados, setSwapResultados] = useState<Substituto[]>([]);
+  const [swapLoading, setSwapLoading] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -113,6 +117,29 @@ export default function Home() {
       setErro("Erro ao gerar. Tente novamente.");
       setScreen("onboarding");
     }
+  }
+
+  async function substituir(ingrediente: string, refeicaoIdx: number, ingIdx: number) {
+    setSwapIngrediente({ item: ingrediente, refeicaoIdx, ingIdx });
+    setSwapResultados([]);
+    setSwapLoading(true);
+    setModalType("swap");
+    try {
+      const res = await fetch("/api/substituir", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ingrediente,
+          prato: plano?.refeicoes[refeicaoIdx].prato,
+          dieta,
+        }),
+      });
+      const data = await res.json();
+      setSwapResultados(data.substitutos || []);
+    } catch {
+      setSwapResultados([]);
+    }
+    setSwapLoading(false);
   }
 
   return (
@@ -221,7 +248,10 @@ export default function Home() {
                         {r.ingredientes.map((ing, j) => (
                           <li key={j} className={styles.ingItem}>
                             <div className={styles.ingLeft}><span className={styles.dot} />{ing.item}</div>
-                            <button className={styles.swapBtn} onClick={() => isPro ? alert("Substituindo...") : setModalType("swap")}>
+                            <button
+                              className={styles.swapBtn}
+                              onClick={() => isPro ? substituir(ing.item, i, j) : setModalType("swap")}
+                            >
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/></svg> substituir
                             </button>
                           </li>
@@ -299,17 +329,27 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  <div className={styles.modalIcon}>🔒</div>
-                  <h3 className={styles.modalTitle}>Recurso Premium</h3>
-                  <p className={styles.modalText}>Assine para liberar as substituições de ingredientes.</p>
-                  <div className={styles.billingToggle}>
-                    <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
-                    <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
-                  </div>
-                  {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
-                  <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
-                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Desbloquear PRO agora →</a>
-                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
+                  <div className={styles.modalIcon}>🔄</div>
+                  <h3 className={styles.modalTitle}>Substituir ingrediente</h3>
+                  <p className={styles.modalText}><strong>{swapIngrediente?.item}</strong></p>
+                  {swapLoading ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', padding: '1rem 0' }}>
+                      <div className={styles.spinner} />
+                      <div style={{ fontSize: '0.9rem', color: '#6b7280', fontWeight: 600 }}>Buscando substitutos...</div>
+                    </div>
+                  ) : swapResultados.length > 0 ? (
+                    <div style={{ textAlign: 'left', marginBottom: '1rem' }}>
+                      {swapResultados.map((s, idx) => (
+                        <div key={idx} style={{ padding: '10px 12px', background: '#f0fdf4', borderRadius: '12px', marginBottom: '8px', border: '1px solid #bbf7d0' }}>
+                          <div style={{ fontWeight: 800, color: '#166534', fontSize: '0.95rem' }}>{s.item}</div>
+                          <div style={{ fontSize: '0.82rem', color: '#15803d', marginTop: '2px' }}>{s.motivo}</div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className={styles.modalText}>Não foi possível buscar substitutos.</p>
+                  )}
+                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Fechar</button>
                 </>
               )}
             </div>
