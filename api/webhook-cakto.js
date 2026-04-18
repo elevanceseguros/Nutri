@@ -12,21 +12,13 @@ export default async function handler(req, res) {
 
   try {
     const body = req.body;
-    console.log("Cakto webhook recebido:", JSON.stringify(body));
+    console.log("Cakto webhook recebido — evento:", body?.event);
 
-    // Cakto envia o evento em diferentes campos dependendo da versão
-    const evento = body?.event || body?.type || body?.trigger || body?.status || "";
-    
-    // Email do cliente — Cakto pode enviar em diferentes lugares
-    const email = 
-      body?.customer?.email ||
+    const evento = body?.event || "";
+    const email =
       body?.data?.customer?.email ||
-      body?.buyer?.email ||
-      body?.data?.buyer?.email ||
-      body?.subscriber?.email ||
-      body?.data?.subscriber?.email ||
-      body?.email ||
-      body?.data?.email ||
+      body?.data?.subscription?.customer?.email ||
+      body?.customer?.email ||
       null;
 
     console.log("Evento:", evento, "| Email:", email);
@@ -38,33 +30,20 @@ export default async function handler(req, res) {
 
     // Eventos que ATIVAM o PRO
     const eventosAtivacao = [
-      "compra_aprovada",
-      "purchase.approved",
-      "payment.approved",
-      "order.paid",
-      "subscription.activated",
-      "subscription.created",
-      "assinatura_criada",
-      "assinatura_renovada",
-      "renovacao_assinatura",
-      "subscription.renewed",
-      "approved",
+      "purchase_approved",
+      "subscription_created",
+      "subscription_renewed",
     ];
 
-    // Eventos que CANCELAM o PRO (volta para free)
+    // Eventos que CANCELAM o PRO
     const eventosCancelamento = [
-      "assinatura_cancelada",
-      "subscription.cancelled",
-      "subscription.canceled",
-      "subscription.expired",
-      "reembolso",
+      "subscription_canceled",
+      "subscription_renewal_refused",
       "refund",
       "chargeback",
     ];
 
-    const eventoLower = evento.toLowerCase().replace(/\s/g, "_");
-
-    if (eventosAtivacao.some(e => eventoLower.includes(e) || e.includes(eventoLower))) {
+    if (eventosAtivacao.includes(evento)) {
       const { error } = await supabase
         .from("profiles")
         .update({ plano: "pro" })
@@ -79,7 +58,7 @@ export default async function handler(req, res) {
       return res.status(200).json({ success: true, plano: "pro", email });
     }
 
-    if (eventosCancelamento.some(e => eventoLower.includes(e) || e.includes(eventoLower))) {
+    if (eventosCancelamento.includes(evento)) {
       const { error } = await supabase
         .from("profiles")
         .update({ plano: "free" })
