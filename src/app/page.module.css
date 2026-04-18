@@ -258,6 +258,10 @@
   min-height: 60vh;
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .spinner {
   width: 56px;
   height: 56px;
