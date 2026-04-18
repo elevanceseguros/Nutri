@@ -106,14 +106,12 @@ export default function Home() {
   }, []);
 
   async function checkPro(userId: string) {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("profiles")
       .select("plano")
       .eq("id", userId)
       .single();
-    console.log("checkPro:", data, error);
-    if (data?.plano === "pro") setIsPro(true);
-    else setIsPro(false);
+    setIsPro(data?.plano === "pro");
   }
 
   const canGenerate = objetivo && dieta && refeicoes;
@@ -225,14 +223,14 @@ export default function Home() {
         )}
 
         {screen === "loading" && (
-  <div className={styles.loadWrap}>
-    <div className={styles.spinner} />
-    <div className={styles.loadTitle}>Montando seu plano...</div>
-    <div style={{ fontSize: '0.85rem', color: '#9ca3af', fontWeight: 500, textAlign: 'center', maxWidth: '260px', lineHeight: 1.6 }}>
-      A IA está selecionando os melhores alimentos para o seu objetivo 🥦
-    </div>
-  </div>
-)}
+          <div className={styles.loadWrap}>
+            <div className={styles.spinner} />
+            <div className={styles.loadTitle}>Montando seu plano...</div>
+            <div style={{ fontSize: '0.85rem', color: '#9ca3af', fontWeight: 500, textAlign: 'center', maxWidth: '260px', lineHeight: 1.6 }}>
+              A IA está selecionando os melhores alimentos para o seu objetivo 🥦
+            </div>
+          </div>
+        )}
 
         {screen === "plan" && plano && (
           <div className="fade-up">
@@ -266,8 +264,18 @@ export default function Home() {
                 </div>
                 {openMeal === i && (
                   <div className={styles.mealBody}>
+                    {r.foto_url && (
+                      <img
+                        src={r.foto_url}
+                        alt={r.prato}
+                        style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                      />
+                    )}
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
+                      {r.descricao && (
+                        <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '0.5rem', lineHeight: 1.5 }}>{r.descricao}</p>
+                      )}
                       <div className={styles.sectionLabel}>Ingredientes</div>
                       <ul className={styles.ingList}>
                         {r.ingredientes.map((ing, j) => (
@@ -282,6 +290,19 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
+                      {r.preparo && r.preparo.length > 0 && (
+                        <>
+                          <div className={styles.sectionLabel}>Modo de preparo</div>
+                          <ol className={styles.preparoList}>
+                            {r.preparo.map((passo, k) => (
+                              <li key={k} className={styles.preparoItem}>
+                                <span className={styles.preparoNum}>{k + 1}</span>
+                                <span>{passo}</span>
+                              </li>
+                            ))}
+                          </ol>
+                        </>
+                      )}
                     </div>
                   </div>
                 )}
@@ -352,22 +373,19 @@ export default function Home() {
                   <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
                   <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
-            ) : (
-  <>
-    <div className={styles.modalIcon}>🔒</div>
-    <h3 className={styles.modalTitle}>Recurso Premium</h3>
-    <p className={styles.modalText}>Substituição de ingredientes é exclusiva para assinantes PRO.</p>
-    <div className={styles.billingToggle}>
-      <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
-      <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
-    </div>
-    {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
-    <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
-    <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
-    <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
-  </>
-)}
-                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Fechar</button>
+              ) : (
+                <>
+                  <div className={styles.modalIcon}>🔒</div>
+                  <h3 className={styles.modalTitle}>Recurso Premium</h3>
+                  <p className={styles.modalText}>Substituição de ingredientes é exclusiva para assinantes PRO.</p>
+                  <div className={styles.billingToggle}>
+                    <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
+                    <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
+                  </div>
+                  {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
+                  <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
+                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
+                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
               )}
             </div>
