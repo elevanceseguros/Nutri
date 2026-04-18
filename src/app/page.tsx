@@ -252,6 +252,16 @@ export default function Home() {
               ))}
             </div>
 
+            {plano.dica_do_dia && (
+              <div className={styles.tipCard}>
+                <div className={styles.tipIcon}>💡</div>
+                <div>
+                  <div className={styles.tipTitle}>Dica do dia</div>
+                  <div className={styles.tipText}>{plano.dica_do_dia}</div>
+                </div>
+              </div>
+            )}
+
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
                 <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
@@ -265,11 +275,28 @@ export default function Home() {
                 {openMeal === i && (
                   <div className={styles.mealBody}>
                     {r.foto_url && (
-                      <img
-                        src={r.foto_url}
-                        alt={r.prato}
-                        style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                      />
+                      <div style={{ position: 'relative' }}>
+                        <img
+                          src={r.foto_url}
+                          alt={r.prato}
+                          style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+                        />
+                        <div style={{
+                          position: 'absolute',
+                          bottom: '8px',
+                          right: '10px',
+                          background: 'rgba(0,0,0,0.45)',
+                          color: 'white',
+                          fontSize: '0.68rem',
+                          fontWeight: 600,
+                          padding: '3px 8px',
+                          borderRadius: '99px',
+                          backdropFilter: 'blur(4px)',
+                          letterSpacing: '0.3px'
+                        }}>
+                          📷 Imagem ilustrativa
+                        </div>
+                      </div>
                     )}
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
