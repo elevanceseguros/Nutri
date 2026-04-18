@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import styles from "./page.module.css";
 
-// --- TIPAGENS GLOBAIS ---
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
 type Screen = "onboarding" | "loading" | "plan";
@@ -24,7 +23,6 @@ interface Plano {
   dica_do_dia: string; refeicoes: Refeicao[];
 }
 
-// --- ÍCONES ORIGINAIS ---
 function IcoEmagrecer() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/><line x1="12" y1="13" x2="12" y2="18"/><line x1="9.5" y1="17" x2="14.5" y2="17"/></svg>; }
 function IcoMassa() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="6" height="9" rx="1"/><line x1="4" y1="9" x2="20" y2="9"/><circle cx="4" cy="7" r="2"/><circle cx="20" cy="7" r="2"/></svg>; }
 function IcoManutencao() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="3" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="21"/><line x1="3" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="21" y2="12"/></svg>; }
@@ -95,7 +93,7 @@ export default function Home() {
   const canGenerate = objetivo && dieta && refeicoes;
   const currentPrice = billing === "mensal" ? "19" : "9";
   const currentCents = billing === "mensal" ? ",97" : ",99";
-  const currentLink = billing === "mensal" ? "https://pay.cakto.com.br/3763j6f_853173" : "https://pay.cakto.com.br/bv6bu58"; 
+  const currentLink = billing === "mensal" ? "https://pay.cakto.com.br/3763j6f_853173" : "https://pay.cakto.com.br/bv6bu58";
 
   async function gerarPlano() {
     if (!canGenerate) return;
@@ -177,7 +175,12 @@ export default function Home() {
           </div>
         )}
 
-        {screen === "loading" && <div className={styles.loadWrap}><div className={styles.spinner} /><div className={styles.loadTitle}>Montando seu plano...</div></div>}
+        {screen === "loading" && (
+          <div className={styles.loadWrap}>
+            <div className={styles.spinner} />
+            <div className={styles.loadTitle}>Montando seu plano...</div>
+          </div>
+        )}
 
         {screen === "plan" && plano && (
           <div className="fade-up">
@@ -192,16 +195,22 @@ export default function Home() {
 
             <div className={styles.macrosCard}>
               {MACRO_ITEMS.map(({ key, label }) => (
-                <div key={label} className={styles.macroItem}><span className={styles.macroVal}>{plano[key] as number}{key !== "calorias_totais" ? "g" : ""}</span><span className={styles.macroLbl}>{label}</span></div>
+                <div key={label} className={styles.macroItem}>
+                  <span className={styles.macroVal}>{plano[key] as number}{key !== "calorias_totais" ? "g" : ""}</span>
+                  <span className={styles.macroLbl}>{label}</span>
+                </div>
               ))}
             </div>
 
             {plano.refeicoes.map((r, i) => (
               <div key={i} className={styles.mealCard}>
                 <div className={styles.mealHead} onClick={() => setOpenMeal(openMeal === i ? -1 : i)}>
-                  <div className={styles.mealInfo}><div className={styles.mealName}>{r.nome}</div><div className={styles.mealTime}>{r.horario} - {r.prato}</div></div>
+                  <div className={styles.mealInfo}>
+                    <div className={styles.mealName}>{r.nome}</div>
+                    <div className={styles.mealTime}>{r.horario} — {r.prato}</div>
+                  </div>
                   <div className={styles.mealKcal}>{r.calorias} <span className={styles.kcalUnit}>kcal</span></div>
-                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>v</div>
+                  <div className={`${styles.chevron} ${openMeal === i ? styles.chevronOpen : ""}`}>▾</div>
                 </div>
                 {openMeal === i && (
                   <div className={styles.mealBody}>
@@ -235,17 +244,38 @@ export default function Home() {
                 <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora</a>
               </div>
             )}
+
+            <button className={styles.btnSecondary} onClick={() => setModalType("new")}>
+              ↺ Gerar novo plano
+            </button>
           </div>
         )}
 
         {modalType && (
           <div className={styles.modalOverlay} onClick={() => setModalType(null)}>
-            <div className={styles.modalContent}>
+            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
               <button className={styles.modalClose} onClick={() => setModalType(null)}>✕</button>
-              <div className={styles.modalIcon}>🔒</div>
-              <h3 className={styles.modalTitle}>Recurso Premium</h3>
-              <p className={styles.modalText}>Assine para liberar as substituições.</p>
-              <a href={currentLink} target="_blank" className={styles.premiumBtn}>Desbloquear</a>
+
+              {modalType === "new" ? (
+                <>
+                  <div className={styles.modalIcon}>🔄</div>
+                  <h3 className={styles.modalTitle}>Gerar novo plano?</h3>
+                  <p className={styles.modalText}>Suas escolhas atuais serão mantidas. Um novo cardápio será criado do zero.</p>
+                  <button className={styles.premiumBtn} onClick={() => { setModalType(null); gerarPlano(); }}>
+                    Sim, gerar novo
+                  </button>
+                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>
+                    Cancelar
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className={styles.modalIcon}>🔒</div>
+                  <h3 className={styles.modalTitle}>Recurso Premium</h3>
+                  <p className={styles.modalText}>Assine para liberar as substituições.</p>
+                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Desbloquear</a>
+                </>
+              )}
             </div>
           </div>
         )}
