@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Nutry.life — Seu Plano Alimentar do Dia",
   description: "Monte seu cardápio personalizado em segundos com IA. Receitas brasileiras reais, modo de preparo e substituição de ingredientes. Grátis.",
   keywords: "plano alimentar, jejum intermitente, cardápio saudável, dieta low carb, receitas brasileiras, nutry life",
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥗</text></svg>",
+  },
   openGraph: {
     title: "Nutry.life — Plano Alimentar com IA",
     description: "Você decide quantas refeições faz. A IA monta seu cardápio com receitas brasileiras reais.",
