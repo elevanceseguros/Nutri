@@ -352,28 +352,21 @@ export default function Home() {
                   <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
                   <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
-              ) : (
-                <>
-                  <div className={styles.modalIcon}>🔄</div>
-                  <h3 className={styles.modalTitle}>Substituir ingrediente</h3>
-                  <p className={styles.modalText}><strong>{swapIngrediente?.item}</strong></p>
-                  {swapLoading ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', padding: '1rem 0' }}>
-                      <div className={styles.spinner} />
-                      <div style={{ fontSize: '0.9rem', color: '#6b7280', fontWeight: 600 }}>Buscando substitutos...</div>
-                    </div>
-                  ) : swapResultados.length > 0 ? (
-                    <div style={{ textAlign: 'left', marginBottom: '1rem' }}>
-                      {swapResultados.map((s, idx) => (
-                        <div key={idx} style={{ padding: '10px 12px', background: '#f0fdf4', borderRadius: '12px', marginBottom: '8px', border: '1px solid #bbf7d0' }}>
-                          <div style={{ fontWeight: 800, color: '#166534', fontSize: '0.95rem' }}>{s.item}</div>
-                          <div style={{ fontSize: '0.82rem', color: '#15803d', marginTop: '2px' }}>{s.motivo}</div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className={styles.modalText}>Não foi possível buscar substitutos.</p>
-                  )}
+            ) : (
+  <>
+    <div className={styles.modalIcon}>🔒</div>
+    <h3 className={styles.modalTitle}>Recurso Premium</h3>
+    <p className={styles.modalText}>Substituição de ingredientes é exclusiva para assinantes PRO.</p>
+    <div className={styles.billingToggle}>
+      <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
+      <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
+    </div>
+    {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
+    <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
+    <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
+    <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
+  </>
+)}
                   <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Fechar</button>
                 </>
               )}
