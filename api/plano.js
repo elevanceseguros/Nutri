@@ -35,9 +35,9 @@ Responda APENAS JSON puro sem markdown:
     {
       "nome": "string",
       "horario": "string",
-      "emoji": "string",
       "prato": "string",
       "descricao": "string",
+      "foto_busca": "palavras em inglês simples para buscar foto do prato ex: grilled chicken rice beans",
       "ingredientes": [
         { "item": "200g frango grelhado", "substituto": "200g atum em lata" }
       ],
@@ -46,7 +46,6 @@ Responda APENAS JSON puro sem markdown:
         "Grelhe por 10 minutos de cada lado",
         "Sirva com o arroz e a salada"
       ],
-      "youtube_busca": "nome do prato para buscar no youtube receita",
       "calorias": 600,
       "proteinas_g": 50,
       "carboidratos_g": 55,
@@ -61,27 +60,20 @@ Crie exatamente ${refeicoes} refeição(ões). Cada ingrediente DEVE ter item e 
     const raw = message.content[0].text.trim().replace(/```json|```/g, "").trim();
     const plano = JSON.parse(raw);
 
-    const YOUTUBE_KEY = process.env.YOUTUBE_API_KEY;
-    if (YOUTUBE_KEY) {
+    const UNSPLASH_KEY = process.env.UNSPLASH_ACCESS_KEY;
+    if (UNSPLASH_KEY) {
       for (const ref of plano.refeicoes) {
         try {
-          const query = encodeURIComponent(`receita ${ref.youtube_busca} fácil`);
-          const ytRes = await fetch(
-            `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=1&key=${YOUTUBE_KEY}`
+          const query = encodeURIComponent(ref.foto_busca || ref.prato);
+          const resp = await fetch(
+            `https://api.unsplash.com/search/photos?query=${query}&per_page=1&orientation=landscape&client_id=${UNSPLASH_KEY}`
           );
-          const ytData = await ytRes.json();
-          if (ytData.items && ytData.items.length > 0) {
-            const video = ytData.items[0];
-            ref.video = {
-              id: video.id.videoId,
-              titulo: video.snippet.title,
-              canal: video.snippet.channelTitle,
-              thumb: video.snippet.thumbnails.medium.url,
-              url: `https://www.youtube.com/watch?v=${video.id.videoId}`
-            };
+          const data = await resp.json();
+          if (data?.results?.length > 0) {
+            ref.foto_url = data.results[0].urls.regular;
           }
         } catch (e) {
-          console.log("YouTube erro:", e);
+          console.log("Unsplash erro:", e);
         }
       }
     }
