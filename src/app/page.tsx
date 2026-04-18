@@ -275,7 +275,7 @@ export default function Home() {
                             <div className={styles.ingLeft}><span className={styles.dot} />{ing.item}</div>
                             <button
                               className={styles.swapBtn}
-                              onClick={() => substituir(ing.item, i, j)}
+                              onClick={() => isPro ? substituir(ing.item, i, j) : setModalType("swap")}
                             >
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/></svg> substituir
                             </button>
