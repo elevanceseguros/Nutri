@@ -68,6 +68,25 @@ const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
   { key: "gorduras_g", label: "gorduras" }
 ];
 
+const BLOG_POSTS = [
+  {
+    slug: "o-que-comer-no-jejum-intermitente-16-8",
+    titulo: "O que comer no jejum intermitente 16:8 — guia completo",
+    descricao: "Descubra o que comer, quando comer e o que evitar no jejum 16:8.",
+    tempo: "8 min",
+    tag: "Jejum Intermitente",
+    emoji: "⏰",
+  },
+  {
+    slug: "low-carb-para-iniciantes",
+    titulo: "Low carb para iniciantes: o que é, como começar e cardápio",
+    descricao: "Guia completo para quem quer começar a dieta low carb do zero.",
+    tempo: "10 min",
+    tag: "Low Carb",
+    emoji: "🥑",
+  },
+];
+
 function getFingerprint() {
   return btoa(`${navigator.userAgent}-${screen.width}x${screen.height}`);
 }
@@ -78,11 +97,8 @@ function getStorageKey() {
 
 function jaGerouHoje() {
   try {
-    const hoje = new Date().toDateString();
-    return localStorage.getItem(getStorageKey()) === hoje;
-  } catch {
-    return false;
-  }
+    return localStorage.getItem(getStorageKey()) === new Date().toDateString();
+  } catch { return false; }
 }
 
 function marcarGerouHoje() {
@@ -110,37 +126,21 @@ export default function Home() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) {
-        setUser(session.user);
-        checkPro(session.user.id);
-      }
+      if (session?.user) { setUser(session.user); checkPro(session.user.id); }
     });
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session?.user) {
-        setUser(session.user);
-        checkPro(session.user.id);
-      } else {
-        setUser(null);
-        setIsPro(false);
-      }
+      if (session?.user) { setUser(session.user); checkPro(session.user.id); }
+      else { setUser(null); setIsPro(false); }
     });
-
     return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
-    if (!isPro && jaGerouHoje()) {
-      setJaGerou(true);
-    }
+    if (!isPro && jaGerouHoje()) setJaGerou(true);
   }, [isPro]);
 
   async function checkPro(userId: string) {
-    const { data } = await supabase
-      .from("profiles")
-      .select("plano")
-      .eq("id", userId)
-      .single();
+    const { data } = await supabase.from("profiles").select("plano").eq("id", userId).single();
     setIsPro(data?.plano === "pro");
   }
 
@@ -151,13 +151,7 @@ export default function Home() {
 
   async function gerarPlano() {
     if (!canGenerate) return;
-
-    if (!isPro && jaGerouHoje()) {
-      setJaGerou(true);
-      setModalType("newLocked");
-      return;
-    }
-
+    if (!isPro && jaGerouHoje()) { setJaGerou(true); setModalType("newLocked"); return; }
     setErro(null);
     setScreen("loading");
     try {
@@ -170,11 +164,7 @@ export default function Home() {
       setPlano(data);
       setOpenMeal(0);
       setScreen("plan");
-
-      if (!isPro) {
-        marcarGerouHoje();
-        setJaGerou(true);
-      }
+      if (!isPro) { marcarGerouHoje(); setJaGerou(true); }
     } catch {
       setErro("Erro ao gerar. Tente novamente.");
       setScreen("onboarding");
@@ -190,25 +180,23 @@ export default function Home() {
       const res = await fetch("/api/substituir", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ingrediente,
-          prato: plano?.refeicoes[refeicaoIdx].prato,
-          dieta,
-        }),
+        body: JSON.stringify({ ingrediente, prato: plano?.refeicoes[refeicaoIdx].prato, dieta }),
       });
       const data = await res.json();
       setSwapResultados(data.substitutos || []);
-    } catch {
-      setSwapResultados([]);
-    }
+    } catch { setSwapResultados([]); }
     setSwapLoading(false);
   }
 
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></div>
-        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+        <a href="/" className={styles.logo} style={{ textDecoration: 'none' }}>Nutry<span className={styles.logoAccent}>.life</span></a>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <a href="/blog" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#6b7280', textDecoration: 'none', transition: 'color 0.2s' }}
+            onMouseEnter={e => (e.target as HTMLElement).style.color = '#22c55e'}
+            onMouseLeave={e => (e.target as HTMLElement).style.color = '#6b7280'}
+          >Blog</a>
           {user ? (
             <button onClick={() => supabase.auth.signOut().then(() => window.location.reload())} className={styles.swapBtn}>Sair</button>
           ) : (
@@ -228,7 +216,7 @@ export default function Home() {
             <p className={styles.heroSub}>Chega de dúvidas sobre o que comer. Selecione suas preferências abaixo.</p>
 
             <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}><span className={styles.qNum}>01.</span> <span className={styles.qLabel}>Qual é o seu objetivo?</span></div>
+              <div className={styles.qLabelRow}><span className={styles.qNum}>01.</span><span className={styles.qLabel}>Qual é o seu objetivo?</span></div>
               <div className={styles.qGrid}>
                 {OBJETIVOS.map(({ v, ic: Ic, lb, sub }) => (
                   <button key={v} className={`${styles.qBtn} ${objetivo === v ? styles.qBtnActive : ""}`} onClick={() => setObjetivo(v)}>
@@ -239,7 +227,7 @@ export default function Home() {
             </div>
 
             <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}><span className={styles.qNum}>02.</span> <span className={styles.qLabel}>Preferência alimentar</span></div>
+              <div className={styles.qLabelRow}><span className={styles.qNum}>02.</span><span className={styles.qLabel}>Preferência alimentar</span></div>
               <div className={styles.qGrid}>
                 {DIETAS.map(({ v, ic: Ic, lb, sub }) => (
                   <button key={v} className={`${styles.qBtn} ${dieta === v ? styles.qBtnActive : ""}`} onClick={() => setDieta(v)}>
@@ -250,7 +238,7 @@ export default function Home() {
             </div>
 
             <div className={styles.qBlock}>
-              <div className={styles.qLabelRow}><span className={styles.qNum}>03.</span> <span className={styles.qLabel}>Quantas refeições hoje?</span></div>
+              <div className={styles.qLabelRow}><span className={styles.qNum}>03.</span><span className={styles.qLabel}>Quantas refeições hoje?</span></div>
               <div className={styles.qGrid}>
                 {MEAL_OPTIONS.map(({ v, ic: Ic, lb, sub }) => (
                   <button key={v} className={`${styles.qBtn} ${refeicoes === v ? styles.qBtnActive : ""}`} onClick={() => setRefeicoes(v)}>
@@ -261,7 +249,6 @@ export default function Home() {
             </div>
 
             {erro && <div className={styles.errMsg}>{erro}</div>}
-
             <button
               className={`${styles.btnPrimary} ${!canGenerate ? styles.btnDisabled : ""}`}
               disabled={!canGenerate}
@@ -269,6 +256,43 @@ export default function Home() {
             >
               {jaGerou && !isPro ? "🔒 Limite diário atingido" : "Gerar meu plano"}
             </button>
+
+            {/* Seção Blog */}
+            <div style={{ marginTop: '4rem' }}>
+              <div className={styles.qLabelRow} style={{ marginBottom: '1.5rem' }}>
+                <div className={styles.heroLine} />
+                <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#111827', letterSpacing: '-0.3px' }}>
+                  Blog Nutry.life — <em style={{ color: '#22c55e', fontStyle: 'normal' }}>Aprenda mais</em>
+                </span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.25rem' }}>
+                {BLOG_POSTS.map((post) => (
+                  <a key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
+                    <div className={styles.mealCard} style={{ padding: 0 }}>
+                      <div style={{ padding: '1.25rem 1.5rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.6rem', flexWrap: 'wrap' }}>
+                          <span className={styles.tag}>{post.tag}</span>
+                          <span style={{ fontSize: '0.8rem', color: '#9ca3af', fontWeight: 600 }}>{post.tempo} de leitura</span>
+                        </div>
+                        <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                          <span style={{ fontSize: '2rem', flexShrink: 0 }}>{post.emoji}</span>
+                          <div>
+                            <div style={{ fontWeight: 800, color: '#111827', fontSize: '1rem', marginBottom: '4px', lineHeight: 1.3 }}>{post.titulo}</div>
+                            <div style={{ fontSize: '0.88rem', color: '#6b7280', fontWeight: 500, lineHeight: 1.5 }}>{post.descricao}</div>
+                          </div>
+                        </div>
+                        <div style={{ marginTop: '0.75rem', fontSize: '0.88rem', fontWeight: 700, color: '#16a34a' }}>
+                          Ler artigo →
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <a href="/blog" className={styles.btnSecondary} style={{ textDecoration: 'none', display: 'block', textAlign: 'center', color: '#16a34a', borderColor: '#86efac' }}>
+                Ver todos os artigos →
+              </a>
+            </div>
           </div>
         )}
 
@@ -326,35 +350,21 @@ export default function Home() {
                   <div className={styles.mealBody}>
                     {r.foto_url && (
                       <div style={{ position: 'relative' }}>
-                        <img
-                          src={r.foto_url}
-                          alt={r.prato}
-                          style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-                        />
-                        <div style={{
-                          position: 'absolute', bottom: '8px', right: '10px',
-                          background: 'rgba(0,0,0,0.45)', color: 'white',
-                          fontSize: '0.68rem', fontWeight: 600, padding: '3px 8px',
-                          borderRadius: '99px', backdropFilter: 'blur(4px)', letterSpacing: '0.3px'
-                        }}>
+                        <img src={r.foto_url} alt={r.prato} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+                        <div style={{ position: 'absolute', bottom: '8px', right: '10px', background: 'rgba(0,0,0,0.45)', color: 'white', fontSize: '0.68rem', fontWeight: 600, padding: '3px 8px', borderRadius: '99px', backdropFilter: 'blur(4px)', letterSpacing: '0.3px' }}>
                           📷 Imagem ilustrativa
                         </div>
                       </div>
                     )}
                     <div className={styles.mealBodyContent}>
                       <div className={styles.dishTitle}>{r.prato}</div>
-                      {r.descricao && (
-                        <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '0.5rem', lineHeight: 1.5 }}>{r.descricao}</p>
-                      )}
+                      {r.descricao && <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '0.5rem', lineHeight: 1.5 }}>{r.descricao}</p>}
                       <div className={styles.sectionLabel}>Ingredientes</div>
                       <ul className={styles.ingList}>
                         {r.ingredientes.map((ing, j) => (
                           <li key={j} className={styles.ingItem}>
                             <div className={styles.ingLeft}><span className={styles.dot} />{ing.item}</div>
-                            <button
-                              className={styles.swapBtn}
-                              onClick={() => isPro ? substituir(ing.item, i, j) : setModalType("swap")}
-                            >
+                            <button className={styles.swapBtn} onClick={() => isPro ? substituir(ing.item, i, j) : setModalType("swap")}>
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/></svg> substituir
                             </button>
                           </li>
@@ -403,10 +413,7 @@ export default function Home() {
               </div>
             )}
 
-            <button
-              className={styles.btnSecondary}
-              onClick={() => isPro ? setModalType("new") : setModalType("newLocked")}
-            >
+            <button className={styles.btnSecondary} onClick={() => isPro ? setModalType("new") : setModalType("newLocked")}>
               ↺ Gerar novo plano
             </button>
           </div>
@@ -422,12 +429,8 @@ export default function Home() {
                   <div className={styles.modalIcon}>🔄</div>
                   <h3 className={styles.modalTitle}>Gerar novo plano?</h3>
                   <p className={styles.modalText}>Suas escolhas atuais serão mantidas. Um novo cardápio será criado do zero.</p>
-                  <button className={styles.premiumBtn} onClick={() => { setModalType(null); gerarPlano(); }}>
-                    Sim, gerar novo
-                  </button>
-                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>
-                    Cancelar
-                  </button>
+                  <button className={styles.premiumBtn} onClick={() => { setModalType(null); gerarPlano(); }}>Sim, gerar novo</button>
+                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Cancelar</button>
                 </>
               ) : modalType === "newLocked" ? (
                 <>
