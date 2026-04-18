@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
 type Screen = "onboarding" | "loading" | "plan";
-type ModalType = "swap" | "new" | null;
+type ModalType = "swap" | "new" | "newLocked" | null;
 type BillingType = "mensal" | "anual";
 
 interface Ingrediente { item: string; substituto: string; }
@@ -235,7 +235,10 @@ export default function Home() {
 
             {!isPro && (
               <div className={styles.premiumBanner}>
-                <div className={styles.premiumHeader}><h3>🚀 Nutry.life PRO</h3><p>Desbloqueie substituições ilimitadas.</p></div>
+                <div className={styles.premiumHeader}>
+                  <h3>🚀 Nutry.life PRO</h3>
+                  <p>Desbloqueie substituições e planos ilimitados.</p>
+                </div>
                 <div className={styles.billingToggle}>
                   <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
                   <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
@@ -245,7 +248,10 @@ export default function Home() {
               </div>
             )}
 
-            <button className={styles.btnSecondary} onClick={() => setModalType("new")}>
+            <button
+              className={styles.btnSecondary}
+              onClick={() => isPro ? setModalType("new") : setModalType("newLocked")}
+            >
               ↺ Gerar novo plano
             </button>
           </div>
@@ -267,6 +273,19 @@ export default function Home() {
                   <button className={styles.btnSecondary} onClick={() => setModalType(null)}>
                     Cancelar
                   </button>
+                </>
+              ) : modalType === "newLocked" ? (
+                <>
+                  <div className={styles.modalIcon}>🔒</div>
+                  <h3 className={styles.modalTitle}>Recurso Premium</h3>
+                  <p className={styles.modalText}>Geração de planos ilimitados é exclusiva para assinantes PRO.</p>
+                  <div className={styles.billingToggle}>
+                    <button className={`${styles.toggleBtn} ${billing === "mensal" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("mensal")}>Mensal</button>
+                    <button className={`${styles.toggleBtn} ${billing === "anual" ? styles.toggleBtnActive : ""}`} onClick={() => setBilling("anual")}>Anual <span className={styles.badgeDiscount}>-50%</span></button>
+                  </div>
+                  <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}/mês</div>
+                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora</a>
+                  <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
               ) : (
                 <>
