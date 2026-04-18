@@ -728,3 +728,23 @@
     font-size: 2.5rem;
   }
 }
+.btnSecondary {
+  width: 100%;
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 99px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: block;
+}
+.btnSecondary:hover {
+  border-color: #22c55e;
+  color: #15803d;
+  background: #f0fdf4;
+}
