@@ -225,11 +225,14 @@ export default function Home() {
         )}
 
         {screen === "loading" && (
-          <div className={styles.loadWrap}>
-            <div className={styles.spinner} />
-            <div className={styles.loadTitle}>Montando seu plano...</div>
-          </div>
-        )}
+  <div className={styles.loadWrap}>
+    <div className={styles.spinner} />
+    <div className={styles.loadTitle}>Montando seu plano...</div>
+    <div style={{ fontSize: '0.85rem', color: '#9ca3af', fontWeight: 500, textAlign: 'center', maxWidth: '260px', lineHeight: 1.6 }}>
+      A IA está selecionando os melhores alimentos para o seu objetivo 🥦
+    </div>
+  </div>
+)}
 
         {screen === "plan" && plano && (
           <div className="fade-up">
