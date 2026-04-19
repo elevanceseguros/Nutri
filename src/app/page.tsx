@@ -31,7 +31,6 @@ function trackEvent(nome: string, params?: Record<string, any>) {
   }
 }
 
-// Categorização inteligente de ingredientes
 function categorizarIngrediente(item: string): string {
   const i = item.toLowerCase();
   if (/frango|carne|bife|peixe|atum|sardinha|salmão|tilápia|ovo|ovos|camarão|porco|bacon|presunto|peito|filé|patinho|alcatra/.test(i)) return "🥩 Proteínas";
@@ -53,7 +52,6 @@ function consolidarIngredientes(refeicoes: Refeicao[]): Record<string, string[]>
       todos.push(item);
     }
   }));
-
   const grupos: Record<string, string[]> = {};
   todos.forEach(item => {
     const cat = categorizarIngrediente(item);
@@ -112,9 +110,7 @@ const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
 const BLOG_POSTS = [
   { slug: "quantas-gramas-de-proteina-por-dia", titulo: "Quantas gramas de proteína preciso comer por dia?", descricao: "Tabela completa por peso e objetivo com fontes brasileiras acessíveis.", tempo: "9 min", tag: "Proteína", emoji: "💪" },
   { slug: "o-que-comer-no-jejum-intermitente-16-8", titulo: "O que comer no jejum intermitente 16:8 — guia completo", descricao: "Descubra o que comer, quando comer e o que evitar no jejum 16:8.", tempo: "8 min", tag: "Jejum Intermitente", emoji: "⏰" },
-  { slug: "low-carb-para-iniciantes", titulo: "Low carb para iniciantes: o que é, como começar e cardápio", descricao: "Guia completo para quem quer começar a dieta low carb do zero.", tempo: "10 min", tag: "Low Carb", emoji: "🥑" },
 ];
-
 
 function getFingerprint() { return btoa(`${navigator.userAgent}-${screen.width}x${screen.height}`); }
 function getStorageKey() { return `nutry_gerou_${getFingerprint()}`; }
@@ -141,6 +137,11 @@ export default function Home() {
   const [swapLoading, setSwapLoading] = useState(false);
   const [jaGerou, setJaGerou] = useState(false);
   const [itensMarcados, setItensMarcados] = useState<Set<string>>(new Set());
+
+  // Verifica logo ao montar se já gerou hoje
+  useEffect(() => {
+    if (jaGerouHoje()) setJaGerou(true);
+  }, []);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -187,6 +188,7 @@ export default function Home() {
       setItensMarcados(new Set());
       setScreen("plan");
       trackEvent("gerar_plano", { objetivo, dieta, refeicoes, sexo });
+      if (!isPro) { marcarGerouHoje(); setJaGerou(true); }
     } catch {
       setErro("Erro ao gerar. Tente novamente.");
       setScreen("onboarding");
@@ -235,16 +237,13 @@ export default function Home() {
 
   function compartilharWhatsApp() {
     const texto = gerarTextoLista();
-    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
-    window.open(url, "_blank");
+    window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, "_blank");
     trackEvent("compartilhar_lista", { canal: "whatsapp" });
   }
 
   function compartilharEmail() {
     const texto = gerarTextoLista().replace(/\*/g, "").replace(/_/g, "");
-    const assunto = "Lista de compras — Nutry.life";
-    const url = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(texto)}`;
-    window.location.href = url;
+    window.location.href = `mailto:?subject=${encodeURIComponent("Lista de compras — Nutry.life")}&body=${encodeURIComponent(texto)}`;
     trackEvent("compartilhar_lista", { canal: "email" });
   }
 
@@ -491,7 +490,6 @@ export default function Home() {
               </div>
             ))}
 
-            {/* Botão Lista de Compras */}
             <button
               className={styles.btnSecondary}
               style={{ borderColor: '#86efac', color: '#16a34a', marginBottom: '0.75rem' }}
@@ -533,7 +531,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* Modais */}
         {modalType && (
           <div className={styles.modalOverlay} onClick={() => setModalType(null)}>
             <div className={styles.modalContent} onClick={e => e.stopPropagation()} style={modalType === "lista" ? { maxHeight: '85vh', overflowY: 'auto' } : {}}>
@@ -548,21 +545,11 @@ export default function Home() {
                   <>
                     <div className={styles.modalIcon}>🛒</div>
                     <h3 className={styles.modalTitle}>Lista de compras</h3>
-                    <p className={styles.modalText}>
-                      Marque o que já tem em casa. Vamos enviar só o que falta.
-                    </p>
-
-                    {/* Progresso */}
+                    <p className={styles.modalText}>Marque o que já tem em casa. Vamos enviar só o que falta.</p>
                     <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '0.75rem 1rem', marginBottom: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#166534' }}>
-                        {marcados} de {totalItens} já tenho em casa
-                      </span>
-                      <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#16a34a' }}>
-                        {faltam} para comprar
-                      </span>
+                      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#166534' }}>{marcados} de {totalItens} já tenho</span>
+                      <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#16a34a' }}>{faltam} para comprar</span>
                     </div>
-
-                    {/* Grupos */}
                     {Object.entries(grupos).map(([cat, itens]) => (
                       <div key={cat} style={{ marginBottom: '1.25rem' }}>
                         <div style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>{cat}</div>
@@ -570,56 +557,25 @@ export default function Home() {
                           {itens.map((item, idx) => {
                             const marcado = itensMarcados.has(item);
                             return (
-                              <div
-                                key={idx}
-                                onClick={() => toggleItem(item)}
-                                style={{
-                                  display: 'flex', alignItems: 'center', gap: '10px',
-                                  padding: '0.7rem 1rem', borderRadius: '12px', cursor: 'pointer',
-                                  background: marcado ? '#f0fdf4' : 'white',
-                                  border: `1px solid ${marcado ? '#bbf7d0' : '#e5e7eb'}`,
-                                  transition: 'all 0.15s',
-                                }}
-                              >
-                                <div style={{
-                                  width: '20px', height: '20px', borderRadius: '6px', flexShrink: 0,
-                                  background: marcado ? '#22c55e' : 'white',
-                                  border: `2px solid ${marcado ? '#22c55e' : '#d1d5db'}`,
-                                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                  transition: 'all 0.15s',
-                                }}>
+                              <div key={idx} onClick={() => toggleItem(item)} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '0.7rem 1rem', borderRadius: '12px', cursor: 'pointer', background: marcado ? '#f0fdf4' : 'white', border: `1px solid ${marcado ? '#bbf7d0' : '#e5e7eb'}`, transition: 'all 0.15s' }}>
+                                <div style={{ width: '20px', height: '20px', borderRadius: '6px', flexShrink: 0, background: marcado ? '#22c55e' : 'white', border: `2px solid ${marcado ? '#22c55e' : '#d1d5db'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.15s' }}>
                                   {marcado && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>}
                                 </div>
-                                <span style={{
-                                  fontSize: '0.9rem', fontWeight: 600,
-                                  color: marcado ? '#9ca3af' : '#374151',
-                                  textDecoration: marcado ? 'line-through' : 'none',
-                                  transition: 'all 0.15s',
-                                }}>{item}</span>
+                                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: marcado ? '#9ca3af' : '#374151', textDecoration: marcado ? 'line-through' : 'none', transition: 'all 0.15s' }}>{item}</span>
                               </div>
                             );
                           })}
                         </div>
                       </div>
                     ))}
-
-                    {/* Botões compartilhar */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1rem', position: 'sticky', bottom: 0, background: 'white', paddingTop: '1rem', borderTop: '1px solid #f3f4f6' }}>
                       {faltam > 0 ? (
                         <>
-                          <button
-                            onClick={compartilharWhatsApp}
-                            className={styles.premiumBtn}
-                            style={{ background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-                          >
+                          <button onClick={compartilharWhatsApp} className={styles.premiumBtn} style={{ background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                             Enviar para o WhatsApp
                           </button>
-                          <button
-                            onClick={compartilharEmail}
-                            className={styles.btnSecondary}
-                            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-                          >
+                          <button onClick={compartilharEmail} className={styles.btnSecondary} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                             Enviar por e-mail
                           </button>
