@@ -110,9 +110,11 @@ const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
 ];
 
 const BLOG_POSTS = [
+  { slug: "quantas-gramas-de-proteina-por-dia", titulo: "Quantas gramas de proteína preciso comer por dia?", descricao: "Tabela completa por peso e objetivo com fontes brasileiras acessíveis.", tempo: "9 min", tag: "Proteína", emoji: "💪" },
   { slug: "o-que-comer-no-jejum-intermitente-16-8", titulo: "O que comer no jejum intermitente 16:8 — guia completo", descricao: "Descubra o que comer, quando comer e o que evitar no jejum 16:8.", tempo: "8 min", tag: "Jejum Intermitente", emoji: "⏰" },
   { slug: "low-carb-para-iniciantes", titulo: "Low carb para iniciantes: o que é, como começar e cardápio", descricao: "Guia completo para quem quer começar a dieta low carb do zero.", tempo: "10 min", tag: "Low Carb", emoji: "🥑" },
 ];
+
 
 function getFingerprint() { return btoa(`${navigator.userAgent}-${screen.width}x${screen.height}`); }
 function getStorageKey() { return `nutry_gerou_${getFingerprint()}`; }
