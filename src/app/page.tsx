@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 
 type Objetivo = "emagrecer" | "massa" | "manutencao" | "saude";
 type Dieta = "onivoro" | "vegetariano" | "vegano" | "lowcarb";
+type Sexo = "masculino" | "feminino";
 type Screen = "onboarding" | "loading" | "plan";
 type ModalType = "swap" | "new" | "newLocked" | null;
 type BillingType = "mensal" | "anual";
@@ -35,6 +36,8 @@ function IcoLowCarb() { return <svg width="22" height="22" viewBox="0 0 24 24" f
 function IcoRelogio() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>; }
 function IcoGarfo() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>; }
 function IcoCamadas() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>; }
+function IcoMasculino() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5.5 5.5"/><path d="M15 5h4v4"/></svg>; }
+function IcoFeminino() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="10" r="5"/><line x1="12" y1="15" x2="12" y2="21"/><line x1="9" y1="19" x2="15" y2="19"/></svg>; }
 
 const OBJETIVO_LABELS: Record<Objetivo, string> = { emagrecer: "Emagrecimento", massa: "Ganho de Massa", manutencao: "Manutenção", saude: "Saúde Geral" };
 const DIETA_LABELS: Record<Dieta, string> = { onivoro: "Onívoro", vegetariano: "Vegetariano", vegano: "Vegano", lowcarb: "Low Carb" };
@@ -69,43 +72,14 @@ const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
 ];
 
 const BLOG_POSTS = [
-  {
-    slug: "o-que-comer-no-jejum-intermitente-16-8",
-    titulo: "O que comer no jejum intermitente 16:8 — guia completo",
-    descricao: "Descubra o que comer, quando comer e o que evitar no jejum 16:8.",
-    tempo: "8 min",
-    tag: "Jejum Intermitente",
-    emoji: "⏰",
-  },
-  {
-    slug: "low-carb-para-iniciantes",
-    titulo: "Low carb para iniciantes: o que é, como começar e cardápio",
-    descricao: "Guia completo para quem quer começar a dieta low carb do zero.",
-    tempo: "10 min",
-    tag: "Low Carb",
-    emoji: "🥑",
-  },
+  { slug: "o-que-comer-no-jejum-intermitente-16-8", titulo: "O que comer no jejum intermitente 16:8 — guia completo", descricao: "Descubra o que comer, quando comer e o que evitar no jejum 16:8.", tempo: "8 min", tag: "Jejum Intermitente", emoji: "⏰" },
+  { slug: "low-carb-para-iniciantes", titulo: "Low carb para iniciantes: o que é, como começar e cardápio", descricao: "Guia completo para quem quer começar a dieta low carb do zero.", tempo: "10 min", tag: "Low Carb", emoji: "🥑" },
 ];
 
-function getFingerprint() {
-  return btoa(`${navigator.userAgent}-${screen.width}x${screen.height}`);
-}
-
-function getStorageKey() {
-  return `nutry_gerou_${getFingerprint()}`;
-}
-
-function jaGerouHoje() {
-  try {
-    return localStorage.getItem(getStorageKey()) === new Date().toDateString();
-  } catch { return false; }
-}
-
-function marcarGerouHoje() {
-  try {
-    localStorage.setItem(getStorageKey(), new Date().toDateString());
-  } catch {}
-}
+function getFingerprint() { return btoa(`${navigator.userAgent}-${screen.width}x${screen.height}`); }
+function getStorageKey() { return `nutry_gerou_${getFingerprint()}`; }
+function jaGerouHoje() { try { return localStorage.getItem(getStorageKey()) === new Date().toDateString(); } catch { return false; } }
+function marcarGerouHoje() { try { localStorage.setItem(getStorageKey(), new Date().toDateString()); } catch {} }
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
@@ -113,6 +87,10 @@ export default function Home() {
   const [objetivo, setObjetivo] = useState<Objetivo | null>(null);
   const [dieta, setDieta] = useState<Dieta | null>(null);
   const [refeicoes, setRefeicoes] = useState<number | null>(null);
+  const [sexo, setSexo] = useState<Sexo | null>(null);
+  const [peso, setPeso] = useState<string>("");
+  const [altura, setAltura] = useState<string>("");
+  const [idade, setIdade] = useState<string>("");
   const [screen, setScreen] = useState<Screen>("onboarding");
   const [plano, setPlano] = useState<Plano | null>(null);
   const [erro, setErro] = useState<string | null>(null);
@@ -144,7 +122,10 @@ export default function Home() {
     setIsPro(data?.plano === "pro");
   }
 
-  const canGenerate = objetivo && dieta && refeicoes;
+  const dadosValidos = sexo && peso && altura && idade &&
+    Number(peso) > 0 && Number(altura) > 0 && Number(idade) > 0;
+  const canGenerate = objetivo && dieta && refeicoes && dadosValidos;
+
   const currentPrice = billing === "mensal" ? "19" : "9";
   const currentCents = billing === "mensal" ? ",97" : ",99";
   const currentLink = billing === "mensal" ? "https://pay.cakto.com.br/3763j6f_853173" : "https://pay.cakto.com.br/bv6bu58";
@@ -158,7 +139,7 @@ export default function Home() {
       const res = await fetch("/api/plano", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ objetivo, dieta, refeicoes }),
+        body: JSON.stringify({ objetivo, dieta, refeicoes, sexo, peso: Number(peso), altura: Number(altura), idade: Number(idade) }),
       });
       const data: Plano = await res.json();
       setPlano(data);
@@ -188,15 +169,27 @@ export default function Home() {
     setSwapLoading(false);
   }
 
+  const inputStyle = {
+    width: '100%',
+    padding: '0.9rem 1rem',
+    fontSize: '1rem',
+    border: '2px solid #e5e7eb',
+    borderRadius: '14px',
+    outline: 'none',
+    fontFamily: 'inherit',
+    fontWeight: 500,
+    color: '#111827',
+    background: 'white',
+    boxSizing: 'border-box' as const,
+    transition: 'border-color 0.2s',
+  };
+
   return (
     <>
       <header className={styles.header}>
         <a href="/" className={styles.logo} style={{ textDecoration: 'none' }}>Nutry<span className={styles.logoAccent}>.life</span></a>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <a href="/blog" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#6b7280', textDecoration: 'none', transition: 'color 0.2s' }}
-            onMouseEnter={e => (e.target as HTMLElement).style.color = '#22c55e'}
-            onMouseLeave={e => (e.target as HTMLElement).style.color = '#6b7280'}
-          >Blog</a>
+          <a href="/blog" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#6b7280', textDecoration: 'none' }}>Blog</a>
           {user ? (
             <button onClick={() => supabase.auth.signOut().then(() => window.location.reload())} className={styles.swapBtn}>Sair</button>
           ) : (
@@ -215,6 +208,7 @@ export default function Home() {
             <h1 className={styles.heroTitle}>A sua <em className={styles.heroEm}>dieta perfeita</em><br />feita em segundos.</h1>
             <p className={styles.heroSub}>Chega de dúvidas sobre o que comer. Selecione suas preferências abaixo.</p>
 
+            {/* 01. Objetivo */}
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>01.</span><span className={styles.qLabel}>Qual é o seu objetivo?</span></div>
               <div className={styles.qGrid}>
@@ -226,6 +220,7 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 02. Dieta */}
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>02.</span><span className={styles.qLabel}>Preferência alimentar</span></div>
               <div className={styles.qGrid}>
@@ -237,6 +232,7 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 03. Refeições */}
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>03.</span><span className={styles.qLabel}>Quantas refeições hoje?</span></div>
               <div className={styles.qGrid}>
@@ -245,6 +241,91 @@ export default function Home() {
                     <span className={styles.qBtnIcon}><Ic /></span><span className={styles.qBtnLabel}>{lb}</span><span className={styles.qBtnSub}>{sub}</span>
                   </button>
                 ))}
+              </div>
+            </div>
+
+            {/* 04. Dados pessoais */}
+            <div className={styles.qBlock}>
+              <div className={styles.qLabelRow}><span className={styles.qNum}>04.</span><span className={styles.qLabel}>Seus dados pessoais</span></div>
+
+              {/* Sexo */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <button
+                  className={`${styles.qBtn} ${sexo === 'masculino' ? styles.qBtnActive : ""}`}
+                  onClick={() => setSexo('masculino')}
+                >
+                  <span className={styles.qBtnIcon}><IcoMasculino /></span>
+                  <span className={styles.qBtnLabel}>Masculino</span>
+                  <span className={styles.qBtnSub}>Homem</span>
+                </button>
+                <button
+                  className={`${styles.qBtn} ${sexo === 'feminino' ? styles.qBtnActive : ""}`}
+                  onClick={() => setSexo('feminino')}
+                >
+                  <span className={styles.qBtnIcon}><IcoFeminino /></span>
+                  <span className={styles.qBtnLabel}>Feminino</span>
+                  <span className={styles.qBtnSub}>Mulher</span>
+                </button>
+              </div>
+
+              {/* Peso, Altura, Idade */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>
+                    Peso (kg)
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="70"
+                    min="30"
+                    max="250"
+                    value={peso}
+                    onChange={e => setPeso(e.target.value)}
+                    style={inputStyle}
+                    onFocus={e => e.target.style.borderColor = '#22c55e'}
+                    onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>
+                    Altura (cm)
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="170"
+                    min="100"
+                    max="250"
+                    value={altura}
+                    onChange={e => setAltura(e.target.value)}
+                    style={inputStyle}
+                    onFocus={e => e.target.style.borderColor = '#22c55e'}
+                    onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>
+                    Idade
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="30"
+                    min="10"
+                    max="100"
+                    value={idade}
+                    onChange={e => setIdade(e.target.value)}
+                    style={inputStyle}
+                    onFocus={e => e.target.style.borderColor = '#22c55e'}
+                    onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.tipCard} style={{ marginTop: '1rem' }}>
+                <div className={styles.tipIcon} style={{ fontSize: '1.2rem' }}>🔒</div>
+                <div>
+                  <div className={styles.tipTitle}>Seus dados são privados</div>
+                  <div className={styles.tipText}>Usamos apenas para calcular suas calorias ideais. Nada é armazenado.</div>
+                </div>
               </div>
             </div>
 
@@ -281,9 +362,7 @@ export default function Home() {
                             <div style={{ fontSize: '0.88rem', color: '#6b7280', fontWeight: 500, lineHeight: 1.5 }}>{post.descricao}</div>
                           </div>
                         </div>
-                        <div style={{ marginTop: '0.75rem', fontSize: '0.88rem', fontWeight: 700, color: '#16a34a' }}>
-                          Ler artigo →
-                        </div>
+                        <div style={{ marginTop: '0.75rem', fontSize: '0.88rem', fontWeight: 700, color: '#16a34a' }}>Ler artigo →</div>
                       </div>
                     </div>
                   </a>
@@ -301,7 +380,7 @@ export default function Home() {
             <div className={styles.spinner} />
             <div className={styles.loadTitle}>Montando seu plano...</div>
             <div style={{ fontSize: '0.85rem', color: '#9ca3af', fontWeight: 500, textAlign: 'center', maxWidth: '260px', lineHeight: 1.6 }}>
-              A IA está selecionando os melhores alimentos para o seu objetivo 🥦
+              A IA está calculando suas calorias ideais e selecionando os melhores alimentos 🥦
             </div>
           </div>
         )}
@@ -312,6 +391,7 @@ export default function Home() {
               <div className={styles.metaRow}>
                 <span className={styles.tag}>{objetivo ? OBJETIVO_LABELS[objetivo] : ""}</span>
                 <span className={styles.tag}>{dieta ? DIETA_LABELS[dieta] : ""}</span>
+                {sexo && <span className={styles.tag}>{sexo === 'masculino' ? '👨 Masculino' : '👩 Feminino'}</span>}
               </div>
               <h2 className={styles.planTitle}>{plano.titulo}</h2>
               <p className={styles.planSub}>{plano.subtitulo}</p>
@@ -351,7 +431,7 @@ export default function Home() {
                     {r.foto_url && (
                       <div style={{ position: 'relative' }}>
                         <img src={r.foto_url} alt={r.prato} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
-                        <div style={{ position: 'absolute', bottom: '8px', right: '10px', background: 'rgba(0,0,0,0.45)', color: 'white', fontSize: '0.68rem', fontWeight: 600, padding: '3px 8px', borderRadius: '99px', backdropFilter: 'blur(4px)', letterSpacing: '0.3px' }}>
+                        <div style={{ position: 'absolute', bottom: '8px', right: '10px', background: 'rgba(0,0,0,0.45)', color: 'white', fontSize: '0.68rem', fontWeight: 600, padding: '3px 8px', borderRadius: '99px', backdropFilter: 'blur(4px)' }}>
                           📷 Imagem ilustrativa
                         </div>
                       </div>
@@ -423,7 +503,6 @@ export default function Home() {
           <div className={styles.modalOverlay} onClick={() => setModalType(null)}>
             <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
               <button className={styles.modalClose} onClick={() => setModalType(null)}>✕</button>
-
               {modalType === "new" ? (
                 <>
                   <div className={styles.modalIcon}>🔄</div>
