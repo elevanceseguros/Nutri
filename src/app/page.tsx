@@ -25,6 +25,12 @@ interface Plano {
 }
 interface Substituto { item: string; motivo: string; }
 
+function trackEvent(nome: string, params?: Record<string, any>) {
+  if (typeof window !== "undefined" && (window as any).gtag) {
+    (window as any).gtag("event", nome, params || {});
+  }
+}
+
 function IcoEmagrecer() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c0 0-3.5 4-3.5 7.5a3.5 3.5 0 007 0C15.5 6 12 2 12 2z"/><line x1="12" y1="13" x2="12" y2="18"/><line x1="9.5" y1="17" x2="14.5" y2="17"/></svg>; }
 function IcoMassa() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="6" height="9" rx="1"/><line x1="4" y1="9" x2="20" y2="9"/><circle cx="4" cy="7" r="2"/><circle cx="20" cy="7" r="2"/></svg>; }
 function IcoManutencao() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="3" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="21"/><line x1="3" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="21" y2="12"/></svg>; }
@@ -145,7 +151,7 @@ export default function Home() {
       setPlano(data);
       setOpenMeal(0);
       setScreen("plan");
-      if (!isPro) { marcarGerouHoje(); setJaGerou(true); }
+      trackEvent("gerar_plano", { objetivo, dieta, refeicoes, sexo });
     } catch {
       setErro("Erro ao gerar. Tente novamente.");
       setScreen("onboarding");
@@ -157,6 +163,7 @@ export default function Home() {
     setSwapResultados([]);
     setSwapLoading(true);
     setModalType("swap");
+    trackEvent("substituir_ingrediente", { ingrediente, prato: plano?.refeicoes[refeicaoIdx].prato });
     try {
       const res = await fetch("/api/substituir", {
         method: "POST",
@@ -208,7 +215,6 @@ export default function Home() {
             <h1 className={styles.heroTitle}>A sua <em className={styles.heroEm}>dieta perfeita</em><br />feita em segundos.</h1>
             <p className={styles.heroSub}>Chega de dúvidas sobre o que comer. Selecione suas preferências abaixo.</p>
 
-            {/* 01. Objetivo */}
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>01.</span><span className={styles.qLabel}>Qual é o seu objetivo?</span></div>
               <div className={styles.qGrid}>
@@ -220,7 +226,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 02. Dieta */}
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>02.</span><span className={styles.qLabel}>Preferência alimentar</span></div>
               <div className={styles.qGrid}>
@@ -232,7 +237,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 03. Refeições */}
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>03.</span><span className={styles.qLabel}>Quantas refeições hoje?</span></div>
               <div className={styles.qGrid}>
@@ -244,82 +248,34 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 04. Dados pessoais */}
             <div className={styles.qBlock}>
               <div className={styles.qLabelRow}><span className={styles.qNum}>04.</span><span className={styles.qLabel}>Seus dados pessoais</span></div>
-
-              {/* Sexo */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-                <button
-                  className={`${styles.qBtn} ${sexo === 'masculino' ? styles.qBtnActive : ""}`}
-                  onClick={() => setSexo('masculino')}
-                >
+                <button className={`${styles.qBtn} ${sexo === 'masculino' ? styles.qBtnActive : ""}`} onClick={() => setSexo('masculino')}>
                   <span className={styles.qBtnIcon}><IcoMasculino /></span>
                   <span className={styles.qBtnLabel}>Masculino</span>
                   <span className={styles.qBtnSub}>Homem</span>
                 </button>
-                <button
-                  className={`${styles.qBtn} ${sexo === 'feminino' ? styles.qBtnActive : ""}`}
-                  onClick={() => setSexo('feminino')}
-                >
+                <button className={`${styles.qBtn} ${sexo === 'feminino' ? styles.qBtnActive : ""}`} onClick={() => setSexo('feminino')}>
                   <span className={styles.qBtnIcon}><IcoFeminino /></span>
                   <span className={styles.qBtnLabel}>Feminino</span>
                   <span className={styles.qBtnSub}>Mulher</span>
                 </button>
               </div>
-
-              {/* Peso, Altura, Idade */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>
-                    Peso (kg)
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="70"
-                    min="30"
-                    max="250"
-                    value={peso}
-                    onChange={e => setPeso(e.target.value)}
-                    style={inputStyle}
-                    onFocus={e => e.target.style.borderColor = '#22c55e'}
-                    onBlur={e => e.target.style.borderColor = '#e5e7eb'}
-                  />
+                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>Peso (kg)</label>
+                  <input type="number" placeholder="70" min="30" max="250" value={peso} onChange={e => setPeso(e.target.value)} style={inputStyle} onFocus={e => e.target.style.borderColor = '#22c55e'} onBlur={e => e.target.style.borderColor = '#e5e7eb'} />
                 </div>
                 <div>
-                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>
-                    Altura (cm)
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="170"
-                    min="100"
-                    max="250"
-                    value={altura}
-                    onChange={e => setAltura(e.target.value)}
-                    style={inputStyle}
-                    onFocus={e => e.target.style.borderColor = '#22c55e'}
-                    onBlur={e => e.target.style.borderColor = '#e5e7eb'}
-                  />
+                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>Altura (cm)</label>
+                  <input type="number" placeholder="170" min="100" max="250" value={altura} onChange={e => setAltura(e.target.value)} style={inputStyle} onFocus={e => e.target.style.borderColor = '#22c55e'} onBlur={e => e.target.style.borderColor = '#e5e7eb'} />
                 </div>
                 <div>
-                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>
-                    Idade
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="30"
-                    min="10"
-                    max="100"
-                    value={idade}
-                    onChange={e => setIdade(e.target.value)}
-                    style={inputStyle}
-                    onFocus={e => e.target.style.borderColor = '#22c55e'}
-                    onBlur={e => e.target.style.borderColor = '#e5e7eb'}
-                  />
+                  <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>Idade</label>
+                  <input type="number" placeholder="30" min="10" max="100" value={idade} onChange={e => setIdade(e.target.value)} style={inputStyle} onFocus={e => e.target.style.borderColor = '#22c55e'} onBlur={e => e.target.style.borderColor = '#e5e7eb'} />
                 </div>
               </div>
-
               <div className={styles.tipCard} style={{ marginTop: '1rem' }}>
                 <div className={styles.tipIcon} style={{ fontSize: '1.2rem' }}>🔒</div>
                 <div>
@@ -338,7 +294,6 @@ export default function Home() {
               {jaGerou && !isPro ? "🔒 Limite diário atingido" : "Gerar meu plano"}
             </button>
 
-            {/* Seção Blog */}
             <div style={{ marginTop: '4rem' }}>
               <div className={styles.qLabelRow} style={{ marginBottom: '1.5rem' }}>
                 <div className={styles.heroLine} />
@@ -444,7 +399,14 @@ export default function Home() {
                         {r.ingredientes.map((ing, j) => (
                           <li key={j} className={styles.ingItem}>
                             <div className={styles.ingLeft}><span className={styles.dot} />{ing.item}</div>
-                            <button className={styles.swapBtn} onClick={() => isPro ? substituir(ing.item, i, j) : setModalType("swap")}>
+                            <button className={styles.swapBtn} onClick={() => {
+                              if (isPro) {
+                                substituir(ing.item, i, j);
+                              } else {
+                                trackEvent("ver_modal_pro", { origem: "substituir" });
+                                setModalType("swap");
+                              }
+                            }}>
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m7 21-4-4 4-4"/><path d="M3 17h18"/><path d="m17 3 4 4-4 4"/><path d="M21 7H3"/></svg> substituir
                             </button>
                           </li>
@@ -488,12 +450,26 @@ export default function Home() {
                 </div>
                 {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
                 <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
-                <a href={currentLink} target="_blank" className={styles.premiumBtn}>Desbloquear PRO agora →</a>
+                <a
+                  href={currentLink}
+                  target="_blank"
+                  className={styles.premiumBtn}
+                  onClick={() => trackEvent("clique_assinar", { billing, origem: "banner" })}
+                >
+                  Desbloquear PRO agora →
+                </a>
                 <p className={styles.premiumFootnote}>Sem compromisso. Cancele quando quiser.</p>
               </div>
             )}
 
-            <button className={styles.btnSecondary} onClick={() => isPro ? setModalType("new") : setModalType("newLocked")}>
+            <button className={styles.btnSecondary} onClick={() => {
+              if (isPro) {
+                setModalType("new");
+              } else {
+                trackEvent("ver_modal_pro", { origem: "novo_plano" });
+                setModalType("newLocked");
+              }
+            }}>
               ↺ Gerar novo plano
             </button>
           </div>
@@ -522,7 +498,7 @@ export default function Home() {
                   </div>
                   {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
                   <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
-                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
+                  <a href={currentLink} target="_blank" className={styles.premiumBtn} onClick={() => trackEvent("clique_assinar", { billing, origem: "modal_novo_plano" })}>Assinar Agora →</a>
                   <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
               ) : (
@@ -536,7 +512,7 @@ export default function Home() {
                   </div>
                   {billing === "anual" && <div className={styles.premiumSavings}>💰 Você economiza R$ 120/ano</div>}
                   <div className={styles.premiumPrice}>R$ {currentPrice}{currentCents}<span className={styles.premiumPeriod}>/mês</span></div>
-                  <a href={currentLink} target="_blank" className={styles.premiumBtn}>Assinar Agora →</a>
+                  <a href={currentLink} target="_blank" className={styles.premiumBtn} onClick={() => trackEvent("clique_assinar", { billing, origem: "modal_substituir" })}>Assinar Agora →</a>
                   <button className={styles.btnSecondary} onClick={() => setModalType(null)}>Agora não</button>
                 </>
               )}
