@@ -1,5 +1,6 @@
 "use client";
 
+import Logo from "../components/Logo";
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import styles from "./page.module.css";
@@ -257,7 +258,7 @@ export default function Home() {
   return (
     <>
       <header className={styles.header}>
-        <a href="/" className={styles.logo} style={{ textDecoration: 'none' }}>Nutry<span className={styles.logoAccent}>.life</span></a>
+        <Logo />
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <a href="/blog" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#6b7280', textDecoration: 'none' }}>Blog</a>
           {user ? (
