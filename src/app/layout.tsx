@@ -26,11 +26,20 @@ export const metadata: Metadata = {
     url: "https://nutry.life",
     siteName: "Nutry.life",
     type: "website",
+    images: [
+      {
+        url: "https://nutry.life/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Nutry.life — Plano Alimentar com IA",
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nutry.life — Plano Alimentar com IA",
     description: "Receitas brasileiras reais. Você decide quantas refeições faz.",
+    images: ["https://nutry.life/og-image.png"],
   },
   metadataBase: new URL("https://nutry.life"),
 };
