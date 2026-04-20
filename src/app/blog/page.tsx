@@ -24,6 +24,15 @@ const posts = [
     emoji: "⏰",
   },
   {
+  slug: "como-emagrecer-sem-passar-fome",
+  titulo: "Como emagrecer sem passar fome — 7 estratégias que funcionam",
+  descricao: "Esqueça as dietas radicais. Veja 7 estratégias comprovadas para emagrecer sem sofrimento.",
+  data: "20 de abril de 2026",
+  tempo: "10 min de leitura",
+  tag: "Emagrecimento",
+  emoji: "🔥",
+  },
+  {
     slug: "low-carb-para-iniciantes",
     titulo: "Low carb para iniciantes: o que é, como começar e cardápio de exemplo",
     descricao: "Guia completo para quem quer começar a dieta low carb do zero. O que comer, o que evitar e um cardápio de exemplo para a primeira semana.",
