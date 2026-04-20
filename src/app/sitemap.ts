@@ -18,5 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/blog/o-que-comer-no-jejum-intermitente-16-8`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/low-carb-para-iniciantes`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/como-emagrecer-sem-passar-fome`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ];
 }
