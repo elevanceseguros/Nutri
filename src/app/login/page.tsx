@@ -235,6 +235,11 @@ export default function Login() {
 
         </div>
       </main>
+<div style={{ textAlign: 'center', marginTop: '1.5rem', paddingBottom: '2rem' }}>
+  <Link href="/privacidade" style={{ fontSize: '0.78rem', color: '#9ca3af', fontWeight: 600, textDecoration: 'none' }}>
+    Política de Privacidade
+  </Link>
+</div>
     </>
   );
 }
