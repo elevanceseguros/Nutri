@@ -109,8 +109,8 @@ const MACRO_ITEMS: { key: keyof Plano; label: string }[] = [
 ];
 
 const BLOG_POSTS = [
+  { slug: "como-emagrecer-sem-passar-fome", titulo: "Como emagrecer sem passar fome — 7 estratégias", descricao: "Esqueça as dietas radicais. 7 estratégias comprovadas para emagrecer sem sofrimento.", tempo: "10 min", tag: "Emagrecimento", emoji: "🔥" },
   { slug: "quantas-gramas-de-proteina-por-dia", titulo: "Quantas gramas de proteína preciso comer por dia?", descricao: "Tabela completa por peso e objetivo com fontes brasileiras acessíveis.", tempo: "9 min", tag: "Proteína", emoji: "💪" },
-  { slug: "o-que-comer-no-jejum-intermitente-16-8", titulo: "O que comer no jejum intermitente 16:8 — guia completo", descricao: "Descubra o que comer, quando comer e o que evitar no jejum 16:8.", tempo: "8 min", tag: "Jejum Intermitente", emoji: "⏰" },
 ];
 
 function getFingerprint() { return btoa(`${navigator.userAgent}-${screen.width}x${screen.height}`); }
