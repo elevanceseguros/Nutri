@@ -15,6 +15,42 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "como-montar-marmita-saudavel",
+    titulo: "Como montar uma marmita saudável para o trabalho",
+    descricao: "Estrutura, 5 combinações prontas, tabela de conservação e a rotina de 30 minutos no domingo para ter marmitas nutritivas e baratas a semana toda.",
+    data: "28 de abril de 2026",
+    tempo: "8 min de leitura",
+    tag: "Alimentação Saudável",
+    emoji: "🥡",
+  },
+  {
+    slug: "proteina-no-cafe-da-manha",
+    titulo: "Proteína no café da manhã: por que é tão importante e o que comer",
+    descricao: "A ciência por trás do café da manhã proteico e 10 opções práticas com alimentos brasileiros para começar hoje.",
+    data: "26 de abril de 2026",
+    tempo: "7 min de leitura",
+    tag: "Nutrição",
+    emoji: "🍳",
+  },
+  {
+    slug: "cardapio-saudavel-para-semana",
+    titulo: "Cardápio saudável para a semana: 5 dias de refeições prontas",
+    descricao: "Planejamento alimentar completo de segunda a sexta com café da manhã, almoço, lanche e jantar. Inclui lista de compras.",
+    data: "25 de abril de 2026",
+    tempo: "10 min de leitura",
+    tag: "Alimentação Saudável",
+    emoji: "🥗",
+  },
+  {
+    slug: "quanto-tempo-para-ver-resultado-no-jejum-intermitente",
+    titulo: "Quanto tempo leva para ver resultado no jejum intermitente?",
+    descricao: "A linha do tempo real do que acontece no seu corpo — da 1ª semana até 3 meses de jejum intermitente, sem enrolação.",
+    data: "24 de abril de 2026",
+    tempo: "8 min de leitura",
+    tag: "Jejum Intermitente",
+    emoji: "⏱️",
+  },
+  {
     slug: "jejum-intermitente-16-8-para-iniciantes",
     titulo: "Jejum intermitente 16:8 para iniciantes: guia completo para começar hoje",
     descricao: "Entenda como funciona o jejum 16:8, qual o melhor horário para começar, o que comer na janela alimentar e os erros mais comuns de quem está começando.",
