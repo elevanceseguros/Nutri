@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "jejum-intermitente-16-8-para-iniciantes",
+    titulo: "Jejum intermitente 16:8 para iniciantes: guia completo para começar hoje",
+    descricao: "Entenda como funciona o jejum 16:8, qual o melhor horário para começar, o que comer na janela alimentar e os erros mais comuns de quem está começando.",
+    data: "24 de abril de 2025",
+    tempo: "9 min de leitura",
+    tag: "Jejum Intermitente",
+    emoji: "⏳",
+  },
+  {
     slug: "o-que-comer-no-jejum-intermitente-16-8",
     titulo: "O que comer no jejum intermitente 16:8 — guia completo",
     descricao: "Descubra o que comer, quando comer e o que evitar no jejum intermitente 16:8 para maximizar seus resultados.",
