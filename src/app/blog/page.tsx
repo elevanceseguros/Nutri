@@ -15,6 +15,24 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "alimentos-que-inflamam-o-corpo",
+    titulo: "Alimentos que inflamam o corpo: lista completa e o que comer no lugar",
+    descricao: "Os 10 principais alimentos inflamatórios, por que causam inflamação crônica e o que comer no lugar de cada um para recuperar sua saúde.",
+    data: "29 de abril de 2026",
+    tempo: "9 min de leitura",
+    tag: "Saúde & Inflamação",
+    emoji: "🔥",
+  },
+  {
+    slug: "quantas-calorias-preciso-por-dia",
+    titulo: "Quantas calorias eu preciso por dia?",
+    descricao: "Aprenda a calcular sua TMB e TDEE com a fórmula Mifflin-St Jeor e descubra quantas calorias comer para emagrecer, manter ou ganhar peso.",
+    data: "28 de abril de 2026",
+    tempo: "9 min de leitura",
+    tag: "Nutrição",
+    emoji: "🔢",
+  },
+  {
     slug: "como-montar-marmita-saudavel",
     titulo: "Como montar uma marmita saudável para o trabalho",
     descricao: "Estrutura, 5 combinações prontas, tabela de conservação e a rotina de 30 minutos no domingo para ter marmitas nutritivas e baratas a semana toda.",
