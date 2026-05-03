@@ -15,6 +15,24 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "como-perder-barriga",
+    titulo: "Como perder barriga: o que funciona de verdade (e o que não funciona)",
+    descricao: "A ciência da gordura abdominal, os mitos que não funcionam e as 6 estratégias comprovadas para eliminar a barriga de forma duradoura.",
+    data: "3 de maio de 2026",
+    tempo: "10 min de leitura",
+    tag: "Emagrecimento",
+    emoji: "🎯",
+  },
+  {
+    slug: "o-que-comer-antes-e-depois-do-treino",
+    titulo: "O que comer antes e depois do treino: guia completo",
+    descricao: "Timing ideal, melhores alimentos, combinações prontas e dicas para quem treina em jejum. Tudo que você precisa saber sobre nutrição peri-treino.",
+    data: "2 de maio de 2026",
+    tempo: "9 min de leitura",
+    tag: "Treino & Nutrição",
+    emoji: "💪",
+  },
+  {
     slug: "alimentos-que-inflamam-o-corpo",
     titulo: "Alimentos que inflamam o corpo: lista completa e o que comer no lugar",
     descricao: "Os 10 principais alimentos inflamatórios, por que causam inflamação crônica e o que comer no lugar de cada um para recuperar sua saúde.",
