@@ -15,6 +15,42 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "o-que-comer-para-ter-mais-energia",
+    titulo: "O que comer para ter mais energia no dia a dia",
+    descricao: "Os 12 alimentos que aumentam energia de verdade, o que evitar e como manter glicose estável do café da manhã ao jantar.",
+    data: "7 de maio de 2026",
+    tempo: "8 min de leitura",
+    tag: "Nutrição",
+    emoji: "⚡",
+  },
+  {
+    slug: "como-diminuir-o-colesterol",
+    titulo: "Como diminuir o colesterol com alimentação: guia completo",
+    descricao: "O que é LDL, HDL e triglicerídeos, quais alimentos pioram e quais melhoram o perfil lipídico, e um cardápio anti-colesterol de exemplo.",
+    data: "6 de maio de 2026",
+    tempo: "9 min de leitura",
+    tag: "Saúde Metabólica",
+    emoji: "❤️",
+  },
+  {
+    slug: "alimentos-ricos-em-proteina",
+    titulo: "Alimentos ricos em proteína: lista completa com quantidade",
+    descricao: "Ranking completo dos alimentos com mais proteína por 100g — animais e vegetais — com dicas de uso e como bater sua meta diária.",
+    data: "5 de maio de 2026",
+    tempo: "8 min de leitura",
+    tag: "Nutrição",
+    emoji: "🥩",
+  },
+  {
+    slug: "dieta-para-ganhar-massa-muscular",
+    titulo: "Dieta para ganhar massa muscular: o que comer e como montar",
+    descricao: "Calorias, proteína, macros e cardápio completo para hipertrofia. O guia definitivo de nutrição para quem quer ganhar massa de verdade.",
+    data: "4 de maio de 2026",
+    tempo: "10 min de leitura",
+    tag: "Hipertrofia",
+    emoji: "💪",
+  },
+  {
     slug: "como-perder-barriga",
     titulo: "Como perder barriga: o que funciona de verdade (e o que não funciona)",
     descricao: "A ciência da gordura abdominal, os mitos que não funcionam e as 6 estratégias comprovadas para eliminar a barriga de forma duradoura.",
