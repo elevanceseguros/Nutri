@@ -15,6 +15,42 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "vitaminas-e-minerais-essenciais",
+    titulo: "Vitaminas e minerais essenciais: para que serve cada um",
+    descricao: "Guia completo com funções, sintomas de deficiência e fontes alimentares de todas as vitaminas e minerais — incluindo os 4 mais deficientes no Brasil.",
+    data: "11 de maio de 2026",
+    tempo: "10 min de leitura",
+    tag: "Nutrição",
+    emoji: "💊",
+  },
+  {
+    slug: "como-perder-peso-sem-fazer-dieta",
+    titulo: "Como perder peso sem fazer dieta: 10 mudanças que funcionam",
+    descricao: "10 hábitos simples e sustentáveis que criam déficit calórico sem restrições radicais — com o impacto em kcal estimado para cada mudança.",
+    data: "10 de maio de 2026",
+    tempo: "9 min de leitura",
+    tag: "Emagrecimento",
+    emoji: "🏃",
+  },
+  {
+    slug: "alimentos-que-ajudam-a-dormir",
+    titulo: "Alimentos que ajudam a dormir melhor: lista completa",
+    descricao: "12 alimentos que melhoram o sono, o que evitar antes de dormir, o papel do triptofano e 3 opções de jantar para uma noite tranquila.",
+    data: "9 de maio de 2026",
+    tempo: "8 min de leitura",
+    tag: "Sono & Saúde",
+    emoji: "😴",
+  },
+  {
+    slug: "dieta-para-diabeticos",
+    titulo: "Dieta para diabéticos: o que comer e o que evitar",
+    descricao: "Guia completo de alimentação para diabetes tipo 2: alimentos permitidos, proibidos, estratégias para controle glicêmico e cardápio de exemplo.",
+    data: "8 de maio de 2026",
+    tempo: "10 min de leitura",
+    tag: "Saúde Metabólica",
+    emoji: "🩸",
+  },
+  {
     slug: "o-que-comer-para-ter-mais-energia",
     titulo: "O que comer para ter mais energia no dia a dia",
     descricao: "Os 12 alimentos que aumentam energia de verdade, o que evitar e como manter glicose estável do café da manhã ao jantar.",
