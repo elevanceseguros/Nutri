@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "como-ganhar-massa-muscular-sendo-magro",
+    titulo: "Como ganhar massa muscular sendo magro: guia completo",
+    descricao: "Por que ectomorfos têm dificuldade de ganhar massa, quantas calorias comer, melhores alimentos hipercalóricos e cardápio de 3.200 kcal de exemplo.",
+    data: "14 de maio de 2026",
+    tempo: "9 min de leitura",
+    tag: "Hipertrofia",
+    emoji: "🦴",
+  },
+  {
+    slug: "dieta-low-carb",
+    titulo: "Dieta low carb: o que é, como funciona e cardápio completo",
+    descricao: "Guia completo de low carb: níveis de restrição, como o corpo muda, benefícios, alimentos permitidos, cardápio de exemplo e como evitar a gripe low carb.",
+    data: "13 de maio de 2026",
+    tempo: "10 min de leitura",
+    tag: "Low Carb",
+    emoji: "🥑",
+  },
+  {
+    slug: "alimentos-que-fortalecem-o-sistema-imunologico",
+    titulo: "Alimentos que fortalecem o sistema imunológico: lista completa",
+    descricao: "15 alimentos que aumentam a imunidade com o mecanismo científico de cada um, o que evitar e cardápio de 1 dia focado em imunidade.",
+    data: "12 de maio de 2026",
+    tempo: "9 min de leitura",
+    tag: "Imunidade",
+    emoji: "🛡️",
+  },
+  {
     slug: "vitaminas-e-minerais-essenciais",
     titulo: "Vitaminas e minerais essenciais: para que serve cada um",
     descricao: "Guia completo com funções, sintomas de deficiência e fontes alimentares de todas as vitaminas e minerais — incluindo os 4 mais deficientes no Brasil.",
