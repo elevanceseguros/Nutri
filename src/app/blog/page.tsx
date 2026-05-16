@@ -15,6 +15,42 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "alimentos-ricos-em-fibras",
+    titulo: "Alimentos ricos em fibras: lista completa e benefícios",
+    descricao: "Ranking dos alimentos com mais fibra por 100g, diferença entre fibra solúvel e insolúvel e como atingir sua meta diária de 25–30g.",
+    data: "19 de maio de 2026",
+    tempo: "8 min de leitura",
+    tag: "Nutrição",
+    emoji: "🌾",
+  },
+  {
+    slug: "como-acelerar-o-metabolismo",
+    titulo: "Como acelerar o metabolismo: 10 estratégias que funcionam de verdade",
+    descricao: "10 estratégias comprovadas para acelerar o metabolismo naturalmente — com o impacto calórico estimado de cada uma. Sem suplementos caros.",
+    data: "18 de maio de 2026",
+    tempo: "9 min de leitura",
+    tag: "Metabolismo",
+    emoji: "🔥",
+  },
+  {
+    slug: "cafe-da-manha-saudavel",
+    titulo: "Café da manhã saudável: 10 opções rápidas e nutritivas",
+    descricao: "10 opções de café da manhã saudável com tempo de preparo, calorias, proteínas e dicas práticas para cada uma.",
+    data: "17 de maio de 2026",
+    tempo: "8 min de leitura",
+    tag: "Alimentação Saudável",
+    emoji: "☀️",
+  },
+  {
+    slug: "alimentacao-para-ansiedade",
+    titulo: "Alimentação para ansiedade: o que comer para acalmar",
+    descricao: "Como o eixo intestino-cérebro funciona, os nutrientes que reduzem a ansiedade e o que evitar para não piorar os sintomas.",
+    data: "16 de maio de 2026",
+    tempo: "9 min de leitura",
+    tag: "Saúde Mental & Nutrição",
+    emoji: "🧠",
+  },
+  {
     slug: "como-ganhar-massa-muscular-sendo-magro",
     titulo: "Como ganhar massa muscular sendo magro: guia completo",
     descricao: "Por que ectomorfos têm dificuldade de ganhar massa, quantas calorias comer, melhores alimentos hipercalóricos e cardápio de 3.200 kcal de exemplo.",
