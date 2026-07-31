@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "whey-protein-vs-caseina-diferencas",
+    titulo: "Whey Protein vs Caseína: Diferenças e Quando Usar",
+    descricao: "Compare digestão, aminoácidos, saciedade e praticidade para entender quando whey ou caseína faz mais sentido.",
+    data: "31 de julho de 2026",
+    tempo: "8 min de leitura",
+    tag: "Suplementação",
+    emoji: "🥛",
+  },
+  {
+    slug: "probioticos-cepas-que-funcionam",
+    titulo: "Probióticos: Quais Cepas Funcionam e Para Que Servem?",
+    descricao: "Entenda por que o efeito depende da cepa, da indicação e da dose estudada — e aprenda a ler o rótulo.",
+    data: "30 de julho de 2026",
+    tempo: "9 min de leitura",
+    tag: "Saúde e Nutrição",
+    emoji: "🦠",
+  },
+  {
+    slug: "vitamina-b12-veganos-deficiencia-suplementacao",
+    titulo: "Vitamina B12 para Veganos: Deficiência, Exames e Suplementação",
+    descricao: "Por que dietas veganas exigem uma fonte confiável de B12, quais exames ajudam e quando buscar orientação.",
+    data: "29 de julho de 2026",
+    tempo: "8 min de leitura",
+    tag: "Saúde e Nutrição",
+    emoji: "🧬",
+  },
+  {
     slug: "como-organizar-feira-semanal",
     titulo: "Como Organizar a Feira Semanal de Forma Saudável e Sem Desperdício",
     descricao: "Como Organizar a Feira Semanal de Forma Saudável e Sem Desperdício",
