@@ -16,14 +16,22 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Alimentação Prática</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>26 de junho de 2026</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>5 min de leitura</span>
           </div>
           <h1 className={styles.postTitle}>Como Montar uma Marmita Saudável e Barata Para o Trabalho</h1>
-          <p className={styles.postExcerpt}>Comer bem no trabalho não precisa ser complicado nem caro. Com uma estrutura simples e um pouco de organização, você come melhor gastando menos do que no restaurante.</p>
+          <p className={styles.postExcerpt}>Comer bem no trabalho não precisa ser complicado nem caro. Com uma estrutura simples e um pouco de organização, você come melhor gastando menos do que no restaurante.</p>\n
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div>
+              <strong>Transforme este conteúdo em um plano para você</strong>
+              <p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p>
+              <Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link>
+            </div>
+          </div>
           <div className={styles.postContent}>
             <p>Comer fora todos os dias sai caro — e nem sempre é saudável. A marmita resolve os dois problemas, mas muita gente acha que montar uma refeição equilibrada dá trabalho. Não precisa ser assim.</p>
             <h2>A estrutura do prato equilibrado</h2>
@@ -55,7 +63,23 @@ export default function Post() {
             <h2>Como evitar que a marmita fique ruim?</h2>
             <p>Leve sempre na bolsa térmica com gelox. Não misture alimentos quentes e frios na mesma marmita. Molhos e temperos líquidos (como azeite ou limão) sempre separados — adicionados na hora de comer para não encharcar a salada.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}>
+              <h2>Quer colocar tudo isso em prática?</h2>
+              <p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p>
+            </div>
+            <div className={styles.premiumFeatures}>
+              <div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div>
+              <div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div>
+              <div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div>
+            </div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link>
+            <p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
