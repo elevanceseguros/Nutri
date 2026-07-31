@@ -1120,3 +1120,112 @@
     padding: 0.75rem;
   }
 }
+
+
+/* =========================================
+   BLOG — NAVEGAÇÃO E CONVERSÃO
+   ========================================= */
+.backToBlog,
+.backToBlogBottom {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #15803d;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.backToBlog {
+  margin-bottom: 1.75rem;
+}
+
+.backToBlogBottom {
+  margin-top: 2rem;
+}
+
+.backToBlog:hover,
+.backToBlogBottom:hover {
+  color: #166534;
+  transform: translateX(-3px);
+}
+
+.articleCtaTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: -0.5rem 0 2.75rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid #bbf7d0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  box-shadow: 0 8px 24px -14px rgba(22, 163, 74, 0.45);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.articleCtaIcon {
+  flex-shrink: 0;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.articleCtaTop strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #166534;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.articleCtaTop p {
+  margin: 0 0 0.65rem;
+  color: #15803d;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  font-weight: 550;
+}
+
+.articleCtaLink {
+  display: inline-flex;
+  color: #166534;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: 2px solid #86efac;
+  padding-bottom: 2px;
+}
+
+.post + .premiumBanner,
+.post .premiumBanner {
+  margin-top: 3rem;
+}
+
+.post .premiumHeader h2 {
+  margin: 0 0 0.5rem;
+  color: #166534;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.post .premiumHeader p {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .articleCtaTop {
+    gap: 0.75rem;
+    padding: 1.1rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .articleCtaIcon {
+    font-size: 1.5rem;
+  }
+
+  .post .premiumBanner {
+    margin-top: 2.5rem;
+  }
+}
