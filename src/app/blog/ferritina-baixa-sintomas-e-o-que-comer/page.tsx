@@ -15,7 +15,7 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Saúde e Nutrição</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>24 de julho de 2026</span>
@@ -23,6 +23,10 @@ export default function Post() {
           </div>
           <h1 className={styles.postTitle}>Ferritina Baixa: Sintomas, Causas e O Que Comer Para Recuperar</h1>
           <p className={styles.postExcerpt}>Ferritina baixa é o estágio anterior à anemia — e muita gente tem sem saber. Cansaço, queda de cabelo e falta de ar podem ser sinais. Saiba como identificar e o que fazer.</p>
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div><strong>Transforme este conteúdo em um plano para você</strong><p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p><Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link></div>
+          </div>
           <div className={styles.postContent}>
             <p>Ferritina é a proteína que armazena ferro no organismo. Quando os estoques caem, o corpo ainda consegue manter a hemoglobina normal por um tempo — por isso a ferritina baixa muitas vezes não aparece no hemograma comum. Mas os sintomas já estão presentes.</p>
             <h2>Sintomas de ferritina baixa</h2>
@@ -56,7 +60,14 @@ export default function Post() {
             <h2>Quando suplementar?</h2>
             <p>Suplementação de ferro só com orientação médica — excesso de ferro causa danos oxidativos. Faça o exame de ferritina sérica antes de decidir. Valores abaixo de 30 ng/mL já indicam reservas baixas mesmo com hemoglobina normal.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}><h2>Quer colocar tudo isso em prática?</h2><p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p></div>
+            <div className={styles.premiumFeatures}><div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div><div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div><div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div></div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link><p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
