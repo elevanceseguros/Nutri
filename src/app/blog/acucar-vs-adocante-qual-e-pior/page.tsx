@@ -15,14 +15,22 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Saúde e Nutrição</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>30 de junho de 2026</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>6 min de leitura</span>
           </div>
           <h1 className={styles.postTitle}>Açúcar vs Adoçante: Qual é Pior Para a Saúde?</h1>
-          <p className={styles.postExcerpt}>Trocar açúcar por adoçante parece a escolha óbvia para quem quer emagrecer. Mas a ciência tem respostas mais complexas sobre qual realmente prejudica mais.</p>
+          <p className={styles.postExcerpt}>Trocar açúcar por adoçante parece a escolha óbvia para quem quer emagrecer. Mas a ciência tem respostas mais complexas sobre qual realmente prejudica mais.</p>\n
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div>
+              <strong>Transforme este conteúdo em um plano para você</strong>
+              <p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p>
+              <Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link>
+            </div>
+          </div>
           <div className={styles.postContent}>
             <p>A guerra entre açúcar e adoçante dura décadas. De um lado, o açúcar com suas calorias e impacto glicêmico. Do outro, os adoçantes com zero caloria — mas cercados de dúvidas sobre efeitos a longo prazo.</p>
             <h2>O problema do açúcar</h2>
@@ -34,7 +42,23 @@ export default function Post() {
             <h2>Qual é pior?</h2>
             <p>Para quem tem diabetes ou resistência à insulina, o açúcar é claramente mais prejudicial. Para a população geral que consome moderadamente, os adoçantes artificiais são seguros — mas não são necessariamente saudáveis. O ideal é reduzir o paladar para o doce em geral, não só trocar uma fonte pela outra.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}>
+              <h2>Quer colocar tudo isso em prática?</h2>
+              <p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p>
+            </div>
+            <div className={styles.premiumFeatures}>
+              <div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div>
+              <div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div>
+              <div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div>
+            </div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link>
+            <p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
