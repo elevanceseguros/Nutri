@@ -15,14 +15,22 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Emagrecimento</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>01 de julho de 2026</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>6 min de leitura</span>
           </div>
           <h1 className={styles.postTitle}>Dieta Low Carb vs Dieta Equilibrada: Qual Emagrece Mais?</h1>
-          <p className={styles.postExcerpt}>Low carb virou moda e promete resultados rápidos. Mas a dieta equilibrada com déficit calórico entrega menos? O que as pesquisas mostram quando comparam as duas.</p>
+          <p className={styles.postExcerpt}>Low carb virou moda e promete resultados rápidos. Mas a dieta equilibrada com déficit calórico entrega menos? O que as pesquisas mostram quando comparam as duas.</p>\n
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div>
+              <strong>Transforme este conteúdo em um plano para você</strong>
+              <p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p>
+              <Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link>
+            </div>
+          </div>
           <div className={styles.postContent}>
             <p>Low carb é uma das abordagens dietéticas mais populares para emagrecimento. Mas quando colocada frente a frente com uma dieta equilibrada em déficit calórico, os resultados realmente diferem? A ciência tem uma resposta bem definida.</p>
             <h2>O que é dieta low carb?</h2>
@@ -36,7 +44,23 @@ export default function Post() {
             <h2>Conclusão prática</h2>
             <p>A melhor dieta para emagrecer é a que você consegue seguir. Se você se adapta bem ao low carb e não tem restrições, use. Se prefere comer de tudo com moderação e déficit calórico, funciona igualmente — e pode ser mais sustentável.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}>
+              <h2>Quer colocar tudo isso em prática?</h2>
+              <p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p>
+            </div>
+            <div className={styles.premiumFeatures}>
+              <div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div>
+              <div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div>
+              <div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div>
+            </div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link>
+            <p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
