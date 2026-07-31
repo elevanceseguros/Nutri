@@ -15,7 +15,7 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Saúde e Nutrição</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>04 de julho de 2026</span>
@@ -23,6 +23,10 @@ export default function Post() {
           </div>
           <h1 className={styles.postTitle}>Comer Ovos Todo Dia Faz Mal? O Que a Ciência Diz em 2026</h1>
           <p className={styles.postExcerpt}>Durante décadas, o ovo foi vilão da dieta por causa do colesterol. Mas a ciência revisou essa posição. Quantos ovos por dia são seguros e para quem?</p>
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div><strong>Transforme este conteúdo em um plano para você</strong><p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p><Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link></div>
+          </div>
           <div className={styles.postContent}>
             <p>O ovo passou décadas sendo demonizado por causa do colesterol — cada unidade tem cerca de 186mg, quase o limite diário que era recomendado antigamente. Mas a ciência nutricional evoluiu bastante sobre esse tema.</p>
             <h2>A revisão científica sobre colesterol da dieta</h2>
@@ -36,7 +40,14 @@ export default function Post() {
             <h2>Conclusão</h2>
             <p>Para pessoas saudáveis sem predisposição genética ao colesterol alto, comer 1–3 ovos por dia é seguro e nutritivo. Se você tem colesterol alto ou diabetes, conversa com seu médico para definir a quantidade ideal para o seu caso.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}><h2>Quer colocar tudo isso em prática?</h2><p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p></div>
+            <div className={styles.premiumFeatures}><div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div><div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div><div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div></div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link><p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
