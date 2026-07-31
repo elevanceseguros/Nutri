@@ -15,7 +15,7 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Alimentação Prática</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>20 de julho de 2026</span>
@@ -23,6 +23,10 @@ export default function Post() {
           </div>
           <h1 className={styles.postTitle}>Proteína Vegetal Completa: Como Combinar Alimentos Para Não Faltar Aminoácido</h1>
           <p className={styles.postExcerpt}>Proteínas vegetais são geralmente incompletas — faltam um ou mais aminoácidos essenciais. Mas com as combinações certas, é possível ter proteína completa sem nenhum alimento animal.</p>
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div><strong>Transforme este conteúdo em um plano para você</strong><p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p><Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link></div>
+          </div>
           <div className={styles.postContent}>
             <p>Uma das principais preocupações de vegetarianos e veganos é a qualidade da proteína. Proteínas animais são completas — têm todos os aminoácidos essenciais em boas quantidades. Já a maioria das proteínas vegetais é incompleta — falta um ou mais aminoácidos essenciais. Mas isso não significa que uma dieta plant-based seja deficiente em proteína.</p>
             <h2>O conceito de aminoácido limitante</h2>
@@ -42,7 +46,14 @@ export default function Post() {
             <h2>Fontes vegetais com proteína mais completa</h2>
             <p>Soja é a proteína vegetal mais completa — tem todos os aminoácidos essenciais em boas quantidades. Quinoa também tem perfil completo. Tofu, tempê e edamame (soja) são boas fontes para quem quer proteína vegetal sem precisar combinar.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}><h2>Quer colocar tudo isso em prática?</h2><p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p></div>
+            <div className={styles.premiumFeatures}><div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div><div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div><div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div></div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link><p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
