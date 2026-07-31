@@ -21,7 +21,7 @@ export default function Post() {
       </header>
 
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Suplementação</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>23 de junho de 2026</span>
@@ -34,7 +34,15 @@ export default function Post() {
 
           <p className={styles.postExcerpt}>
             Whey é mais completo e absorvido mais rápido. Proteína vegetal é mais acessível e funciona para veganos e intolerantes à lactose. Mas qual realmente faz diferença no resultado?
-          </p>
+          </p>\n
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div>
+              <strong>Transforme este conteúdo em um plano para você</strong>
+              <p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p>
+              <Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link>
+            </div>
+          </div>
 
           <div className={styles.postContent}>
 
@@ -97,7 +105,23 @@ export default function Post() {
             <p>Escolha com base no seu estilo de vida, restrições e orçamento — não na propaganda.</p>
 
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}>
+              <h2>Quer colocar tudo isso em prática?</h2>
+              <p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p>
+            </div>
+            <div className={styles.premiumFeatures}>
+              <div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div>
+              <div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div>
+              <div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div>
+            </div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link>
+            <p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
 
       <footer className={styles.footer}>
