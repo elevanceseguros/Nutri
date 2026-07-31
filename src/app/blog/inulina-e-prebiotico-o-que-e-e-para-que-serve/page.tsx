@@ -15,7 +15,7 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Saúde e Nutrição</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>18 de julho de 2026</span>
@@ -23,6 +23,10 @@ export default function Post() {
           </div>
           <h1 className={styles.postTitle}>Inulina e Prebióticos: O Que São e Por Que Importam Para Sua Saúde?</h1>
           <p className={styles.postExcerpt}>Prebióticos são o alimento das bactérias boas do intestino. Sem eles, até o melhor probiótico perde eficiência. Entenda o que são, onde encontrar e quando suplementar.</p>
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div><strong>Transforme este conteúdo em um plano para você</strong><p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p><Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link></div>
+          </div>
           <div className={styles.postContent}>
             <p>Muito se fala em probióticos — as bactérias benéficas. Mas pouco se fala em prebióticos — o alimento que essas bactérias precisam para sobreviver e prosperar. Sem prebióticos suficientes, o probiótico mais caro do mercado tem eficiência reduzida.</p>
             <h2>O que é prebiótico?</h2>
@@ -43,7 +47,14 @@ export default function Post() {
             <h2>Vale suplementar inulina?</h2>
             <p>Se a dieta já é rica em vegetais, leguminosas, frutas e grãos integrais, provavelmente não é necessário. Se a dieta é pobre nesses alimentos ou você está tratando disbiose com probióticos, adicionar inulina (3-5g/dia) pode potencializar os resultados. Aumente gradualmente — excesso causa gases e inchaço.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}><h2>Quer colocar tudo isso em prática?</h2><p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p></div>
+            <div className={styles.premiumFeatures}><div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div><div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div><div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div></div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link><p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
