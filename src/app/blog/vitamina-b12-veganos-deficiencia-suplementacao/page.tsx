@@ -20,7 +20,7 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Saúde e Nutrição</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>29 de julho de 2026</span>
@@ -28,6 +28,10 @@ export default function Post() {
           </div>
           <h1 className={styles.postTitle}>Vitamina B12 para veganos: deficiência, exames e suplementação</h1>
           <p className={styles.postExcerpt}>A vitamina B12 merece atenção especial em dietas veganas porque fontes vegetais comuns não fornecem quantidades confiáveis. Entenda o mecanismo, os sinais de alerta e por que a estratégia preventiva é melhor do que esperar sintomas.</p>
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div><strong>Transforme este conteúdo em um plano para você</strong><p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p><Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link></div>
+          </div>
           <div className={styles.postContent}>
             <p>A vitamina B12, também chamada cobalamina, participa da formação das células do sangue, da síntese de DNA e do funcionamento do sistema nervoso. O organismo consegue armazená-la por bastante tempo; por isso, uma pessoa pode retirar alimentos de origem animal e continuar sem sintomas por meses ou anos. Essa reserva não significa que a dieta esteja fornecendo B12 suficiente.</p>
 
@@ -67,7 +71,14 @@ export default function Post() {
             <h2>Conclusão</h2>
             <p>Uma dieta vegana pode ser nutricionalmente adequada, mas a vitamina B12 não deve ficar ao acaso. Fontes fortificadas ou suplementação bem orientada, associadas a acompanhamento quando indicado, são a forma mais segura de prevenir uma deficiência silenciosa.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}><h2>Quer colocar tudo isso em prática?</h2><p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p></div>
+            <div className={styles.premiumFeatures}><div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div><div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div><div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div></div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link><p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
