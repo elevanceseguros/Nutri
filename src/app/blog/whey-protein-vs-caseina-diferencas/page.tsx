@@ -20,7 +20,7 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Suplementação</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>31 de julho de 2026</span>
@@ -28,6 +28,10 @@ export default function Post() {
           </div>
           <h1 className={styles.postTitle}>Whey protein vs caseína: diferenças e quando usar</h1>
           <p className={styles.postExcerpt}>Whey e caseína vêm do leite e fornecem todos os aminoácidos essenciais. A principal diferença está na forma como são digeridos — mas isso não torna um deles universalmente superior.</p>
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div><strong>Transforme este conteúdo em um plano para você</strong><p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p><Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link></div>
+          </div>
           <div className={styles.postContent}>
             <p>O leite bovino contém duas grandes frações proteicas: caseínas e proteínas do soro, conhecidas como whey. As duas são proteínas de alta qualidade e podem contribuir para a ingestão diária. O debate “rápida versus lenta” é real, mas frequentemente exagerado por marketing de suplementos.</p>
 
@@ -81,7 +85,14 @@ export default function Post() {
             <h2>Conclusão</h2>
             <p>Whey e caseína são proteínas completas com cinéticas diferentes. O whey produz disponibilidade mais rápida de aminoácidos; a caseína oferece liberação mais gradual. Para a maioria das pessoas, a melhor escolha é a que ajuda a cumprir a ingestão proteica com tolerância, regularidade e custo adequado.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}><h2>Quer colocar tudo isso em prática?</h2><p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p></div>
+            <div className={styles.premiumFeatures}><div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div><div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div><div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div></div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link><p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
