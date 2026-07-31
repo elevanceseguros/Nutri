@@ -15,7 +15,7 @@ export default function Post() {
         <Link href="/" className={styles.logo}>Nutry<span className={styles.logoAccent}>.life</span></Link>
       </header>
       <main className={styles.postContainer}>
-        <article className={styles.post}>
+        <article className={styles.post}>\n          <Link href="/blog" className={styles.backToBlog} data-nav="back-to-blog">← Voltar para o blog</Link>
           <div className={styles.postMeta}>
             <span className={styles.postCategory}>Suplementação</span>
             <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>15 de julho de 2026</span>
@@ -23,6 +23,10 @@ export default function Post() {
           </div>
           <h1 className={styles.postTitle}>Albumina Vale a Pena Como Suplemento? Comparação com Whey</h1>
           <p className={styles.postExcerpt}>Albumina é proteína de clara de ovo e custa menos que o whey. Mas ela entrega o mesmo resultado? Comparação honesta de absorção, aminoácidos e custo-benefício.</p>
+          <div className={styles.articleCtaTop} data-cta="nutry-plan-top">
+            <div className={styles.articleCtaIcon}>🤖</div>
+            <div><strong>Transforme este conteúdo em um plano para você</strong><p>A Nutry.life monta um cardápio personalizado para sua rotina, preferências e objetivo.</p><Link href="/" className={styles.articleCtaLink}>Gerar meu plano grátis →</Link></div>
+          </div>
           <div className={styles.postContent}>
             <p>Albumina é uma das proteínas em pó mais antigas do mercado — feita a partir da clara de ovo desidratada. Com o domínio do whey, ela perdeu espaço, mas continua sendo uma opção legítima e mais barata para quem busca proteína de qualidade.</p>
             <h2>O que é albumina?</h2>
@@ -47,7 +51,14 @@ export default function Post() {
             <h2>Vale a pena usar albumina?</h2>
             <p>Sim, especialmente para quem tem intolerância à lactose e quer economizar em relação ao whey isolado. Para quem não tem restrições, whey e albumina entregam resultados similares — a escolha pode ser pelo preço. Para ganho muscular com proteína suficiente no dia, ambos funcionam.</p>
           </div>
-        </article>
+
+          <div className={styles.premiumBanner} data-cta="nutry-plan-final">
+            <div className={styles.premiumBadgeTop}>✦ GRÁTIS PARA COMEÇAR</div>
+            <div className={styles.premiumHeader}><h2>Quer colocar tudo isso em prática?</h2><p>Receba um plano alimentar personalizado, com sugestões de refeições adaptadas à sua rotina e às suas preferências.</p></div>
+            <div className={styles.premiumFeatures}><div className={styles.premiumFeatureItem}>✅ Cardápio personalizado</div><div className={styles.premiumFeatureItem}>✅ Refeições práticas para o dia a dia</div><div className={styles.premiumFeatureItem}>✅ Ajustado às suas preferências</div></div>
+            <Link href="/" className={styles.premiumBtn}>Gerar meu plano alimentar grátis →</Link><p className={styles.premiumFootnote}>Sem cadastro. Sem cartão. 100% grátis para começar.</p>
+          </div>
+          <Link href="/blog" className={styles.backToBlogBottom}>← Voltar para todos os artigos</Link>\n        </article>
       </main>
       <footer className={styles.footer}>
         <p>© 2026 Nutry.life — Informação nutricional baseada em evidências</p>
