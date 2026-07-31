@@ -4,6 +4,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nutry.life';
   
   return [
+    { url: `${baseUrl}/blog/whey-protein-vs-caseina-diferencas`, lastModified: new Date('2026-07-31'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/probioticos-cepas-que-funcionam`, lastModified: new Date('2026-07-30'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/vitamina-b12-veganos-deficiencia-suplementacao`, lastModified: new Date('2026-07-29'), changeFrequency: 'monthly', priority: 0.8 },
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'daily', priority: 1 },
     { url: `${baseUrl}/plano-alimentar-para-emagrecer`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/cardapio-low-carb`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
