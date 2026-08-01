@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "creatina-para-mulheres-beneficios-retencao-seguranca",
+    titulo: "Creatina para Mulheres: Benefícios, Retenção e Segurança",
+    descricao: "Creatina causa inchaço? Entenda os benefícios para força e desempenho, os principais mitos e como avaliar o uso com segurança.",
+    data: "01 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Suplementação",
+    emoji: "💪",
+  },
+  {
     slug: "whey-protein-vs-caseina-diferencas",
     titulo: "Whey Protein vs Caseína: Diferenças e Quando Usar",
     descricao: "Compare digestão, aminoácidos, saciedade e praticidade para entender quando whey ou caseína faz mais sentido.",
