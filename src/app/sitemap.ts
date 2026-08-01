@@ -4,6 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nutry.life';
   
   return [
+    { url: `${baseUrl}/blog/creatina-para-mulheres-beneficios-retencao-seguranca`, lastModified: new Date('2026-08-01'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/melatonina-dose-quando-tomar-e-e-segura`, lastModified: new Date('2026-07-28'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/aveia-beneficios-tipos-e-como-consumir`, lastModified: new Date('2026-07-27'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/indice-glicemico-o-que-e-e-importa-para-emagrecer`, lastModified: new Date('2026-07-26'), changeFrequency: 'monthly', priority: 0.7 },
