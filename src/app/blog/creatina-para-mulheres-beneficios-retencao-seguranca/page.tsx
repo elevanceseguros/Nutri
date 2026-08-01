@@ -91,6 +91,12 @@ export default function Post() {
 
             <h2>Conclusão</h2>
             <p>Mulheres não precisam de uma creatina diferente. A monohidratada possui o maior conjunto de evidências e pode contribuir para força e desempenho quando usada com regularidade e associada ao treinamento. A retenção inicial, quando ocorre, tende a ser intramuscular e não deve ser confundida com ganho de gordura.</p>
+
+            <h2>Leia também</h2>
+            <ul>
+              <li><Link href="/blog/creatina-para-que-serve">Creatina: para que serve, quem pode usar e como funciona</Link></li>
+              <li><Link href="/blog/creatina-monohidratada-vs-creapure">Creatina monohidratada vs Creapure: vale pagar mais?</Link></li>
+            </ul>
           </div>
 
           <div className={styles.premiumBanner} data-cta="nutry-plan-final">
