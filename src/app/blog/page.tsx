@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "acai-e-saudavel-polpa-pura-xarope",
+    titulo: "Açaí é Saudável? Polpa Pura, Xarope e Como Escolher",
+    descricao: "Entenda por que a composição do açaí varia tanto e como comparar ingredientes, açúcares adicionados e acompanhamentos.",
+    data: "02 de agosto de 2026",
+    tempo: "8 min de leitura",
+    tag: "Alimentos",
+    emoji: "🫐",
+  },
+  {
     slug: "creatina-para-mulheres-beneficios-retencao-seguranca",
     titulo: "Creatina para Mulheres: Benefícios, Retenção e Segurança",
     descricao: "Creatina causa inchaço? Entenda os benefícios para força e desempenho, os principais mitos e como avaliar o uso com segurança.",
