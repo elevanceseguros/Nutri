@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "pao-integral-de-verdade-como-ler-rotulo",
+    titulo: "Pão Integral de Verdade: Como Ler o Rótulo",
+    descricao: "Veja os critérios da Anvisa e aprenda a comparar percentual integral, fibras, sódio e açúcares adicionados.",
+    data: "03 de agosto de 2026",
+    tempo: "8 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🍞",
+  },
+  {
     slug: "acai-e-saudavel-polpa-pura-xarope",
     titulo: "Açaí é Saudável? Polpa Pura, Xarope e Como Escolher",
     descricao: "Entenda por que a composição do açaí varia tanto e como comparar ingredientes, açúcares adicionados e acompanhamentos.",
