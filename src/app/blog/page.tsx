@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "leite-de-vaca-vs-bebida-vegetal",
+    titulo: "Leite de Vaca vs Bebida Vegetal: Como Comparar",
+    descricao: "Compare proteínas, cálcio, vitamina D, açúcares e ingredientes de bebidas de soja, aveia, amêndoas, coco e leite.",
+    data: "04 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🥛",
+  },
+  {
     slug: "pao-integral-de-verdade-como-ler-rotulo",
     titulo: "Pão Integral de Verdade: Como Ler o Rótulo",
     descricao: "Veja os critérios da Anvisa e aprenda a comparar percentual integral, fibras, sódio e açúcares adicionados.",
