@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "iogurte-natural-vs-grego-como-comparar",
+    titulo: "Iogurte Natural vs Grego: Proteína, Açúcar e Como Comparar",
+    descricao: "Compare proteína, açúcares adicionados, gordura, ingredientes, lactose e tamanho da porção antes de escolher.",
+    data: "05 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🥣",
+  },
+  {
     slug: "leite-de-vaca-vs-bebida-vegetal",
     titulo: "Leite de Vaca vs Bebida Vegetal: Como Comparar",
     descricao: "Compare proteínas, cálcio, vitamina D, açúcares e ingredientes de bebidas de soja, aveia, amêndoas, coco e leite.",
