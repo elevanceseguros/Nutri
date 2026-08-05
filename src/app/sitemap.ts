@@ -4,6 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nutry.life';
   
   return [
+    { url: `${baseUrl}/blog/iogurte-natural-vs-grego-como-comparar`, lastModified: new Date('2026-08-05'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/leite-de-vaca-vs-bebida-vegetal`, lastModified: new Date('2026-08-04'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/pao-integral-de-verdade-como-ler-rotulo`, lastModified: new Date('2026-08-03'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/acai-e-saudavel-polpa-pura-xarope`, lastModified: new Date('2026-08-02'), changeFrequency: 'monthly', priority: 0.8 },
