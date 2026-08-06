@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "manteiga-vs-margarina-como-comparar",
+    titulo: "Manteiga vs Margarina: Gorduras, Rótulo e Como Comparar",
+    descricao: "Compare gorduras saturadas, gordura trans, sódio, ingredientes, porção e uso culinário sem depender de mitos.",
+    data: "06 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🧈",
+  },
+  {
     slug: "iogurte-natural-vs-grego-como-comparar",
     titulo: "Iogurte Natural vs Grego: Proteína, Açúcar e Como Comparar",
     descricao: "Compare proteína, açúcares adicionados, gordura, ingredientes, lactose e tamanho da porção antes de escolher.",
