@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "arroz-branco-vs-integral-como-escolher",
+    titulo: "Arroz Branco vs Integral: Fibras, Preparo e Como Escolher",
+    descricao: "Compare fibras, micronutrientes, digestão, textura e preparo sem transformar o arroz branco em vilão.",
+    data: "07 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🍚",
+  },
+  {
     slug: "manteiga-vs-margarina-como-comparar",
     titulo: "Manteiga vs Margarina: Gorduras, Rótulo e Como Comparar",
     descricao: "Compare gorduras saturadas, gordura trans, sódio, ingredientes, porção e uso culinário sem depender de mitos.",
