@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "feijao-preto-carioca-branco-diferencas",
+    titulo: "Feijão Preto, Carioca ou Branco: Diferenças e Como Escolher",
+    descricao: "Compare fibras, proteínas, preparo, sabor e usos culinários das principais variedades de feijão.",
+    data: "08 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Alimentos",
+    emoji: "🫘",
+  },
+  {
     slug: "arroz-branco-vs-integral-como-escolher",
     titulo: "Arroz Branco vs Integral: Fibras, Preparo e Como Escolher",
     descricao: "Compare fibras, micronutrientes, digestão, textura e preparo sem transformar o arroz branco em vilão.",
