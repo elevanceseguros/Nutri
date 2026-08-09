@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "batata-doce-vs-batata-inglesa-como-escolher",
+    titulo: "Batata-Doce vs Batata Inglesa: Nutrientes, Preparo e Como Escolher",
+    descricao: "Compare fibras, micronutrientes, textura e preparo para escolher sem transformar uma das batatas em vilã.",
+    data: "09 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🍠",
+  },
+  {
     slug: "feijao-preto-carioca-branco-diferencas",
     titulo: "Feijão Preto, Carioca ou Branco: Diferenças e Como Escolher",
     descricao: "Compare fibras, proteínas, preparo, sabor e usos culinários das principais variedades de feijão.",
