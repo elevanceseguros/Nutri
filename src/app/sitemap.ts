@@ -3,6 +3,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nutry.life';
   
+  // Artigos em ordem cronológica decrescente.
   return [
     { url: `${baseUrl}/blog/aveia-flocos-farelo-farinha-diferencas`, lastModified: new Date('2026-08-10'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/batata-doce-vs-batata-inglesa-como-escolher`, lastModified: new Date('2026-08-09'), changeFrequency: 'monthly', priority: 0.8 },
