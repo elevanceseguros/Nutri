@@ -4,6 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nutry.life';
   
   return [
+    { url: `${baseUrl}/blog/aveia-flocos-farelo-farinha-diferencas`, lastModified: new Date('2026-08-10'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/batata-doce-vs-batata-inglesa-como-escolher`, lastModified: new Date('2026-08-09'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/feijao-preto-carioca-branco-diferencas`, lastModified: new Date('2026-08-08'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/arroz-branco-vs-integral-como-escolher`, lastModified: new Date('2026-08-07'), changeFrequency: 'monthly', priority: 0.8 },
