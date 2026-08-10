@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "aveia-flocos-farelo-farinha-diferencas",
+    titulo: "Aveia em Flocos, Farelo ou Farinha: Diferenças e Como Usar",
+    descricao: "Compare textura, fibras, preparo e usos culinários das principais formas de aveia sem procurar uma vencedora absoluta.",
+    data: "10 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🥣",
+  },
+  {
     slug: "batata-doce-vs-batata-inglesa-como-escolher",
     titulo: "Batata-Doce vs Batata Inglesa: Nutrientes, Preparo e Como Escolher",
     descricao: "Compare fibras, micronutrientes, textura e preparo para escolher sem transformar uma das batatas em vilã.",
