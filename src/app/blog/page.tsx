@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "tapioca-vs-pao-frances-como-comparar",
+    titulo: "Tapioca vs Pão Francês: Composição, Fibras e Como Comparar",
+    descricao: "Entenda como ingredientes, fibras, recheios e contexto da refeição diferenciam tapioca e pão francês.",
+    data: "11 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🫓",
+  },
+  {
     slug: "aveia-flocos-farelo-farinha-diferencas",
     titulo: "Aveia em Flocos, Farelo ou Farinha: Diferenças e Como Usar",
     descricao: "Compare textura, fibras, preparo e usos culinários das principais formas de aveia sem procurar uma vencedora absoluta.",
