@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/tapioca-vs-pao-frances-como-comparar`, lastModified: new Date('2026-08-11'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/aveia-flocos-farelo-farinha-diferencas`, lastModified: new Date('2026-08-10'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/batata-doce-vs-batata-inglesa-como-escolher`, lastModified: new Date('2026-08-09'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/feijao-preto-carioca-branco-diferencas`, lastModified: new Date('2026-08-08'), changeFrequency: 'monthly', priority: 0.8 },
