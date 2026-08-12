@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "queijo-minas-frescal-vs-ricota-como-comparar",
+    titulo: "Queijo Minas Frescal vs Ricota: Proteína, Sódio e Como Comparar",
+    descricao: "Compare ingredientes, proteína, cálcio, gordura, sódio, textura e usos culinários sem escolher apenas pela cor.",
+    data: "12 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🧀",
+  },
+  {
     slug: "tapioca-vs-pao-frances-como-comparar",
     titulo: "Tapioca vs Pão Francês: Composição, Fibras e Como Comparar",
     descricao: "Entenda como ingredientes, fibras, recheios e contexto da refeição diferenciam tapioca e pão francês.",
