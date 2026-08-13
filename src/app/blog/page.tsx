@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "banana-vs-maca-nutrientes-saciedade-como-escolher",
+    titulo: "Banana vs Maçã: Fibras, Nutrientes e Como Escolher",
+    descricao: "Compare fibras, micronutrientes, maturação, conservação e usos culinários sem transformar uma fruta em vencedora.",
+    data: "13 de agosto de 2026",
+    tempo: "9 min de leitura",
+    tag: "Alimentos",
+    emoji: "🍌",
+  },
+  {
     slug: "queijo-minas-frescal-vs-ricota-como-comparar",
     titulo: "Queijo Minas Frescal vs Ricota: Proteína, Sódio e Como Comparar",
     descricao: "Compare ingredientes, proteína, cálcio, gordura, sódio, textura e usos culinários sem escolher apenas pela cor.",
