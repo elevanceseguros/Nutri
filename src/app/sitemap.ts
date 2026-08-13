@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/banana-vs-maca-nutrientes-saciedade-como-escolher`, lastModified: new Date('2026-08-13'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/queijo-minas-frescal-vs-ricota-como-comparar`, lastModified: new Date('2026-08-12'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/tapioca-vs-pao-frances-como-comparar`, lastModified: new Date('2026-08-11'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/aveia-flocos-farelo-farinha-diferencas`, lastModified: new Date('2026-08-10'), changeFrequency: 'monthly', priority: 0.8 },
