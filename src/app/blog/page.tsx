@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "frutas-secas-rotulo-porcao-como-escolher",
+    titulo: "Frutas Secas São Saudáveis? Rótulo, Porção e Como Escolher",
+    descricao: "Entenda secagem, açúcar adicionado, óleos e diferenças para frutas cristalizadas usando a lista de ingredientes e a tabela nutricional.",
+    data: "14 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🍇",
+  },
+  {
     slug: "banana-vs-maca-nutrientes-saciedade-como-escolher",
     titulo: "Banana vs Maçã: Fibras, Nutrientes e Como Escolher",
     descricao: "Compare fibras, micronutrientes, maturação, conservação e usos culinários sem transformar uma fruta em vencedora.",
