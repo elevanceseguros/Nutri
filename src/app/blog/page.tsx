@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "como-congelar-frutas-textura-seguranca",
+    titulo: "Como Congelar Frutas: Textura, Segurança e Como Usar Depois",
+    descricao: "Aprenda a preparar, embalar, congelar e aproveitar frutas sem esperar a mesma textura da versão fresca.",
+    data: "15 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Cozinha Prática",
+    emoji: "❄️",
+  },
+  {
     slug: "frutas-secas-rotulo-porcao-como-escolher",
     titulo: "Frutas Secas São Saudáveis? Rótulo, Porção e Como Escolher",
     descricao: "Entenda secagem, açúcar adicionado, óleos e diferenças para frutas cristalizadas usando a lista de ingredientes e a tabela nutricional.",
