@@ -106,7 +106,7 @@ export default function Post() {
 
             <h2>Conclusão</h2>
             <p>Congelar frutas é uma estratégia de organização, não uma tentativa de deixá-las idênticas às frescas. Escolha frutas próprias para consumo, higienize, seque, corte, congele em porções e planeje preparações que aproveitem a textura mais macia.</p>
-            <p>Para continuar, veja como comparar <Link href="/blog/banana-vs-maca-nutrientes-saciedade-como-escolher">banana e maçã</Link>, como escolher <Link href="/blog/frutas-secas-rotulo-porcao-como-escolher">frutas secas pelo rótulo</Link> e como <Link href="/blog/como-organizar-feira-semanal-saudavel">organizar a feira semanal</Link>.</p>
+            <p>Para continuar, veja como comparar <Link href="/blog/banana-vs-maca-nutrientes-saciedade-como-escolher">banana e maçã</Link>, como escolher <Link href="/blog/frutas-secas-rotulo-porcao-como-escolher">frutas secas pelo rótulo</Link> e como <Link href="/blog/como-organizar-feira-semanal">organizar a feira semanal</Link>.</p>
 
             <h2>Fontes consultadas</h2>
             <ul>
