@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "como-higienizar-guardar-folhas",
+    titulo: "Como Higienizar e Guardar Folhas: Alface, Rúcula e Couve",
+    descricao: "Aprenda a selecionar, lavar, sanitizar, secar e armazenar folhas com segurança e menos desperdício.",
+    data: "16 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Cozinha Prática",
+    emoji: "🥬",
+  },
+  {
     slug: "como-congelar-frutas-textura-seguranca",
     titulo: "Como Congelar Frutas: Textura, Segurança e Como Usar Depois",
     descricao: "Aprenda a preparar, embalar, congelar e aproveitar frutas sem esperar a mesma textura da versão fresca.",
