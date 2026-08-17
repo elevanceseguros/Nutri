@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/arroz-feijao-cozidos-guardar-congelar-reaquecer`, lastModified: new Date('2026-08-17'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/como-higienizar-guardar-folhas`, lastModified: new Date('2026-08-16'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/como-congelar-frutas-textura-seguranca`, lastModified: new Date('2026-08-15'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/frutas-secas-rotulo-porcao-como-escolher`, lastModified: new Date('2026-08-14'), changeFrequency: 'monthly', priority: 0.8 },
