@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "arroz-feijao-cozidos-guardar-congelar-reaquecer",
+    titulo: "Arroz e Feijão Cozidos: Como Guardar, Congelar e Reaquecer",
+    descricao: "Aprenda a resfriar, porcionar, refrigerar, congelar e reaquecer arroz e feijão com mais segurança e menos desperdício.",
+    data: "17 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Cozinha Prática",
+    emoji: "🍚",
+  },
+  {
     slug: "como-higienizar-guardar-folhas",
     titulo: "Como Higienizar e Guardar Folhas: Alface, Rúcula e Couve",
     descricao: "Aprenda a selecionar, lavar, sanitizar, secar e armazenar folhas com segurança e menos desperdício.",
