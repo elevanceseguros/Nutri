@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "molho-tomate-passata-extrato-como-escolher",
+    titulo: "Molho de Tomate, Passata ou Extrato: Diferenças e Como Escolher",
+    descricao: "Compare concentração, ingredientes, sódio, açúcar, textura e usos de molho de tomate, passata e extrato.",
+    data: "18 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🍅",
+  },
+  {
     slug: "arroz-feijao-cozidos-guardar-congelar-reaquecer",
     titulo: "Arroz e Feijão Cozidos: Como Guardar, Congelar e Reaquecer",
     descricao: "Aprenda a resfriar, porcionar, refrigerar, congelar e reaquecer arroz e feijão com mais segurança e menos desperdício.",
