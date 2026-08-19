@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/granola-saudavel-acucar-fibras-como-escolher`, lastModified: new Date('2026-08-19'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/molho-tomate-passata-extrato-como-escolher`, lastModified: new Date('2026-08-18'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/arroz-feijao-cozidos-guardar-congelar-reaquecer`, lastModified: new Date('2026-08-17'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/como-higienizar-guardar-folhas`, lastModified: new Date('2026-08-16'), changeFrequency: 'monthly', priority: 0.8 },
