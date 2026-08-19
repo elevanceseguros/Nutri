@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "granola-saudavel-acucar-fibras-como-escolher",
+    titulo: "Granola é Saudável? Açúcar, Fibras e Como Escolher pelo Rótulo",
+    descricao: "Aprenda a comparar granolas pela lista de ingredientes, açúcares adicionados, fibras, gorduras e porção usada.",
+    data: "19 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Escolhas Alimentares",
+    emoji: "🥣",
+  },
+  {
     slug: "molho-tomate-passata-extrato-como-escolher",
     titulo: "Molho de Tomate, Passata ou Extrato: Diferenças e Como Escolher",
     descricao: "Compare concentração, ingredientes, sódio, açúcar, textura e usos de molho de tomate, passata e extrato.",
