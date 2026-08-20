@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "legumes-congelados-nutrientes-como-preparar",
+    titulo: "Legumes Congelados Perdem Nutrientes? Como Escolher e Preparar",
+    descricao: "Entenda o que o congelamento faz com os nutrientes, como ler a embalagem e preparar legumes com praticidade e segurança.",
+    data: "20 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Alimentação prática",
+    emoji: "🥦",
+  },
+  {
     slug: "granola-saudavel-acucar-fibras-como-escolher",
     titulo: "Granola é Saudável? Açúcar, Fibras e Como Escolher pelo Rótulo",
     descricao: "Aprenda a comparar granolas pela lista de ingredientes, açúcares adicionados, fibras, gorduras e porção usada.",
