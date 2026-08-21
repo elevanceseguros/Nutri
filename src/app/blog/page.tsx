@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "sardinha-vs-atum-lata-como-escolher",
+    titulo: "Sardinha vs Atum em Lata: Proteína, Ômega-3, Sódio e Como Escolher",
+    descricao: "Compare proteína, ômega-3, cálcio, sódio, líquidos de cobertura e usos para escolher pelo rótulo e pela refeição.",
+    data: "21 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Escolhas práticas",
+    emoji: "🐟",
+  },
+  {
     slug: "legumes-congelados-nutrientes-como-preparar",
     titulo: "Legumes Congelados Perdem Nutrientes? Como Escolher e Preparar",
     descricao: "Entenda o que o congelamento faz com os nutrientes, como ler a embalagem e preparar legumes com praticidade e segurança.",
