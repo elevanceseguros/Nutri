@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "lancheira-infantil-saudavel-pratica-segura",
+    titulo: "Lancheira Infantil Saudável: Como Montar Opções Práticas e Seguras",
+    descricao: "Aprenda a combinar variedade, praticidade e segurança na lancheira, com atenção à conservação, alergias e risco de engasgo.",
+    data: "23 de agosto de 2026",
+    tempo: "11 min de leitura",
+    tag: "Alimentação infantil",
+    emoji: "🍎",
+  },
+  {
     slug: "agua-com-gas-faz-mal",
     titulo: "Água com Gás Faz Mal? Dentes, Ossos, Estômago e Hidratação",
     descricao: "Entenda se água com gás hidrata, o que muda para dentes e estômago e como diferenciá-la de refrigerantes e bebidas saborizadas.",
