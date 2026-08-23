@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/lancheira-infantil-saudavel-pratica-segura`, lastModified: new Date('2026-08-23'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/agua-com-gas-faz-mal`, lastModified: new Date('2026-08-22'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/sardinha-vs-atum-lata-como-escolher`, lastModified: new Date('2026-08-21'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/legumes-congelados-nutrientes-como-preparar`, lastModified: new Date('2026-08-20'), changeFrequency: 'monthly', priority: 0.8 },
