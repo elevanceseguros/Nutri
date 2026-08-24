@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "suco-natural-vs-fruta-inteira",
+    titulo: "Suco Natural vs Fruta Inteira: Fibras, Saciedade e Como Escolher",
+    descricao: "Entenda o que muda em fibras, saciedade, quantidade e preparo e como diferenciar suco, néctar e refresco pelo rótulo.",
+    data: "24 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Escolhas práticas",
+    emoji: "🍊",
+  },
+  {
     slug: "lancheira-infantil-saudavel-pratica-segura",
     titulo: "Lancheira Infantil Saudável: Como Montar Opções Práticas e Seguras",
     descricao: "Aprenda a combinar variedade, praticidade e segurança na lancheira, com atenção à conservação, alergias e risco de engasgo.",
