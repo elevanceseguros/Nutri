@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "como-guardar-ovos-geladeira-lavagem-seguranca",
+    titulo: "Como Guardar Ovos: Geladeira, Lavagem, Validade e Preparo Seguro",
+    descricao: "Veja onde armazenar, por que evitar a porta da geladeira e a lavagem antecipada e como comprar e preparar ovos com segurança.",
+    data: "25 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Segurança dos alimentos",
+    emoji: "🥚",
+  },
+  {
     slug: "suco-natural-vs-fruta-inteira",
     titulo: "Suco Natural vs Fruta Inteira: Fibras, Saciedade e Como Escolher",
     descricao: "Entenda o que muda em fibras, saciedade, quantidade e preparo e como diferenciar suco, néctar e refresco pelo rótulo.",
