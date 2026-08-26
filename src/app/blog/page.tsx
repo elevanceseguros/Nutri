@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "cafe-descafeinado-tem-cafeina-como-escolher",
+    titulo: "Café Descafeinado Tem Cafeína? Quanto Resta e Como Escolher",
+    descricao: "Entenda por que descafeinado não significa cafeína zero, quanto pode restar e como comparar tipo, preparo, horário e rótulo.",
+    data: "26 de agosto de 2026",
+    tempo: "10 min de leitura",
+    tag: "Escolhas práticas",
+    emoji: "☕",
+  },
+  {
     slug: "como-guardar-ovos-geladeira-lavagem-seguranca",
     titulo: "Como Guardar Ovos: Geladeira, Lavagem, Validade e Preparo Seguro",
     descricao: "Veja onde armazenar, por que evitar a porta da geladeira e a lavagem antecipada e como comprar e preparar ovos com segurança.",
