@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/cafe-descafeinado-tem-cafeina-como-escolher`, lastModified: new Date('2026-08-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/como-guardar-ovos-geladeira-lavagem-seguranca`, lastModified: new Date('2026-08-25'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/suco-natural-vs-fruta-inteira`, lastModified: new Date('2026-08-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/lancheira-infantil-saudavel-pratica-segura`, lastModified: new Date('2026-08-23'), changeFrequency: 'monthly', priority: 0.8 },
