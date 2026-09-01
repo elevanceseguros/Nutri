@@ -5,6 +5,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/quantas-gramas-de-proteina-por-dia`, lastModified: new Date('2026-04-19'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/temperos-prontos-naturais-sodio-como-comparar`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/legumes-vapor-agua-microondas-nutrientes`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/pipoca-panela-microondas-comparar-ingredientes`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/pasta-amendoim-integral-saborizada-como-escolher`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/grao-de-bico-seco-vs-conserva-como-usar`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/leite-uht-vs-pasteurizado-conservacao-comparar`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/cafe-descafeinado-tem-cafeina-como-escolher`, lastModified: new Date('2026-08-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/como-guardar-ovos-geladeira-lavagem-seguranca`, lastModified: new Date('2026-08-25'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/suco-natural-vs-fruta-inteira`, lastModified: new Date('2026-08-24'), changeFrequency: 'monthly', priority: 0.8 },
@@ -144,3 +151,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog/como-emagrecer-sem-passar-fome`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ];
 }
+

@@ -157,7 +157,7 @@ export default function Post() {
             <li>observe dor de cabeça e cansaço ao reduzir abruptamente.</li>
           </ul>
           <p>
-            Para estruturar o restante da manhã, veja também o artigo sobre <Link href="/blog/proteina-no-cafe-da-manha">proteína no café da manhã</Link> e o guia de <Link href="/blog/cafe-da-manha-saudavel-opcoes-rapidas">opções rápidas para o café da manhã</Link>.
+            Para estruturar o restante da manhã, veja também o artigo sobre <Link href="/blog/proteina-no-cafe-da-manha">proteína no café da manhã</Link> e o guia de <Link href="/blog/cafe-da-manha-saudavel">opções rápidas para o café da manhã</Link>.
           </p>
 
           <h2>Resumo</h2>
@@ -191,3 +191,4 @@ export default function Post() {
     </main>
   );
 }
+
