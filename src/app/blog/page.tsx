@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "macarrao-comum-integral-com-ovos-comparar",
+    "titulo": "Macarrão Comum, Integral ou com Ovos: Como Comparar e Montar o Prato",
+    "descricao": "Compare ingredientes, fibras, proteína e preço, entenda o peso seco e cozido e escolha o macarrão sem transformar a refeição em uma lista de proibições.",
+    "data": "2 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🍝"
+  },
+  {
     "slug": "temperos-prontos-naturais-sodio-como-comparar",
     "titulo": "Temperos Prontos ou Naturais: Como Ganhar Sabor e Comparar o Sódio",
     "descricao": "Veja a diferença entre ervas, misturas secas, sal temperado e caldos concentrados e monte combinações simples para o dia a dia.",
@@ -1290,4 +1299,3 @@ export default function Blog() {
     </>
   );
 }
-

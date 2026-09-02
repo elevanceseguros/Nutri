@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/macarrao-comum-integral-com-ovos-comparar`, lastModified: new Date('2026-09-02'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/quantas-gramas-de-proteina-por-dia`, lastModified: new Date('2026-04-19'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/temperos-prontos-naturais-sodio-como-comparar`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/legumes-vapor-agua-microondas-nutrientes`, lastModified: new Date('2026-09-01'), changeFrequency: 'monthly', priority: 0.8 },
@@ -151,4 +152,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog/como-emagrecer-sem-passar-fome`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ];
 }
-
