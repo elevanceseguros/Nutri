@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "como-descongelar-carne-geladeira-microondas",
+    "titulo": "Como Descongelar Carne com Segurança: Geladeira ou Micro-ondas?",
+    "descricao": "Entenda quando usar cada método, como evitar contato com outros alimentos e por que deixar a carne na bancada não é um bom atalho.",
+    "data": "3 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🍽️"
+  },
+  {
     "slug": "macarrao-comum-integral-com-ovos-comparar",
     "titulo": "Macarrão Comum, Integral ou com Ovos: Como Comparar e Montar o Prato",
     "descricao": "Compare ingredientes, fibras, proteína e preço, entenda o peso seco e cozido e escolha o macarrão sem transformar a refeição em uma lista de proibições.",
