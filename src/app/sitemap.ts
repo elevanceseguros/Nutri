@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/milho-verde-espiga-lata-congelado-comparar`, lastModified: new Date('2026-09-04'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/como-descongelar-carne-geladeira-microondas`, lastModified: new Date('2026-09-03'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/macarrao-comum-integral-com-ovos-comparar`, lastModified: new Date('2026-09-02'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/quantas-gramas-de-proteina-por-dia`, lastModified: new Date('2026-04-19'), changeFrequency: 'monthly', priority: 0.7 },

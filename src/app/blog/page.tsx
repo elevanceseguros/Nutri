@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "milho-verde-espiga-lata-congelado-comparar",
+    "titulo": "Milho Verde: Espiga, Lata ou Congelado — Como Comparar e Usar",
+    "descricao": "Compare ingredientes, sódio, peso drenado, conservação e praticidade para escolher a versão que funciona na sua cozinha.",
+    "data": "4 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🌽"
+  },
+  {
     "slug": "como-descongelar-carne-geladeira-microondas",
     "titulo": "Como Descongelar Carne com Segurança: Geladeira ou Micro-ondas?",
     "descricao": "Entenda quando usar cada método, como evitar contato com outros alimentos e por que deixar a carne na bancada não é um bom atalho.",
