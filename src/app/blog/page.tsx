@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "azeite-oleo-soja-canola-como-escolher",
+    "titulo": "Azeite, Óleo de Soja ou Canola: Como Escolher para Cada Preparo",
+    "descricao": "Compare sabor, rótulo, uso culinário, conservação e quantidade sem transformar um óleo em vilão ou solução milagrosa.",
+    "data": "5 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🫒"
+  },
+  {
     "slug": "milho-verde-espiga-lata-congelado-comparar",
     "titulo": "Milho Verde: Espiga, Lata ou Congelado — Como Comparar e Usar",
     "descricao": "Compare ingredientes, sódio, peso drenado, conservação e praticidade para escolher a versão que funciona na sua cozinha.",
