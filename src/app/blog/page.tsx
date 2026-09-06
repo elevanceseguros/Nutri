@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "cuscuz-milho-cafe-da-manha-como-montar",
+    "titulo": "Cuscuz de Milho no Café da Manhã: Como Montar a Refeição",
+    "descricao": "Entenda o que o flocão oferece, como o preparo muda a composição e quais acompanhamentos ajudam a montar um café da manhã prático.",
+    "data": "6 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Café da manhã",
+    "emoji": "🌽"
+  },
+  {
     "slug": "azeite-oleo-soja-canola-como-escolher",
     "titulo": "Azeite, Óleo de Soja ou Canola: Como Escolher para Cada Preparo",
     "descricao": "Compare sabor, rótulo, uso culinário, conservação e quantidade sem transformar um óleo em vilão ou solução milagrosa.",
