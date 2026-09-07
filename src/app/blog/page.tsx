@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "castanhas-naturais-torradas-salgadas-como-comparar",
+    "titulo": "Castanhas Naturais, Torradas ou Salgadas: Como Comparar e Guardar",
+    "descricao": "Compare ingredientes, sódio, porção, preço e conservação e entenda por que diferentes castanhas não têm composição idêntica.",
+    "data": "7 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🥜"
+  },
+  {
     "slug": "cuscuz-milho-cafe-da-manha-como-montar",
     "titulo": "Cuscuz de Milho no Café da Manhã: Como Montar a Refeição",
     "descricao": "Entenda o que o flocão oferece, como o preparo muda a composição e quais acompanhamentos ajudam a montar um café da manhã prático.",
