@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "sopa-caseira-caixinha-instantanea-comparar",
+    "titulo": "Sopa Caseira, de Caixinha ou Instantânea: Como Comparar",
+    "descricao": "Compare ingredientes, sódio, textura, praticidade e conservação sem presumir que toda sopa caseira é completa ou que toda versão pronta é igual.",
+    "data": "8 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🍲"
+  },
+  {
     "slug": "castanhas-naturais-torradas-salgadas-como-comparar",
     "titulo": "Castanhas Naturais, Torradas ou Salgadas: Como Comparar e Guardar",
     "descricao": "Compare ingredientes, sódio, porção, preço e conservação e entenda por que diferentes castanhas não têm composição idêntica.",
