@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "peixe-fresco-congelado-como-escolher-descongelar",
+    "titulo": "Peixe Fresco ou Congelado: Como Escolher, Descongelar e Preparar",
+    "descricao": "Compare qualidade, rótulo, praticidade e segurança sem presumir que fresco é sempre superior ou que todos os congelados são iguais.",
+    "data": "9 de setembro de 2026",
+    "tempo": "4 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🐟"
+  },
+  {
     "slug": "sopa-caseira-caixinha-instantanea-comparar",
     "titulo": "Sopa Caseira, de Caixinha ou Instantânea: Como Comparar",
     "descricao": "Compare ingredientes, sódio, textura, praticidade e conservação sem presumir que toda sopa caseira é completa ou que toda versão pronta é igual.",
