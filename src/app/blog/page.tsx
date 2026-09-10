@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "queijo-ralado-pacote-ingredientes-sodio-porcao",
+    "titulo": "Queijo Ralado de Pacote: Como Comparar Ingredientes, Sódio e Porção",
+    "descricao": "Veja como comparar denominação, lista de ingredientes, sódio, gordura saturada, porção, preço e conservação sem julgar o produto apenas pela frente da embalagem.",
+    "data": "10 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🧀"
+  },
+  {
     "slug": "peixe-fresco-congelado-como-escolher-descongelar",
     "titulo": "Peixe Fresco ou Congelado: Como Escolher, Descongelar e Preparar",
     "descricao": "Compare qualidade, rótulo, praticidade e segurança sem presumir que fresco é sempre superior ou que todos os congelados são iguais.",

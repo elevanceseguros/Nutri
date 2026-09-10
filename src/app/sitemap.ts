@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/queijo-ralado-pacote-ingredientes-sodio-porcao`, lastModified: new Date('2026-09-10'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/peixe-fresco-congelado-como-escolher-descongelar`, lastModified: new Date('2026-09-09'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/sopa-caseira-caixinha-instantanea-comparar`, lastModified: new Date('2026-09-08'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/castanhas-naturais-torradas-salgadas-como-comparar`, lastModified: new Date('2026-09-07'), changeFrequency: 'monthly', priority: 0.8 },
