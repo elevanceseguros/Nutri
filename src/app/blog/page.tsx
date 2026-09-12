@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "leite-em-po-vs-liquido-composicao-preparo",
+    "titulo": "Leite em Pó ou Líquido: Composição, Preparo e Como Comparar",
+    "descricao": "Entenda o que muda entre leite em pó e líquido, como comparar o rótulo, reconstituir corretamente e usar cada versão na rotina.",
+    "data": "12 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🥛"
+  },
+  {
     "slug": "feijao-de-molho-tempo-agua-cozimento",
     "titulo": "Deixar o Feijão de Molho: Tempo, Água e Cozimento Seguro",
     "descricao": "Entenda para que serve o remolho, quando trocar a água, como conservar durante o processo e por que deixar de molho não substitui o cozimento.",

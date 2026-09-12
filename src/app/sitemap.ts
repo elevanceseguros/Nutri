@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/leite-em-po-vs-liquido-composicao-preparo`, lastModified: new Date('2026-09-12'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/feijao-de-molho-tempo-agua-cozimento`, lastModified: new Date('2026-09-11'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/queijo-ralado-pacote-ingredientes-sodio-porcao`, lastModified: new Date('2026-09-10'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/peixe-fresco-congelado-como-escolher-descongelar`, lastModified: new Date('2026-09-09'), changeFrequency: 'monthly', priority: 0.8 },
