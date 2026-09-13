@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "farinha-trigo-branca-vs-integral-como-usar",
+    "titulo": "Farinha de Trigo Branca ou Integral: Diferenças e Como Usar",
+    "descricao": "Compare fibras, textura, absorção de água, rótulo e usos culinários para escolher sem tratar uma farinha como solução ou vilã.",
+    "data": "13 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🌾"
+  },
+  {
     "slug": "leite-em-po-vs-liquido-composicao-preparo",
     "titulo": "Leite em Pó ou Líquido: Composição, Preparo e Como Comparar",
     "descricao": "Entenda o que muda entre leite em pó e líquido, como comparar o rótulo, reconstituir corretamente e usar cada versão na rotina.",
