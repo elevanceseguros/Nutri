@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "lentilha-seca-vs-pronta-sodio-custo-preparo",
+    "titulo": "Lentilha Seca ou Pronta: Sódio, Custo, Preparo e Como Usar",
+    "descricao": "Compare lentilha seca, em lata ou sachê pelo peso drenado, ingredientes, sódio, rendimento e tempo de cozinha.",
+    "data": "14 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🫘"
+  },
+  {
     "slug": "farinha-trigo-branca-vs-integral-como-usar",
     "titulo": "Farinha de Trigo Branca ou Integral: Diferenças e Como Usar",
     "descricao": "Compare fibras, textura, absorção de água, rótulo e usos culinários para escolher sem tratar uma farinha como solução ou vilã.",

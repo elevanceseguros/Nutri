@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/lentilha-seca-vs-pronta-sodio-custo-preparo`, lastModified: new Date('2026-09-14'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/farinha-trigo-branca-vs-integral-como-usar`, lastModified: new Date('2026-09-13'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/leite-em-po-vs-liquido-composicao-preparo`, lastModified: new Date('2026-09-12'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/feijao-de-molho-tempo-agua-cozimento`, lastModified: new Date('2026-09-11'), changeFrequency: 'monthly', priority: 0.8 },
