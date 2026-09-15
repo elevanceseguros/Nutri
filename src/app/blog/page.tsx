@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "vinagre-alcool-maca-balsamico-como-escolher",
+    "titulo": "Vinagre de Álcool, Maçã ou Balsâmico: Diferenças e Como Escolher",
+    "descricao": "Compare matéria-prima, ingredientes, acidez, açúcar, sódio, preço e usos culinários dos diferentes tipos de vinagre.",
+    "data": "15 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🥗"
+  },
+  {
     "slug": "lentilha-seca-vs-pronta-sodio-custo-preparo",
     "titulo": "Lentilha Seca ou Pronta: Sódio, Custo, Preparo e Como Usar",
     "descricao": "Compare lentilha seca, em lata ou sachê pelo peso drenado, ingredientes, sódio, rendimento e tempo de cozinha.",
