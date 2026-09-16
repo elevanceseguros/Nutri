@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "maionese-caseira-industrializada-ovos-conservacao",
+    "titulo": "Maionese Caseira ou Industrializada: Ovos, Conservação e Como Comparar",
+    "descricao": "Compare ingredientes, ovos, gorduras, sódio, validade e cuidados de conservação da maionese caseira e industrializada.",
+    "data": "16 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Segurança alimentar",
+    "emoji": "🥄"
+  },
+  {
     "slug": "vinagre-alcool-maca-balsamico-como-escolher",
     "titulo": "Vinagre de Álcool, Maçã ou Balsâmico: Diferenças e Como Escolher",
     "descricao": "Compare matéria-prima, ingredientes, acidez, açúcar, sódio, preço e usos culinários dos diferentes tipos de vinagre.",
