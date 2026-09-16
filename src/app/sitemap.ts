@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/maionese-caseira-industrializada-ovos-conservacao`, lastModified: new Date('2026-09-16'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/vinagre-alcool-maca-balsamico-como-escolher`, lastModified: new Date('2026-09-15'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/lentilha-seca-vs-pronta-sodio-custo-preparo`, lastModified: new Date('2026-09-14'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/farinha-trigo-branca-vs-integral-como-usar`, lastModified: new Date('2026-09-13'), changeFrequency: 'monthly', priority: 0.8 },
