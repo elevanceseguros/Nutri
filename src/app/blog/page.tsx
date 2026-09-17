@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "geleia-comum-diet-zero-acucar-como-comparar",
+    "titulo": "Geleia Comum, Diet ou Zero Açúcar: Como Comparar pelo Rótulo",
+    "descricao": "Compare geleias comum, diet, zero e sem adição de açúcares pelos ingredientes, açúcares, adoçantes, porção e conservação.",
+    "data": "17 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Leitura de rótulos",
+    "emoji": "🍓"
+  },
+  {
     "slug": "maionese-caseira-industrializada-ovos-conservacao",
     "titulo": "Maionese Caseira ou Industrializada: Ovos, Conservação e Como Comparar",
     "descricao": "Compare ingredientes, ovos, gorduras, sódio, validade e cuidados de conservação da maionese caseira e industrializada.",
