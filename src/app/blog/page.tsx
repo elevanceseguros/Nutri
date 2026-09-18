@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "chia-vs-linhaca-fibras-preparo-como-usar",
+    "titulo": "Chia vs Linhaça: Fibras, Preparo, Conservação e Como Usar",
+    "descricao": "Compare chia e linhaça pela textura, forma de uso, moagem, hidratação, conservação e leitura do rótulo.",
+    "data": "18 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🌱"
+  },
+  {
     "slug": "geleia-comum-diet-zero-acucar-como-comparar",
     "titulo": "Geleia Comum, Diet ou Zero Açúcar: Como Comparar pelo Rótulo",
     "descricao": "Compare geleias comum, diet, zero e sem adição de açúcares pelos ingredientes, açúcares, adoçantes, porção e conservação.",
