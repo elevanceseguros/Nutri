@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/chia-vs-linhaca-fibras-preparo-como-usar`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/geleia-comum-diet-zero-acucar-como-comparar`, lastModified: new Date('2026-09-17'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/maionese-caseira-industrializada-ovos-conservacao`, lastModified: new Date('2026-09-16'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/vinagre-alcool-maca-balsamico-como-escolher`, lastModified: new Date('2026-09-15'), changeFrequency: 'monthly', priority: 0.8 },
