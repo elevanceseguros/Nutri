@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "quinoa-como-lavar-cozinhar-guardar-usar",
+    "titulo": "Quinoa: Como Lavar, Cozinhar, Guardar e Usar nas Refeições",
+    "descricao": "Guia prático para escolher, lavar, cozinhar, conservar e usar quinoa em saladas, bowls, sopas e outras refeições.",
+    "data": "19 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Preparo prático",
+    "emoji": "🥣"
+  },
+  {
     "slug": "chia-vs-linhaca-fibras-preparo-como-usar",
     "titulo": "Chia vs Linhaça: Fibras, Preparo, Conservação e Como Usar",
     "descricao": "Compare chia e linhaça pela textura, forma de uso, moagem, hidratação, conservação e leitura do rótulo.",
