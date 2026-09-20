@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "batata-inglesa-doce-mandioca-comparar-preparar",
+    "titulo": "Batata Inglesa, Batata-Doce ou Mandioca: Como Comparar e Preparar",
+    "descricao": "Compare textura, preparo, conservação e uso culinário de batata inglesa, batata-doce e mandioca sem transformar uma raiz em solução ou vilã.",
+    "data": "20 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🥔"
+  },
+  {
     "slug": "quinoa-como-lavar-cozinhar-guardar-usar",
     "titulo": "Quinoa: Como Lavar, Cozinhar, Guardar e Usar nas Refeições",
     "descricao": "Guia prático para escolher, lavar, cozinhar, conservar e usar quinoa em saladas, bowls, sopas e outras refeições.",
