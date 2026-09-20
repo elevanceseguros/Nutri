@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/batata-inglesa-doce-mandioca-comparar-preparar`, lastModified: new Date('2026-09-20'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/quinoa-como-lavar-cozinhar-guardar-usar`, lastModified: new Date('2026-09-19'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/chia-vs-linhaca-fibras-preparo-como-usar`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/geleia-comum-diet-zero-acucar-como-comparar`, lastModified: new Date('2026-09-17'), changeFrequency: 'monthly', priority: 0.8 },
