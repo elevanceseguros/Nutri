@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "requeijao-cream-cheese-ricota-cremosa-comparar-rotulo",
+    "titulo": "Requeijão, Cream Cheese ou Ricota Cremosa: Como Comparar o Rótulo",
+    "descricao": "Compare denominação, ingredientes, sódio, gordura, proteína, porção e conservação de requeijão, cream cheese e ricota cremosa.",
+    "data": "21 de setembro de 2026",
+    "tempo": "5 min de leitura",
+    "tag": "Leitura de rótulos",
+    "emoji": "🧀"
+  },
+  {
     "slug": "batata-inglesa-doce-mandioca-comparar-preparar",
     "titulo": "Batata Inglesa, Batata-Doce ou Mandioca: Como Comparar e Preparar",
     "descricao": "Compare textura, preparo, conservação e uso culinário de batata inglesa, batata-doce e mandioca sem transformar uma raiz em solução ou vilã.",
