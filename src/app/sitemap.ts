@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/frango-cru-lavar-ou-nao-seguranca-cozinha`, lastModified: new Date('2026-09-22'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/requeijao-cream-cheese-ricota-cremosa-comparar-rotulo`, lastModified: new Date('2026-09-21'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/batata-inglesa-doce-mandioca-comparar-preparar`, lastModified: new Date('2026-09-20'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/quinoa-como-lavar-cozinhar-guardar-usar`, lastModified: new Date('2026-09-19'), changeFrequency: 'monthly', priority: 0.8 },
