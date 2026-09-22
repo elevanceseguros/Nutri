@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "frango-cru-lavar-ou-nao-seguranca-cozinha",
+    "titulo": "Frango Cru: Lavar ou Não? Como Evitar Contaminação na Cozinha",
+    "descricao": "Entenda por que lavar frango cru pode espalhar contaminação e organize utensílios, mãos, descongelamento, cocção e armazenamento com segurança.",
+    "data": "22 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Segurança alimentar",
+    "emoji": "🍗"
+  },
+  {
     "slug": "requeijao-cream-cheese-ricota-cremosa-comparar-rotulo",
     "titulo": "Requeijão, Cream Cheese ou Ricota Cremosa: Como Comparar o Rótulo",
     "descricao": "Compare denominação, ingredientes, sódio, gordura, proteína, porção e conservação de requeijão, cream cheese e ricota cremosa.",
