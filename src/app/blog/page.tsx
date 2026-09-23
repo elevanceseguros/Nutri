@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "leite-condensado-mistura-lactea-comparar-rotulo",
+    "titulo": "Leite Condensado ou Mistura Láctea Condensada: Como Comparar o Rótulo",
+    "descricao": "Compare denominação, ingredientes, açúcares, gorduras, porção, rendimento e preço de leite condensado e mistura láctea condensada.",
+    "data": "23 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Leitura de rótulos",
+    "emoji": "🥛"
+  },
+  {
     "slug": "frango-cru-lavar-ou-nao-seguranca-cozinha",
     "titulo": "Frango Cru: Lavar ou Não? Como Evitar Contaminação na Cozinha",
     "descricao": "Entenda por que lavar frango cru pode espalhar contaminação e organize utensílios, mãos, descongelamento, cocção e armazenamento com segurança.",
