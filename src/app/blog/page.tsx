@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "ervilha-fresca-congelada-conserva-comparar-preparar",
+    "titulo": "Ervilha Fresca, Congelada ou em Conserva: Como Comparar e Preparar",
+    "descricao": "Compare ervilha fresca, congelada e em conserva por ingredientes, sódio, rendimento, textura, praticidade, custo e forma de preparo.",
+    "data": "24 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🟢"
+  },
+  {
     "slug": "leite-condensado-mistura-lactea-comparar-rotulo",
     "titulo": "Leite Condensado ou Mistura Láctea Condensada: Como Comparar o Rótulo",
     "descricao": "Compare denominação, ingredientes, açúcares, gorduras, porção, rendimento e preço de leite condensado e mistura láctea condensada.",
