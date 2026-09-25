@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "abobora-cabotia-moranga-pescoco-como-escolher-preparar",
+    "titulo": "Abóbora Cabotiá, Moranga ou de Pescoço: Como Escolher e Preparar",
+    "descricao": "Compare textura, rendimento, casca, corte, métodos de preparo e conservação de diferentes tipos de abóbora sem procurar uma vencedora universal.",
+    "data": "25 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🎃"
+  },
+  {
     "slug": "ervilha-fresca-congelada-conserva-comparar-preparar",
     "titulo": "Ervilha Fresca, Congelada ou em Conserva: Como Comparar e Preparar",
     "descricao": "Compare ervilha fresca, congelada e em conserva por ingredientes, sódio, rendimento, textura, praticidade, custo e forma de preparo.",
