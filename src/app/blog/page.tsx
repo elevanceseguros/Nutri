@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "tofu-como-escolher-temperar-preparar-conservar",
+    "titulo": "Tofu: Como Escolher, Temperar, Preparar e Conservar",
+    "descricao": "Entenda as diferenças de textura, compare ingredientes, aprenda a prensar e temperar e organize preparo e conservação do tofu com segurança.",
+    "data": "26 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "◻️"
+  },
+  {
     "slug": "abobora-cabotia-moranga-pescoco-como-escolher-preparar",
     "titulo": "Abóbora Cabotiá, Moranga ou de Pescoço: Como Escolher e Preparar",
     "descricao": "Compare textura, rendimento, casca, corte, métodos de preparo e conservação de diferentes tipos de abóbora sem procurar uma vencedora universal.",
