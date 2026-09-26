@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/tofu-como-escolher-temperar-preparar-conservar`, lastModified: new Date('2026-09-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/abobora-cabotia-moranga-pescoco-como-escolher-preparar`, lastModified: new Date('2026-09-25'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/ervilha-fresca-congelada-conserva-comparar-preparar`, lastModified: new Date('2026-09-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/leite-condensado-mistura-lactea-comparar-rotulo`, lastModified: new Date('2026-09-23'), changeFrequency: 'monthly', priority: 0.8 },
