@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "cogumelos-frescos-secos-conserva-comparar-preparar",
+    "titulo": "Cogumelos Frescos, Secos ou em Conserva: Como Comparar e Preparar",
+    "descricao": "Compare textura, ingredientes, sódio, rendimento, limpeza, hidratação, preparo e conservação de cogumelos frescos, secos e em conserva.",
+    "data": "27 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🍄"
+  },
+  {
     "slug": "tofu-como-escolher-temperar-preparar-conservar",
     "titulo": "Tofu: Como Escolher, Temperar, Preparar e Conservar",
     "descricao": "Entenda as diferenças de textura, compare ingredientes, aprenda a prensar e temperar e organize preparo e conservação do tofu com segurança.",
