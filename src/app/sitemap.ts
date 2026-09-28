@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/polvilho-doce-azedo-diferencas-usos-rotulo`, lastModified: new Date('2026-09-28'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/cogumelos-frescos-secos-conserva-comparar-preparar`, lastModified: new Date('2026-09-27'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/tofu-como-escolher-temperar-preparar-conservar`, lastModified: new Date('2026-09-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/abobora-cabotia-moranga-pescoco-como-escolher-preparar`, lastModified: new Date('2026-09-25'), changeFrequency: 'monthly', priority: 0.8 },
