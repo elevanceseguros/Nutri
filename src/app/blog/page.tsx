@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "polvilho-doce-azedo-diferencas-usos-rotulo",
+    "titulo": "Polvilho Doce ou Azedo: Diferenças, Usos e Como Comparar o Rótulo",
+    "descricao": "Entenda como o processamento muda polvilho doce e azedo, compare rótulos e escolha a versão ou mistura mais adequada para cada preparo.",
+    "data": "28 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "⚪"
+  },
+  {
     "slug": "cogumelos-frescos-secos-conserva-comparar-preparar",
     "titulo": "Cogumelos Frescos, Secos ou em Conserva: Como Comparar e Preparar",
     "descricao": "Compare textura, ingredientes, sódio, rendimento, limpeza, hidratação, preparo e conservação de cogumelos frescos, secos e em conserva.",
