@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "fermento-quimico-biologico-diferencas-usos-conservar",
+    "titulo": "Fermento Químico ou Biológico: Diferenças, Usos e Como Conservar",
+    "descricao": "Entenda por que fermento químico e biológico não são substitutos diretos, como cada um faz a massa crescer e o que observar no rótulo e armazenamento.",
+    "data": "29 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🍞"
+  },
+  {
     "slug": "polvilho-doce-azedo-diferencas-usos-rotulo",
     "titulo": "Polvilho Doce ou Azedo: Diferenças, Usos e Como Comparar o Rótulo",
     "descricao": "Entenda como o processamento muda polvilho doce e azedo, compare rótulos e escolha a versão ou mistura mais adequada para cada preparo.",
