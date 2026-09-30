@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "comida-quente-geladeira-resfriar-sobras-seguranca",
+    "titulo": "Comida Quente Pode Ir à Geladeira? Como Resfriar Sobras com Segurança",
+    "descricao": "Entenda por que não é preciso esperar a comida esfriar totalmente, como dividir porções e usar recipientes rasos para refrigerar sobras com segurança.",
+    "data": "30 de setembro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Segurança alimentar",
+    "emoji": "🧊"
+  },
+  {
     "slug": "fermento-quimico-biologico-diferencas-usos-conservar",
     "titulo": "Fermento Químico ou Biológico: Diferenças, Usos e Como Conservar",
     "descricao": "Entenda por que fermento químico e biológico não são substitutos diretos, como cada um faz a massa crescer e o que observar no rótulo e armazenamento.",
