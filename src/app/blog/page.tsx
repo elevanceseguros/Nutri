@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "ovo-cozido-geladeira-tempo-conservacao-seguranca",
+    "titulo": "Ovo Cozido: Quanto Tempo Dura na Geladeira e Como Conservar",
+    "descricao": "Veja quando refrigerar, por quanto tempo conservar ovo cozido com ou sem casca e como organizar o armazenamento com segurança.",
+    "data": "01 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Segurança alimentar",
+    "emoji": "🥚"
+  },
+  {
     "slug": "comida-quente-geladeira-resfriar-sobras-seguranca",
     "titulo": "Comida Quente Pode Ir à Geladeira? Como Resfriar Sobras com Segurança",
     "descricao": "Entenda por que não é preciso esperar a comida esfriar totalmente, como dividir porções e usar recipientes rasos para refrigerar sobras com segurança.",
