@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "alho-fresco-pasta-po-comparar-rotulo-preparo",
+    "titulo": "Alho Fresco, em Pasta ou em Pó: Como Comparar e Usar",
+    "descricao": "Compare alho fresco, pasta pronta e alho em pó por ingredientes, sódio, rendimento, sabor, armazenamento e uso culinário.",
+    "data": "02 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Escolhas práticas",
+    "emoji": "🧄"
+  },
+  {
     "slug": "ovo-cozido-geladeira-tempo-conservacao-seguranca",
     "titulo": "Ovo Cozido: Quanto Tempo Dura na Geladeira e Como Conservar",
     "descricao": "Veja quando refrigerar, por quanto tempo conservar ovo cozido com ou sem casca e como organizar o armazenamento com segurança.",

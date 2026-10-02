@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/alho-fresco-pasta-po-comparar-rotulo-preparo`, lastModified: new Date('2026-10-02'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/ovo-cozido-geladeira-tempo-conservacao-seguranca`, lastModified: new Date('2026-10-01'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/comida-quente-geladeira-resfriar-sobras-seguranca`, lastModified: new Date('2026-09-30'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/fermento-quimico-biologico-diferencas-usos-conservar`, lastModified: new Date('2026-09-29'), changeFrequency: 'monthly', priority: 0.8 },
