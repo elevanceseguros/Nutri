@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "cebola-branca-roxa-amarela-escolher-conservar-preparar",
+    "titulo": "Cebola Branca, Roxa ou Amarela: Como Escolher, Conservar e Preparar",
+    "descricao": "Compare cebolas branca, roxa e amarela por sabor, textura, uso culinário, escolha no mercado e conservação antes e depois do corte.",
+    "data": "03 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🧅"
+  },
+  {
     "slug": "alho-fresco-pasta-po-comparar-rotulo-preparo",
     "titulo": "Alho Fresco, em Pasta ou em Pó: Como Comparar e Usar",
     "descricao": "Compare alho fresco, pasta pronta e alho em pó por ingredientes, sódio, rendimento, sabor, armazenamento e uso culinário.",
