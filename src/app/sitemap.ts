@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/tomate-verde-maduro-geladeira-conservar-preparar`, lastModified: new Date('2026-10-04'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/cebola-branca-roxa-amarela-escolher-conservar-preparar`, lastModified: new Date('2026-10-03'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/alho-fresco-pasta-po-comparar-rotulo-preparo`, lastModified: new Date('2026-10-02'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/ovo-cozido-geladeira-tempo-conservacao-seguranca`, lastModified: new Date('2026-10-01'), changeFrequency: 'monthly', priority: 0.8 },

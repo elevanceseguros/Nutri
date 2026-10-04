@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "tomate-verde-maduro-geladeira-conservar-preparar",
+    "titulo": "Tomate Verde ou Maduro: Como Escolher, Amadurecer e Conservar",
+    "descricao": "Saiba escolher tomates, quando deixar fora da geladeira, quando refrigerar, como higienizar e como aproveitar cada ponto de maturação.",
+    "data": "04 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🍅"
+  },
+  {
     "slug": "cebola-branca-roxa-amarela-escolher-conservar-preparar",
     "titulo": "Cebola Branca, Roxa ou Amarela: Como Escolher, Conservar e Preparar",
     "descricao": "Compare cebolas branca, roxa e amarela por sabor, textura, uso culinário, escolha no mercado e conservação antes e depois do corte.",
