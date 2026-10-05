@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "pimentao-verde-amarelo-vermelho-escolher-conservar-preparar",
+    "titulo": "Pimentão Verde, Amarelo ou Vermelho: Como Escolher, Conservar e Preparar",
+    "descricao": "Entenda o que muda entre pimentões verdes, amarelos e vermelhos e veja como escolher, higienizar, conservar e usar cada um sem desperdício.",
+    "data": "05 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🫑"
+  },
+  {
     "slug": "tomate-verde-maduro-geladeira-conservar-preparar",
     "titulo": "Tomate Verde ou Maduro: Como Escolher, Amadurecer e Conservar",
     "descricao": "Saiba escolher tomates, quando deixar fora da geladeira, quando refrigerar, como higienizar e como aproveitar cada ponto de maturação.",
