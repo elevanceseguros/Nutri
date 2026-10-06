@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "berinjela-como-escolher-conservar-tirar-amargor-preparar",
+    "titulo": "Berinjela: Como Escolher, Conservar, Tirar o Amargor e Preparar",
+    "descricao": "Aprenda a escolher berinjelas, conservar sem murchar, entender quando usar sal e preparar assada, refogada ou recheada sem desperdício.",
+    "data": "06 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🍆"
+  },
+  {
     "slug": "pimentao-verde-amarelo-vermelho-escolher-conservar-preparar",
     "titulo": "Pimentão Verde, Amarelo ou Vermelho: Como Escolher, Conservar e Preparar",
     "descricao": "Entenda o que muda entre pimentões verdes, amarelos e vermelhos e veja como escolher, higienizar, conservar e usar cada um sem desperdício.",
