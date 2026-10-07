@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "abobrinha-como-escolher-conservar-congelar-preparar",
+    "titulo": "Abobrinha: Como Escolher, Conservar, Congelar e Preparar",
+    "descricao": "Veja como escolher abobrinha firme, conservar sem murchar, congelar em porções e preparar sem excesso de água ou desperdício.",
+    "data": "07 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🥒"
+  },
+  {
     "slug": "berinjela-como-escolher-conservar-tirar-amargor-preparar",
     "titulo": "Berinjela: Como Escolher, Conservar, Tirar o Amargor e Preparar",
     "descricao": "Aprenda a escolher berinjelas, conservar sem murchar, entender quando usar sal e preparar assada, refogada ou recheada sem desperdício.",
