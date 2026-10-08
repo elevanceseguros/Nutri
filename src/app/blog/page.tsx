@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "cenoura-como-escolher-conservar-congelar-preparar",
+    "titulo": "Cenoura: Como Escolher, Conservar, Congelar e Preparar",
+    "descricao": "Aprenda a escolher cenouras, conservar sem ressecar, congelar com branqueamento e aproveitar casca, folhas e diferentes cortes no preparo.",
+    "data": "08 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🥕"
+  },
+  {
     "slug": "abobrinha-como-escolher-conservar-congelar-preparar",
     "titulo": "Abobrinha: Como Escolher, Conservar, Congelar e Preparar",
     "descricao": "Veja como escolher abobrinha firme, conservar sem murchar, congelar em porções e preparar sem excesso de água ou desperdício.",
