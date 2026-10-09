@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "beterraba-como-escolher-conservar-cozinhar-congelar",
+    "titulo": "Beterraba: Como Escolher, Conservar, Cozinhar e Congelar",
+    "descricao": "Aprenda a escolher beterrabas firmes, conservar raiz e folhas, cozinhar sem perder tanta cor e congelar em porções práticas.",
+    "data": "09 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🟣"
+  },
+  {
     "slug": "cenoura-como-escolher-conservar-congelar-preparar",
     "titulo": "Cenoura: Como Escolher, Conservar, Congelar e Preparar",
     "descricao": "Aprenda a escolher cenouras, conservar sem ressecar, congelar com branqueamento e aproveitar casca, folhas e diferentes cortes no preparo.",
