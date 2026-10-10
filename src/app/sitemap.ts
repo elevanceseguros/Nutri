@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/pepino-japones-caipira-aodai-escolher-conservar-preparar`, lastModified: new Date('2026-10-10'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/beterraba-como-escolher-conservar-cozinhar-congelar`, lastModified: new Date('2026-10-09'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/cenoura-como-escolher-conservar-congelar-preparar`, lastModified: new Date('2026-10-08'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/abobrinha-como-escolher-conservar-congelar-preparar`, lastModified: new Date('2026-10-07'), changeFrequency: 'monthly', priority: 0.8 },

@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "pepino-japones-caipira-aodai-escolher-conservar-preparar",
+    "titulo": "Pepino Japonês, Caipira ou Aodai: Como Escolher, Conservar e Preparar",
+    "descricao": "Compare pepino japonês, caipira e Aodai e veja como escolher frutos firmes, higienizar, conservar sem murchar e usar sem desperdício.",
+    "data": "10 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🥒"
+  },
+  {
     "slug": "beterraba-como-escolher-conservar-cozinhar-congelar",
     "titulo": "Beterraba: Como Escolher, Conservar, Cozinhar e Congelar",
     "descricao": "Aprenda a escolher beterrabas firmes, conservar raiz e folhas, cozinhar sem perder tanta cor e congelar em porções práticas.",
