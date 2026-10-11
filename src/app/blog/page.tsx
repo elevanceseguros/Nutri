@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "repolho-verde-roxo-escolher-conservar-preparar",
+    "titulo": "Repolho Verde ou Roxo: Como Escolher, Conservar, Cortar e Preparar",
+    "descricao": "Compare repolho verde e roxo e veja como escolher cabeças firmes, higienizar folha por folha, conservar e preparar sem desperdício.",
+    "data": "11 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🥬"
+  },
+  {
     "slug": "pepino-japones-caipira-aodai-escolher-conservar-preparar",
     "titulo": "Pepino Japonês, Caipira ou Aodai: Como Escolher, Conservar e Preparar",
     "descricao": "Compare pepino japonês, caipira e Aodai e veja como escolher frutos firmes, higienizar, conservar sem murchar e usar sem desperdício.",
