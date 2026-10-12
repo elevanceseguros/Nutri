@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "chuchu-escolher-conservar-descascar-preparar",
+    "titulo": "Chuchu: Como Escolher, Conservar, Descascar e Preparar",
+    "descricao": "Aprenda a escolher chuchus novos, conservar sem murchar, lidar com a seiva ao descascar e preparar sem excesso de água.",
+    "data": "12 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🥒"
+  },
+  {
     "slug": "repolho-verde-roxo-escolher-conservar-preparar",
     "titulo": "Repolho Verde ou Roxo: Como Escolher, Conservar, Cortar e Preparar",
     "descricao": "Compare repolho verde e roxo e veja como escolher cabeças firmes, higienizar folha por folha, conservar e preparar sem desperdício.",
