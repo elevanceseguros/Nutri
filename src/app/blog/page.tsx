@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "quiabo-escolher-conservar-cortar-reduzir-baba",
+    "titulo": "Quiabo: Como Escolher, Conservar, Cortar e Reduzir a Baba",
+    "descricao": "Aprenda a escolher quiabos macios, conservar sem escurecer, cortar no momento certo e ajustar a baba conforme o preparo.",
+    "data": "13 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🌿"
+  },
+  {
     "slug": "chuchu-escolher-conservar-descascar-preparar",
     "titulo": "Chuchu: Como Escolher, Conservar, Descascar e Preparar",
     "descricao": "Aprenda a escolher chuchus novos, conservar sem murchar, lidar com a seiva ao descascar e preparar sem excesso de água.",
