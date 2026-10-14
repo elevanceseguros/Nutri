@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/creme-leite-nata-creme-culinario-comparar-rotulo`, lastModified: new Date('2026-10-14'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/quiabo-escolher-conservar-cortar-reduzir-baba`, lastModified: new Date('2026-10-13'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/chuchu-escolher-conservar-descascar-preparar`, lastModified: new Date('2026-10-12'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/repolho-verde-roxo-escolher-conservar-preparar`, lastModified: new Date('2026-10-11'), changeFrequency: 'monthly', priority: 0.8 },

@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "creme-leite-nata-creme-culinario-comparar-rotulo",
+    "titulo": "Creme de Leite, Nata ou Creme Culinário: Como Comparar o Rótulo",
+    "descricao": "Compare composição, gordura, rendimento e conservação para escolher entre creme de leite, nata e creme culinário sem confundir os produtos.",
+    "data": "14 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Rótulos e escolhas",
+    "emoji": "🥛"
+  },
+  {
     "slug": "quiabo-escolher-conservar-cortar-reduzir-baba",
     "titulo": "Quiabo: Como Escolher, Conservar, Cortar e Reduzir a Baba",
     "descricao": "Aprenda a escolher quiabos macios, conservar sem escurecer, cortar no momento certo e ajustar a baba conforme o preparo.",
