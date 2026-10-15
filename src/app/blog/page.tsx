@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "farinha-mandioca-farofa-pronta-comparar-rotulo",
+    "titulo": "Farinha de Mandioca ou Farofa Pronta: Como Comparar e Usar",
+    "descricao": "Veja o que muda entre farinha de mandioca e farofa pronta: ingredientes, sódio, gordura, textura, conservação e formas práticas de servir.",
+    "data": "15 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Rótulos e cozinha",
+    "emoji": "🥣"
+  },
+  {
     "slug": "creme-leite-nata-creme-culinario-comparar-rotulo",
     "titulo": "Creme de Leite, Nata ou Creme Culinário: Como Comparar o Rótulo",
     "descricao": "Compare composição, gordura, rendimento e conservação para escolher entre creme de leite, nata e creme culinário sem confundir os produtos.",
