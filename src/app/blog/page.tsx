@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "brocolis-ramoso-ninja-escolher-conservar-preparar",
+    "titulo": "Brócolis Ramoso ou Ninja: Como Escolher, Conservar e Preparar",
+    "descricao": "Compare os tipos de brócolis, escolha maços frescos e veja como higienizar, aproveitar talos e folhas e preparar sem cozinhar demais.",
+    "data": "16 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🥦"
+  },
+  {
     "slug": "farinha-mandioca-farofa-pronta-comparar-rotulo",
     "titulo": "Farinha de Mandioca ou Farofa Pronta: Como Comparar e Usar",
     "descricao": "Veja o que muda entre farinha de mandioca e farofa pronta: ingredientes, sódio, gordura, textura, conservação e formas práticas de servir.",

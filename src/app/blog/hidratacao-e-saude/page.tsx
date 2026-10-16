@@ -23,8 +23,9 @@ export default function HidratacaoESaude() {
           <div className={styles.badge}>Beta</div>
         </div>
       </header>
-      <main className={styles.main}>
-        <div className="fade-up">
+      <main className={styles.postContainer}>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para o blog</Link>
+        <div className={styles.postContent}>
           <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "2rem", fontSize: "0.85rem", color: "#9ca3af", fontWeight: 600 }}>
             <Link href="/" style={{ color: "#9ca3af", textDecoration: "none" }}>Início</Link>
             <span>→</span>
@@ -39,14 +40,14 @@ export default function HidratacaoESaude() {
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· 7 min de leitura</span>
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· Equipe Nutry.life</span>
             </div>
-            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
+            <h1 className={styles.postTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
               Hidratação e saúde: quanto água beber por dia de verdade
             </h1>
-            <p className={styles.heroSub} style={{ marginBottom: "0" }}>
+            <p className={styles.postExcerpt} style={{ marginBottom: "0" }}>
               Beber 2 litros por dia é um conselho genérico. Veja como calcular sua necessidade real e por que a hidratação impacta diretamente o emagrecimento.
             </p>
           </div>
-          <div className={styles.tipCard} style={{ marginBottom: "2.5rem" }}>
+          <div className={styles.articleCtaTop} style={{ marginBottom: "2.5rem" }}>
             <div className={styles.tipIcon}>🤖</div>
             <div style={{ flex: 1 }}>
               <div className={styles.tipTitle}>Cardápio com foco em hidratação</div>
@@ -103,13 +104,17 @@ export default function HidratacaoESaude() {
               ))}
             </div>
           </div>
-          <div style={{ marginTop: "3rem", background: "linear-gradient(135deg, #f0fdf4, #dcfce7)", borderRadius: "20px", padding: "2rem", textAlign: "center" }}>
+          <div className={styles.premiumBanner} style={{ marginTop: "3rem", background: "linear-gradient(135deg, #f0fdf4, #dcfce7)", borderRadius: "20px", padding: "2rem", textAlign: "center" }}>
             <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#166534", marginBottom: "0.5rem" }}>Otimize sua hidratação com um cardápio personalizado</div>
             <div style={{ fontSize: "0.9rem", color: "#166534", marginBottom: "1.5rem" }}>A Nutry.life inclui alimentos ricos em água no seu plano alimentar.</div>
             <Link href="/" className={styles.btnPrimary} style={{ display: "inline-block", textDecoration: "none", padding: "0.9rem 2rem", fontSize: "1rem" }}>Criar meu plano agora →</Link>
           </div>
         </div>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para todos os artigos</Link>
       </main>
+      <footer className={styles.footer}>
+        <p>Este conteúdo é educativo e não substitui avaliação de nutricionista ou médico. Necessidades, alergias, restrições e condições individuais exigem acompanhamento profissional.</p>
+      </footer>
     </>
   );
 }

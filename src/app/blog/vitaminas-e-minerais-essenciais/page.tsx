@@ -24,8 +24,9 @@ export default function VitaminasMinerais() {
         </div>
       </header>
 
-      <main className={styles.main}>
-        <div className="fade-up">
+      <main className={styles.postContainer}>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para o blog</Link>
+        <div className={styles.postContent}>
 
           <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "2rem", fontSize: "0.85rem", color: "#9ca3af", fontWeight: 600 }}>
             <Link href="/" style={{ color: "#9ca3af", textDecoration: "none" }}>Início</Link>
@@ -42,15 +43,15 @@ export default function VitaminasMinerais() {
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· 10 min de leitura</span>
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· Equipe Nutry.life</span>
             </div>
-            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
+            <h1 className={styles.postTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
               Vitaminas e minerais essenciais: para que serve cada um
             </h1>
-            <p className={styles.heroSub} style={{ marginBottom: "0" }}>
+            <p className={styles.postExcerpt} style={{ marginBottom: "0" }}>
               Cansaço, queda de cabelo, imunidade baixa, humor instável — muitos sintomas comuns são sinais de deficiências de micronutrientes. Conheça as principais vitaminas e minerais, o que fazem e onde encontrá-los.
             </p>
           </div>
 
-          <div className={styles.tipCard} style={{ marginBottom: "2.5rem" }}>
+          <div className={styles.articleCtaTop} style={{ marginBottom: "2.5rem" }}>
             <div className={styles.tipIcon}>🤖</div>
             <div style={{ flex: 1 }}>
               <div className={styles.tipTitle}>Gere um cardápio rico em vitaminas e minerais</div>
@@ -179,7 +180,11 @@ export default function VitaminasMinerais() {
           </div>
 
         </div>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para todos os artigos</Link>
       </main>
+      <footer className={styles.footer}>
+        <p>Este conteúdo é educativo e não substitui avaliação de nutricionista ou médico. Necessidades, alergias, restrições e condições individuais exigem acompanhamento profissional.</p>
+      </footer>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "Article",
         "headline": "Vitaminas e minerais essenciais: para que serve cada um",

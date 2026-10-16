@@ -23,8 +23,9 @@ export default function Post() {
           <div className={styles.badge}>Beta</div>
         </div>
       </header>
-      <main className={styles.main}>
-        <div className="fade-up">
+      <main className={styles.postContainer}>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para o blog</Link>
+        <div className={styles.postContent}>
           <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "2rem", fontSize: "0.85rem", color: "#9ca3af", fontWeight: 600 }}>
             <Link href="/" style={{ color: "#9ca3af", textDecoration: "none" }}>Início</Link>
             <span>→</span>
@@ -39,12 +40,12 @@ export default function Post() {
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· 6 min de leitura</span>
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· Equipe Nutry.life</span>
             </div>
-            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
+            <h1 className={styles.postTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
               Como Organizar a Feira Semanal de Forma Saudável e Sem Desperdício
             </h1>
-            <p className={styles.heroSub} style={{ marginBottom: "0" }}>A maior parte do sucesso de uma alimentação saudável acontece antes de cozinhar — na hora de planejar e fazer as compras. Veja como organizar a feira ou o mercado da semana para comer melhor, gastar menos e desperdiçar menos comida.</p>
+            <p className={styles.postExcerpt} style={{ marginBottom: "0" }}>A maior parte do sucesso de uma alimentação saudável acontece antes de cozinhar — na hora de planejar e fazer as compras. Veja como organizar a feira ou o mercado da semana para comer melhor, gastar menos e desperdiçar menos comida.</p>
           </div>
-          <div className={styles.tipCard} style={{ marginBottom: "2.5rem" }}>
+          <div className={styles.articleCtaTop} style={{ marginBottom: "2.5rem" }}>
             <div className={styles.tipIcon}>🛒</div>
             <div style={{ flex: 1 }}>
               <div className={styles.tipTitle}>Gere um cardápio personalizado com a Nutry.life</div>
@@ -75,13 +76,17 @@ export default function Post() {
             </div>
           </div>
 
-          <div style={{ marginTop: "3rem", background: "linear-gradient(135deg, #f0fdf4, #dcfce7)", borderRadius: "20px", padding: "2rem", textAlign: "center" }}>
+          <div className={styles.premiumBanner} style={{ marginTop: "3rem", background: "linear-gradient(135deg, #f0fdf4, #dcfce7)", borderRadius: "20px", padding: "2rem", textAlign: "center" }}>
             <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#166534", marginBottom: "0.5rem" }}>Quer seu cardápio da semana com lista de compras pronta?</div>
             <div style={{ fontSize: "0.9rem", color: "#166534", marginBottom: "1.5rem" }}>A Nutry.life gera seu cardápio da semana em segundos, com lista de compras organizada por categoria.</div>
             <Link href="/" className={styles.btnPrimary} style={{ display: "inline-block", textDecoration: "none", padding: "0.9rem 2rem", fontSize: "1rem" }}>Criar meu plano agora →</Link>
           </div>
         </div>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para todos os artigos</Link>
       </main>
+      <footer className={styles.footer}>
+        <p>Este conteúdo é educativo e não substitui avaliação de nutricionista ou médico. Necessidades, alergias, restrições e condições individuais exigem acompanhamento profissional.</p>
+      </footer>
     </>
   );
 }

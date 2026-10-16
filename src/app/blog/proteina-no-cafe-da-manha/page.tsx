@@ -24,8 +24,9 @@ export default function ProteinaCafeDaManha() {
         </div>
       </header>
 
-      <main className={styles.main}>
-        <div className="fade-up">
+      <main className={styles.postContainer}>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para o blog</Link>
+        <div className={styles.postContent}>
 
           {/* Breadcrumb */}
           <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "2rem", fontSize: "0.85rem", color: "#9ca3af", fontWeight: 600 }}>
@@ -44,16 +45,16 @@ export default function ProteinaCafeDaManha() {
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· 7 min de leitura</span>
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· Equipe Nutry.life</span>
             </div>
-            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
+            <h1 className={styles.postTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
               Proteína no café da manhã: por que é tão importante e o que comer
             </h1>
-            <p className={styles.heroSub} style={{ marginBottom: "0" }}>
+            <p className={styles.postExcerpt} style={{ marginBottom: "0" }}>
               A ciência é clara: começar o dia com proteína reduz a fome ao longo do dia, melhora a composição corporal e estabiliza o açúcar no sangue. Veja como colocar isso na prática.
             </p>
           </div>
 
           {/* CTA topo */}
-          <div className={styles.tipCard} style={{ marginBottom: "2.5rem" }}>
+          <div className={styles.articleCtaTop} style={{ marginBottom: "2.5rem" }}>
             <div className={styles.tipIcon}>🤖</div>
             <div style={{ flex: 1 }}>
               <div className={styles.tipTitle}>Gere um plano alimentar com café da manhã proteico</div>
@@ -228,7 +229,11 @@ export default function ProteinaCafeDaManha() {
           </div>
 
         </div>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para todos os artigos</Link>
       </main>
+      <footer className={styles.footer}>
+        <p>Este conteúdo é educativo e não substitui avaliação de nutricionista ou médico. Necessidades, alergias, restrições e condições individuais exigem acompanhamento profissional.</p>
+      </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",

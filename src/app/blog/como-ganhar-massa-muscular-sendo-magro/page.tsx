@@ -24,8 +24,9 @@ export default function GanharMassaMagro() {
         </div>
       </header>
 
-      <main className={styles.main}>
-        <div className="fade-up">
+      <main className={styles.postContainer}>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para o blog</Link>
+        <div className={styles.postContent}>
 
           <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "2rem", fontSize: "0.85rem", color: "#9ca3af", fontWeight: 600 }}>
             <Link href="/" style={{ color: "#9ca3af", textDecoration: "none" }}>Início</Link>
@@ -42,15 +43,15 @@ export default function GanharMassaMagro() {
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· 9 min de leitura</span>
               <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 600 }}>· Equipe Nutry.life</span>
             </div>
-            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
+            <h1 className={styles.postTitle} style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)", marginBottom: "1rem" }}>
               Como ganhar massa muscular sendo magro: guia completo
             </h1>
-            <p className={styles.heroSub} style={{ marginBottom: "0" }}>
+            <p className={styles.postExcerpt} style={{ marginBottom: "0" }}>
               "Como faço para engordar?" é uma das perguntas mais frustradas na nutrição. Quem é naturalmente magro tem metabolismo acelerado, apetite reduzido e histórico de não ganhar peso com facilidade — mas a solução existe e é mais simples do que parece.
             </p>
           </div>
 
-          <div className={styles.tipCard} style={{ marginBottom: "2.5rem" }}>
+          <div className={styles.articleCtaTop} style={{ marginBottom: "2.5rem" }}>
             <div className={styles.tipIcon}>🤖</div>
             <div style={{ flex: 1 }}>
               <div className={styles.tipTitle}>Gere seu cardápio de ganho de massa para ectomorfos</div>
@@ -206,7 +207,11 @@ export default function GanharMassaMagro() {
           </div>
 
         </div>
+        <Link href="/blog" className={styles.backToBlog}>← Voltar para todos os artigos</Link>
       </main>
+      <footer className={styles.footer}>
+        <p>Este conteúdo é educativo e não substitui avaliação de nutricionista ou médico. Necessidades, alergias, restrições e condições individuais exigem acompanhamento profissional.</p>
+      </footer>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "Article",
         "headline": "Como ganhar massa muscular sendo magro: guia completo",
