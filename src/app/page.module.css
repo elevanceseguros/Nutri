@@ -1029,6 +1029,13 @@
   text-underline-offset: 3px;
 }
 
+/* Preserve button contrast inside article typography, including legacy posts. */
+.postContent a.btnPrimary,
+.postContent a.premiumBtn {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .postContent blockquote {
   margin: 2rem 0;
   padding: 1.25rem 1.4rem;
