@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "leite-coco-culinario-bebida-coco-comparar-usar",
+    "titulo": "Leite de Coco Culinário ou Bebida de Coco: Como Comparar e Usar",
+    "descricao": "Compare ingredientes, açúcares, gorduras, proteína, textura e conservação para escolher o produto de coco adequado à bebida ou à receita.",
+    "data": "17 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Rótulos e cozinha",
+    "emoji": "🥥"
+  },
+  {
     "slug": "brocolis-ramoso-ninja-escolher-conservar-preparar",
     "titulo": "Brócolis Ramoso ou Ninja: Como Escolher, Conservar e Preparar",
     "descricao": "Compare os tipos de brócolis, escolha maços frescos e veja como higienizar, aproveitar talos e folhas e preparar sem cozinhar demais.",
