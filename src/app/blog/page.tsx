@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "manga-escolher-amadurecer-cortar-conservar",
+    "titulo": "Manga: Como Escolher, Amadurecer, Cortar e Conservar",
+    "descricao": "Veja como avaliar a manga além da cor, organizar o amadurecimento e cortar e guardar a fruta com cuidados de higiene e refrigeração.",
+    "data": "18 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Cozinha prática",
+    "emoji": "🥭"
+  },
+  {
     "slug": "leite-coco-culinario-bebida-coco-comparar-usar",
     "titulo": "Leite de Coco Culinário ou Bebida de Coco: Como Comparar e Usar",
     "descricao": "Compare ingredientes, açúcares, gorduras, proteína, textura e conservação para escolher o produto de coco adequado à bebida ou à receita.",

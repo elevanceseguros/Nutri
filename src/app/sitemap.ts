@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/manga-escolher-amadurecer-cortar-conservar`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/leite-coco-culinario-bebida-coco-comparar-usar`, lastModified: new Date('2026-10-17'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/brocolis-ramoso-ninja-escolher-conservar-preparar`, lastModified: new Date('2026-10-16'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/farinha-mandioca-farofa-pronta-comparar-rotulo`, lastModified: new Date('2026-10-15'), changeFrequency: 'monthly', priority: 0.8 },
