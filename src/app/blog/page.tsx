@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "shoyu-tradicional-light-sodio-ingredientes-comparar",
+    "titulo": "Shoyu Tradicional ou Light: Como Comparar Sódio e Ingredientes",
+    "descricao": "Entenda a redução de sódio, compare a mesma quantidade de shoyu e veja como usar o molho sem somar sal automaticamente à receita.",
+    "data": "19 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Rótulos e cozinha",
+    "emoji": "🥢"
+  },
+  {
     "slug": "manga-escolher-amadurecer-cortar-conservar",
     "titulo": "Manga: Como Escolher, Amadurecer, Cortar e Conservar",
     "descricao": "Veja como avaliar a manga além da cor, organizar o amadurecimento e cortar e guardar a fruta com cuidados de higiene e refrigeração.",
