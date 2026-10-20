@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/cafe-soluvel-puro-cappuccino-po-comparar-rotulo`, lastModified: new Date('2026-10-20'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/shoyu-tradicional-light-sodio-ingredientes-comparar`, lastModified: new Date('2026-10-19'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/manga-escolher-amadurecer-cortar-conservar`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/leite-coco-culinario-bebida-coco-comparar-usar`, lastModified: new Date('2026-10-17'), changeFrequency: 'monthly', priority: 0.8 },

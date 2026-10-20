@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "cafe-soluvel-puro-cappuccino-po-comparar-rotulo",
+    "titulo": "Café Solúvel Puro ou Cappuccino em Pó: Como Comparar o Rótulo",
+    "descricao": "Compare composição, açúcares, porção, preparo e rendimento para distinguir café solúvel puro de misturas para cappuccino, sem confundir produtos diferentes.",
+    "data": "20 de outubro de 2026",
+    "tempo": "6 min de leitura",
+    "tag": "Rótulos e bebidas",
+    "emoji": "☕"
+  },
+  {
     "slug": "shoyu-tradicional-light-sodio-ingredientes-comparar",
     "titulo": "Shoyu Tradicional ou Light: Como Comparar Sódio e Ingredientes",
     "descricao": "Entenda a redução de sódio, compare a mesma quantidade de shoyu e veja como usar o molho sem somar sal automaticamente à receita.",
