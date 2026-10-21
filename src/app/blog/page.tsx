@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "ovo-branco-vermelho-caipira-como-escolher-preparar",
+    "titulo": "Ovo Branco, Vermelho ou Caipira: O Que Muda na Compra e no Preparo",
+    "descricao": "Entenda o que a cor da casca realmente indica, como identificar ovos caipiras pelo rótulo e quais cuidados observar na compra, conservação e cocção.",
+    "data": "21 de outubro de 2026",
+    "tempo": "7 min de leitura",
+    "tag": "Escolha e segurança",
+    "emoji": "🥚"
+  },
+  {
     "slug": "cafe-soluvel-puro-cappuccino-po-comparar-rotulo",
     "titulo": "Café Solúvel Puro ou Cappuccino em Pó: Como Comparar o Rótulo",
     "descricao": "Compare composição, açúcares, porção, preparo e rendimento para distinguir café solúvel puro de misturas para cappuccino, sem confundir produtos diferentes.",
