@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "palmito-conserva-escolher-sodio-guardar-seguranca",
+    "titulo": "Palmito em Conserva: Como Escolher, Comparar o Sódio e Guardar",
+    "descricao": "Veja o que conferir na embalagem do palmito, como comparar sódio na mesma quantidade e quais cuidados adotar depois de abrir o produto.",
+    "data": "22 de outubro de 2026",
+    "tempo": "7 min de leitura",
+    "tag": "Rótulos e segurança",
+    "emoji": "🌴"
+  },
+  {
     "slug": "ovo-branco-vermelho-caipira-como-escolher-preparar",
     "titulo": "Ovo Branco, Vermelho ou Caipira: O Que Muda na Compra e no Preparo",
     "descricao": "Entenda o que a cor da casca realmente indica, como identificar ovos caipiras pelo rótulo e quais cuidados observar na compra, conservação e cocção.",
