@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "refrigerante-comum-zero-agua-tonica-comparar-rotulo",
+    "titulo": "Refrigerante Comum, Zero ou Água Tônica: Como Comparar o Rótulo",
+    "descricao": "Compare açúcares, edulcorantes, cafeína, sódio e porção para entender refrigerante comum, zero e água tônica sem confundir as bebidas.",
+    "data": "23 de outubro de 2026",
+    "tempo": "7 min de leitura",
+    "tag": "Rótulos e bebidas",
+    "emoji": "🥤"
+  },
+  {
     "slug": "palmito-conserva-escolher-sodio-guardar-seguranca",
     "titulo": "Palmito em Conserva: Como Escolher, Comparar o Sódio e Guardar",
     "descricao": "Veja o que conferir na embalagem do palmito, como comparar sódio na mesma quantidade e quais cuidados adotar depois de abrir o produto.",

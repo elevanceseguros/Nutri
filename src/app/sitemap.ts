@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/refrigerante-comum-zero-agua-tonica-comparar-rotulo`, lastModified: new Date('2026-10-23'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/palmito-conserva-escolher-sodio-guardar-seguranca`, lastModified: new Date('2026-10-22'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/ovo-branco-vermelho-caipira-como-escolher-preparar`, lastModified: new Date('2026-10-21'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/cafe-soluvel-puro-cappuccino-po-comparar-rotulo`, lastModified: new Date('2026-10-20'), changeFrequency: 'monthly', priority: 0.8 },
