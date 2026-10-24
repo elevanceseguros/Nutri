@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "agua-coco-natural-caixinha-comparar-rotulo-conservar",
+    "titulo": "Água de Coco Natural ou de Caixinha: Como Comparar e Conservar",
+    "descricao": "Compare tipos de água de coco, ingredientes, açúcares, sódio, porção e conservação para escolher e consumir com segurança.",
+    "data": "24 de outubro de 2026",
+    "tempo": "7 min de leitura",
+    "tag": "Rótulos e bebidas",
+    "emoji": "🥥"
+  },
+  {
     "slug": "refrigerante-comum-zero-agua-tonica-comparar-rotulo",
     "titulo": "Refrigerante Comum, Zero ou Água Tônica: Como Comparar o Rótulo",
     "descricao": "Compare açúcares, edulcorantes, cafeína, sódio e porção para entender refrigerante comum, zero e água tônica sem confundir as bebidas.",
