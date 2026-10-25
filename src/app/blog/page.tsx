@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "azeitona-verde-preta-comparar-sodio-conservar",
+    "titulo": "Azeitona Verde ou Preta: O Que Muda e Como Comparar o Sódio",
+    "descricao": "Entenda diferenças de maturação e processamento, compare sódio e porção no rótulo e veja cuidados para conservar azeitonas depois de abrir.",
+    "data": "25 de outubro de 2026",
+    "tempo": "7 min de leitura",
+    "tag": "Rótulos e cozinha",
+    "emoji": "🫒"
+  },
+  {
     "slug": "agua-coco-natural-caixinha-comparar-rotulo-conservar",
     "titulo": "Água de Coco Natural ou de Caixinha: Como Comparar e Conservar",
     "descricao": "Compare tipos de água de coco, ingredientes, açúcares, sódio, porção e conservação para escolher e consumir com segurança.",
