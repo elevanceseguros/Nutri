@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/acucar-refinado-demerara-mascavo-diferencas-como-usar`, lastModified: new Date('2026-10-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/azeitona-verde-preta-comparar-sodio-conservar`, lastModified: new Date('2026-10-25'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/agua-coco-natural-caixinha-comparar-rotulo-conservar`, lastModified: new Date('2026-10-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/refrigerante-comum-zero-agua-tonica-comparar-rotulo`, lastModified: new Date('2026-10-23'), changeFrequency: 'monthly', priority: 0.8 },

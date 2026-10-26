@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "acucar-refinado-demerara-mascavo-diferencas-como-usar",
+    "titulo": "Açúcar Refinado, Demerara ou Mascavo: Diferenças e Como Usar",
+    "descricao": "Compare processamento, sabor, textura, rótulo e uso culinário dos açúcares refinado, demerara e mascavo sem tratar um deles como livre de limites.",
+    "data": "26 de outubro de 2026",
+    "tempo": "7 min de leitura",
+    "tag": "Rótulos e cozinha",
+    "emoji": "🍬"
+  },
+  {
     "slug": "azeitona-verde-preta-comparar-sodio-conservar",
     "titulo": "Azeitona Verde ou Preta: O Que Muda e Como Comparar o Sódio",
     "descricao": "Entenda diferenças de maturação e processamento, compare sódio e porção no rótulo e veja cuidados para conservar azeitonas depois de abrir.",
