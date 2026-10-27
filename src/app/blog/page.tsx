@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "ketchup-mostarda-barbecue-comparar-acucar-sodio-rotulo",
+    "titulo": "Ketchup, Mostarda ou Barbecue: Como Comparar Açúcar, Sódio e Ingredientes",
+    "descricao": "Compare ketchup, mostarda e molho barbecue pela mesma quantidade, observando açúcares adicionados, sódio, ingredientes, porção e uso culinário.",
+    "data": "27 de outubro de 2026",
+    "tempo": "7 min de leitura",
+    "tag": "Rótulos e cozinha",
+    "emoji": "🥫"
+  },
+  {
     "slug": "acucar-refinado-demerara-mascavo-diferencas-como-usar",
     "titulo": "Açúcar Refinado, Demerara ou Mascavo: Diferenças e Como Usar",
     "descricao": "Compare processamento, sabor, textura, rótulo e uso culinário dos açúcares refinado, demerara e mascavo sem tratar um deles como livre de limites.",
