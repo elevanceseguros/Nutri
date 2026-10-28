@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "presunto-peito-peru-mortadela-comparar-sodio-gordura-ingredientes",
+    "titulo": "Presunto, Peito de Peru ou Mortadela: Como Comparar Sódio, Gordura e Ingredientes",
+    "descricao": "Compare presunto, peito de peru e mortadela pela mesma quantidade, observando sódio, gordura saturada, proteína, ingredientes e frequência de consumo.",
+    "data": "28 de outubro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Rótulos e escolhas",
+    "emoji": "🥪"
+  },
+  {
     "slug": "ketchup-mostarda-barbecue-comparar-acucar-sodio-rotulo",
     "titulo": "Ketchup, Mostarda ou Barbecue: Como Comparar Açúcar, Sódio e Ingredientes",
     "descricao": "Compare ketchup, mostarda e molho barbecue pela mesma quantidade, observando açúcares adicionados, sódio, ingredientes, porção e uso culinário.",
