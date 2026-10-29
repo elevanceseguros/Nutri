@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "iogurte-bebida-lactea-leite-fermentado-comparar-rotulo",
+    "titulo": "Iogurte, Bebida Láctea ou Leite Fermentado: Como Comparar o Rótulo",
+    "descricao": "Entenda o que muda na denominação, nos ingredientes e na composição de iogurtes, bebidas lácteas e leites fermentados para comparar opções pela mesma quantidade.",
+    "data": "29 de outubro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Rótulos e laticínios",
+    "emoji": "🥛"
+  },
+  {
     "slug": "presunto-peito-peru-mortadela-comparar-sodio-gordura-ingredientes",
     "titulo": "Presunto, Peito de Peru ou Mortadela: Como Comparar Sódio, Gordura e Ingredientes",
     "descricao": "Compare presunto, peito de peru e mortadela pela mesma quantidade, observando sódio, gordura saturada, proteína, ingredientes e frequência de consumo.",

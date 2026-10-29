@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/iogurte-bebida-lactea-leite-fermentado-comparar-rotulo`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/presunto-peito-peru-mortadela-comparar-sodio-gordura-ingredientes`, lastModified: new Date('2026-10-28'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/ketchup-mostarda-barbecue-comparar-acucar-sodio-rotulo`, lastModified: new Date('2026-10-27'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/acucar-refinado-demerara-mascavo-diferencas-como-usar`, lastModified: new Date('2026-10-26'), changeFrequency: 'monthly', priority: 0.8 },
