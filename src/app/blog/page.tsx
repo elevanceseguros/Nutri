@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "alimento-com-mofo-cortar-ou-descartar-seguranca",
+    "titulo": "Alimento com Mofo: Cortar a Parte Estragada ou Descartar?",
+    "descricao": "Entenda por que o mofo pode avançar além da parte visível, quais alimentos devem ser descartados e como reduzir a contaminação na geladeira e na despensa.",
+    "data": "30 de outubro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🔬"
+  },
+  {
     "slug": "iogurte-bebida-lactea-leite-fermentado-comparar-rotulo",
     "titulo": "Iogurte, Bebida Láctea ou Leite Fermentado: Como Comparar o Rótulo",
     "descricao": "Entenda o que muda na denominação, nos ingredientes e na composição de iogurtes, bebidas lácteas e leites fermentados para comparar opções pela mesma quantidade.",
