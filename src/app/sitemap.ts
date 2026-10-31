@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/lata-amassada-estufada-enferrujada-quando-descartar`, lastModified: new Date('2026-10-31'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/alimento-com-mofo-cortar-ou-descartar-seguranca`, lastModified: new Date('2026-10-30'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/iogurte-bebida-lactea-leite-fermentado-comparar-rotulo`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/presunto-peito-peru-mortadela-comparar-sodio-gordura-ingredientes`, lastModified: new Date('2026-10-28'), changeFrequency: 'monthly', priority: 0.8 },

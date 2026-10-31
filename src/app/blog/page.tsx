@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "lata-amassada-estufada-enferrujada-quando-descartar",
+    "titulo": "Lata Amassada, Estufada ou Enferrujada: Quando Descartar?",
+    "descricao": "Veja quais danos comprometem a segurança de uma lata, por que estufamento e vazamento exigem descarte e como guardar sobras depois de abrir.",
+    "data": "31 de outubro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥫"
+  },
+  {
     "slug": "alimento-com-mofo-cortar-ou-descartar-seguranca",
     "titulo": "Alimento com Mofo: Cortar a Parte Estragada ou Descartar?",
     "descricao": "Entenda por que o mofo pode avançar além da parte visível, quais alimentos devem ser descartados e como reduzir a contaminação na geladeira e na despensa.",
