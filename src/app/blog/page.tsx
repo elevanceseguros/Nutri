@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "geladeira-sem-energia-o-que-descartar-alimentos",
+    "titulo": "Geladeira sem Energia: O Que Descartar e O Que Ainda Pode Ser Consumido?",
+    "descricao": "Veja quanto tempo geladeira e freezer preservam o frio, como avaliar os alimentos quando a energia volta e por que cheiro e aparência não bastam.",
+    "data": "1 de novembro de 2026",
+    "tempo": "9 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🔌"
+  },
+  {
     "slug": "lata-amassada-estufada-enferrujada-quando-descartar",
     "titulo": "Lata Amassada, Estufada ou Enferrujada: Quando Descartar?",
     "descricao": "Veja quais danos comprometem a segurança de uma lata, por que estufamento e vazamento exigem descarte e como guardar sobras depois de abrir.",
