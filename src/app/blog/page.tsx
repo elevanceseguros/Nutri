@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "fuba-flocao-farinha-milho-diferencas-como-usar",
+    "titulo": "Fubá, Flocão ou Farinha de Milho: Diferenças e Como Usar",
+    "descricao": "Compare textura, preparo, ingredientes e usos de fubá, flocão e farinha de milho para escolher o produto adequado a polenta, cuscuz, bolo e farofa.",
+    "data": "2 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Rótulos e cozinha",
+    "emoji": "🌽"
+  },
+  {
     "slug": "geladeira-sem-energia-o-que-descartar-alimentos",
     "titulo": "Geladeira sem Energia: O Que Descartar e O Que Ainda Pode Ser Consumido?",
     "descricao": "Veja quanto tempo geladeira e freezer preservam o frio, como avaliar os alimentos quando a energia volta e por que cheiro e aparência não bastam.",
