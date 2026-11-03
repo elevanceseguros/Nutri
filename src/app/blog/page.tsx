@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "batata-verde-brotos-cortar-descartar-seguranca",
+    "titulo": "Batata Verde ou com Brotos: Quando Cortar e Quando Descartar?",
+    "descricao": "Entenda por que partes verdes e brotos exigem atenção, quando ainda é possível aproveitar uma batata firme e quais sinais indicam descarte.",
+    "data": "3 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥔"
+  },
+  {
     "slug": "fuba-flocao-farinha-milho-diferencas-como-usar",
     "titulo": "Fubá, Flocão ou Farinha de Milho: Diferenças e Como Usar",
     "descricao": "Compare textura, preparo, ingredientes e usos de fubá, flocão e farinha de milho para escolher o produto adequado a polenta, cuscuz, bolo e farofa.",
