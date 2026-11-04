@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/ovo-rachado-trincado-usar-descartar-seguranca`, lastModified: new Date('2026-11-04'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/batata-verde-brotos-cortar-descartar-seguranca`, lastModified: new Date('2026-11-03'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/fuba-flocao-farinha-milho-diferencas-como-usar`, lastModified: new Date('2026-11-02'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/geladeira-sem-energia-o-que-descartar-alimentos`, lastModified: new Date('2026-11-01'), changeFrequency: 'monthly', priority: 0.8 },

@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "ovo-rachado-trincado-usar-descartar-seguranca",
+    "titulo": "Ovo Rachado ou Trincado: Quando Usar e Quando Descartar?",
+    "descricao": "Veja por que rachaduras facilitam a entrada de bactérias, como agir quando o ovo quebra em casa e quais situações exigem descarte.",
+    "data": "4 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥚"
+  },
+  {
     "slug": "batata-verde-brotos-cortar-descartar-seguranca",
     "titulo": "Batata Verde ou com Brotos: Quando Cortar e Quando Descartar?",
     "descricao": "Entenda por que partes verdes e brotos exigem atenção, quando ainda é possível aproveitar uma batata firme e quais sinais indicam descarte.",
