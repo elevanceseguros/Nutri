@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "carne-moida-escura-marrom-estragou-cor-conservacao",
+    "titulo": "Carne Moída Escura ou Marrom: Estragou? Como Avaliar e Guardar",
+    "descricao": "Entenda por que a carne moída pode ficar marrom ou acinzentada, quais sinais sugerem deterioração e como refrigerar, congelar e cozinhar com segurança.",
+    "data": "5 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥩"
+  },
+  {
     "slug": "ovo-rachado-trincado-usar-descartar-seguranca",
     "titulo": "Ovo Rachado ou Trincado: Quando Usar e Quando Descartar?",
     "descricao": "Veja por que rachaduras facilitam a entrada de bactérias, como agir quando o ovo quebra em casa e quais situações exigem descarte.",
