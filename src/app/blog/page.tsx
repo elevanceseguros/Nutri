@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "fruta-cortada-fora-geladeira-tempo-conservar-transportar",
+    "titulo": "Fruta Cortada Fora da Geladeira: Quanto Tempo Pode Ficar?",
+    "descricao": "Veja quando refrigerar frutas cortadas, como transportar com segurança, quais sinais exigem descarte e por que cheiro e aparência não contam toda a história.",
+    "data": "6 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🍉"
+  },
+  {
     "slug": "carne-moida-escura-marrom-estragou-cor-conservacao",
     "titulo": "Carne Moída Escura ou Marrom: Estragou? Como Avaliar e Guardar",
     "descricao": "Entenda por que a carne moída pode ficar marrom ou acinzentada, quais sinais sugerem deterioração e como refrigerar, congelar e cozinhar com segurança.",
