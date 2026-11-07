@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "alimento-queimadura-freezer-faz-mal-evitar",
+    "titulo": "Alimento com Queimadura de Freezer Faz Mal? Como Identificar e Evitar",
+    "descricao": "Entenda o que causa manchas secas e cristais no alimento congelado, quando o problema é apenas de qualidade e quais sinais exigem descarte.",
+    "data": "7 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança e conservação",
+    "emoji": "❄️"
+  },
+  {
     "slug": "fruta-cortada-fora-geladeira-tempo-conservar-transportar",
     "titulo": "Fruta Cortada Fora da Geladeira: Quanto Tempo Pode Ficar?",
     "descricao": "Veja quando refrigerar frutas cortadas, como transportar com segurança, quais sinais exigem descarte e por que cheiro e aparência não contam toda a história.",
