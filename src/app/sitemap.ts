@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/massa-crua-farinha-ovos-riscos-seguranca`, lastModified: new Date('2026-11-08'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/alimento-queimadura-freezer-faz-mal-evitar`, lastModified: new Date('2026-11-07'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/fruta-cortada-fora-geladeira-tempo-conservar-transportar`, lastModified: new Date('2026-11-06'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/carne-moida-escura-marrom-estragou-cor-conservacao`, lastModified: new Date('2026-11-05'), changeFrequency: 'monthly', priority: 0.8 },

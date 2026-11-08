@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "massa-crua-farinha-ovos-riscos-seguranca",
+    "titulo": "Comer Massa Crua Faz Mal? Farinha, Ovos e Como Preparar com Segurança",
+    "descricao": "Entenda por que farinha e ovos crus podem carregar micro-organismos, quais massas não devem ser provadas e como reduzir contaminação na cozinha.",
+    "data": "8 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥣"
+  },
+  {
     "slug": "alimento-queimadura-freezer-faz-mal-evitar",
     "titulo": "Alimento com Queimadura de Freezer Faz Mal? Como Identificar e Evitar",
     "descricao": "Entenda o que causa manchas secas e cristais no alimento congelado, quando o problema é apenas de qualidade e quais sinais exigem descarte.",

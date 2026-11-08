@@ -77,7 +77,7 @@ export default function Post() {
             <li>Compare preço pela quantidade realmente utilizada.</li>
             <li>Escolha o tamanho de embalagem que será consumido sem desperdício.</li>
           </ul>
-          <p>Leia também: <Link href="/blog/pao-integral-de-verdade-como-ler-rotulo">como identificar pão integral pelo rótulo</Link> · <Link href="/blog/aveia-flocos-farelo-farinha-diferencas">diferenças entre aveia em flocos, farelo e farinha</Link>.</p>
+          <p>Leia também: <Link href="/blog/pao-integral-de-verdade-como-ler-rotulo">como identificar pão integral pelo rótulo</Link> · <Link href="/blog/aveia-flocos-farelo-farinha-diferencas">diferenças entre aveia em flocos, farelo e farinha</Link> · <Link href="/blog/massa-crua-farinha-ovos-riscos-seguranca">por que não provar farinha ou massa crua</Link>.</p>
           <section className={styles.premiumBanner} data-cta="final">
             <div className={styles.premiumHeader}><h2>Use os ingredientes que funcionam na sua cozinha</h2>
               <p>Gere uma sugestão de plano alimentar, adapte receitas às suas preferências e procure orientação profissional quando precisar de uma estratégia individual.</p>
