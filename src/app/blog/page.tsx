@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "marmita-fora-geladeira-bolsa-termica-seguranca",
+    "titulo": "Marmita Fora da Geladeira: Quanto Tempo Dura e Como Transportar",
+    "descricao": "Veja como transportar marmitas frias ou quentes, usar bolsa térmica e fontes de frio e decidir quando uma refeição ficou tempo demais sem controle de temperatura.",
+    "data": "9 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança e rotina",
+    "emoji": "🥡"
+  },
+  {
     "slug": "massa-crua-farinha-ovos-riscos-seguranca",
     "titulo": "Comer Massa Crua Faz Mal? Farinha, Ovos e Como Preparar com Segurança",
     "descricao": "Entenda por que farinha e ovos crus podem carregar micro-organismos, quais massas não devem ser provadas e como reduzir contaminação na cozinha.",

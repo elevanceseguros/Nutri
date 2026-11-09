@@ -117,7 +117,7 @@ export default function Post() {
             <li>quando houver dúvida sobre tempo ou temperatura de uma sobra perecível, não a reaproveite.</li>
           </ul>
           <p>
-            Para aperfeiçoar essa etapa, consulte também o guia da Nutry.life sobre <Link href="/blog/como-higienizar-guardar-folhas">higienização e armazenamento de folhas</Link>.
+            Para aperfeiçoar essa etapa, consulte também os guias da Nutry.life sobre <Link href="/blog/marmita-fora-geladeira-bolsa-termica-seguranca">transporte seguro em bolsa térmica</Link> e <Link href="/blog/como-higienizar-guardar-folhas">higienização e armazenamento de folhas</Link>.
           </p>
 
           <h2>Alergias e risco de engasgo exigem atenção individual</h2>
