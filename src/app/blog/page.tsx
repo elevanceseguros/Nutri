@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "tabua-madeira-plastico-higienizar-quando-trocar",
+    "titulo": "Tábua de Madeira ou Plástico: Como Higienizar e Quando Trocar",
+    "descricao": "Compare tábuas de madeira e plástico, veja como evitar contaminação cruzada, higienizar depois do uso e reconhecer ranhuras que exigem substituição.",
+    "data": "10 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🔪"
+  },
+  {
     "slug": "marmita-fora-geladeira-bolsa-termica-seguranca",
     "titulo": "Marmita Fora da Geladeira: Quanto Tempo Dura e Como Transportar",
     "descricao": "Veja como transportar marmitas frias ou quentes, usar bolsa térmica e fontes de frio e decidir quando uma refeição ficou tempo demais sem controle de temperatura.",

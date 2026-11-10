@@ -107,7 +107,7 @@ export default function Post() {
 
           <h2>Mãos, utensílios e bancada</h2>
           <p>
-            Lave as mãos com água e sabão depois de tocar em frango cru e antes de manusear comida pronta. Higienize faca, tábua, pegadores, pia e bancada com produtos apropriados à superfície. Não use o pano de secar louça para limpar líquidos da carne crua.
+            Lave as mãos com água e sabão depois de tocar em frango cru e antes de manusear comida pronta. Higienize faca, tábua, pegadores, pia e bancada com produtos apropriados à superfície. Veja também como <Link href="/blog/tabua-madeira-plastico-higienizar-quando-trocar">higienizar a tábua e reconhecer quando ela precisa ser trocada</Link>. Não use o pano de secar louça para limpar líquidos da carne crua.
           </p>
           <p>
             Ter tábuas separadas pode facilitar a rotina, mas a cor da tábua não elimina a necessidade de lavagem e conservação. Troque utensílios com rachaduras profundas ou superfícies difíceis de limpar.
