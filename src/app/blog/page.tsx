@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "esponja-cozinha-higienizar-quando-trocar",
+    "titulo": "Esponja de Cozinha: Como Higienizar, Quando Trocar e O Que Evitar",
+    "descricao": "Veja por que a esponja pode espalhar contaminação, como usar e guardar, quando trocar e quais métodos caseiros não garantem segurança.",
+    "data": "11 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🧽"
+  },
+  {
     "slug": "tabua-madeira-plastico-higienizar-quando-trocar",
     "titulo": "Tábua de Madeira ou Plástico: Como Higienizar e Quando Trocar",
     "descricao": "Compare tábuas de madeira e plástico, veja como evitar contaminação cruzada, higienizar depois do uso e reconhecer ranhuras que exigem substituição.",
