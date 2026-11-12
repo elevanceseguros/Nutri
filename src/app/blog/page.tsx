@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "pote-plastico-microondas-pode-usar-quando-trocar",
+    "titulo": "Pote de Plástico no Micro-ondas: Como Saber se Pode Usar e Quando Trocar",
+    "descricao": "Veja como identificar recipientes próprios para micro-ondas, quais embalagens não reutilizar, como aquecer com segurança e quando substituir o pote.",
+    "data": "12 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥡"
+  },
+  {
     "slug": "esponja-cozinha-higienizar-quando-trocar",
     "titulo": "Esponja de Cozinha: Como Higienizar, Quando Trocar e O Que Evitar",
     "descricao": "Veja por que a esponja pode espalhar contaminação, como usar e guardar, quando trocar e quais métodos caseiros não garantem segurança.",
