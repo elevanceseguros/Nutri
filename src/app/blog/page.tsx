@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "papel-aluminio-forno-microondas-como-usar-seguranca",
+    "titulo": "Papel-Alumínio no Forno e Micro-ondas: Como Usar com Segurança",
+    "descricao": "Veja quando o papel-alumínio pode ir ao forno, por que exige cuidado no micro-ondas, como armazenar alimentos e quais improvisos evitar.",
+    "data": "13 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança na cozinha",
+    "emoji": "🧻"
+  },
+  {
     "slug": "pote-plastico-microondas-pode-usar-quando-trocar",
     "titulo": "Pote de Plástico no Micro-ondas: Como Saber se Pode Usar e Quando Trocar",
     "descricao": "Veja como identificar recipientes próprios para micro-ondas, quais embalagens não reutilizar, como aquecer com segurança e quando substituir o pote.",
