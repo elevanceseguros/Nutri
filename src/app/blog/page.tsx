@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "pao-geladeira-freezer-como-conservar-descongelar",
+    "titulo": "Pão na Geladeira ou Freezer: Como Conservar e Descongelar",
+    "descricao": "Veja quando guardar pão em temperatura ambiente, geladeira ou freezer, como embalar, descongelar e reconhecer sinais de deterioração.",
+    "data": "14 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Conservação",
+    "emoji": "🍞"
+  },
+  {
     "slug": "papel-aluminio-forno-microondas-como-usar-seguranca",
     "titulo": "Papel-Alumínio no Forno e Micro-ondas: Como Usar com Segurança",
     "descricao": "Veja quando o papel-alumínio pode ir ao forno, por que exige cuidado no micro-ondas, como armazenar alimentos e quais improvisos evitar.",

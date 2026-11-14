@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/pao-geladeira-freezer-como-conservar-descongelar`, lastModified: new Date('2026-11-14'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/papel-aluminio-forno-microondas-como-usar-seguranca`, lastModified: new Date('2026-11-13'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/pote-plastico-microondas-pode-usar-quando-trocar`, lastModified: new Date('2026-11-12'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/esponja-cozinha-higienizar-quando-trocar`, lastModified: new Date('2026-11-11'), changeFrequency: 'monthly', priority: 0.8 },
