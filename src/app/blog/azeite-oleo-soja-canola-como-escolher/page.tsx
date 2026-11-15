@@ -67,7 +67,7 @@ export default function Post() {
           <p>Se a casa usa pouco óleo, uma embalagem menor pode custar mais por litro e ainda assim reduzir tempo aberto e descarte. Compare custo por litro junto com a quantidade que realmente consegue consumir dentro das condições recomendadas.</p>
           <h2>Um critério mais útil que “qual é o melhor?”</h2>
           <p>Escolha o produto que atende ao preparo, cabe no orçamento e pode ser usado em quantidade moderada. Varie fontes de gordura por meio da alimentação — como castanhas, sementes, abacate e peixes, conforme suas preferências — sem esperar que um único óleo resolva a dieta.</p>
-          <p>Leia também: <Link href="/blog/manteiga-vs-margarina-como-comparar">manteiga ou margarina</Link> · <Link href="/blog/como-ler-rotulo-de-alimentos">como ler rótulos de alimentos</Link>.</p>
+          <p>Leia também: <Link href="/blog/oleo-fritura-reutilizar-guardar-quando-descartar">como reutilizar, guardar e descartar óleo de fritura</Link> · <Link href="/blog/manteiga-vs-margarina-como-comparar">manteiga ou margarina</Link> · <Link href="/blog/como-ler-rotulo-de-alimentos">como ler rótulos de alimentos</Link>.</p>
           <section className={styles.premiumBanner} data-cta="final">
             <div className={styles.premiumHeader}><h2>Organize refeições possíveis para o seu dia</h2>
               <p>Gere uma sugestão de plano alimentar, ajuste os preparos às suas preferências e procure orientação profissional quando precisar de uma estratégia individual.</p>

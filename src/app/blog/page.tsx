@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "oleo-fritura-reutilizar-guardar-quando-descartar",
+    "titulo": "Óleo de Fritura: Como Reutilizar, Guardar e Saber Quando Descartar",
+    "descricao": "Veja por que não existe número universal de reutilizações, como reduzir a degradação, reconhecer sinais de descarte e dar destino responsável.",
+    "data": "15 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança alimentar",
+    "emoji": "🍳"
+  },
+  {
     "slug": "pao-geladeira-freezer-como-conservar-descongelar",
     "titulo": "Pão na Geladeira ou Freezer: Como Conservar e Descongelar",
     "descricao": "Veja quando guardar pão em temperatura ambiente, geladeira ou freezer, como embalar, descongelar e reconhecer sinais de deterioração.",
