@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "mel-cristalizado-estragou-armazenar-descristalizar",
+    "titulo": "Mel Cristalizado Estragou? Como Armazenar e Descristalizar",
+    "descricao": "Entenda por que o mel cristaliza, como armazenar, recuperar a textura com aquecimento suave e reconhecer sinais que exigem descarte.",
+    "data": "16 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Conservação e cozinha",
+    "emoji": "🍯"
+  },
+  {
     "slug": "oleo-fritura-reutilizar-guardar-quando-descartar",
     "titulo": "Óleo de Fritura: Como Reutilizar, Guardar e Saber Quando Descartar",
     "descricao": "Veja por que não existe número universal de reutilizações, como reduzir a degradação, reconhecer sinais de descarte e dar destino responsável.",

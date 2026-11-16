@@ -96,7 +96,7 @@ export default function Post() {
             <li>qual quantidade entra na receita e quantas porções ela rende;</li>
             <li>se existe necessidade clínica de orientação individual.</li>
           </ul>
-          <p>Leia também: <Link href="/blog/acucar-vs-adocante-qual-e-pior">açúcar ou adoçante: como pensar a escolha</Link> · <Link href="/blog/como-reduzir-o-acucar-da-dieta">como reduzir o açúcar da alimentação</Link> · <Link href="/blog/como-ler-rotulo-de-alimentos">como ler o rótulo de alimentos</Link>.</p>
+          <p>Leia também: <Link href="/blog/mel-cristalizado-estragou-armazenar-descristalizar">por que o mel cristaliza e como armazenar</Link> · <Link href="/blog/acucar-vs-adocante-qual-e-pior">açúcar ou adoçante: como pensar a escolha</Link> · <Link href="/blog/como-reduzir-o-acucar-da-dieta">como reduzir o açúcar da alimentação</Link> · <Link href="/blog/como-ler-rotulo-de-alimentos">como ler o rótulo de alimentos</Link>.</p>
 
           <section className={styles.premiumBanner} data-cta="final">
             <div className={styles.premiumHeader}><h2>Monte um plano alimentar compatível com sua rotina</h2><p>Use o gerador para obter uma sugestão inicial e organizar refeições, preparos e preferências. Necessidades clínicas e restrições exigem avaliação profissional.</p></div>

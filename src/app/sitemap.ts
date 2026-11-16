@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/mel-cristalizado-estragou-armazenar-descristalizar`, lastModified: new Date('2026-11-16'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/oleo-fritura-reutilizar-guardar-quando-descartar`, lastModified: new Date('2026-11-15'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/pao-geladeira-freezer-como-conservar-descongelar`, lastModified: new Date('2026-11-14'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/papel-aluminio-forno-microondas-como-usar-seguranca`, lastModified: new Date('2026-11-13'), changeFrequency: 'monthly', priority: 0.8 },
