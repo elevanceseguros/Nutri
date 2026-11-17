@@ -102,6 +102,7 @@ export default function Post() {
 
             <h2>Leia também</h2>
             <ul>
+              <li><Link href="/blog/precisa-lavar-arroz-antes-cozinhar-amido-arsenio">Precisa lavar o arroz antes de cozinhar?</Link></li>
               <li><Link href="/blog/fibras-alimentares-beneficios">Fibras alimentares: benefícios e fontes</Link></li>
               <li><Link href="/blog/como-montar-prato-saudavel">Como montar um prato saudável e equilibrado</Link></li>
             </ul>

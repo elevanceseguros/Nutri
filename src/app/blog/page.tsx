@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "precisa-lavar-arroz-antes-cozinhar-amido-arsenio",
+    "titulo": "Precisa Lavar o Arroz Antes de Cozinhar? Amido, Nutrientes e Arsênio",
+    "descricao": "Entenda quando lavar o arroz muda a textura, o que acontece com amido e nutrientes e por que o enxágue não elimina o arsênio do grão.",
+    "data": "17 de novembro de 2026",
+    "tempo": "9 min de leitura",
+    "tag": "Preparo e segurança",
+    "emoji": "🍚"
+  },
+  {
     "slug": "mel-cristalizado-estragou-armazenar-descristalizar",
     "titulo": "Mel Cristalizado Estragou? Como Armazenar e Descristalizar",
     "descricao": "Entenda por que o mel cristaliza, como armazenar, recuperar a textura com aquecimento suave e reconhecer sinais que exigem descarte.",
