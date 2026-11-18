@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "pode-recongelar-carne-descongelada-seguranca",
+    "titulo": "Pode Recongelar Carne Descongelada? Geladeira, Micro-ondas e Segurança",
+    "descricao": "Entenda por que o método de descongelamento muda a resposta, o que orientam autoridades brasileiras e como cozinhar antes de voltar ao freezer.",
+    "data": "18 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥩"
+  },
+  {
     "slug": "precisa-lavar-arroz-antes-cozinhar-amido-arsenio",
     "titulo": "Precisa Lavar o Arroz Antes de Cozinhar? Amido, Nutrientes e Arsênio",
     "descricao": "Entenda quando lavar o arroz muda a textura, o que acontece com amido e nutrientes e por que o enxágue não elimina o arsênio do grão.",

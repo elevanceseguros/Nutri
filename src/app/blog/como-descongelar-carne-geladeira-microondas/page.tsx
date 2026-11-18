@@ -57,7 +57,7 @@ export default function Post() {
           <p>Antes de congelar, pense no tamanho das refeições da sua casa. Separar o que pretende preparar de uma vez evita depender de um bloco enorme para usar apenas uma parte. Identifique as porções e deixe à vista quais serão usadas primeiro.</p>
           <p>Um roteiro simples: ao decidir o jantar do dia seguinte, confira o freezer, escolha a porção e reserve espaço na geladeira para o recipiente. Se a peça for grande, antecipe mais. O planejamento deve incluir o descongelamento, não começar somente quando a panela vai ao fogo.</p>
           <p>Após manusear carne crua, lave as mãos e os utensílios antes de tocar em alimentos prontos. Descongelar corretamente é uma etapa; evitar contaminação cruzada e cozinhar adequadamente continuam sendo necessários.</p>
-          <p>Leia também: <Link href="/blog/planejamento-alimentar-semanal">planejamento alimentar semanal</Link> · <Link href="/blog/arroz-feijao-cozidos-guardar-congelar-reaquecer">como guardar e reaquecer arroz e feijão</Link>.</p>
+          <p>Leia também: <Link href="/blog/pode-recongelar-carne-descongelada-seguranca">quando uma carne descongelada pode ou não voltar ao freezer</Link> · <Link href="/blog/planejamento-alimentar-semanal">planejamento alimentar semanal</Link> · <Link href="/blog/arroz-feijao-cozidos-guardar-congelar-reaquecer">como guardar e reaquecer arroz e feijão</Link>.</p>
           <section className={styles.premiumBanner} data-cta="final">
             <div className={styles.premiumHeader}><h2>Organize as refeições antes da correria</h2>
               <p>Gere uma sugestão de plano alimentar, adapte às suas preferências e procure orientação profissional quando precisar de uma dieta individual.</p>
