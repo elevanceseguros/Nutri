@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "carne-marinada-geladeira-tempo-reutilizar-marinada",
+    "titulo": "Carne Marinada: Geladeira, Tempo e Pode Reutilizar a Marinada?",
+    "descricao": "Veja como marinar carnes e aves sob refrigeração, evitar contaminação cruzada e decidir o que fazer com o líquido que tocou o alimento cru.",
+    "data": "19 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🥩"
+  },
+  {
     "slug": "pode-recongelar-carne-descongelada-seguranca",
     "titulo": "Pode Recongelar Carne Descongelada? Geladeira, Micro-ondas e Segurança",
     "descricao": "Entenda por que o método de descongelamento muda a resposta, o que orientam autoridades brasileiras e como cozinhar antes de voltar ao freezer.",

@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/carne-marinada-geladeira-tempo-reutilizar-marinada`, lastModified: new Date('2026-11-19'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/pode-recongelar-carne-descongelada-seguranca`, lastModified: new Date('2026-11-18'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/precisa-lavar-arroz-antes-cozinhar-amido-arsenio`, lastModified: new Date('2026-11-17'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/mel-cristalizado-estragou-armazenar-descristalizar`, lastModified: new Date('2026-11-16'), changeFrequency: 'monthly', priority: 0.8 },

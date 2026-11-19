@@ -140,7 +140,7 @@ export default function Post() {
           </ul>
 
           <p>
-            Leia também: <Link href="/blog/como-descongelar-carne-geladeira-microondas">como descongelar carne com segurança</Link> · <Link href="/blog/arroz-feijao-cozidos-guardar-congelar-reaquecer">como guardar e reaquecer preparações</Link>.
+            Leia também: <Link href="/blog/carne-marinada-geladeira-tempo-reutilizar-marinada">como marinar carne sem reutilizar o líquido cru</Link> · <Link href="/blog/como-descongelar-carne-geladeira-microondas">como descongelar carne com segurança</Link> · <Link href="/blog/arroz-feijao-cozidos-guardar-congelar-reaquecer">como guardar e reaquecer preparações</Link>.
           </p>
 
           <section className={styles.premiumBanner} data-cta="final">
