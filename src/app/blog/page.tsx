@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "regra-cinco-segundos-comida-chao-contaminacao",
+    "titulo": "Regra dos 5 Segundos Funciona? Comida que Caiu no Chão e Contaminação",
+    "descricao": "Entenda por que bactérias podem passar para o alimento em menos de um segundo e como umidade, superfície e contexto ajudam a decidir pelo descarte.",
+    "data": "20 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Segurança dos alimentos",
+    "emoji": "🧹"
+  },
+  {
     "slug": "carne-marinada-geladeira-tempo-reutilizar-marinada",
     "titulo": "Carne Marinada: Geladeira, Tempo e Pode Reutilizar a Marinada?",
     "descricao": "Veja como marinar carnes e aves sob refrigeração, evitar contaminação cruzada e decidir o que fazer com o líquido que tocou o alimento cru.",
