@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Artigos em ordem cronológica decrescente.
   return [
+    { url: `${baseUrl}/blog/gema-verde-ovo-cozido-faz-mal-como-evitar`, lastModified: new Date('2026-11-21'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/regra-cinco-segundos-comida-chao-contaminacao`, lastModified: new Date('2026-11-20'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/carne-marinada-geladeira-tempo-reutilizar-marinada`, lastModified: new Date('2026-11-19'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog/pode-recongelar-carne-descongelada-seguranca`, lastModified: new Date('2026-11-18'), changeFrequency: 'monthly', priority: 0.8 },

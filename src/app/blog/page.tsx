@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    "slug": "gema-verde-ovo-cozido-faz-mal-como-evitar",
+    "titulo": "Gema Verde no Ovo Cozido Faz Mal? Por Que Acontece e Como Evitar",
+    "descricao": "Entenda por que surge o anel verde ou cinza na gema, quando ele é seguro, como diferenciar alteração de cozimento e sinais de descarte e como reduzir a formação.",
+    "data": "21 de novembro de 2026",
+    "tempo": "8 min de leitura",
+    "tag": "Preparo e segurança",
+    "emoji": "🥚"
+  },
+  {
     "slug": "regra-cinco-segundos-comida-chao-contaminacao",
     "titulo": "Regra dos 5 Segundos Funciona? Comida que Caiu no Chão e Contaminação",
     "descricao": "Entenda por que bactérias podem passar para o alimento em menos de um segundo e como umidade, superfície e contexto ajudam a decidir pelo descarte.",

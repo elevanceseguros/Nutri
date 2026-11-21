@@ -67,7 +67,7 @@ export default function Post() {
           <p>Para crianças pequenas, idosos, gestantes e pessoas imunossuprimidas, redobre os cuidados com cocção, temperatura e tempo. Necessidades individuais devem ser discutidas com profissional de saúde.</p>
 
           <h2>Cheiro de enxofre indica que estragou?</h2>
-          <p>O anel esverdeado ao redor da gema e um odor sulfuroso logo após o cozimento podem resultar de cozimento prolongado e não provam deterioração. Por outro lado, aparência e cheiro normais também não garantem segurança.</p>
+          <p>O anel esverdeado ao redor da gema e um odor sulfuroso logo após o cozimento podem resultar de cozimento prolongado e não provam deterioração. Veja em detalhes <Link href="/blog/gema-verde-ovo-cozido-faz-mal-como-evitar">por que a gema fica verde e como reduzir a formação</Link>. Por outro lado, aparência e cheiro normais também não garantem segurança.</p>
           <p>Se o ovo ficou tempo demais fora da geladeira, a data é desconhecida, houve falha prolongada de energia ou o recipiente parece contaminado, descarte sem provar. Degustação não é teste de segurança.</p>
 
           <h2>Erros comuns</h2>
